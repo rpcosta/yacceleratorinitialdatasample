@@ -1,0 +1,181 @@
+__ROOT_PACKAGE__=cl.com.bls.b2c.qkslv
+__EXTENSION_UID__=quicksilverb2cstoreinitialdata
+__EXTENSION_NAME__=Quicksilverb2cstoreInitialData
+
+# user-groups.impex
+
+__CUSTOMER_GROUP_UID__=quicksilvercustomergroup
+__CUSTOMER_GROUP_NAME_EN__=QuickSilver Customer Group
+__CUSTOMER_GROUP_NAME_ES_CL__=Grupo de Clientes de QuickSilver
+__DEFAULT_EMPLOYEE_PASSWORD__=12341234
+
+# themes.impex
+
+__THEME_UID__=quicksilver
+__THEME_NAME_EN__=QuickSilver
+__THEME_NAME_ES_CL__=QuickSilver
+
+# essential-data.impex
+
+//TODO create warehouses
+
+__VENDOR_UID__=quicksilverlo
+__VENDOR_NAME__=QuickSilver Vendor
+__BRAND_NAME__=quicksilver
+
+# content catalog.impex
+
+__CONTENT_CATALOG_UID__=quicksilverContentCatalog
+__CONTENT_CATALOG_NAME_EN__=QuickSilver Content Catalog
+__CONTENT_CATALOG_NAME_ES_CL__=Catálogo de Contenido de QuickSilver
+
+# cms-responsive-content.impex
+
+!!!!Test carefully. There are two different templates that refers to brand specific template!!!!
+
+__STORE_NAME__=QuickSilver
+__STORE_SPECIFIC_LANDING_PAGE_UID__=QuickSilverLandingPageTemplate
+__STORE_SPECIFIC_LANDING_LAYOUT_PAGE__=quicksilverLandingLayoutPage //duplicate this file
+__STORE_SPECIFIC_LANDING_TEMPLATE__=structure_quicksilverLandingPageTemplate.vm //duplicate this file
+
+# email-content.impex
+
+!!!!Test carefully. There are two different templates that refers to brand specific template!!!!
+
+__STORE_EMAIL_TEMPLATE_PREFIX__=quicksilver
+__FROM_EMAIL__=servicioalcliente@quicksilver.cl
+__FROM_NAME__=Servicio al Cliente
+
+#site.impex
+
+__SITE_UID__=quicksilverb2cstore
+__SITE_NAME_EN__=QuickSilver B2C Site
+__SITE_NAME_ES_CL__=Tienda B2C de QuickSilver
+__STORE_SALES_ORG_CODE__=2000
+__SITE_DOMAIN__=QUICKSILVER.CL
+__SITE_DOMAIN_LOWERCASE__=quicksilver.cl
+__SITE_ALIAS__=QUICKSILVER
+__SITE_ALIAS_LOWERCASE__=quicksilver
+
+#store.impex
+
+__STORE_UID__=quicksilverb2cstore
+__STORE_NAME_EN__=QuickSilver B2C BaseStore
+__STORE_NAME_ES_CL__=Tienda Base B2C de QuickSilver
+
+# product catalog.impex
+
+__PRODUCT_CATALOG_UID__=quicksilverProductCatalog
+__PRODUCT_CATALOG_NAME_EN__=QuickSilver Product Catalog
+__PRODUCT_CATALOG_NAME_ES_CL__=Catálogo de Producto de QuickSilver
+__CLASSIFICATION_CATALOG_UID__=quicksilverClassificationCatalog
+__CLASSIFICATION_CATALOG_NAME_EN__=QuickSilver Classification Catalog
+__CLASSIFICATIONT_CATALOG_NAME_ES_CL__=Catálogo de Classificaciónes de QuickSilver
+
+
+# categories.impex
+
+__CATEGORY_PROMOTIONS_UID__=quicksilverPromociones
+__CATEGORY_PROMOTIONS_NAME_EN__=QuickSilver Promotions
+__CATEGORY_PROMOTIONS_NAME_ES_CL__=QuickSilver Campaigns
+__CATEGORY_CAMPAINS_UID__=quickSilverCampanas
+__CATEGORY_CAMPAINS_NAME_EN__=quickSilverCampanas
+__CATEGORY_CAMPAINS_NAME_ES_CL__=quickSilverCampanas
+
+# site.impex
+
+__STORE_PROMOTION_GROUP_UID__=quicksilverCLPromoGrp
+__SYNC_JOB_PRODUCT_CATALOG__=syncQuicksilverProductCatalog
+
+# solr.impex
+
+__SOLR_SEARCH_CONFIG_UID__=quicksilverIndex
+__SOLR_SEARCH_CONFIG_NAME__=QuickSilver Solr Index
+__SOLR_SEARCH_PREFIX_NAME__=quicksilver
+__SOLR_INDEXED_TYPE__=quicksilverProductType
+__SOLR_PRICE_RANGE_UID__=quicksilverPriceRangeCLP
+__SOLR_SEARCH_PROFILE_UID__=defaultQuicksilver
+__SOLR_SEARCH_PROFILE_NAME_EN__=QuickSilver Search Profile
+__SOLR_SEARCH_PROFILE_NAME_ES_CL__=Search Profile de QuickSilver
+
+!!!Important: We still using same implementation of bold for boldPointOfServiceFacetDisplayNameProvider
+or make it common
+
+# warehouses.impex
+
+__WAREHOUSE_DELIVERY_SAMPLE_UID__=3019
+__WAREHOUSE_PICKUP_SAMPLE_UID__=3000
+__WAREHOUSE_SAMPLE_EMAIL__=example@quicksilver.com.cl
+
+TODO missing data to create warehouses
+
+# content.impex
+
+# products.impex
+
+# jobs.impex
+
+__GOOGLE_LOCATIONS_JOB_CODE__=googleLocationsQuicksilverCl
+__GOOGLE_PRODUCTS_JOB_CODE__=googleProductsQuicksilverCl
+__GOOGLE_EXPORT_JOB_CODE__=uploadExportsQuicksilverCL
+__GOOGLE_HOST__=setthethirdpartyhost
+__GOOGLE_USERNAME__=setgoogleusername
+__GOOGLE_PASSWORD__=setgooglepassword
+
+# promotions
+
+__SAMPLE_PROMOTION_1_UID__=quicksilverPromo10Navidad
+__SAMPLE_PROMOTION_1_NAME_EN__=QuickSilver Promotion Christmas 10% off
+__SAMPLE_PROMOTION_1_NAME_ES_CL__=QuickSilver Promoción 10% dcto Navidad
+__SAMPLE_PROMOTION_1_SOURCE_RULE_UID__=QuickSilver-Promo-10-productPercentajeDiscount
+__SAMPLE_PROMOTION_1_DESCRIPTION_EN__=Enables 10% off
+__SAMPLE_PROMOTION_1_NAME_EN__=Christmas 10% Off!
+__SAMPLE_PROMOTION_1_APPLIED_MESSAGE_EN__=You got Christmas 10% off!
+__SAMPLE_PROMOTION_1_DESCRIPTION_ES_CL__=Incluye 10% de descuento
+__SAMPLE_PROMOTION_1_NAME_ES_CL__=10% de descuento por Navidad!
+__SAMPLE_PROMOTION_1_APPLIED_MESSAGE_ES_CL__=¡Obtuviste 10% de descuento por Navidad!
+
+TODO, define which category this promotions apply to.
+__SAMPLE_PROMOTION_1_CATEGORY_CODE__=qicksilverMujerCalzadoZapatillas
+
+__SAMPLE_PROMOTION_2_UID__=quicksilverPromo10Navidad
+__SAMPLE_PROMOTION_2_NAME_EN__=QuickSilver Promotion Christmas 50% off
+__SAMPLE_PROMOTION_2_NAME_ES_CL__=QuickSilver Promoción 50% dcto Navidad
+__SAMPLE_PROMOTION_2_SOURCE_RULE_UID__=QuickSilver-Promo-50-productPercentajeDiscount
+__SAMPLE_PROMOTION_2_DESCRIPTION_EN__=Enables 50% off
+__SAMPLE_PROMOTION_2_NAME_EN__=Christmas 50% Off!
+__SAMPLE_PROMOTION_2_APPLIED_MESSAGE_EN__=You got Christmas 50% off!
+__SAMPLE_PROMOTION_2_DESCRIPTION_ES_CL__=Incluye 50% de descuento
+__SAMPLE_PROMOTION_2_NAME_ES_CL__=50% de descuento por Navidad!
+__SAMPLE_PROMOTION_2_APPLIED_MESSAGE_ES_CL__=¡Obtuviste 50% de descuento por Navidad!
+
+# categories
+
+__SAMPLE_CATEGORY_NAME_EN__=QuickSilver
+__SAMPLE_CATEGORY_NAME_ES_CL__=QuickSilver
+__SAMPLE_CATEGORY_PREFIX__=quicksilver
+__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__=GSQuicksilver
+TODO copy all guidesize and replace prefix
+e.g. $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasCalcetaHombreMujer.jpg
+
+# cms-responsive-content
+
+__CMS_STORE_PREFIX__=QuickSilver
+__CMS_IMAGE_PREFIX__=quicksilver
+
+TODO 
+$siteResource/images/theme/__CMS_IMAGE_PREFIX__-header-logo.svg
+$siteResource/images/theme/__CMS_IMAGE_PREFIX__-footer-logo.svg
+# CMS ProductReferences Components???
+Replace all images by placeholders or keep bold imanges??
+
+__CMS_SOCIAL_FACEBOOK_LINK__=https://www.facebook.com/QuickSilverCL/
+__CMS_SOCIAL_INSTAGRAM_LINK__=https://www.instagram.com/quicksilver/
+__CMS_SOCIAL_TWITTER_LINK__=https://twitter.com/quicksilver/
+
+__CMS_CONTACT_PHONE__=(+56) 2 2433 6627<br/>(+56) 2 3239 1829
+__CMS_CONTACT_PHONE_SF__=224336627 o 232391829
+__CMS_EMAIL_CV__=contacto@quicksilver.cl
+__CMS_EMAIL_CAMBIOS__=cambios@quicksilver.cl
+
+

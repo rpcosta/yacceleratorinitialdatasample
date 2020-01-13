@@ -1,0 +1,14 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Product Catalog and Classification Catalog
+#
+
+# Language
+$lang=es_CL
+
+# Create Catalog
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+ ;__PRODUCT_CATALOG_UID__;"__PRODUCT_CATALOG_NAME_ES_CL__"
+ ;__CLASSIFICATION_CATALOG_UID__;"__CLASSIFICATION_CATALOG_NAME_ES_CL__"

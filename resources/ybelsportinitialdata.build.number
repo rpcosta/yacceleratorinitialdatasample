@@ -1,0 +1,11 @@
+#Ant properties
+#Tue Sep 17 10:47:50 CEST 2019
+version.api=1905
+vendor=hybris
+group.id=de.hybris.platform
+name=ybelsportinitialdata
+description=ybelsportinitialdata
+builddate=20190917 1043
+releasedate=20190628 1509
+version=1905.4
+module.name=platform-module

@@ -1,0 +1,83 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the CMS content for the site emails
+#
+$contentCatalog = __CONTENT_CATALOG_UID__
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$emailResource = jar:cl.com.bls.b2c.core.core.setup.CoreSystemSetup&/belsportb2cstorecore/import/emails
+$emailImageResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/__EXTENSION_UID__/import/sampledata/contentCatalogs/__CONTENT_CATALOG_UID__/images/email
+
+# Language
+$lang = en
+
+# CMS components and Email velocity templates
+UPDATE RendererTemplate; code[unique = true]                                ; description[lang = $lang]                          ; templateScript[lang = $lang, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ; __CMS_STORE_PREFIX__-BannerComponent-template                      ; "__CMS_STORE_PREFIX__ CMSBannerComponent Template"                      ; $emailResource/email-bannerComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX__-CMSImageComponent-template                    ; "__CMS_STORE_PREFIX__ CMSImageComponent Template"                       ; $emailResource/email-cmsImageComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX__-CMSLinkComponent-template                     ; "__CMS_STORE_PREFIX__ CMSLinkComponent Template"                        ; $emailResource/email-cmsLinkComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX__-CMSParagraphComponent-template                ; "__CMS_STORE_PREFIX__ CMSParagraphComponent Template"                   ; $emailResource/email-cmsParagraphComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX__-SimpleBannerComponent-template                ; "__CMS_STORE_PREFIX__ CMSSimpleBannerComponent Template"                ; $emailResource/email-bannerComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX___Email_Customer_Registration_Body              ; "__CMS_STORE_PREFIX__ Customer Registration Email Body"                 ; $emailResource/email-customerRegistrationBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Customer_Registration_Subject           ; "__CMS_STORE_PREFIX__ Customer Registration Email Subject"              ; $emailResource/email-customerRegistrationSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Delivery_Sent_Body                      ; "__CMS_STORE_PREFIX__ Delivery Sent Email Body"                         ; $emailResource/email-deliverySentBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Delivery_Sent_Subject                   ; "__CMS_STORE_PREFIX__ Delivery Sent Email Subject"                      ; $emailResource/email-deliverySentSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Forgotten_Password_Body                 ; "__CMS_STORE_PREFIX__ Forgotten Password Email Body"                    ; $emailResource/email-forgottenPasswordBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Forgotten_Password_Subject              ; "__CMS_STORE_PREFIX__ Forgotten Password Email Subject"                 ; $emailResource/email-forgottenPasswordSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_NotPickedUpConsignment_Canceled_Body    ; "__CMS_STORE_PREFIX__ Not Picked Up Consignment Canceled Email Body"    ; $emailResource/email-notPickedUpConsignmentCanceledBody.vm
+                       ; __CMS_STORE_PREFIX___Email_NotPickedUpConsignment_Canceled_Subject ; "__CMS_STORE_PREFIX__ Not Picked Up Consignment Canceled Email Subject" ; $emailResource/email-notPickedUpConsignmentCanceledSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Cancelled_Body                    ; "__CMS_STORE_PREFIX__ Order Cancelled Email Body"                       ; $emailResource/email-orderCancelledBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Cancelled_Subject                 ; "__CMS_STORE_PREFIX__ Order Cancelled Email Subject"                    ; $emailResource/email-orderCancelledSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Collection_Reminder_Body          ; "__CMS_STORE_PREFIX__ Order Collection Reminder Body"                   ; $emailResource/email-orderCollectionReminderBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Collection_Reminder_Subject       ; "__CMS_STORE_PREFIX__ Order Collection Reminder Subject"                ; $emailResource/email-orderCollectionReminderSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Confirmation_Body                 ; "__CMS_STORE_PREFIX__ Order Confirmation Email Body"                    ; $emailResource/email-orderConfirmationBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Confirmation_Subject              ; "__CMS_STORE_PREFIX__ Order Confirmation Email Subject"                 ; $emailResource/email-orderConfirmationSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Move_To_CS_Body                   ; "__CMS_STORE_PREFIX__ Order Move To CS Body"                            ; $emailResource/email-orderMoveToCsBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Move_To_CS_Subject                ; "__CMS_STORE_PREFIX__ Order Move To CS Subject"                         ; $emailResource/email-orderMoveToCsSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Partially_Canceled_Body           ; "__CMS_STORE_PREFIX__ Order Partially Canceled Email Body"              ; $emailResource/email-orderPartiallyCanceledBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Partially_Canceled_Subject        ; "__CMS_STORE_PREFIX__ Order Partially Canceled Email Subject"           ; $emailResource/email-orderPartiallyCanceledSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Partially_Refunded_Body           ; "__CMS_STORE_PREFIX__ Order Partially Refunded Email Body"              ; $emailResource/email-orderPartiallyRefundedBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Partially_Refunded_Subject        ; "__CMS_STORE_PREFIX__ Order Partially Refunded Email Subject"           ; $emailResource/email-orderPartiallyRefundedSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Refund_Body                       ; "__CMS_STORE_PREFIX__ Order Refund Email Body"                          ; $emailResource/email-orderRefundBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Order_Refund_Subject                    ; "__CMS_STORE_PREFIX__ Order Refund Email Subject"                       ; $emailResource/email-orderRefundSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Ready_For_Pickup_Body                   ; "__CMS_STORE_PREFIX__ Ready For Pickup Email Body"                      ; $emailResource/email-readyForPickupBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Ready_For_Pickup_Subject                ; "__CMS_STORE_PREFIX__ Ready For Pickup Email Subject"                   ; $emailResource/email-readyForPickupSubject.vm
+                       ; __CMS_STORE_PREFIX___Email_Prepare_For_Pickup_Body                 ; "__CMS_STORE_PREFIX__ Prepare For Pickup Email Body"                    ; $emailResource/email-prepareForPickupBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Prepare_For_Pickup_Subject              ; "__CMS_STORE_PREFIX__ Prepare For Pickup Email Subject"                 ; $emailResource/email-prepareForPickupSubject.vm
+                       ; __STORE_UID__-BannerComponent-template              ; "__STORE_UID__ CMSBannerComponent Template"         ; $emailResource/email-bannerComponentTemplate.vm
+                       ; __STORE_UID__-CMSImageComponent-template            ; "__STORE_UID__ CMSImageComponent Template"          ; $emailResource/email-cmsImageComponentTemplate.vm
+                       ; __STORE_UID__-CMSLinkComponent-template             ; "__STORE_UID__ CMSLinkComponent Template"           ; $emailResource/email-cmsLinkComponentTemplate.vm
+                       ; __STORE_UID__-CMSParagraphComponent-template        ; "__STORE_UID__ CMSParagraphComponent Template"      ; $emailResource/email-cmsParagraphComponentTemplate.vm
+                       ; __STORE_UID__-SimpleBannerComponent-template        ; "__STORE_UID__ CMSSimpleBannerComponent Template"   ; $emailResource/email-bannerComponentTemplate.vm
+                       ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Body         ; "__CMS_STORE_PREFIX__ Consignment in preparation Email Body"            ; $emailResource/email-consignmentInPreparationBody.vm
+                       ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Subject      ; "__CMS_STORE_PREFIX__ Order in Prepartion Email Subject"                ; $emailResource/email-consignmentInPreparationSubject.vm
+
+# Email Pages
+UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]           ; fromEmail[lang = $lang]       ; fromName[lang = $lang]
+                ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmail    ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__DeliverySentEmail            ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmail       ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmail          ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmail ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmail       ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmail           ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmail  ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmail  ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__OrderRefundEmail             ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmail          ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmail        ; "__FROM_EMAIL__" ; "__FROM_NAME__"
+                ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmail; "__FROM_EMAIL__" ; "__FROM_NAME__"
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+                   ;;__CMS_IMAGE_PREFIX__readyForPickupHeader.jpg;readyForPickupHeader.jpg;$emailImageResource/readyForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
+                   ;;__CMS_IMAGE_PREFIX__prepareForPickupHeader.jpg;prepareForPickupHeader.jpg;$emailImageResource/prepareForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
+                   ;;__CMS_IMAGE_PREFIX__deliverySentHeader.jpg;deliverySentHeader.jpg;$emailImageResource/deliverySentHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];media(code)[lang=$lang]
+                                   ;;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderBanner;__CMS_IMAGE_PREFIX__readyForPickupHeader.jpg;"/"
+                                   ;;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderBanner;__CMS_IMAGE_PREFIX__prepareForPickupHeader.jpg;"/"
+                                   ;;__CMS_STORE_PREFIX__DeliverySentEmailHeaderBanner;__CMS_IMAGE_PREFIX__deliverySentHeader.jpg;"/"
+                                   ;;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailHeaderBanner;__CMS_IMAGE_PREFIX__prepareForPickupHeader.jpg;"/"
+

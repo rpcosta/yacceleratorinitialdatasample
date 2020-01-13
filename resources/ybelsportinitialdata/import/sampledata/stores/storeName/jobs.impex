@@ -1,0 +1,71 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$storeUid = __STORE_UID__
+$siteUid = __SITE_UID__
+$defaultCurrency = CLP
+$defaultLanguage = es_CL
+$googleHost = __GOOGLE_HOST__
+$googleUserName = __GOOGLE_USERNAME__
+$googlePassword = __GOOGLE_PASSWORD__
+
+
+INSERT_UPDATE ExportDataCronJob; code[unique = true]   ; job(code)                ; baseStore(uid); cmsSite(uid); language(isocode); currency(isocode); user(uid) ; thirdPartyHost; thirdPartyUsername; thirdPartyPassword; dataGenerationPipeline      ; sessionLanguage(isocode); active[default = false]
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.acceleratorservices.model.export.ExportDataCronJobModel;
+String cronJobCode = line.get(Integer.valueOf(1));
+ExportDataCronJobModel exportDataCronJob;
+try
+{
+    exportDataCronJob = Registry.getApplicationContext().getBean(""cronJobService"").getCronJob(cronJobCode);
+}
+catch (Exception e)
+{
+    exportDataCronJob = null;
+}
+if (exportDataCronJob != null)
+{
+    line.clear();
+}"
+                               ; __GOOGLE_LOCATIONS_JOB_CODE__ ; exportDataJobPerformable ; $storeUid     ; $storeUid   ; $defaultLanguage ; $defaultCurrency ; anonymous ; $googleHost   ; $googleUserName   ; $googlePassword   ; exportGooglePosPipeline     ; $defaultLanguage
+                               ; __GOOGLE_PRODUCTS_JOB_CODE__  ; exportDataJobPerformable ; $storeUid     ; $storeUid   ; $defaultLanguage ; $defaultCurrency ; anonymous ; $googleHost   ; $googleUserName   ; $googlePassword   ; exportGoogleProductPipeline ; $defaultLanguage
+
+INSERT CronJob; code[unique = true] ; job(code)[forceWrite = true]; baseStore(uid); cmsSite(uid); sessionLanguage(isocode); sessionCurrency(isocode); sessionUser(uid); active[default = false]
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.cronjob.model.CronJobModel;
+String cronJobCode = line.get(Integer.valueOf(1));
+CronJobModel cronJob;
+try
+{
+    cronJob = Registry.getApplicationContext().getBean(""cronJobService"").getCronJob(cronJobCode);
+}
+catch (Exception e)
+{
+    cronJob = null;
+}
+if (cronJob != null)
+{
+    line.clear();
+}"
+              ; __GOOGLE_EXPORT_JOB_CODE__ ; uploadDataJobPerformable    ; $storeUid     ; $siteUid    ; $defaultLanguage        ; $defaultCurrency        ; anonymous       ;
+
+# Product Express Update Queue Cleaner
+INSERT_UPDATE ProductExpressUpdateCleanerCronJob; code[unique = true]; active[default = false]
+                                                ; productExpressUpdateCleanerCronJob
+
+# Order Status Update Queue Cleaner
+INSERT_UPDATE OrderStatusUpdateCleanerCronJob; code[unique = true]; active[default = false]
+                                             ; orderStatusUpdateCleanerCronJob
+
+# Old Cart Cleanup CronJobs
+INSERT_UPDATE OldCartRemovalCronJob; code[unique = true]; active[default = false]
+                                   ; oldCartRemovalCronJob

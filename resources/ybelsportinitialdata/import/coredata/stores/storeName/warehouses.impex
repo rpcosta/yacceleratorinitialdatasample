@@ -1,0 +1,65 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Create Warehouses for Store
+#
+#% impex.setLocale( Locale.GERMAN );
+#%impex.enableCodeExecution(true)
+
+# Macros / Replacement Parameter definitions
+$storeUid = __STORE_UID__
+
+$standardHours1 = __BRAND_NAME__-cl-standard-hours-1
+$weekendHours1 = __BRAND_NAME__-cl-weekend-hours-1
+$specialOpenDayshours1 = __BRAND_NAME__-cl-special-day-hours-1
+
+INSERT_UPDATE OpeningSchedule; code[unique = true];
+                             ; $standardHours1
+                             ; $weekendHours1
+                             ; $specialOpenDayshours1
+
+INSERT_UPDATE WeekdayOpeningDay; openingSchedule(code)[unique = true]; dayOfWeek(code)[unique = true]; openingTime[dateformat = hh:mm]; closingTime[dateformat = hh:mm];
+                               ; $standardHours1                     ; MONDAY                        ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; TUESDAY                       ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; WEDNESDAY                     ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; THURSDAY                      ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; FRIDAY                        ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; SATURDAY                      ; 10:00                          ; 21:30
+                               ; $standardHours1                     ; SUNDAY                        ; 10:00                          ; 21:30
+
+INSERT_UPDATE SpecialOpeningDay; openingSchedule(code)[unique = true]; date[unique = true, dateformat = dd.MM.yyyy]; closed; openingTime[dateformat = hh:mm]; closingTime[dateformat = hh:mm]
+                               ; $specialOpenDayshours1              ; 01.01.2020                                  ; true  ; 11:00                          ; 21:00
+
+INSERT_UPDATE BaseStore2WarehouseRel; source(uid)[unique = true]; target(code)[unique = true]
+                                    ; $storeUid                 ; __WAREHOUSE_DELIVERY_SAMPLE_UID__
+                                    ; $storeUid                 ; __WAREHOUSE_PICKUP_SAMPLE_UID__
+ 
+
+INSERT_UPDATE Address; owner(User.uid)[unique = true]; &addId; country(isocode)[unique = true]; town[unique = true]; streetname[unique = true]  ; streetnumber[unique = true]       ; regionCL(bluexCode)[unique = true]; commune(bluexCode)[unique = true]; locality(bluexCode)[unique = true]; phone1
+                     ; admin                         ; __WAREHOUSE_PICKUP_SAMPLE_UID__  ; CL                             ; Santiago           ; Av. Lo Espejo              ; 86                 ; 13                                ; 13119                            ; MAI                            ;565656565
+                     ; admin                         ; __WAREHOUSE_DELIVERY_SAMPLE_UID__  ; CL                           ; Santiago           ; Av. Lo Espejo              ; 860                ; 13                                ; 13119                            ; MAI                            ;565656565
+
+#% import de.hybris.platform.util.Config;
+#% java.lang.Boolean sampleDataLoad = new java.lang.Boolean(Config.getParameter("sampledata.load"));
+#% impex.info("sampledata.load: " + sampleDataLoad);
+
+#% if: !sampleDataLoad;
+INSERT_UPDATE PointOfService; name[unique = true]; displayName                ; address(&addId); warehouses(code)   ; latitude   ; longitude  ; geocodeTimestamp[dateformat = dd.MM.yyyy]; type(code)[default = STORE]; openingSchedule(code); baseStore(uid); email
+                            ; __WAREHOUSE_PICKUP_SAMPLE_UID__                 ; __WAREHOUSE_PICKUP_SAMPLE_NAME__    ; __WAREHOUSE_PICKUP_SAMPLE_UID__           ; __WAREHOUSE_PICKUP_SAMPLE_UID__            ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
+                            ; __WAREHOUSE_DELIVERY_SAMPLE_UID__               ; __WAREHOUSE_DELIVERY_SAMPLE_NAME__  ; __WAREHOUSE_DELIVERY_SAMPLE_UID__         ; __WAREHOUSE_DELIVERY_SAMPLE_UID__          ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
+#% endif:
+
+#% if: sampleDataLoad;
+INSERT_UPDATE PointOfService; name[unique = true]; displayName                ; address(&addId); warehouses(code).  ; latitude   ; longitude  ; geocodeTimestamp[dateformat = dd.MM.yyyy]; type(code)[default = STORE]; openingSchedule(code); baseStore(uid); email
+                            ; __WAREHOUSE_PICKUP_SAMPLE_UID__                 ; __WAREHOUSE_PICKUP_SAMPLE_NAME__    ; __WAREHOUSE_PICKUP_SAMPLE_UID__           ; __WAREHOUSE_PICKUP_SAMPLE_UID__            ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
+                            ; __WAREHOUSE_DELIVERY_SAMPLE_UID__               ; __WAREHOUSE_DELIVERY_SAMPLE_NAME__  ; __WAREHOUSE_DELIVERY_SAMPLE_UID__         ; __WAREHOUSE_DELIVERY_SAMPLE_UID__          ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
+ #% endif:
+
+
+INSERT_UPDATE BaseStore; uid[unique = true]; defaultDeliveryOrigin(name)
+                       ; __STORE_UID__      ; __WAREHOUSE_DELIVERY_SAMPLE_UID__
+
+
+
+

@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Email Content
+# English Localisation
+
+# Macros / Replacement Parameter definitions
+$contentCatalog = __CONTENT_CATALOG_UID__
+
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture = media(code, $contentCV);
+$wideContent = CMSImageComponent, BannerComponent, SimpleBannerComponent, CMSLinkComponent, CMSParagraphComponent
+$jarResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/__EXTENSION_UID__/import
+$siteResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+
+# Language
+$lang = en
+
+
+# Media
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                 ; realfilename      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']
+                   ;                          ; __CMS_IMAGE_PREFIX__Banner_email                        ; __CMS_IMAGE_PREFIX__Banner_email.jpg                             ; $siteResource/images/email/__CMS_IMAGE_PREFIX__banner.jpg                               ; image/jpg  ; ;
+                   ;                          ; __CMS_IMAGE_PREFIX__CustomerRegistrationEmail_banner    ; __CMS_IMAGE_PREFIX__CustomerRegistrationEmail_banner.jpg         ; $siteResource/images/email/__CMS_IMAGE_PREFIX___Customer_Registration_Email_Banner.jpg  ; image/jpg  ; ;
+                   ;                          ; __CMS_IMAGE_PREFIX__ForgottenPasswordEmail_banner       ; __CMS_IMAGE_PREFIX__ForgottenPasswordEmail_banner.jpg            ; $siteResource/images/email/__CMS_IMAGE_PREFIX___Forgotten_Password_Email_Banner.jpg     ; image/jpg  ; ;
+                   ;                          ; __CMS_IMAGE_PREFIX__OrderConfirmationEmailBanner        ; __CMS_IMAGE_PREFIX__OrderConfirmationEmailBanner.jpg             ; $siteResource/images/email/__CMS_IMAGE_PREFIX__OrderConfirmationEmailBanner.jpg         ; image/jpg  ; ;
+                   ;                          ; __CMS_IMAGE_PREFIX__ConsignmentInPreparationEmailBanner ; __CMS_IMAGE_PREFIX__ConsignmentInPreparationEmailBanner.jpg      ; $siteResource/images/email/__CMS_IMAGE_PREFIX__ConsignmentInPreparationEmailBanner.jpg  ; image/jpg  ; ;
+
+
+# CMS Image Components
+UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]                           ; $picture[lang = $lang];
+                        ;                          ; __CMS_STORE_PREFIX__BannerComponent                              ; __CMS_IMAGE_PREFIX__Banner_email
+                        ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailbannerComponent     ; __CMS_IMAGE_PREFIX__CustomerRegistrationEmail_banner
+                        ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailbannerComponent        ; __CMS_IMAGE_PREFIX__ForgottenPasswordEmail_banner
+                        ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailBannerComponent        ; __CMS_IMAGE_PREFIX__OrderConfirmationEmailBanner
+                        ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationBannerComponent      ; __CMS_IMAGE_PREFIX__ConsignmentInPreparationEmailBanner
+
+
+# CMS Image Components
+UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
+
+#%import __ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup
+#%impex.enableCodeExecution(true)
+#%impex.enableExternalSyntaxParsing(true)
+#%impex.includeExternalData(InitialDataSystemSetup.class.getResourceAsStream("/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog/email-paragraphs.impex"), "utf-8", 0, 0);
+#%impex.includeExternalData(InitialDataSystemSetup.class.getResourceAsStream("/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog/email-contentslots.impex"), "utf-8", 0, 0);

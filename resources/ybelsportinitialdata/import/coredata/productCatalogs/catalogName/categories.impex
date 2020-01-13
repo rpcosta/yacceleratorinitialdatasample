@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Categories into Store
+
+$catalogVersion = catalogVersion(catalog(id[default = '__PRODUCT_CATALOG_UID__']), version[default = 'Staged'])[unique = true, default = '__PRODUCT_CATALOG_UID__:Staged']
+$categories = target(code, $catalogVersion)[unique = true]
+
+$contentCatalog=__CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+
+INSERT_UPDATE Category;code[unique = true];$catalogVersion;allowedPrincipals(uid)[default = 'customergroup'] ;
+                      ;__CATEGORY_PROMOTIONS_UID__    ;                ;                                                 ;
+                      ;__CATEGORY_CAMPAINS_UID__      ;                ;                                                 ;

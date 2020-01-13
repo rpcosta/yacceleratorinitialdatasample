@@ -1,0 +1,13 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import Themes
+#
+
+# Language
+$lang=en
+
+# SiteTheme
+UPDATE SiteTheme;code[unique=true];name[lang=$lang]
+ ;__THEME_UID__;__THEME_NAME_EN__

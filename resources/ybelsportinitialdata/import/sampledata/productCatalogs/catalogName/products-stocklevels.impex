@@ -1,0 +1,12 @@
+# SAP Commerce 1905 implementation - Sample data for storefront
+
+$productCatalog = __PRODUCT_CATALOG_UID__
+$catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+
+INSERT_UPDATE StockLevel; available[unique = true]; warehouse(code)[unique = true]; maxPreOrder; maxStockLevelHistoryCount; overSelling; preOrder; productCode[unique = true]; reserved; inStockStatus(code)
+                        ;99;2019;0;0;0;0;ADB35385130;0
+                        ;99;2019;0;0;0;0;ADB35403065;0
+                        ;99;2019;0;0;0;0;ADB35403070;0
+                        ;99;2010;0;0;0;0;ADB35385130;0
+                        ;99;2010;0;0;0;0;ADB35403065;0
+                        ;99;2010;0;0;0;0;ADB35403070;0

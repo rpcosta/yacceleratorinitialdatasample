@@ -1,0 +1,62 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import CMS content for the site
+#
+
+$contentCatalog=__CONTENT_CATALOG_UID__
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang = es_CL
+
+
+
+# Content Pages
+UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
+
+
+UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]           ; title[lang = $lang]
+                  ;                          ; account                      ; "Mi Cuenta"
+                  ;                          ; add-edit-address             ; "Agregar/Editar direcciones"
+                  ;                          ; address-book                 ; "Libreta direcciones"
+                  ;                          ; cartPage                     ; "Carro de compras"
+                  ;                          ; checkout-login               ; "Ir a Checkout"
+                  ;                          ; faq                          ; "FAQ"
+                  ;                          ; privacyandsecure             ; "privacy and secure"
+                  ;                          ; homepage                     ; "Homepage"
+                  ;                          ; login                        ; "Login"
+                  ;                          ; multiStepCheckoutSummaryPage ; "Checkout"
+                  ;                          ; notFound                     ; "No encontrado"
+                  ;                          ; order                        ; "Detalle pedido"
+                  ;                          ; orderConfirmationPage        ; "Confirma pedido"
+                  ;                          ; orders                       ; "Historial pedido"
+                  ;                          ; payment-details              ; "Detalles pago"
+                  ;                          ; profile                      ; "Perfil"
+                  ;                          ; searchEmpty                  ; "Sin resultados"
+                  ;                          ; storefinderPage              ; "Buscador tiendas"
+                  ;                          ; termsAndConditions           ; "Terminos y condiciones"
+                  ;                          ; updatePassword               ; "Actualizar clave"
+                  ;                          ; close-account                ; "Close Account"
+                  ;                          ; consents                     ; "Consent Management"
+                  ;                          ; orderExpired                 ; "Pedidos Expirados"
+                  ;                          ; quickOrderPage               ; "Pedido Rápido"
+                  ;                          ; search                       ; "Resultado de Busqueda"
+                  ;                          ; update-email                 ; "Acualizar Email"
+                  ;                          ; update-profile               ; "Actualizar perfil"
+
+
+
+# Category Pages
+UPDATE CategoryPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
+                   ;                          ; category          ; "Default Category Page"
+                   ;                          ; productGrid       ; "Product Grid"
+                   ;                          ; productList       ; "Product List"
+
+
+# Product Pages
+UPDATE ProductPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
+                  ;                          ; productDetails    ; "Detalles del producto"
+
+    

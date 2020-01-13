@@ -1,0 +1,28 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# Content Slots
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;__CMS_STORE_PREFIX__CustomerRegistrationEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__CustomerRegistrationEmailBody
+;;__CMS_STORE_PREFIX__DeliverySentEmailTopSlot;__CMS_STORE_PREFIX__DeliverySentEmailBody
+;;__CMS_STORE_PREFIX__DeliverySentEmailHeaderSlot;__CMS_STORE_PREFIX__DeliverySentEmailHeaderBanner
+;;__CMS_STORE_PREFIX__ForgottenPasswordEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__ForgottenPasswordEmailBody
+;;__CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailBody
+;;__CMS_STORE_PREFIX__OrderCancelledEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderCancelledEmailBody
+;;__CMS_STORE_PREFIX__OrderCollectionReminderEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderCollectionReminderEmailBody
+;;__CMS_STORE_PREFIX__OrderConfirmationEmailTopSlot;__CMS_STORE_PREFIX__OrderConfirmationEmailBody
+;;__CMS_STORE_PREFIX__OrderMoveToCsEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderMoveToCsEmailBody
+;;__CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderPartiallyCanceledEmailBody
+;;__CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderPartiallyRefundedEmailBody
+;;__CMS_STORE_PREFIX__OrderRefundEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__OrderRefundEmailBody
+;;__CMS_STORE_PREFIX__QuoteBuyerCancellationEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__QuoteBuyerCancellationEmailBody
+;;__CMS_STORE_PREFIX__QuoteBuyerSubmissionEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__QuoteBuyerSubmissionEmailBody
+;;__CMS_STORE_PREFIX__QuoteExpiredEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__QuoteExpiredEmailBody
+;;__CMS_STORE_PREFIX__QuoteToExpireSoonEmailTopSlot;__CMS_STORE_PREFIX__EmailBannerSaleNowOnImage,__CMS_STORE_PREFIX__QuoteToExpireSoonEmailBody
+;;__CMS_STORE_PREFIX__ReadyForPickupEmailTopSlot;__CMS_STORE_PREFIX__ReadyForPickupEmailBody
+;;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderSlot;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderBanner
+;;__CMS_STORE_PREFIX__EmailBottomSlot;__CMS_STORE_PREFIX__EmailBannerFreeDeliveryImage
+;;__CMS_STORE_PREFIX__PrepareForPickupEmailTopSlot;__CMS_STORE_PREFIX__PrepareForPickupEmailBody
+;;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderSlot;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderBanner
+;;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailTopSlot;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailBody
+

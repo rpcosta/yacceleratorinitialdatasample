@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+ All hybris buildcallbacks.xml macrodefinitions:
+ 
+ Build/Documentation
+
+	 before/after ant macro "clean"
+		 <macrodef name="ybelsportinitialdata_before_clean"/>
+		 <macrodef name="ybelsportinitialdata_after_clean"/>
+
+	 before/after ant macro "build"
+		 <macrodef name="ybelsportinitialdata_before_build"/>
+		 <macrodef name="ybelsportinitialdata_after_build"/>
+
+	 before/after ant macro "compile_core" - the core module of the extension
+		 <macrodef name="ybelsportinitialdata_before_compile_core">
+		 <macrodef name="ybelsportinitialdata_after_compile_core">
+
+	 before/after ant macro "compile_web" - the web module of the extension
+		 <macrodef name="ybelsportinitialdata_before_compile_web" />
+		 <macrodef name="ybelsportinitialdata_after_compile_web" />
+
+ Preparing extension
+
+	 will be called in the beginning of the ant call and only once (also when using multiple 
+	 ant targets e.g. ant build yunittest)
+		 <macrodef name="ybelsportinitialdata_only_once_prepare"/>
+
+ Creating ear module/production
+
+	before/after ant macro "ear"
+		<macrodef name="ybelsportinitialdata_before_ear"/>
+		<macrodef name="ybelsportinitialdata_after_ear"/>
+
+	before/after ant macro "production" - for hybris server only
+		<macrodef name="ybelsportinitialdata_before_production" />
+		<macrodef name="ybelsportinitialdata_after_production" />
+
+ JUnit Test
+
+	before/after ant macro "yunitinit" 
+		<macrodef name="ybelsportinitialdata_before_yunitinit" />
+		<macrodef name="ybelsportinitialdata_after_yunitinit" />
+
+	before/after ant macro "yunit"
+		<macrodef name="ybelsportinitialdata_before_yunit" />
+		<macrodef name="ybelsportinitialdata_after_yunit" /> 
+
+ Distribution package
+
+	before/after ant macro "dist" - internal target; only for use when platform is available in source code
+		<macrodef name="ybelsportinitialdata_after_dist"/>
+		<macrodef name="ybelsportinitialdata_before_dist"/>
+
+	before/after ant macro "dist_copy" - internal target; only for use when platform is available in source code
+		<macrodef name="ybelsportinitialdata_before_dist_copy"/>
+		<macrodef name="ybelsportinitialdata_after_dist_copy"/>
+
+-->
+
+<project name="ybelsportinitialdata_buildcallbacks">
+
+	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
+
+	<!--
+    <bindImpexTemplate
+            addonname="ybelsportinitialdata"
+            rootPackage="cl.com.bls.b2c.qkslv"
+            extensionUid="quicksilverb2cstoreinitialdata"
+            extensionName="Quicksilverb2cstoreInitialData"
+            customerGroupId="quicksilvercustomergroup"
+            customerGroupNameEn="QuickSilver Customer Group"
+            customerGroupNameEsCl="Grupo de Clientes de QuickSilver"
+            defaultEmployeePassword="12341234"
+			themeUid="quicksilver"
+			themeNameEn="QuickSilver"
+			themeNameEsCl="QuickSilver"
+			vendorUid="quicksilverlo"
+			vendorName="QuickSilver Vendor"
+			brandName="quicksilver"
+			contentCatalogUid="quicksilverContentCatalog"
+			contentCatalogNameEn="QuickSilver Content Catalog"
+			contentCatalogNameEsCl="Catálogo de Contenido de QuickSilver"
+			productCatalogUid="quicksilverProductCatalog"
+			productCatalogNameEn="QuickSilver Product Catalog"
+			productCatalogNameEsCl="Catálogo de Producto de QuickSilver"
+			classificationCatalogUid="quicksilverClassificationCatalog"
+			classificationCatalogNameEn="QuickSilver Classification Catalog"
+			classificationCatalogNameEsCl="Catálogo de Classificaciónes de QuickSilver"
+			syncJobProductCatalog="syncQuicksilverProductCatalog"
+			storeName="QuickSilver" 
+			storeUid="quicksilverb2cstore"
+			storeNameEn="QuickSilver B2C BaseStore"
+			storeNameEsCl="Tienda Base B2C de QuickSilver"
+			storeSalesOrgCode="2000"
+			storePromotionGroupUid="quicksilverCLPromoGrp"
+			siteUid="quicksilverb2cstore"
+			siteNameEn="QuickSilver B2C Site"
+			siteNameEsCl="Tienda B2C de QuickSilver"
+			siteDomain="QUICKSILVER.CL"
+			siteDomainLowercase="quicksilver.cl"
+			siteAlias="QUICKSILVER"
+			siteAliasLowercase="quicksilver"
+			fromEmail="servicioalcliente@quicksilver.cl"
+			fromName="Servicio al Cliente"
+			storeEmailTemplatePrefix="quicksilver"
+			storeSpecificLandingPageUid="QuickSilverLandingPageTemplate"
+			storeSpecificLandingLayoutPageUid="quicksilverLandingLayoutPage"
+			storeSpecificLandingTemplate="structure_quicksilverLandingPageTemplate.vm"
+			categoryPromotionsUid="quicksilverPromociones"
+			categoryPromotionsNameEn="QuickSilver Promotions"
+			categoryPromotionsNameEsCl="Promociones de QuickSilver"
+			categoryCampainsUid="quicksilverCampanas"
+			categoryCampainsNameEn="QuickSilver Campaings"
+			categoryCampainsNameEsCl="Campañas de QuickSilver"
+			solrSearchConfigUid="quicksilverIndex"
+			solrSearchConfigName="QuickSilver Solr Index"
+			solrSearchPrefixName="quicksilver"
+			solrIndexedType="quicksilverProductType"
+			solrPriceRangeUid="quicksilverPriceRangeCLP"
+			solrSearchProfileUid="defaultQuicksilver"
+			solrSearchProfileNameEn="QuickSilver Search Profile"
+			solrSearchProfileNameEsCl="Search Profile de QuickSilver"
+			warehouseDeliverySampleUid="3019"
+			warehousePickupSampleUid="3000"
+			warehouseSampleEmail="example@quicksilver.com.cl"
+			warehouseDeliverySampleName="QuickSilver Bodega Virtual"
+			warehousePickupSampleName="QuickSilver Bodega Fisica"
+			googleLocationsJobCode="googleLocationsQuicksilverCl"
+			googleProductsJobCode="googleProductsQuicksilverCl"
+			googleExportJobCode="uploadExportsQuicksilverCL"
+			googleHost="setthethirdpartyhost"
+			googleUsername="setgoogleusername"
+			googlePassword="setgooglepassword"
+			samplePromotion1Uid="quicksilverPromo10Navidad"
+			samplePromotion1NameEn="QuickSilver Promotion Christmas 10% off"
+			samplePromotion1NameEsCl="QuickSilver Promoción 10% dcto Navidad"
+			samplePromotion1SourceRuleUid="QuickSilver-Promo-10-productPercentajeDiscount"
+			samplePromotion1JsonDescriptionEn="Enables 10% off"
+			samplePromotion1JsonNameEn="Christmas 10% Off!"
+			samplePromotion1JsonAppliedMessageEn="You got Christmas 10% off!"
+			samplePromotion1JsonDescriptionEsCl="Incluye 10% de descuento"
+			samplePromotion1JsonNameEsCl="10% de descuento por Navidad!"
+			samplePromotion1JsonAppliedMessageEsCl="¡Obtuviste 10% de descuento por Navidad!"
+			samplePromotion1CategoryCode="qicksilverMujerCalzadoZapatillas"
+			samplePromotion2Uid="quicksilverPromo50Navidad"
+			samplePromotion2NameEn="QuickSilver Promotion Christmas 50% off"
+			samplePromotion2NameEsCl="QuickSilver Promoción 50% dcto Navidad"
+			samplePromotion2SourceRuleUid="QuickSilver-Promo-50-productPercentajeDiscount"
+			samplePromotion2JsonDescriptionEn="Enables 50% off"
+			samplePromotion2JsonNameEn="Christmas 50% Off!"
+			samplePromotion2JsonAppliedMessageEn="You got Christmas 50% off!"
+			samplePromotion2JsonDescriptionEsCl="Incluye 50% de descuento"
+			samplePromotion2JsonNameEsCl="50% de descuento por Navidad!"
+			samplePromotion2JsonAppliedMessageEsCl="¡Obtuviste 50% de descuento por Navidad!"
+			sampleCategoryNameEn="QuickSilver"
+			sampleCategoryNameEsCl="QuickSilver"
+			sampleCategoryPrefix="quicksilver"
+			sampleCategoryGuideSizePrefix="GSQuicksilver"
+			sampleProductMaterialName="Material"
+			sampleProductBrandName="QuickSilver"
+			cmsStore="QuickSilver"
+			cmsImage="quicksilver"
+			cmsSocialFacebook="https://www.facebook.com/QuickSilverCL/"
+			cmsSocialInstagram="https://www.instagram.com/quicksilver/"
+			cmsSocialTwitter="https://twitter.com/quicksilver/"
+			cmsContactPhone="(+56) 2 2433 6627\n(+56) 2 3239 1829"
+			cmsContactPhoneSF="224336627 o 232391829"
+			cmsEmailCV="contacto@quicksilver.cl"
+			cmsEmailCambios="cambios@quicksilver.cl"/>
+		-->
+
+
+
+	<!-- 
+		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
+
+		${ear.path}: 			path to ear
+	-->
+	<macrodef name="ybelsportinitialdata_before_ear">
+		<sequential>
+
+			<!-- you can do anything before the EAR file is being packed -->
+
+		</sequential>
+	</macrodef>
+	
+	<!-- exclude impex files from localization --> 
+	<patternset id="ybelsportinitialdata.localization.pattern">
+		<patternset refid="localization.defaultpattern" />
+		<exclude name="**/*.impex"/>
+	</patternset>
+
+</project>

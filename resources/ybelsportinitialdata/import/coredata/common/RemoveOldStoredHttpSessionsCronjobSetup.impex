@@ -1,0 +1,19 @@
+#% import de.hybris.platform.util.Config;
+#% String env =Config.getParameter("build.environment") ;
+#% impex.info("Current environment: " + env);
+
+#% if: env.equals ("development") || env.equals("staging") || env.equals ("production");
+$nodeGroup = backoffice
+#% endif:
+
+#% if: env.equals("local");
+# There is no slave Solr node in local and dev environment
+$nodeGroup =
+#% endif:
+
+INSERT_UPDATE RemoveOldStoredHttpSessionsCronJob; code[unique = true]            ; job(code)                      ; nodeGroup[default = $nodeGroup]; sessionLanguage(isocode)[default = es_CL]; minutes; active[default = false]
+                                                ; removeOldStoredHttpSessionsJob ; removeOldStoredHttpSessionsJob ;                                ;                                          ; 60     ;
+
+INSERT_UPDATE Trigger; cronJob(code)[unique = true]   ; second; minute; hour; day; month; year; relative; active; maxAcceptableDelay
+                     ; removeOldStoredHttpSessionsJob ; 0     ; 0     ; 2   ; -1 ; -1   ; -1  ; false   ; false ; -1
+

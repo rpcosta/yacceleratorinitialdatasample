@@ -1,0 +1,156 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# Import essential data for the Accelerator
+#
+# Includes:
+# * Languages
+# * Currencies
+# * Titles
+# * Vendors
+# * Warehouses
+# * Supported Credit/Debit cards
+# * User Groups
+# * DistanceUnits for Storelocator
+# * MediaFolders
+# * MediaFormats
+# * Tax & Tax Groups
+# * Jobs
+#%impex.enableCodeExecution(true)
+
+# Languages
+INSERT_UPDATE Language;isocode[unique=true];fallbackLanguages(isocode);active[default=true]
+;en;;;
+;de;;;
+;es;en;;
+;es_CL;es;;
+
+# Currencies
+INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol
+;CLP;1;0;$
+
+# SiteMap Language Currencies
+INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)[unique=true];currency(isocode)[unique=true];
+;es_CLClp;es_CL;CLP
+
+# Vendor
+INSERT_UPDATE Vendor;code[unique=true];name
+;default;Default Vendor
+;belsportlo;Belsport Vendor;
+;__VENDOR_UID__;__VENDOR_NAME__;
+
+INSERT Warehouse;code[unique=true];name;vendor(code)[default=__VENDOR_UID__, forceWrite=true];default[default=false, forceWrite=true]
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.ordersplitting.model.WarehouseModel;
+String warehouseCode = line.get(Integer.valueOf(1));
+WarehouseModel warehouse;
+try
+{
+    warehouse = Registry.getApplicationContext().getBean(""warehouseService"").getWarehouseForCode(warehouseCode);
+}
+catch (Exception e)
+{
+    warehouse = null;
+}
+if (warehouse != null)
+{
+    line.clear();
+}"
+;__WAREHOUSE_DELIVERY_SAMPLE_UID__;__WAREHOUSE_DELIVERY_SAMPLE_NAME__;__VENDOR_UID__;true
+;__WAREHOUSE_PICKUP_SAMPLE_UID__;__WAREHOUSE_PICKUP_SAMPLE_NAME__;__VENDOR_UID__
+
+# Disable preview for email pages
+UPDATE CMSPageType;code[unique=true];previewDisabled
+;EmailPage;true
+
+# Titles
+INSERT_UPDATE Title;code[unique=true]
+;mr
+;mrs
+;miss
+;ms
+;dr
+;rev
+
+# Media Folders
+INSERT_UPDATE MediaFolder;qualifier[unique=true];path[unique=true]
+;bluexlabels;bluexlabels
+;consignmentexport;consignmentexport
+;images;images
+;email-body;email-body
+;email-attachments;email-attachments
+;documents;documents
+
+# Tax & Tax Groups
+INSERT_UPDATE UserTaxGroup;code[unique=true]
+;cl-tax-full
+
+INSERT_UPDATE ProductTaxGroup;code[unique=true]
+;cl-tax-full
+
+INSERT_UPDATE Tax;code[unique=true];value;currency(isocode)
+;cl-tax-full;19
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true]
+;cartRemovalJob;cartRemovalJob
+;siteMapMediaJob;siteMapMediaJob
+;generateCSVExportToCourierJob;generateCSVExportToCourierJob
+
+INSERT_UPDATE Unit;unitType[unique=true];code[unique=true];conversion
+                  ;pieces;pieces;1
+
+INSERT_UPDATE Script; code[unique=true];content;active[default=true, unique=true]
+                    ;full-__BRAND_NAME__Index-cronJob;"
+import de.hybris.platform.cronjob.model.CronJobModel;
+import de.hybris.platform.servicelayer.cronjob.CronJobService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+final String cronjobCode = ""full-__BRAND_NAME__Index-cronJob"";
+
+println(""Indexing Solr using "" + cronjobCode + "" cron job..."");
+
+final CronJobService cronJobService = (CronJobService) spring.getBean(""cronJobService"");
+final CronJobModel cronJob = cronJobService.getCronJob(cronjobCode);
+cronJobService.performCronJob(cronJob, true);
+
+println(""success"");
+
+";true;
+
+INSERT_UPDATE Script; code[unique=true];content;active[default=true, unique=true]
+                    ;approve-all-products-script;"
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
+import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import de.hybris.platform.servicelayer.search.SearchResult;
+import java.util.List;
+import de.hybris.platform.core.model.product.ProductModel;
+import de.hybris.platform.catalog.enums.ArticleApprovalStatus;
+import de.hybris.platform.servicelayer.model.ModelService;
+
+FlexibleSearchService flexibleSearchService = spring.getBean(FlexibleSearchService.class);
+
+final FlexibleSearchQuery fQuery = new FlexibleSearchQuery(""SELECT {PK} FROM {Product}"");
+SearchResult<ProductModel> searchResult = flexibleSearchService.search(fQuery);
+final List<ProductModel> productList = searchResult.getResult();
+
+for (ProductModel p: productList){
+    p.setApprovalStatus(ArticleApprovalStatus.APPROVED);
+    modelService.save(p);
+}
+println(""success"");
+";true
+
+#Constraints
+INSERT_UPDATE AttributeConstraint;id[unique=true];annotation[allownull=true];descriptor(enclosingType(code),qualifier);qualifier;severity(code,itemtype(code));target;type(code);active[default=false]
+                                 ;CustomerSite;de.hybris.platform.validation.annotations.NotBlank;Customer:site;site;ERROR:Severity;de.hybris.platform.core.model.user.CustomerModel;Customer
+
+#Hide products without image from storefront
+INSERT_UPDATE SearchRestriction;code[unique=true];principal(uid);query;restrictedType(code);active;generate
+                               ;Frontend_ProductsWithImage;anonymous;{picture} IS NOT NULL;BelsportProduct;false;true
+
+
+INSERT_UPDATE Carrier;code[unique=true];name
+;bluex;bluex

@@ -1,0 +1,187 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Categories into Store
+
+$catalogVersion = catalogVersion(catalog(id[default = '__PRODUCT_CATALOG_UID__']), version[default = 'Staged'])[unique = true, default = '__PRODUCT_CATALOG_UID__:Staged']
+$categories = target(code, $catalogVersion)[unique = true]
+
+$contentCatalog = __CONTENT_CATALOG_UID__
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$siteResource = jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+
+# Supercategories used by SOLR to index products
+# Changes need to match parameter set on bean belsportCategorySource, belsportCategorySource & belsportCategorySource
+# in belsportb2cstorecore-spring.xml otherwise solr index will not work
+INSERT_UPDATE Category[disable.interceptor.types = validate]; code[unique = true]; $catalogVersion; allowedPrincipals(uid)[default = 'customergroup'];
+                                                            ; __SAMPLE_CATEGORY_PREFIX__Categories     ;                ;                                                  ;
+                                                            ; __SAMPLE_CATEGORY_PREFIX__Collections    ;                ;                                                  ;
+                                                            ; __SAMPLE_CATEGORY_PREFIX__GuideSize      ;                ;                                                  ;
+
+INSERT_UPDATE Category; code[unique = true]; $catalogVersion; supercategories(code, $catalogVersion); allowedPrincipals(uid)[default = 'customergroup'];
+                      ; __SAMPLE_CATEGORY_PREFIX__Hombre         ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__Mujer          ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__Accesorios     ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__Ninos          ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__Sale           ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__Marcas         ;                ; __SAMPLE_CATEGORY_PREFIX__Categories                        ;                                                  ;
+
+INSERT_UPDATE Category; code[unique = true]  ; $catalogVersion; supercategories(code, $catalogVersion); allowedPrincipals(uid)[default = 'customergroup']; logo(code)
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasJordan     ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M03
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasNike       ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M01
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasAdidas     ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M04
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasConverse   ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M05
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasPuma       ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M02
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasVans       ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M06
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasReebok     ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M10
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasUnderArmor ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M08
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasCrep       ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M09
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasAsics      ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M11
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasNewBalance ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M12
+                      ; __SAMPLE_CATEGORY_PREFIX__MarcasSaucony    ;                ; __SAMPLE_CATEGORY_PREFIX__Marcas                            ;                                                  ; Bels_200x200_Home_M13
+
+INSERT_UPDATE Category; code[unique = true]              ; $catalogVersion; supercategories(code, $catalogVersion); allowedPrincipals(uid)[default = 'customergroup'];
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                ;                ; __SAMPLE_CATEGORY_PREFIX__Hombre                            ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario              ;                ; __SAMPLE_CATEGORY_PREFIX__Hombre                            ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario               ;                ; __SAMPLE_CATEGORY_PREFIX__Mujer                             ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzado                 ;                ; __SAMPLE_CATEGORY_PREFIX__Mujer                             ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosBananos            ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie             ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas           ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack            ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos     ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback           ;                ; __SAMPLE_CATEGORY_PREFIX__Accesorios                        ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__NinosZapatillas              ;                ; __SAMPLE_CATEGORY_PREFIX__Ninos                             ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzado                  ;                ; __SAMPLE_CATEGORY_PREFIX__Sale                              ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                ;                ; __SAMPLE_CATEGORY_PREFIX__Sale                              ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios               ;                ; __SAMPLE_CATEGORY_PREFIX__Sale                              ;                                                  ;
+
+
+INSERT_UPDATE Category; code[unique = true]                  ; $catalogVersion; supercategories(code, $catalogVersion); allowedPrincipals(uid)[default = 'customergroup'];
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias           ;                ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas          ;                ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas   ;                ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario                   ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras           ;                ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario                   ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones         ;                ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario                   ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones        ;                ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario                   ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioShort             ;                ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario                   ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias            ;                ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas           ;                ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas    ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas  ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos              ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras            ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones          ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts             ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestido            ;                ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias             ;                ; __SAMPLE_CATEGORY_PREFIX__SaleCalzado                       ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas            ;                ; __SAMPLE_CATEGORY_PREFIX__SaleCalzado                       ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas           ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos               ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones         ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras             ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones           ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts              ;                ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                     ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos            ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie             ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas           ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack            ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos     ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback           ;                ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios                    ;                                                  ;
+
+# Guide size categories
+# Used to display correct guide size image
+INSERT_UPDATE Category; code[unique = true]                   ; $catalogVersion; supercategories(code, $catalogVersion); logo(code); allowedPrincipals(uid)[default = 'customergroup']
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaUnisex         ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaUnisex
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasCalcetaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasCalcetaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasVestuarioHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaNino             ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AsicstigerZapatillaHombreMujer  ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AsicstigerZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseVestuarioHombreMujer    ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaHombreMujer    ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaNino           ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanCalcetaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanCalcetaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioNino             ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaNino             ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NewbalanceZapatillaHombreMujer  ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NewbalanceZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeCalcetaHombreMujer          ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeCalcetaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeVestuarioHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaNino               ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaCalcetasHombreMujer         ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaCalcetasHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaVestuarioHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaNino               ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokCalcetaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokCalcetaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokVestuarioHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaHombreMujer      ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaNino             ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaNino
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__SauconyZapatillaHombreMujer     ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__SauconyZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__UnderArmourZapatillaHombreMujer ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__UnderArmourZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansVestuarioHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansVestuarioHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaHombreMujer        ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaHombreMujer
+                      ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaNino               ;                ; __SAMPLE_CATEGORY_PREFIX__GuideSize                         ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaNino
+
+# Belsport Brand Category Images
+INSERT_UPDATE CatalogUnawareMedia; code[unique = true]   ; mime       ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]
+                                 ; Bels_200x200_Home_M01 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M01.jpg
+                                 ; Bels_200x200_Home_M02 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M02.jpg
+                                 ; Bels_200x200_Home_M03 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M03.jpg
+                                 ; Bels_200x200_Home_M04 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M04.jpg
+                                 ; Bels_200x200_Home_M05 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M05.jpg
+                                 ; Bels_200x200_Home_M06 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M06.jpg
+                                 ; Bels_200x200_Home_M07 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M07.jpg
+                                 ; Bels_200x200_Home_M08 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M08.jpg
+                                 ; Bels_200x200_Home_M09 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M09.jpg
+                                 ; Bels_200x200_Home_M10 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M10.jpg
+                                 ; Bels_200x200_Home_M11 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M11.jpg
+                                 ; Bels_200x200_Home_M12 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M12.jpg
+                                 ; Bels_200x200_Home_M13 ; image/jpeg ; $siteResource/images/banners/homepage/marcas/Bels_200x200_Home_M13.jpg
+
+# Guide Size Category Images
+INSERT_UPDATE CatalogUnawareMedia; code[unique = true]                   ; mime       ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasCalcetaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasCalcetaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasVestuarioHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaNino             ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AdidasZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AsicstigerZapatillaHombreMujer  ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__AsicstigerZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseVestuarioHombreMujer    ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaHombreMujer    ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaNino           ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaUnisex         ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ConverseZapatillaUnisex.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanCalcetaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanCalcetaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioNino             ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanVestuarioNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaNino             ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__JordanZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NewbalanceZapatillaHombreMujer  ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NewbalanceZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeCalcetaHombreMujer          ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeCalcetaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeVestuarioHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaNino               ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__NikeZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaCalcetasHombreMujer         ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaCalcetasHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaVestuarioHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaNino               ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__PumaZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokCalcetaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokCalcetaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokVestuarioHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaHombreMujer      ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaNino             ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__ReebokZapatillaNino.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__SauconyZapatillaHombreMujer     ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__SauconyZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__UnderArmourZapatillaHombreMujer ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__UnderArmourZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansVestuarioHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansVestuarioHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaHombreMujer        ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaHombreMujer.jpg
+                                 ; __SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaNino               ; image/jpeg ; $siteResource/images/banners/site/guidesize/__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__VansZapatillaNino.jpg

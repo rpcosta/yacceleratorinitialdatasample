@@ -1,0 +1,2037 @@
+INSERT_UPDATE RegionCL; bluexCode[unique = true]; name
+                      ; 15                      ; REGION DE ARICA Y PARINACOTA
+                      ; 1                       ; REGION DE TARAPACA
+                      ; 2                       ; REGION DE ANTOFAGASTA
+                      ; 3                       ; REGION DE ATACAMA
+                      ; 4                       ; REGION DE COQUIMBO
+                      ; 5                       ; REGION DE VALPARAISO
+                      ; 6                       ; REGION DEL LIBERTADOR GENERAL BERNARDO OHIGGINS
+                      ; 13                      ; REGION METROPOLITANA DE SANTIAGO
+                      ; 7                       ; REGION DEL MAULE
+                      ; 8                       ; REGION DEL BIOBIO
+                      ; 9                       ; REGION DE LA ARAUCANIA
+                      ; 14                      ; REGION DE LOS RIOS
+                      ; 10                      ; REGION DE LOS LAGOS
+                      ; 11                      ; REGION DE AYSEN DEL GENERAL CARLOS IBANEZ DEL CAMPO
+                      ; 12                      ; REGION DE MAGALLANES Y DE LA ANTARTICA CHILENA
+
+INSERT_UPDATE Commune; bluexCode[unique = true]; name[allownull = true]; regionCL(bluexCode)[allownull = false]
+                     ; 15101                   ; ARICA                 ; 15
+                     ; 15102                   ; CAMARONES             ; 15
+                     ; 15202                   ; GENERAL LAGOS         ; 15
+                     ; 15201                   ; PUTRE                 ; 15
+                     ; 1101                    ; IQUIQUE               ; 1
+                     ; 1107                    ; ALTO HOSPICIO         ; 1
+                     ; 1401                    ; POZO ALMONTE          ; 1
+                     ; 1402                    ; CAMINA                ; 1
+                     ; 1404                    ; HUARA                 ; 1
+                     ; 1405                    ; PICA                  ; 1
+                     ; 1403                    ; COLCHANE              ; 1
+                     ; 2201                    ; CALAMA                ; 2
+                     ; 2203                    ; SAN PEDRO DE ATACAMA  ; 2
+                     ; 2202                    ; OLLAGUE               ; 2
+                     ; 2103                    ; SIERRA GORDA          ; 2
+                     ; 2101                    ; ANTOFAGASTA           ; 2
+                     ; 2102                    ; MEJILLONES            ; 2
+                     ; 2302                    ; MARIA ELENA           ; 2
+                     ; 2301                    ; TOCOPILLA             ; 2
+                     ; 3101                    ; COPIAPO               ; 3
+                     ; 3102                    ; CALDERA               ; 3
+                     ; 3301                    ; VALLENAR              ; 3
+                     ; 3103                    ; TIERRA AMARILLA       ; 3
+                     ; 3201                    ; CHANARAL              ; 3
+                     ; 3202                    ; DIEGO DE ALMAGRO      ; 3
+                     ; 2104                    ; TALTAL                ; 2
+                     ; 3302                    ; ALTO DEL CARMEN       ; 3
+                     ; 4102                    ; COQUIMBO              ; 4
+                     ; 4101                    ; LA SERENA             ; 4
+                     ; 4301                    ; OVALLE                ; 4
+                     ; 4103                    ; ANDACOLLO             ; 4
+                     ; 4303                    ; MONTE PATRIA          ; 4
+                     ; 4104                    ; LA HIGUERA            ; 4
+                     ; 4305                    ; RIO HURTADO           ; 4
+                     ; 3303                    ; FREIRINA              ; 3
+                     ; 3304                    ; HUASCO                ; 3
+                     ; 4304                    ; PUNITAQUI             ; 4
+                     ; 4106                    ; VICUNA                ; 4
+                     ; 4105                    ; PAIGUANO              ; 4
+                     ; 4302                    ; COMBARBALA            ; 4
+                     ; 4202                    ; CANELA                ; 4
+                     ; 5502                    ; CALERA                ; 5
+                     ; 5504                    ; LA CRUZ               ; 5
+                     ; 5501                    ; QUILLOTA              ; 5
+                     ; 5402                    ; CABILDO               ; 5
+                     ; 5405                    ; ZAPALLAR              ; 5
+                     ; 5105                    ; PUCHUNCAVI            ; 5
+                     ; 5401                    ; LA LIGUA              ; 5
+                     ; 4203                    ; LOS VILOS             ; 4
+                     ; 5506                    ; NOGALES               ; 5
+                     ; 5507                    ; OLMUE                 ; 5
+                     ; 5404                    ; PETORCA               ; 5
+                     ; 5503                    ; HIJUELAS              ; 5
+                     ; 4201                    ; ILLAPEL               ; 4
+                     ; 5703                    ; LLAILLAY              ; 5
+                     ; 5403                    ; PAPUDO                ; 5
+                     ; 5505                    ; LIMACHE               ; 5
+                     ; 5107                    ; QUINTERO              ; 5
+                     ; 4204                    ; SALAMANCA             ; 4
+                     ; 5103                    ; CONCON                ; 5
+                     ; 5109                    ; VINA DEL MAR          ; 5
+                     ; 5101                    ; VALPARAISO            ; 5
+                     ; 5602                    ; ALGARROBO             ; 5
+                     ; 5603                    ; CARTAGENA             ; 5
+                     ; 5102                    ; CASABLANCA            ; 5
+                     ; 5604                    ; EL QUISCO             ; 5
+                     ; 5106                    ; QUILPUE               ; 5
+                     ; 5605                    ; EL TABO               ; 5
+                     ; 5601                    ; SAN ANTONIO           ; 5
+                     ; 5606                    ; SANTO DOMINGO         ; 5
+                     ; 5108                    ; VILLA ALEMANA         ; 5
+                     ; 6205                    ; NAVIDAD               ; 6
+                     ; 13505                   ; SAN PEDRO             ; 13
+                     ; 6202                    ; LA ESTRELLA           ; 6
+                     ; 6203                    ; LITUECHE              ; 6
+                     ; 13124                   ; PUDAHUEL              ; 13
+                     ; 13102                   ; CERRILLOS             ; 13
+                     ; 13103                   ; CERRO NAVIA           ; 13
+                     ; 13104                   ; CONCHALI              ; 13
+                     ; 13105                   ; EL BOSQUE             ; 13
+                     ; 13106                   ; ESTACION CENTRAL      ; 13
+                     ; 13107                   ; HUECHURABA            ; 13
+                     ; 13108                   ; INDEPENDENCIA         ; 13
+                     ; 13109                   ; LA CISTERNA           ; 13
+                     ; 13110                   ; LA FLORIDA            ; 13
+                     ; 13111                   ; LA GRANJA             ; 13
+                     ; 13112                   ; LA PINTANA            ; 13
+                     ; 13113                   ; LA REINA              ; 13
+                     ; 13114                   ; LAS CONDES            ; 13
+                     ; 5704                    ; PANQUEHUE             ; 5
+                     ; 13115                   ; LO BARNECHEA          ; 13
+                     ; 13116                   ; LO ESPEJO             ; 13
+                     ; 13117                   ; LO PRADO              ; 13
+                     ; 13118                   ; MACUL                 ; 13
+                     ; 13119                   ; MAIPU                 ; 13
+                     ; 13120                   ; NUNOA                 ; 13
+                     ; 13121                   ; PEDRO AGUIRRE CERDA   ; 13
+                     ; 13122                   ; PENALOLEN             ; 13
+                     ; 13123                   ; PROVIDENCIA           ; 13
+                     ; 13201                   ; PUENTE ALTO           ; 13
+                     ; 13125                   ; QUILICURA             ; 13
+                     ; 13126                   ; QUINTA NORMAL         ; 13
+                     ; 13127                   ; RECOLETA              ; 13
+                     ; 13128                   ; RENCA                 ; 13
+                     ; 13129                   ; SAN JOAQUIN           ; 13
+                     ; 13130                   ; SAN MIGUEL            ; 13
+                     ; 13131                   ; SAN RAMON             ; 13
+                     ; 13101                   ; SANTIAGO              ; 13
+                     ; 13132                   ; VITACURA              ; 13
+                     ; 13403                   ; CALERA DE TANGO       ; 13
+                     ; 13302                   ; LAMPA                 ; 13
+                     ; 13504                   ; MARIA PINTO           ; 13
+                     ; 13402                   ; BUIN                  ; 13
+                     ; 5302                    ; CALLE LARGA           ; 5
+                     ; 5702                    ; CATEMU                ; 5
+                     ; 5701                    ; SAN FELIPE            ; 5
+                     ; 13303                   ; TILTIL                ; 13
+                     ; 13404                   ; PAINE                 ; 13
+                     ; 13301                   ; COLINA                ; 13
+                     ; 13501                   ; MELIPILLA             ; 13
+                     ; 13503                   ; CURACAVI              ; 13
+                     ; 13203                   ; SAN JOSE DE MAIPO     ; 13
+                     ; 13602                   ; EL MONTE              ; 13
+                     ; 5705                    ; PUTAENDO              ; 5
+                     ; 13603                   ; ISLA DE MAIPO         ; 13
+                     ; 13202                   ; PIRQUE                ; 13
+                     ; 5706                    ; SANTA MARIA           ; 5
+                     ; 13502                   ; ALHUE                 ; 13
+                     ; 13604                   ; PADRE HURTADO         ; 13
+                     ; 5301                    ; LOS ANDES             ; 5
+                     ; 13605                   ; PENAFLOR              ; 13
+                     ; 5303                    ; RINCONADA             ; 5
+                     ; 13401                   ; SAN BERNARDO          ; 13
+                     ; 5304                    ; SAN ESTEBAN           ; 5
+                     ; 13601                   ; TALAGANTE             ; 13
+                     ; 5201                    ; ISLA DE PASCUA        ; 5
+                     ; 5104                    ; JUAN FERNANDEZ        ; 5
+                     ; 6101                    ; RANCAGUA              ; 6
+                     ; 6115                    ; RENGO                 ; 6
+                     ; 6102                    ; CODEGUA               ; 6
+                     ; 6111                    ; OLIVAR                ; 6
+                     ; 6310                    ; SANTA CRUZ            ; 6
+                     ; 6116                    ; REQUINOA              ; 6
+                     ; 6105                    ; DONIHUE               ; 6
+                     ; 6301                    ; SAN FERNANDO          ; 6
+                     ; 6108                    ; MACHALI               ; 6
+                     ; 6303                    ; CHIMBARONGO           ; 6
+                     ; 6107                    ; LAS CABRAS            ; 6
+                     ; 6103                    ; COINCO                ; 6
+                     ; 6104                    ; COLTAUCO              ; 6
+                     ; 6113                    ; PICHIDEGUA            ; 6
+                     ; 6106                    ; GRANEROS              ; 6
+                     ; 6307                    ; PERALILLO             ; 6
+                     ; 6109                    ; MALLOA                ; 6
+                     ; 6117                    ; SAN VICENTE           ; 6
+                     ; 6305                    ; NANCAGUA              ; 6
+                     ; 6306                    ; PALMILLA              ; 6
+                     ; 6112                    ; PEUMO                 ; 6
+                     ; 6201                    ; PICHILEMU             ; 6
+                     ; 6308                    ; PLACILLA              ; 6
+                     ; 6114                    ; QUINTA DE TILCOCO     ; 6
+                     ; 6110                    ; MOSTAZAL              ; 6
+                     ; 6204                    ; MARCHIHUE             ; 6
+                     ; 6206                    ; PAREDONES             ; 6
+                     ; 6304                    ; LOLOL                 ; 6
+                     ; 6309                    ; PUMANQUE              ; 6
+                     ; 7101                    ; TALCA                 ; 7
+                     ; 7106                    ; PELARCO               ; 7
+                     ; 7109                    ; SAN CLEMENTE          ; 7
+                     ; 7107                    ; PENCAHUE              ; 7
+                     ; 7406                    ; SAN JAVIER            ; 7
+                     ; 7201                    ; CAUQUENES             ; 7
+                     ; 7402                    ; COLBUN                ; 7
+                     ; 7102                    ; CONSTITUCION          ; 7
+                     ; 7108                    ; RIO CLARO             ; 7
+                     ; 7301                    ; CURICO                ; 7
+                     ; 7401                    ; LINARES               ; 7
+                     ; 7110                    ; SAN RAFAEL            ; 7
+                     ; 7403                    ; LONGAVI               ; 7
+                     ; 7304                    ; MOLINA                ; 7
+                     ; 7105                    ; MAULE                 ; 7
+                     ; 7408                    ; YERBAS BUENAS         ; 7
+                     ; 7404                    ; PARRAL                ; 7
+                     ; 7305                    ; RAUCO                 ; 7
+                     ; 7306                    ; ROMERAL               ; 7
+                     ; 7307                    ; SAGRADA FAMILIA       ; 7
+                     ; 7308                    ; TENO                  ; 7
+                     ; 7407                    ; VILLA ALEGRE          ; 7
+                     ; 6302                    ; CHEPICA               ; 6
+                     ; 7104                    ; EMPEDRADO             ; 7
+                     ; 7405                    ; RETIRO                ; 7
+                     ; 7202                    ; CHANCO                ; 7
+                     ; 7103                    ; CUREPTO               ; 7
+                     ; 7302                    ; HUALANE               ; 7
+                     ; 7309                    ; VICHUQUEN             ; 7
+                     ; 7303                    ; LICANTEN              ; 7
+                     ; 7203                    ; PELLUHUE              ; 7
+                     ; 8301                    ; LOS ANGELES           ; 8
+                     ; 9201                    ; ANGOL                 ; 9
+                     ; 8302                    ; ANTUCO                ; 8
+                     ; 8303                    ; CABRERO               ; 8
+                     ; 8309                    ; QUILLECO              ; 8
+                     ; 8306                    ; NACIMIENTO            ; 8
+                     ; 9202                    ; COLLIPULLI            ; 9
+                     ; 8304                    ; LAJA                  ; 8
+                     ; 8305                    ; MULCHEN               ; 8
+                     ; 8311                    ; SANTA BARBARA         ; 8
+                     ; 8313                    ; YUMBEL                ; 8
+                     ; 8312                    ; TUCAPEL               ; 8
+                     ; 8308                    ; QUILACO               ; 8
+                     ; 9209                    ; RENAICO               ; 9
+                     ; 8307                    ; NEGRETE               ; 8
+                     ; 8421                    ; YUNGAY                ; 8
+                     ; 8310                    ; SAN ROSENDO           ; 8
+                     ; 8314                    ; ALTO BIOBIO           ; 8
+                     ; 8401                    ; CHILLAN               ; 8
+                     ; 8406                    ; CHILLAN VIEJO         ; 8
+                     ; 8416                    ; SAN CARLOS            ; 8
+                     ; 8408                    ; NINHUE                ; 8
+                     ; 8407                    ; EL CARMEN             ; 8
+                     ; 8410                    ; PEMUCO                ; 8
+                     ; 8405                    ; COIHUECO              ; 8
+                     ; 8418                    ; SAN IGNACIO           ; 8
+                     ; 8404                    ; COELEMU               ; 8
+                     ; 8409                    ; NIQUEN                ; 8
+                     ; 8402                    ; BULNES                ; 8
+                     ; 8415                    ; RANQUIL               ; 8
+                     ; 8403                    ; COBQUECURA            ; 8
+                     ; 8412                    ; PORTEZUELO            ; 8
+                     ; 8417                    ; SAN FABIAN            ; 8
+                     ; 8420                    ; TREHUACO              ; 8
+                     ; 8411                    ; PINTO                 ; 8
+                     ; 8413                    ; QUILLON               ; 8
+                     ; 8414                    ; QUIRIHUE              ; 8
+                     ; 8419                    ; SAN NICOLAS           ; 8
+                     ; 8101                    ; CONCEPCION            ; 8
+                     ; 8110                    ; TALCAHUANO            ; 8
+                     ; 8108                    ; SAN PEDRO DE LA PAZ   ; 8
+                     ; 8104                    ; FLORIDA               ; 8
+                     ; 8202                    ; ARAUCO                ; 8
+                     ; 8103                    ; CHIGUAYANTE           ; 8
+                     ; 8102                    ; CORONEL               ; 8
+                     ; 8111                    ; TOME                  ; 8
+                     ; 8112                    ; HUALPEN               ; 8
+                     ; 8105                    ; HUALQUI               ; 8
+                     ; 8107                    ; PENCO                 ; 8
+                     ; 8106                    ; LOTA                  ; 8
+                     ; 8206                    ; LOS ALAMOS            ; 8
+                     ; 8203                    ; CANETE                ; 8
+                     ; 8204                    ; CONTULMO              ; 8
+                     ; 8205                    ; CURANILAHUE           ; 8
+                     ; 8201                    ; LEBU                  ; 8
+                     ; 8109                    ; SANTA JUANA           ; 8
+                     ; 9101                    ; TEMUCO                ; 9
+                     ; 9108                    ; LAUTARO               ; 9
+                     ; 9111                    ; NUEVA IMPERIAL        ; 9
+                     ; 9102                    ; CARAHUE               ; 9
+                     ; 9119                    ; VILCUN                ; 9
+                     ; 9103                    ; CUNCO                 ; 9
+                     ; 9112                    ; PADRE LAS CASAS       ; 9
+                     ; 9204                    ; ERCILLA               ; 9
+                     ; 9105                    ; FREIRE                ; 9
+                     ; 9106                    ; GALVARINO             ; 9
+                     ; 9107                    ; GORBEA                ; 9
+                     ; 14103                   ; LANCO                 ; 14
+                     ; 9211                    ; VICTORIA              ; 9
+                     ; 9109                    ; LONCOCHE              ; 9
+                     ; 8207                    ; TIRUA                 ; 8
+                     ; 9120                    ; VILLARRICA            ; 9
+                     ; 9113                    ; PERQUENCO             ; 9
+                     ; 9114                    ; PITRUFQUEN            ; 9
+                     ; 9115                    ; PUCON                 ; 9
+                     ; 9116                    ; SAAVEDRA              ; 9
+                     ; 9205                    ; LONQUIMAY             ; 9
+                     ; 9117                    ; TEODORO SCHMIDT       ; 9
+                     ; 9118                    ; TOLTEN                ; 9
+                     ; 9210                    ; TRAIGUEN              ; 9
+                     ; 9207                    ; LUMACO                ; 9
+                     ; 9121                    ; CHOL CHOL             ; 9
+                     ; 14108                   ; PANGUIPULLI           ; 14
+                     ; 9203                    ; CURACAUTIN            ; 9
+                     ; 9110                    ; MELIPEUCO             ; 9
+                     ; 9206                    ; LOS SAUCES            ; 9
+                     ; 9208                    ; PUREN                 ; 9
+                     ; 9104                    ; CURARREHUE            ; 9
+                     ; 14101                   ; VALDIVIA              ; 14
+                     ; 14104                   ; LOS LAGOS             ; 14
+                     ; 14105                   ; MAFIL                 ; 14
+                     ; 14106                   ; MARIQUINA             ; 14
+                     ; 14107                   ; PAILLACO              ; 14
+                     ; 14201                   ; LA UNION              ; 14
+                     ; 14202                   ; FUTRONO               ; 14
+                     ; 14102                   ; CORRAL                ; 14
+                     ; 10301                   ; OSORNO                ; 10
+                     ; 10306                   ; SAN JUAN DE LA COSTA  ; 10
+                     ; 10307                   ; SAN PABLO             ; 10
+                     ; 10303                   ; PURRANQUE             ; 10
+                     ; 14204                   ; RIO BUENO             ; 14
+                     ; 10302                   ; PUERTO OCTAY          ; 10
+                     ; 10305                   ; RIO NEGRO             ; 10
+                     ; 10304                   ; PUYEHUE               ; 10
+                     ; 10105                   ; FRUTILLAR             ; 10
+                     ; 14203                   ; LAGO RANCO            ; 14
+                     ; 10101                   ; PUERTO MONTT          ; 10
+                     ; 10102                   ; CALBUCO               ; 10
+                     ; 10107                   ; LLANQUIHUE            ; 10
+                     ; 10104                   ; FRESIA                ; 10
+                     ; 10109                   ; PUERTO VARAS          ; 10
+                     ; 10106                   ; LOS MUERMOS           ; 10
+                     ; 10108                   ; MAULLIN               ; 10
+                     ; 10201                   ; CASTRO                ; 10
+                     ; 10202                   ; ANCUD                 ; 10
+                     ; 10209                   ; QUEMCHI               ; 10
+                     ; 10208                   ; QUELLON               ; 10
+                     ; 10210                   ; QUINCHAO              ; 10
+                     ; 10207                   ; QUEILEN               ; 10
+                     ; 10206                   ; PUQUELDON             ; 10
+                     ; 10205                   ; DALCAHUE              ; 10
+                     ; 10403                   ; HUALAIHUE             ; 10
+                     ; 10103                   ; COCHAMO               ; 10
+                     ; 10401                   ; CHAITEN               ; 10
+                     ; 10203                   ; CHONCHI               ; 10
+                     ; 10204                   ; CURACO DE VELEZ       ; 10
+                     ; 10402                   ; FUTALEUFU             ; 10
+                     ; 10404                   ; PALENA                ; 10
+                     ; 11101                   ; COYHAIQUE             ; 11
+                     ; 11201                   ; AYSEN                 ; 11
+                     ; 11402                   ; RIO IBANEZ            ; 11
+                     ; 11303                   ; TORTEL                ; 11
+                     ; 11401                   ; CHILE CHICO           ; 11
+                     ; 11202                   ; CISNES                ; 11
+                     ; 11301                   ; COCHRANE              ; 11
+                     ; 11203                   ; GUAITECAS             ; 11
+                     ; 11102                   ; LAGO VERDE            ; 11
+                     ; 11302                   ; OHIGGINS              ; 11
+                     ; 12101                   ; PUNTA ARENAS          ; 12
+                     ; 12302                   ; PRIMAVERA             ; 12
+                     ; 12103                   ; RIO VERDE             ; 12
+                     ; 12202                   ; ANTARTICA             ; 12
+                     ; 12301                   ; PORVENIR              ; 12
+                     ; 12201                   ; CABO DE HORNOS        ; 12
+                     ; 12303                   ; TIMAUKEL              ; 12
+                     ; 12401                   ; NATALES               ; 12
+                     ; 12104                   ; SAN GREGORIO          ; 12
+                     ; 12402                   ; TORRES DEL PAINE      ; 12
+                     ; 12102                   ; LAGUNA BLANCA         ; 12
+
+INSERT_UPDATE Locality; bluexCode[unique = true]; name[allownull = true]  ; commune(bluexCode)[allownull = true]
+                      ; ICB                     ; CALETA BUENA - IQUIQ    ; 1101
+                      ; IMF                     ; MINA FAKIR              ; 1101
+                      ; IML                     ; MINA LOBOS              ; 1101
+                      ; IPP                     ; PUERTO PATILLOS         ; 1101
+                      ; IQQ                     ; IQUIQUE                 ; 1101
+                      ; PQA                     ; CHIPANA                 ; 1101
+                      ; QLB                     ; PUNTA LOBOS             ; 1101
+                      ; RFO                     ; SAN MARCOS - IQUIQUE    ; 1101
+                      ; RSC                     ; RIO SECO                ; 1101
+                      ; ZPL                     ; PLAYA BLANCA            ; 1101
+                      ; AHP                     ; ALTO HOSPICIO           ; 1107
+                      ; IFB                     ; FUERTE BAQUEDANO        ; 1401
+                      ; IMA                     ; MACAYA                  ; 1401
+                      ; IUJ                     ; TAMBILLO                ; 1401
+                      ; LTI                     ; LA TIRANA               ; 1401
+                      ; MAN                     ; MAMINA                  ; 1401
+                      ; PAM                     ; POZO ALMONTE            ; 1401
+                      ; CMN                     ; CAMINA                  ; 1402
+                      ; CTA                     ; CALATAMBO               ; 1402
+                      ; IAL                     ; ALTUZA                  ; 1402
+                      ; ICY                     ; CHAPIQUITA              ; 1402
+                      ; IVV                     ; VILAVILA                ; 1402
+                      ; NMA                     ; NAMA                    ; 1402
+                      ; PIS                     ; PISAGUA                 ; 1402
+                      ; PJR                     ; ALPAJERES               ; 1402
+                      ; PKA                     ; PALCA                   ; 1402
+                      ; QCR                     ; CORSA                   ; 1402
+                      ; RTA                     ; CARITAYA                ; 1402
+                      ; ANG                     ; ANAGUANI                ; 1403
+                      ; ANQ                     ; ANCUAQUE                ; 1403
+                      ; COE                     ; COLCHANE                ; 1403
+                      ; CVT                     ; ANCOVINTO               ; 1403
+                      ; ICI                     ; CHIAPA                  ; 1403
+                      ; ICQ                     ; CARIQUIMA               ; 1403
+                      ; IIS                     ; ISLUGA                  ; 1403
+                      ; MCL                     ; MOCOMUCANE              ; 1403
+                      ; QEP                     ; ENQUELGA                ; 1403
+                      ; STA                     ; SOTOCA                  ; 1403
+                      ; HRA                     ; HUARA                   ; 1404
+                      ; ICA                     ; CHUSMISA                ; 1404
+                      ; ICO                     ; CANCOSA                 ; 1404
+                      ; ILI                     ; LIRIMA                  ; 1404
+                      ; IMO                     ; MOCHA                   ; 1404
+                      ; IPH                     ; PACHICA                 ; 1404
+                      ; ITP                     ; TARAPACA                ; 1404
+                      ; QLG                     ; COLLACAGUA              ; 1404
+                      ; QPR                     ; POROMA                  ; 1404
+                      ; BQM                     ; MINERA QUEBRADA BLAN    ; 1405
+                      ; CLH                     ; COLLAHUASI              ; 1405
+                      ; ICP                     ; COLONIA PINTADOS        ; 1405
+                      ; IOV                     ; OFICINA VICTORIA        ; 1405
+                      ; LGC                     ; LA HUAICA               ; 1405
+                      ; MTA                     ; MATILLA                 ; 1405
+                      ; OPC                     ; PICA                    ; 1405
+                      ; PQU                     ; PUQUIOS - IQUIQUE       ; 1405
+                      ; ZRC                     ; GUATACONDO              ; 1405
+                      ; AAV                     ; AGUA VERDE              ; 2101
+                      ; ABL                     ; BLANCO ENCALADA         ; 2101
+                      ; ACM                     ; CERRO MORENO            ; 2101
+                      ; AEB                     ; ESTACION AGUA BUENA     ; 2101
+                      ; AEC                     ; ESTACION CATALINA       ; 2101
+                      ; AEE                     ; CALETA EL COBRE         ; 2101
+                      ; AEG                     ; EL GUANACO              ; 2101
+                      ; AEH                     ; ESTACION O`HIGGINS      ; 2101
+                      ; AEJ                     ; ESTACION LA RIOJA       ; 2101
+                      ; AEL                     ; ESTACION LOS VIENTOS    ; 2101
+                      ; AEM                     ; EL MEDANO               ; 2101
+                      ; AEO                     ; ENSUENO                 ; 2101
+                      ; AEV                     ; ESTACION AUGUSTA VIC    ; 2101
+                      ; AEW                     ; EL WAY                  ; 2101
+                      ; AGC                     ; ESTACION AGUAS BLANC    ; 2101
+                      ; AJJ                     ; CALETA BOTIJA           ; 2101
+                      ; AJL                     ; JUAN LOPEZ              ; 2101
+                      ; AMQ                     ; ESTACION MONTURAQUI     ; 2101
+                      ; ANF                     ; ANTOFAGASTA             ; 2101
+                      ; APC                     ; PUERTO COLOSO           ; 2101
+                      ; APE                     ; ESTACION PALESTINA      ; 2101
+                      ; APP                     ; PAPOSO                  ; 2101
+                      ; APZ                     ; ESTACION PAN DE AZUC    ; 2101
+                      ; ASC                     ; SAN CRISTOBAL           ; 2101
+                      ; ATM                     ; AZUFRERA PLATO DE SO    ; 2101
+                      ; AVE                     ; ESTACION VARILLA        ; 2101
+                      ; AXA                     ; EX OFICINA ALEMANIA     ; 2101
+                      ; AXC                     ; EX OFICINA CHILE        ; 2101
+                      ; AXF                     ; EX OFICINA FLOR DE C    ; 2101
+                      ; AZF                     ; AZUFRERA                ; 2101
+                      ; BQO                     ; BAQUEDANO               ; 2101
+                      ; CIN                     ; CARMEN ALTO             ; 2101
+                      ; CPL                     ; CERRO PARANAL           ; 2101
+                      ; ESA                     ; ESTACION SOCOMPA        ; 2101
+                      ; LNA                     ; LA NEGRA                ; 2101
+                      ; MIN                     ; MINA LOMAS BAYAS        ; 2101
+                      ; MTB                     ; MANTOS BLANCOS          ; 2101
+                      ; PRL                     ; PARANAL                 ; 2101
+                      ; RAN                     ; RANCHO ANTOFAGASTA      ; 2101
+                      ; ZSM                     ; ISLA SANTA MARIA        ; 2101
+                      ; AHO                     ; HORNITOS - ANTOFAGAS    ; 2102
+                      ; MJS                     ; MEJILLONES              ; 2102
+                      ; CCR                     ; CARACOLES               ; 2103
+                      ; CDQ                     ; CENTINELA               ; 2103
+                      ; FDT                     ; FLOR DEL DESIERTO       ; 2103
+                      ; MLZ                     ; MELLIZOS                ; 2103
+                      ; MZL                     ; MINERA ZALDIVAR         ; 2103
+                      ; SGD                     ; SIERRA GORDA            ; 2103
+                      ; AMR                     ; ALTAMIRA                ; 2104
+                      ; CFI                     ; CIFUNCHO                ; 2104
+                      ; LPV                     ; LA POLVORA              ; 2104
+                      ; SDA                     ; ESMERALDA               ; 2104
+                      ; TTL                     ; TALTAL                  ; 2104
+                      ; CAP                     ; CASPANA                 ; 2201
+                      ; CAY                     ; AYQUINA                 ; 2201
+                      ; CBT                     ; BANOS DE TURI           ; 2201
+                      ; CCB                     ; ESTACION CERRITOS BAYOS ; 2201
+                      ; CCI                     ; CONCHI                  ; 2201
+                      ; CCV                     ; CONCHI VIEJO            ; 2201
+                      ; CEY                     ; CUPO                    ; 2201
+                      ; CHU                     ; CHIUCHIU                ; 2201
+                      ; CJC                     ; CALAMA                  ; 2201
+                      ; CJI                     ; INCACALIRI              ; 2201
+                      ; COV                     ; TOCONCE                 ; 2201
+                      ; CSR                     ; SANTA ROSA - CALAMA     ; 2201
+                      ; CTN                     ; TUINA                   ; 2201
+                      ; CXL                     ; LASANA                  ; 2201
+                      ; ELA                     ; MINA EL ABRA            ; 2201
+                      ; LZR                     ; LINZOR                  ; 2201
+                      ; MCD                     ; MINA CERRO DOMINADOR    ; 2201
+                      ; MFD                     ; MINA FARIDE             ; 2201
+                      ; MGY                     ; MINA GABY               ; 2201
+                      ; MLT                     ; MINA EL LITIO           ; 2201
+                      ; MRT                     ; MINA RADOMIRO TOMIC     ; 2201
+                      ; QUI                     ; CHUQUICAMATA            ; 2201
+                      ; SJE                     ; SAN JOSE                ; 2201
+                      ; SPM                     ; MINERA SPENCER          ; 2201
+                      ; TTR                     ; TURI                    ; 2201
+                      ; AMC                     ; AMINCHA                 ; 2202
+                      ; ASN                     ; ASCOTAN                 ; 2202
+                      ; CCZ                     ; CALACHUZ                ; 2202
+                      ; CEB                     ; ESTACION CEBOLLAR       ; 2202
+                      ; CLQ                     ; LEQUENA                 ; 2202
+                      ; CXP                     ; POLAN                   ; 2202
+                      ; ETC                     ; ESTACION CARCOTE        ; 2202
+                      ; OLL                     ; OLLAGUE                 ; 2202
+                      ; QCA                     ; AUCANQUILCHA            ; 2202
+                      ; SPD                     ; SAN PEDRO DE ATACAMA    ; 2202
+                      ; CAA                     ; AGUAS BLANCAS           ; 2203
+                      ; CIL                     ; TILOMONTE               ; 2203
+                      ; CMR                     ; CAMAR                   ; 2203
+                      ; CSB                     ; SAN BARTOLO             ; 2203
+                      ; CSE                     ; SOCAIRE                 ; 2203
+                      ; CTB                     ; TALABRE                 ; 2203
+                      ; CTP                     ; TILO POZO               ; 2203
+                      ; CTZ                     ; ALITAR                  ; 2203
+                      ; PNI                     ; PEINE                   ; 2203
+                      ; RGS                     ; RIO GRANDE - CALAMA     ; 2203
+                      ; RMA                     ; PURITAMA                ; 2203
+                      ; SPX                     ; SAN PEDRO DE ATACAMA    ; 2203
+                      ; TCO                     ; TOCONAO                 ; 2203
+                      ; ACB                     ; CALETA BOY              ; 2301
+                      ; ACE                     ; CALETA BUENA - ANTOF    ; 2301
+                      ; ACJ                     ; COBIJA                  ; 2301
+                      ; AMI                     ; MICHILLA                ; 2301
+                      ; MIC                     ; MINA MICHILLA           ; 2301
+                      ; TOC                     ; TOCOPILLA               ; 2301
+                      ; AET                     ; ESTACION MIRAJE         ; 2302
+                      ; ALQ                     ; OFICINA PEDRO DE VAL    ; 2302
+                      ; CQG                     ; QUILLAGUA               ; 2302
+                      ; MAE                     ; MARIA ELENA             ; 2302
+                      ; MEQ                     ; MARIA ELENA SOQUIMICH   ; 2302
+                      ; OVR                     ; OFICINA VERGARA         ; 2302
+                      ; BQQ                     ; BARRANQUILLAS           ; 3101
+                      ; CCM                     ; CALETA DEL MEDIO        ; 3101
+                      ; CHX                     ; HACIENDA CASTILLA       ; 3101
+                      ; CPO                     ; COPIAPO                 ; 3101
+                      ; CTX                     ; TOTORAL                 ; 3101
+                      ; QCP                     ; CALETA PAJONAL          ; 3101
+                      ; CBH                     ; BAHIA INGLESA           ; 3102
+                      ; CLR                     ; CALDERA                 ; 3102
+                      ; CPV                     ; PUERTO VIEJO            ; 3102
+                      ; RCD                     ; RANCHO CALDERA          ; 3102
+                      ; AMN                     ; AMOLANAS                ; 3103
+                      ; CBD                     ; ELISA DE BORDO          ; 3103
+                      ; CGD                     ; LA GUARDIA              ; 3103
+                      ; CLJ                     ; LAS JUNTAS              ; 3103
+                      ; CLW                     ; LOS LOROS               ; 3103
+                      ; CLZ                     ; LOS AZULES              ; 3103
+                      ; CMQ                     ; MINA LA COIPA           ; 3103
+                      ; CNN                     ; NANTOCO                 ; 3103
+                      ; CVO                     ; EL VOLCAN               ; 3103
+                      ; CVX                     ; VALLE HERMOSO           ; 3103
+                      ; CXA                     ; LA PUERTA               ; 3103
+                      ; CYO                     ; CHANARCILLO             ; 3103
+                      ; MCR                     ; MINA CANDELARIA         ; 3103
+                      ; MTE                     ; MINA MARTE              ; 3103
+                      ; PPE                     ; PAIPOTE                 ; 3103
+                      ; QCI                     ; COLINA                  ; 3103
+                      ; QHN                     ; HORNITOS - COPIAPO      ; 3103
+                      ; QPL                     ; PASTOS LARGOS           ; 3103
+                      ; QPQ                     ; PUQUIOS                 ; 3103
+                      ; RQM                     ; TOTORALILLO             ; 3103
+                      ; SAI                     ; SAN ANTONIO - COPIAP    ; 3103
+                      ; TRM                     ; TIERRA AMARILLA         ; 3103
+                      ; CFL                     ; FLAMENCO                ; 3201
+                      ; CHN                     ; CHANARAL - COPIAPO      ; 3201
+                      ; CPF                     ; PUERTO FINO             ; 3201
+                      ; CPZ                     ; PAN DE AZUCAR - COPI    ; 3201
+                      ; OBT                     ; OBISPITO                ; 3201
+                      ; QMD                     ; MINA DICHOSA            ; 3201
+                      ; QME                     ; MINA LA ESTRELLA        ; 3201
+                      ; QPO                     ; PLAYA REFUGIO           ; 3201
+                      ; RSO                     ; MINA ROSARIO            ; 3201
+                      ; CFC                     ; FINCA DE CHANARAL       ; 3202
+                      ; CLC                     ; MINA CHIVATO            ; 3202
+                      ; DAG                     ; DIEGO DE ALMAGRO        ; 3202
+                      ; ESL                     ; EL SALADO               ; 3202
+                      ; ESR                     ; EL SALVADOR             ; 3202
+                      ; IRO                     ; INCA DE ORO             ; 3202
+                      ; LLT                     ; LLANTA                  ; 3202
+                      ; MNN                     ; MONTANDON               ; 3202
+                      ; PTS                     ; POTRERILLOS             ; 3202
+                      ; QBQ                     ; BOCAMINA                ; 3202
+                      ; QLA                     ; LA OLA                  ; 3202
+                      ; QPN                     ; EL PINO                 ; 3202
+                      ; QTR                     ; TERMAS DE RIO NEGRO     ; 3202
+                      ; QVC                     ; VEGAS DE CHANARAL AL    ; 3202
+                      ; DYK                     ; DOMEYKO                 ; 3301
+                      ; EBL                     ; EL BORATILLO            ; 3301
+                      ; LSX                     ; OBSERVATORIO LA SILL    ; 3301
+                      ; VAL                     ; VALLENAR                ; 3301
+                      ; VCQ                     ; CACHIYUYO               ; 3301
+                      ; VHY                     ; LA HOYADA               ; 3301
+                      ; VLO                     ; LOS COLORADOS           ; 3301
+                      ; VOB                     ; EL DONKEY               ; 3301
+                      ; VOS                     ; OBSERVATORIO CAMPANA    ; 3301
+                      ; VZV                     ; ALGARROBAL              ; 3301
+                      ; ADC                     ; ALTO DEL CARMEN         ; 3302
+                      ; LHI                     ; LA HIGUERA              ; 3302
+                      ; TMO                     ; EL RETAMO               ; 3302
+                      ; VCO                     ; CONAY                   ; 3302
+                      ; VET                     ; EL TRANSITO - SERENA    ; 3302
+                      ; VJU                     ; JUNTA VALERIANO         ; 3302
+                      ; VLA                     ; LA ARENA                ; 3302
+                      ; VLH                     ; LA HIGUERITA            ; 3302
+                      ; VSA                     ; SAN FELIX               ; 3302
+                      ; ZMJ                     ; EL NEVADO               ; 3302
+                      ; ZTA                     ; LAGUNA GRANDE           ; 3302
+                      ; FRN                     ; FREIRINA                ; 3303
+                      ; TSC                     ; CALETA SARCO            ; 3303
+                      ; VCI                     ; CARRIZALILLO            ; 3303
+                      ; VCL                     ; CALETA CHANARAL         ; 3303
+                      ; VFR                     ; LA FRAGUITA             ; 3303
+                      ; VLB                     ; LABRAR                  ; 3303
+                      ; VMI                     ; MINA ALGARROBO          ; 3303
+                      ; VMT                     ; MAITENCILLO - CALERA    ; 3303
+                      ; CXQ                     ; LOS TOYOS               ; 3304
+                      ; HCB                     ; HUASCO BAJO             ; 3304
+                      ; HCO                     ; HUASCO                  ; 3304
+                      ; TAG                     ; CANTO DE AGUA           ; 3304
+                      ; VCR                     ; CARRIZAL BAJO           ; 3304
+                      ; VMR                     ; MIRAFLORES - SERENA     ; 3304
+                      ; AGG                     ; AGUA GRANDE             ; 4101
+                      ; ALT                     ; ALMIRANTE LATORRE       ; 4101
+                      ; AVS                     ; ALTOVALSOL              ; 4101
+                      ; GOS                     ; LA COMPANIA - SERENA    ; 4101
+                      ; HAY                     ; EL CHACAY               ; 4101
+                      ; LBT                     ; LAMBERT                 ; 4101
+                      ; LCQ                     ; COQUIMBITO              ; 4101
+                      ; LEI                     ; EL ISLON                ; 4101
+                      ; LER                     ; EL ROMERAL - SERENA     ; 4101
+                      ; LSC                     ; LA SERENA               ; 4101
+                      ; RSE                     ; LAS ROJAS               ; 4101
+                      ; TNS                     ; TEATINOS                ; 4101
+                      ; XPB                     ; SAN PABLO               ; 4101
+                      ; COQ                     ; COQUIMBO                ; 4102
+                      ; GHC                     ; GUACHALALUME            ; 4102
+                      ; GQS                     ; GUANAQUEROS             ; 4102
+                      ; LPZ                     ; PAN DE AZUCAR - SERE    ; 4102
+                      ; LRR                     ; LA HERRADURA            ; 4102
+                      ; LTB                     ; TIERRAS BLANCAS         ; 4102
+                      ; LTC                     ; LAS TACAS               ; 4102
+                      ; PLB                     ; PENUELAS - LA SERENA    ; 4102
+                      ; PLM                     ; PLACILLA - COQUIMBO     ; 4102
+                      ; PON                     ; EL PENON - LA SERENA    ; 4102
+                      ; PVO                     ; PUERTO VELERO           ; 4102
+                      ; RTO                     ; RETIRO - COQUIMBO       ; 4102
+                      ; TGY                     ; TONGOY                  ; 4102
+                      ; TOT                     ; TOTORALILLO - COQUIM    ; 4102
+                      ; ACO                     ; ANDACOLLO - LA SEREN    ; 4103
+                      ; BRR                     ; BARRANCAS               ; 4103
+                      ; EOV                     ; EL OLIVO                ; 4104
+                      ; LGY                     ; CHUNGUNGO               ; 4104
+                      ; LHB                     ; LOS HORNOS              ; 4104
+                      ; LHC                     ; LA HIGUERA - LA SERE    ; 4104
+                      ; LIH                     ; INCAGUASI               ; 4104
+                      ; LKM                     ; CHOROS BAJOS            ; 4104
+                      ; LTH                     ; TRAPICHE - LA SERENA    ; 4104
+                      ; MQZ                     ; LAS BREAS - SERENA      ; 4104
+                      ; PHS                     ; PUNTA CHOROS            ; 4104
+                      ; TCS                     ; TRES CRUCES             ; 4104
+                      ; TFO                     ; EL TOFO                 ; 4104
+                      ; CGS                     ; COCHIGUAS               ; 4105
+                      ; ELQ                     ; PISCO ELQUI             ; 4105
+                      ; LBJ                     ; BANOS DEL TORO          ; 4105
+                      ; LBW                     ; BALALA                  ; 4105
+                      ; LGU                     ; GUANTA                  ; 4105
+                      ; LHD                     ; LAS HEDIONDAS           ; 4105
+                      ; LJZ                     ; JUNTAS DEL TORO         ; 4105
+                      ; LKK                     ; CHAPILCA                ; 4105
+                      ; LLG                     ; LLANOS DE GUANTA        ; 4105
+                      ; LMG                     ; MONTE GRANDE            ; 4105
+                      ; LMX                     ; MINA DEL INDIO          ; 4105
+                      ; LRV                     ; RIVADAVIA               ; 4105
+                      ; LVR                     ; VARILLAR                ; 4105
+                      ; MRR                     ; ALCOHUAS                ; 4105
+                      ; NEQ                     ; NUEVA ELQUI             ; 4105
+                      ; PHO                     ; PAIHUANO                ; 4105
+                      ; TAL                     ; SOL NACIENTE            ; 4105
+                      ; AVU                     ; ANDACOLLO HOLDING       ; 4106
+                      ; CEA                     ; CORTADERA               ; 4106
+                      ; DTS                     ; DIAGUITAS               ; 4106
+                      ; LCO                     ; CONDORIACO              ; 4106
+                      ; LCR                     ; CASERONES               ; 4106
+                      ; LEM                     ; EL ROMERAL - SERENA     ; 4106
+                      ; LOO                     ; OBSERVATORIO TOLOLO     ; 4106
+                      ; LVT                     ; VINITA BAJA             ; 4106
+                      ; PLV                     ; PERALILLO - SERENA      ; 4106
+                      ; TBE                     ; EL TAMBO - LA SERENA    ; 4106
+                      ; VCA                     ; VICUNA                  ; 4106
+                      ; YCV                     ; LA LAJA                 ; 4106
+                      ; AZZ                     ; CUZ CUZ - CALERA        ; 4201
+                      ; CCY                     ; COCUA                   ; 4201
+                      ; CPA                     ; CHOAPA                  ; 4201
+                      ; ILL                     ; ILLAPEL                 ; 4201
+                      ; LZC                     ; LAS CANAS               ; 4201
+                      ; ZFA                     ; FARELLON SANCHEZ        ; 4201
+                      ; ZHN                     ; HUINTIL                 ; 4201
+                      ; ZHT                     ; HUENTELAUQUEN           ; 4201
+                      ; ZKZ                     ; LAS PIRCAS              ; 4201
+                      ; ZMC                     ; MATANCILLA              ; 4201
+                      ; ZMH                     ; MINCHA                  ; 4201
+                      ; ZMM                     ; MINCHA SUR              ; 4201
+                      ; ZNK                     ; CAREN - CALERA          ; 4201
+                      ; ZTL                     ; RABANALES               ; 4201
+                      ; ZTN                     ; TUNGA SUR               ; 4201
+                      ; ZTU                     ; TUNGA NORTE             ; 4201
+                      ; CNE                     ; CANELA                  ; 4202
+                      ; POZ                     ; PUERTO OSCURO           ; 4202
+                      ; RCC                     ; CALETA MORRITOS         ; 4202
+                      ; RMH                     ; MANTOS DE HORNILLOS     ; 4202
+                      ; XZH                     ; POZA HONDA              ; 4202
+                      ; ANS                     ; CAIMANES                ; 4203
+                      ; LMO                     ; LOS MOLLES              ; 4203
+                      ; LOI                     ; PUPIO                   ; 4203
+                      ; LVL                     ; LOS VILOS               ; 4203
+                      ; PCH                     ; PICHIDANGUI             ; 4203
+                      ; TTZ                     ; TOTORALILLO - CALERA    ; 4203
+                      ; ZIV                     ; GUANGALI                ; 4203
+                      ; ZKK                     ; LOS ERMITANOS           ; 4203
+                      ; ZMR                     ; MAURO                   ; 4203
+                      ; ZOA                     ; CHIGUALOCO              ; 4203
+                      ; ZOQ                     ; CASUTO                  ; 4203
+                      ; ZQM                     ; QUILIMARI               ; 4203
+                      ; ZQO                     ; QUELON                  ; 4203
+                      ; ZTI                     ; TILAMA                  ; 4203
+                      ; ABG                     ; ARBOLEDA GRANDE         ; 4204
+                      ; LLP                     ; LLIMPO                  ; 4204
+                      ; LNI                     ; CHELLEPIN               ; 4204
+                      ; LSO                     ; LOS PELADEROS           ; 4204
+                      ; PZC                     ; PALQUIAL                ; 4204
+                      ; SCA                     ; SALAMANCA               ; 4204
+                      ; ZAM                     ; ALMENDRALILLO           ; 4204
+                      ; ZBG                     ; BATUCO - CALERA         ; 4204
+                      ; ZET                     ; EL TAMBO - CALERA       ; 4204
+                      ; ZJO                     ; JORQUERA                ; 4204
+                      ; ZNP                     ; COIRON                  ; 4204
+                      ; ZPF                     ; ZAPALLAR                ; 4204
+                      ; ZSG                     ; SAN AGUSTIN             ; 4204
+                      ; ZVH                     ; LIMAHUIDA               ; 4204
+                      ; AGA                     ; CHALINGA                ; 4301
+                      ; CRI                     ; CAMARICO                ; 4301
+                      ; CTY                     ; CERRILLOS DE TAMAYA     ; 4301
+                      ; LAT                     ; LA TORRE                ; 4301
+                      ; LLS                     ; LAS CARDAS              ; 4301
+                      ; OGT                     ; GUAMALATA               ; 4301
+                      ; OLB                     ; LA CHIMBA               ; 4301
+                      ; OTR                     ; OTAROLA                 ; 4301
+                      ; OVL                     ; OVALLE                  ; 4301
+                      ; PIC                     ; PACHINGO                ; 4301
+                      ; QWR                     ; QUEBRADA SECA           ; 4301
+                      ; REA                     ; EL ALTAR                ; 4301
+                      ; RGU                     ; GUAMPULLA               ; 4301
+                      ; RHG                     ; HIGUERITAS              ; 4301
+                      ; RLI                     ; LIMARI                  ; 4301
+                      ; RPJ                     ; PEJERREYES              ; 4301
+                      ; RQV                     ; CAMARICO VIEJO          ; 4301
+                      ; RRB                     ; BARRAZA                 ; 4301
+                      ; RRG                     ; ALGARROBITO - OVALLE    ; 4301
+                      ; RTG                     ; RECOLETA                ; 4301
+                      ; RVF                     ; SAMO BAJO               ; 4301
+                      ; RVG                     ; SAMO ALTO               ; 4301
+                      ; SOZ                     ; SOTAQUI                 ; 4301
+                      ; SQT                     ; TERMAS DE SOCO          ; 4301
+                      ; COB                     ; COMBARBALA              ; 4302
+                      ; LZZ                     ; LAS COLORADAS           ; 4302
+                      ; OCH                     ; CHINEO                  ; 4302
+                      ; OHY                     ; HILARICOS               ; 4302
+                      ; OLH                     ; LLAHUIN                 ; 4302
+                      ; ONG                     ; CHINGAY                 ; 4302
+                      ; OPA                     ; PARMA                   ; 4302
+                      ; QWQ                     ; QUILITAPIA              ; 4302
+                      ; RCT                     ; COGOTI                  ; 4302
+                      ; RLU                     ; LA LIGUA BAJO           ; 4302
+                      ; SSC                     ; SANTA CECILIA           ; 4302
+                      ; CHZ                     ; CHANARAL ALTO - OVAL    ; 4303
+                      ; EPI                     ; EL PALQUI               ; 4303
+                      ; GUT                     ; GUATULAME               ; 4303
+                      ; KEN                     ; CAREN - OVALLE          ; 4303
+                      ; LMS                     ; LAS MOLLACAS            ; 4303
+                      ; MPC                     ; MONTE PATRIA            ; 4303
+                      ; OBG                     ; BANOS DEL GORDITO       ; 4303
+                      ; OCT                     ; CHILECITO               ; 4303
+                      ; OEC                     ; EL CARRIZAL             ; 4303
+                      ; RCM                     ; CENTRAL LOS MOLLES      ; 4303
+                      ; REM                     ; EL MAITEN               ; 4303
+                      ; RFG                     ; SAN LORENZO - OVALLE    ; 4303
+                      ; RGR                     ; PEDREGAL                ; 4303
+                      ; RLJ                     ; LAS JUNTAS - OVALLE     ; 4303
+                      ; RLR                     ; LAS RAMADAS             ; 4303
+                      ; RMQ                     ; EL MAQUI                ; 4303
+                      ; RQW                     ; RAPEL - OVALLE          ; 4303
+                      ; SMC                     ; SAN MARCOS - OVALLE     ; 4303
+                      ; TNH                     ; TULAHUEN                ; 4303
+                      ; XBC                     ; BOCATOMA                ; 4303
+                      ; ZOV                     ; VALDIVIA - OVALLE       ; 4303
+                      ; LZP                     ; LOS PERALES - OVALLE    ; 4304
+                      ; OLP                     ; LA PLACILLA             ; 4304
+                      ; OPB                     ; PENA BLANCA             ; 4304
+                      ; PTQ                     ; PUNITAQUI               ; 4304
+                      ; RLG                     ; LA AGUADA               ; 4304
+                      ; RLL                     ; LITIPAMPA               ; 4304
+                      ; LHH                     ; CHANAR                  ; 4305
+                      ; OAY                     ; ALTO BUEY               ; 4305
+                      ; RHT                     ; HURTADO                 ; 4305
+                      ; RHU                     ; RIO HURTADO             ; 4305
+                      ; RLB                     ; LAS BREAS - OVALLE      ; 4305
+                      ; RLF                     ; LA FUNDINA              ; 4305
+                      ; RPB                     ; PABELLON - OVALLE       ; 4305
+                      ; RPI                     ; PICHASCA                ; 4305
+                      ; RQO                     ; CORRAL QUEMADO          ; 4305
+                      ; XMR                     ; HACIENDA LOS ANDES      ; 4305
+                      ; KCD                     ; CALETAS LAS DOCAS       ; 5101
+                      ; KLT                     ; LAS TABLAS              ; 5101
+                      ; KPC                     ; PUNTA CURAUMILLA        ; 5101
+                      ; KPE                     ; PENUELAS - V DEL MAR    ; 5101
+                      ; LAV                     ; LAGUNA VERDE            ; 5101
+                      ; PLP                     ; PLACILLA - V DEL MAR    ; 5101
+                      ; VAP                     ; VALPARAISO              ; 5101
+                      ; CBC                     ; CASABLANCA              ; 5102
+                      ; KEC                     ; EL CARPINTERO           ; 5102
+                      ; KHD                     ; LAS DICHAS              ; 5102
+                      ; KLL                     ; LAGUNILLAS              ; 5102
+                      ; KLO                     ; LO OROZCO               ; 5102
+                      ; KLV                     ; LO VASQUEZ              ; 5102
+                      ; KME                     ; LAS MERCEDES            ; 5102
+                      ; KSG                     ; SAN GERONIMO            ; 5102
+                      ; KTH                     ; TAPIHUE                 ; 5102
+                      ; CON                     ; CONCON                  ; 5103
+                      ; JFZ                     ; ISLA JUAN FERNANDEZ     ; 5104
+                      ; CNB                     ; CANELA BAJA             ; 5105
+                      ; LGN                     ; LA LAGUNA               ; 5105
+                      ; LNO                     ; CALETA HORCON           ; 5105
+                      ; MTC                     ; MAITENCILLO - CALERA    ; 5105
+                      ; PCV                     ; PUCHUNCAVI              ; 5105
+                      ; QZC                     ; LA QUEBRADA - CALERA    ; 5105
+                      ; VTA                     ; VENTANAS                ; 5105
+                      ; ZQD                     ; EL RINCON               ; 5105
+                      ; ZZC                     ; CANELA ALTA             ; 5105
+                      ; EBT                     ; EL BELLOTO              ; 5106
+                      ; KLR                     ; LA RETUCA               ; 5106
+                      ; QPE                     ; QUILPUE                 ; 5106
+                      ; BAG                     ; VALLE ALEGRE            ; 5107
+                      ; QTO                     ; QUINTERO                ; 5107
+                      ; ZRV                     ; RITOQUE                 ; 5107
+                      ; PBA                     ; PENABLANCA              ; 5108
+                      ; VIA                     ; VILLA ALEMANA           ; 5108
+                      ; KNA                     ; VINA DEL MAR            ; 5109
+                      ; RCA                     ; RENACA                  ; 5109
+                      ; IPC                     ; ISLA DE PASCUA          ; 5201
+                      ; LOB                     ; LOS ANDES               ; 5301
+                      ; PRT                     ; PORTILLO                ; 5301
+                      ; SDO                     ; SALADILLO               ; 5301
+                      ; SGZ                     ; GUARDIA VIEJA           ; 5301
+                      ; SJH                     ; JUNCAL                  ; 5301
+                      ; SRB                     ; RIO BLANCO              ; 5301
+                      ; SSD                     ; SALTO DEL SOLDADO       ; 5301
+                      ; CLG                     ; CALLE LARGA             ; 5302
+                      ; RDA                     ; RINCONADA - LOS ANDE    ; 5303
+                      ; SEN                     ; SAN ESTEBAN             ; 5304
+                      ; GMA                     ; LONGOTOMA               ; 5401
+                      ; LAR                     ; CALETA POLCURA          ; 5401
+                      ; LLC                     ; LA LIGUA                ; 5401
+                      ; PZY                     ; PICHICUY                ; 5401
+                      ; ZEI                     ; EL INGENIO              ; 5401
+                      ; ZEW                     ; TRAPICHE - CALERA       ; 5401
+                      ; ZGC                     ; LA PATAGUA              ; 5401
+                      ; ZQQ                     ; QUINQUIMO               ; 5401
+                      ; CDO                     ; CABILDO                 ; 5402
+                      ; LAO                     ; LA MORA                 ; 5402
+                      ; LSA                     ; LAS PALMAS              ; 5402
+                      ; PUA                     ; PEDEGUA                 ; 5402
+                      ; XLV                     ; LA VINA                 ; 5402
+                      ; ZAI                     ; ALICAHUE                ; 5402
+                      ; ZAT                     ; ARTIFICIO               ; 5402
+                      ; ZEG                     ; EL GUAYACAN             ; 5402
+                      ; ZSL                     ; SAN LORENZO - CALERA    ; 5402
+                      ; ZST                     ; SANTA MARTA - CALERA    ; 5402
+                      ; PPO                     ; PAPUDO                  ; 5403
+                      ; LOA                     ; CHALACO                 ; 5404
+                      ; OLC                     ; CHINCOLCO               ; 5404
+                      ; PTK                     ; PETORCA                 ; 5404
+                      ; ZDR                     ; PEDERNAL                ; 5404
+                      ; ZHR                     ; HIERRO VIEJO            ; 5404
+                      ; ZMS                     ; MINA EL ROSARIO         ; 5404
+                      ; ZMU                     ; MANUEL MONTT            ; 5404
+                      ; CGU                     ; CACHAGUA                ; 5405
+                      ; PIL                     ; CATAPILCO               ; 5405
+                      ; ZAR                     ; ZAPALLAR - CALERA       ; 5405
+                      ; QTA                     ; QUILLOTA                ; 5501
+                      ; ZLC                     ; LA CALERA               ; 5502
+                      ; HJS                     ; HIJUELAS                ; 5503
+                      ; LCZ                     ; LA CRUZ - CALERA        ; 5504
+                      ; SOX                     ; OCOA                    ; 5504
+                      ; LIC                     ; LIMACHE                 ; 5505
+                      ; ZQB                     ; QUEBRADA ALVARADO       ; 5505
+                      ; EML                     ; EL MELON                ; 5506
+                      ; NOG                     ; NOGALES                 ; 5506
+                      ; ZEC                     ; EL COBRE - CALERA       ; 5506
+                      ; OLM                     ; OLMUE                   ; 5507
+                      ; ZDD                     ; SAN PEDRO - CALERA      ; 5507
+                      ; ZGR                     ; GRANIZO                 ; 5507
+                      ; LLO                     ; LLO-LLEO                ; 5601
+                      ; SNT                     ; SAN ANTONIO - MELIP.    ; 5601
+                      ; ABO                     ; ALGARROBO - MELIPILL    ; 5602
+                      ; MRL                     ; MIRASOL                 ; 5602
+                      ; QTY                     ; QUINTAY                 ; 5602
+                      ; ABA                     ; LO ABARCA               ; 5603
+                      ; CRT                     ; CARTAGENA               ; 5603
+                      ; KER                     ; EL TURCO                ; 5603
+                      ; LCX                     ; LAS CRUCES              ; 5603
+                      ; SSB                     ; SAN SEBASTIAN - MELI    ; 5603
+                      ; AZU                     ; COSTA AZUL              ; 5604
+                      ; EQO                     ; EL QUISCO               ; 5604
+                      ; INE                     ; ISLA NEGRA              ; 5604
+                      ; KPT                     ; PUNTA DE TRALCA         ; 5604
+                      ; ETB                     ; EL TABO                 ; 5605
+                      ; KLG                     ; LO GALLARDO             ; 5606
+                      ; KLY                     ; LEYDA                   ; 5606
+                      ; SDC                     ; SANTO DOMINGO           ; 5606
+                      ; CRM                     ; CURIMON                 ; 5701
+                      ; CSP                     ; CERRILLOS DE SAN FEL    ; 5701
+                      ; SFP                     ; SAN FELIPE              ; 5701
+                      ; CAT                     ; CATEMU                  ; 5702
+                      ; SHW                     ; CHAGRES                 ; 5702
+                      ; SNW                     ; NILHUE                  ; 5702
+                      ; SOW                     ; EL COBRE - LOS ANDES    ; 5702
+                      ; SWC                     ; EL CERRADO              ; 5702
+                      ; LLY                     ; LLAILLAY                ; 5703
+                      ; SER                     ; RUNGUE                  ; 5703
+                      ; SMQ                     ; MONTENEGRO              ; 5703
+                      ; PNQ                     ; PANQUEHUE               ; 5704
+                      ; SLZ                     ; LO  ERRAZURIZ           ; 5704
+                      ; PUT                     ; PUTAENDO                ; 5705
+                      ; SGY                     ; GRANALLA                ; 5705
+                      ; SRG                     ; RINCONADA DE GUZMAN     ; 5705
+                      ; SRP                     ; RESGUARDO LOS PATOS     ; 5705
+                      ; SRS                     ; RINCONADA DE SILVA      ; 5705
+                      ; STY                     ; EL TARTARO              ; 5705
+                      ; TRE                     ; TRES FUERTES            ; 5705
+                      ; JHL                     ; JAHUEL                  ; 5706
+                      ; SRI                     ; SANTA MARIA             ; 5706
+                      ; TJL                     ; TERMAS DE JAHUEL        ; 5706
+                      ; RCG                     ; RANCAGUA                ; 6101
+                      ; TPC                     ; PUNTA DE CORTES         ; 6101
+                      ; LRW                     ; LA LEONERA - RANCAGU    ; 6102
+                      ; RLC                     ; LA COMPAN�A - RANCAG    ; 6102
+                      ; RLP                     ; LA PUNTA                ; 6102
+                      ; ZDE                     ; CODEGUA                 ; 6102
+                      ; CNO                     ; COINCO - RANCAGUA       ; 6103
+                      ; CTO                     ; COLTAUCO                ; 6104
+                      ; RZU                     ; ZUNIGA                  ; 6104
+                      ; DNE                     ; DONIHUE                 ; 6105
+                      ; PRN                     ; PUREN VI - RANCAGUA     ; 6105
+                      ; GRA                     ; GRANEROS                ; 6106
+                      ; CAR                     ; EL CARMEN               ; 6107
+                      ; CCN                     ; COCALAN                 ; 6107
+                      ; LCB                     ; LAS CABRAS              ; 6107
+                      ; MZN                     ; EL MANZANO - RANCAGU    ; 6107
+                      ; RLA                     ; LA CEBADA               ; 6107
+                      ; RPN                     ; PUNTA VERDE             ; 6107
+                      ; CHV                     ; CHAPA VERDE             ; 6108
+                      ; CLN                     ; COLON                   ; 6108
+                      ; CTS                     ; CALETONES               ; 6108
+                      ; MCH                     ; MACHALI                 ; 6108
+                      ; MJT                     ; MINA LA JUANITA         ; 6108
+                      ; OCY                     ; COYA                    ; 6108
+                      ; SEW                     ; SEWELL                  ; 6108
+                      ; ZML                     ; MALLOA                  ; 6109
+                      ; SFM                     ; SAN FCO DE MOSTAZAL     ; 6110
+                      ; LMI                     ; LO MIRANDA              ; 6111
+                      ; OAL                     ; OLIVAR ALTO             ; 6111
+                      ; ROL                     ; OLIVAR BAJO             ; 6111
+                      ; PEO                     ; PEUMO                   ; 6112
+                      ; TZV                     ; TUNCA ARRIBA            ; 6112
+                      ; LQX                     ; LARMAHUE                ; 6113
+                      ; PHA                     ; PICHIDEGUA              ; 6113
+                      ; RET                     ; EL TOCO                 ; 6113
+                      ; QCC                     ; QUINTA DE TILCOCO       ; 6114
+                      ; CRE                     ; CERRILLOS               ; 6115
+                      ; HRQ                     ; HACIENDA LOS LINGUES    ; 6115
+                      ; PEQ                     ; PELEQUEN                ; 6115
+                      ; RLM                     ; LOS MAQUIS              ; 6115
+                      ; RLS                     ; LAS NIEVES - RANCAGU    ; 6115
+                      ; RPO                     ; POPETA                  ; 6115
+                      ; ZRG                     ; RENGO                   ; 6115
+                      ; REQ                     ; REQUINOA                ; 6116
+                      ; RMC                     ; PIMPINELA               ; 6116
+                      ; RSS                     ; ROSARIO                 ; 6116
+                      ; MLX                     ; MILLAHUE                ; 6117
+                      ; SVT                     ; SAN VICENTE DE T.T      ; 6117
+                      ; PMU                     ; PICHILEMU               ; 6201
+                      ; RAC                     ; ALTO COLORADO           ; 6201
+                      ; RGQ                     ; SANTA GRACIELA ALCON    ; 6201
+                      ; RHL                     ; CAHUIL                  ; 6201
+                      ; RJC                     ; CIRUELOS                ; 6201
+                      ; RPS                     ; EL PUESTO               ; 6201
+                      ; KLD                     ; LAS DAMAS               ; 6202
+                      ; LAE                     ; LA ESTRELLA             ; 6202
+                      ; KTL                     ; TOPOCALMA               ; 6203
+                      ; LTU                     ; LITUECHE                ; 6203
+                      ; LNE                     ; ALCONES                 ; 6204
+                      ; LPG                     ; LAS PATAGUAS            ; 6204
+                      ; MRH                     ; MARCHIHUE               ; 6204
+                      ; RMT                     ; MARCHANT                ; 6204
+                      ; RQE                     ; LA QUEBRADA - RANCAG    ; 6204
+                      ; RSA                     ; SAN JOSE MARCHIHUE      ; 6204
+                      ; RZE                     ; ESPERANZA               ; 6204
+                      ; KMT                     ; MATANZAS                ; 6205
+                      ; KPB                     ; PUNTA BARRANCA          ; 6205
+                      ; KPP                     ; PUNTA PERRO             ; 6205
+                      ; KPU                     ; PUERTECILLO             ; 6205
+                      ; KRC                     ; CORNECHE                ; 6205
+                      ; KSE                     ; SAN ENRIQUE             ; 6205
+                      ; KVP                     ; SAN VICENTE DE PUCAL    ; 6205
+                      ; NAV                     ; NAVIDAD                 ; 6205
+                      ; RPL                     ; RAPEL - MELIPILLA       ; 6205
+                      ; ZRW                     ; LA BOCA - MELIPILLA     ; 6205
+                      ; BYY                     ; BOYERUCA                ; 6206
+                      ; LVQ                     ; LO VALDIVIA             ; 6206
+                      ; PDS                     ; PAREDONES               ; 6206
+                      ; PRM                     ; BUCALEMU - RANCAGUA     ; 6206
+                      ; AQB                     ; AGUA BUENA              ; 6301
+                      ; LRF                     ; LA RUFINA               ; 6301
+                      ; RMY                     ; ROMA                    ; 6301
+                      ; RPT                     ; PUENTE NEGRO            ; 6301
+                      ; RTE                     ; TERMAS DE CAUQUENES     ; 6301
+                      ; SFR                     ; SAN FERNANDO            ; 6301
+                      ; TGR                     ; TINGUIRIRICA            ; 6301
+                      ; TZF                     ; TERMAS DEL FLACO        ; 6301
+                      ; TZT                     ; TROMPETILLA             ; 6301
+                      ; ZSB                     ; SIERRA BELLAVISTA       ; 6301
+                      ; AQQ                     ; AUQUINCO                ; 6302
+                      ; CHE                     ; CHEPICA                 ; 6302
+                      ; QQW                     ; QUINAHUE - CURICO       ; 6302
+                      ; CHB                     ; CHIMBARONGO             ; 6303
+                      ; CVQ                     ; CONVENTO VIEJO          ; 6303
+                      ; HXO                     ; HUEMUL                  ; 6303
+                      ; MOX                     ; MORZA                   ; 6303
+                      ; QPX                     ; QUINTA                  ; 6303
+                      ; EGQ                     ; EL GUAICO               ; 6304
+                      ; LOL                     ; LOLOL                   ; 6304
+                      ; RQQ                     ; RANGUIL                 ; 6304
+                      ; SPW                     ; SAN PEDRO - RANCAGUA    ; 6304
+                      ; NGA                     ; NANCAGUA                ; 6305
+                      ; PLA                     ; PALMILLA - RANCAGUA     ; 6306
+                      ; LHX                     ; LIHUEIMO                ; 6307
+                      ; RQT                     ; POBLACION               ; 6307
+                      ; ZPE                     ; PERALILLO - RANCAGUA    ; 6307
+                      ; PLL                     ; PLACILLA - RANCAGUA     ; 6308
+                      ; PMQ                     ; PUMANQUE                ; 6309
+                      ; RNI                     ; NILAHUE                 ; 6309
+                      ; LLW                     ; LA LAJUELA              ; 6310
+                      ; PHU                     ; PANIAHUE                ; 6310
+                      ; RNH                     ; NERQUIHUE               ; 6310
+                      ; RQY                     ; RINCONADA DE YAQUIL     ; 6310
+                      ; ZCU                     ; CUNACO                  ; 6310
+                      ; ZSC                     ; SANTA CRUZ              ; 6310
+                      ; ZBO                     ; BOTALCURA               ; 7101
+                      ; ZCA                     ; TALCA                   ; 7101
+                      ; ZCE                     ; CURTIDURIA              ; 7101
+                      ; ZCL                     ; COLIN                   ; 7101
+                      ; ZNM                     ; CORINTO                 ; 7101
+                      ; CTT                     ; CONSTITUCION            ; 7102
+                      ; PUU                     ; PUTU                    ; 7102
+                      ; ZJU                     ; JUNQUILLAR              ; 7102
+                      ; ZQI                     ; QUIVOLGO                ; 7102
+                      ; CUR                     ; CUREPTO                 ; 7103
+                      ; XLA                     ; LA LORA                 ; 7103
+                      ; EMP                     ; EMPEDRADO               ; 7104
+                      ; ZNI                     ; NIRIVILO                ; 7104
+                      ; UAO                     ; DUAO                    ; 7105
+                      ; ZMA                     ; MAULE                   ; 7105
+                      ; PLC                     ; PELARCO                 ; 7106
+                      ; ZAS                     ; ASTILLERO               ; 7106
+                      ; PEH                     ; PENCAHUE                ; 7107
+                      ; ZBA                     ; BATUCO - TALCA          ; 7107
+                      ; ZCP                     ; COIPUE                  ; 7107
+                      ; ZGU                     ; GUALLECO                ; 7107
+                      ; ZKQ                     ; PICHAMAN                ; 7107
+                      ; CUM                     ; CUMPEO                  ; 7108
+                      ; RCL                     ; RIO CLARO - TALCA       ; 7108
+                      ; ZIK                     ; ITAHUE                  ; 7108
+                      ; BWP                     ; ARMERILLO               ; 7109
+                      ; STE                     ; SAN CLEMENTE            ; 7109
+                      ; XPS                     ; PASO NEVADO             ; 7109
+                      ; ZAU                     ; AURORA                  ; 7109
+                      ; ZCS                     ; CORRALONES              ; 7109
+                      ; ZED                     ; ENDESA                  ; 7109
+                      ; ZEL                     ; EL COLORADO             ; 7109
+                      ; ZLG                     ; LAS GARZAS              ; 7109
+                      ; ZLM                     ; LA MINA                 ; 7109
+                      ; CUT                     ; LITU                    ; 7110
+                      ; SRF                     ; SAN RAFAEL              ; 7110
+                      ; CQE                     ; CAUQUENES               ; 7201
+                      ; XEI                     ; PASO HONDO - TALCA      ; 7201
+                      ; XHR                     ; HUALVE                  ; 7201
+                      ; XNY                     ; LOS NABOS               ; 7201
+                      ; XQL                     ; QUELLA                  ; 7201
+                      ; ZHH                     ; LOS PERALES             ; 7201
+                      ; ZUV                     ; UNICAVEN                ; 7201
+                      ; CNC                     ; CHANCO                  ; 7202
+                      ; CNP                     ; CURANIPE                ; 7202
+                      ; PEL                     ; PELLUHUE                ; 7203
+                      ; CCO                     ; CURICO                  ; 7301
+                      ; LNH                     ; LOS NICHES              ; 7301
+                      ; PTG                     ; POTRERO GRANDE          ; 7301
+                      ; ZPA                     ; MONTE OSCURO            ; 7301
+                      ; ZQH                     ; QUEBRADA HONDA          ; 7301
+                      ; ZUO                     ; UPEO                    ; 7301
+                      ; HNE                     ; HUALANE                 ; 7302
+                      ; LCT                     ; LICANTEN                ; 7303
+                      ; ADW                     ; ADUANA                  ; 7304
+                      ; LTE                     ; LONTUE                  ; 7304
+                      ; XXR                     ; RADAL - CURICO          ; 7304
+                      ; XYY                     ; YACEL                   ; 7304
+                      ; ZMO                     ; MOLINA                  ; 7304
+                      ; RAU                     ; RAUCO                   ; 7305
+                      ; SAR                     ; TRINCAO - CURICO        ; 7305
+                      ; XQB                     ; PALQUIBUDA              ; 7305
+                      ; RML                     ; ROMERAL                 ; 7306
+                      ; XPC                     ; POTRERO GRANDE CHICO    ; 7306
+                      ; XPO                     ; EL PLANCHON             ; 7306
+                      ; ZQX                     ; LOS QUENES              ; 7306
+                      ; SFA                     ; SAGRADA FAMILIA         ; 7307
+                      ; ZVO                     ; VILLA PRAT              ; 7307
+                      ; LMN                     ; LA MONTANA              ; 7308
+                      ; TEN                     ; TENO                    ; 7308
+                      ; XMM                     ; EL MANZANO - CURICO     ; 7308
+                      ; XQP                     ; CULENAR                 ; 7308
+                      ; ZRB                     ; REBECA                  ; 7308
+                      ; BCH                     ; PICHIBUDI               ; 7309
+                      ; ILO                     ; ILOCA                   ; 7309
+                      ; VCH                     ; VICHUQUEN               ; 7309
+                      ; ZLT                     ; LA TRINCHERA            ; 7309
+                      ; ZVU                     ; LIPIMAVIDA              ; 7309
+                      ; ZYC                     ; LLICO - CURICO          ; 7309
+                      ; ADJ                     ; ADUANA PEJERREY         ; 7401
+                      ; CPQ                     ; CAMPAMENTO ANCOA        ; 7401
+                      ; LNR                     ; LINARES                 ; 7401
+                      ; XBL                     ; LLEPO                   ; 7401
+                      ; XMK                     ; MELADO                  ; 7401
+                      ; XPE                     ; PALMILLA                ; 7401
+                      ; XRI                     ; ROBLERIA                ; 7401
+                      ; XRX                     ; LOS RABONES             ; 7401
+                      ; XSE                     ; EL SALTO                ; 7401
+                      ; ZMI                     ; MIRAFLORES - TALCA      ; 7401
+                      ; BYQ                     ; BARRERA                 ; 7402
+                      ; CLB                     ; COLBUN                  ; 7402
+                      ; ZSN                     ; SANTA ANA               ; 7402
+                      ; LGV                     ; LONGAVI                 ; 7403
+                      ; XLY                     ; LOS CRISTALES           ; 7403
+                      ; XME                     ; MESAMAVIDA              ; 7403
+                      ; XTD                     ; EL TRANSITO - TALCA     ; 7403
+                      ; ZMG                     ; MELAO                   ; 7403
+                      ; ZVS                     ; VILLA SECA              ; 7403
+                      ; JJZ                     ; AJIAL                   ; 7404
+                      ; LLZ                     ; BULLILLEO               ; 7404
+                      ; PQQ                     ; PERQUILAUQUEN           ; 7404
+                      ; PRR                     ; PARRAL                  ; 7404
+                      ; PXQ                     ; EL PENON - TALCA        ; 7404
+                      ; QQH                     ; QUINCHIMAVIDA           ; 7404
+                      ; SZS                     ; SAN PABLO               ; 7404
+                      ; TQC                     ; TERMAS DE CATILLO       ; 7404
+                      ; VZQ                     ; VILLA ROSAS             ; 7404
+                      ; RTR                     ; RETIRO - TALCA          ; 7405
+                      ; SJA                     ; SAN JAVIER              ; 7406
+                      ; ARB                     ; ARBOLILLO               ; 7407
+                      ; VGE                     ; VILLA ALEGRE - TALCA    ; 7407
+                      ; XMD                     ; MELOZAL                 ; 7407
+                      ; ZLJ                     ; LAS CAMPANAS            ; 7407
+                      ; PNV                     ; PANIMAVIDA              ; 7408
+                      ; YBB                     ; YERBAS BUENAS           ; 7408
+                      ; ZQV                     ; QUINMAVIDA              ; 7408
+                      ; CCP                     ; CONCEPCION              ; 8101
+                      ; GUO                     ; RANGUELMO               ; 8101
+                      ; CRN                     ; CORONEL                 ; 8102
+                      ; CYE                     ; CHIGUAYANTE             ; 8103
+                      ; FLO                     ; FLORIDA                 ; 8104
+                      ; ZGG                     ; AGUAS DE LA GLORIA      ; 8104
+                      ; ZUM                     ; COPIULEMU               ; 8104
+                      ; CTV                     ; TALCAMAVIDA             ; 8105
+                      ; HLQ                     ; HUALQUI                 ; 8105
+                      ; ZIQ                     ; QUILACOYA               ; 8105
+                      ; LOT                     ; LOTA                    ; 8106
+                      ; LIR                     ; LIRQUEN                 ; 8107
+                      ; PCO                     ; PENCO                   ; 8107
+                      ; ZRO                     ; ROA                     ; 8107
+                      ; SPP                     ; SAN PEDRO DE LA PAZ     ; 8108
+                      ; SJN                     ; SANTA JUANA             ; 8109
+                      ; IQR                     ; ISLA QUIRIQUINA         ; 8110
+                      ; RTH                     ; RANCHO TALCAHUANO       ; 8110
+                      ; SVC                     ; SAN VICENTE             ; 8110
+                      ; ZTO                     ; TALCAHUANO              ; 8110
+                      ; DTO                     ; DICHATO                 ; 8111
+                      ; TMC                     ; TOME                    ; 8111
+                      ; ZQW                     ; MENQUE                  ; 8111
+                      ; ZRA                     ; RAFAEL                  ; 8111
+                      ; ZTT                     ; VEGAS DE ITATA          ; 8111
+                      ; HLP                     ; HUALPEN                 ; 8112
+                      ; ZBB                     ; LA BOCA - CONCEPCION    ; 8112
+                      ; MLC                     ; CURACO - CONCEPCION     ; 8201
+                      ; ZBL                     ; SARA DE LEBU            ; 8201
+                      ; ZLB                     ; LEBU                    ; 8201
+                      ; ZNG                     ; MILLONHUE               ; 8201
+                      ; ZPQ                     ; PEHUEN                  ; 8201
+                      ; ZQA                     ; QUINAHUE - CONCEPCIO    ; 8201
+                      ; ZRQ                     ; RANQUILCO               ; 8201
+                      ; ZYR                     ; RUCARAQUIL              ; 8201
+                      ; ZYY                     ; YENECO                  ; 8201
+                      ; ARA                     ; ARAUCO                  ; 8202
+                      ; LAQ                     ; LARAQUETE               ; 8202
+                      ; PAN                     ; CARAMPANGUE             ; 8202
+                      ; VAG                     ; VILLA ALEGRE - CONCE    ; 8202
+                      ; ZBC                     ; EL BOLDO                ; 8202
+                      ; ZCF                     ; LLICO - CONCEPCION      ; 8202
+                      ; ZMD                     ; RAMADILLA               ; 8202
+                      ; ZQR                     ; QUIDICO - CONCEPCION    ; 8202
+                      ; ZUQ                     ; RAQUI                   ; 8202
+                      ; CFF                     ; SAN ALFONSO - CONCEP    ; 8203
+                      ; CTE                     ; CANETE                  ; 8203
+                      ; ZZW                     ; CAYUCUPIL               ; 8203
+                      ; CTU                     ; CONTULMO                ; 8204
+                      ; ZQG                     ; ANTIQUINA               ; 8204
+                      ; ZWE                     ; RINCONADA - CONCEPCI    ; 8204
+                      ; SJL                     ; SAN JOSE DE COLICO      ; 8205
+                      ; ZHE                     ; CURANILAHUE             ; 8205
+                      ; LAL                     ; LOS ALAMOS              ; 8206
+                      ; ZNT                     ; ANTIGUALA               ; 8206
+                      ; ZTP                     ; TRES PINOS              ; 8206
+                      ; ZWP                     ; PILPILCO                ; 8206
+                      ; PLO                     ; PAILACO                 ; 8207
+                      ; TUA                     ; TIRUA                   ; 8207
+                      ; ZDQ                     ; QUIDICO - TEMUCO        ; 8207
+                      ; LEL                     ; EL ALAMO                ; 8301
+                      ; LSQ                     ; LOS ANGELES             ; 8301
+                      ; LST                     ; SANTA CLARA             ; 8301
+                      ; SCP                     ; SAN CARLOS PUREN - L    ; 8301
+                      ; SCW                     ; SAN CARLOS PUREN - L    ; 8301
+                      ; ANT                     ; ANTUCO                  ; 8302
+                      ; LEA                     ; EL ABANICO              ; 8302
+                      ; LLB                     ; LOS BARROS              ; 8302
+                      ; LTW                     ; EL TORO                 ; 8302
+                      ; CLA                     ; SANTA CLARA             ; 8303
+                      ; CRO                     ; CABRERO                 ; 8303
+                      ; PHY                     ; PASO HONDO              ; 8303
+                      ; TMK                     ; TOMECO                  ; 8303
+                      ; YCR                     ; PASO HONDO - CHILLAN    ; 8303
+                      ; YCU                     ; LIUCURA                 ; 8303
+                      ; LCI                     ; COLONIA                 ; 8304
+                      ; LLJ                     ; LAJA                    ; 8304
+                      ; LEV                     ; EL AVELLANO             ; 8305
+                      ; LLM                     ; MAITENES                ; 8305
+                      ; LMR                     ; EL MORRO                ; 8305
+                      ; LSM                     ; SAN MIGUEL              ; 8305
+                      ; LZX                     ; LOS MAICAS              ; 8305
+                      ; MEA                     ; MELICA                  ; 8305
+                      ; MUL                     ; MULCHEN                 ; 8305
+                      ; CIO                     ; CHOROICO                ; 8306
+                      ; LCE                     ; COIHUE                  ; 8306
+                      ; LDQ                     ; DIUQUIN                 ; 8306
+                      ; LSF                     ; SANTA FE                ; 8306
+                      ; NAC                     ; NACIMIENTO              ; 8306
+                      ; PGS                     ; PROGRESO                ; 8306
+                      ; NRE                     ; NEGRETE                 ; 8307
+                      ; RIE                     ; RIHUE                   ; 8307
+                      ; ANI                     ; ALTO CALEDONIA          ; 8308
+                      ; LCP                     ; CERRO DEL PADRE         ; 8308
+                      ; LGE                     ; LONCOPANGUE             ; 8308
+                      ; LRH                     ; RUCALHUE                ; 8308
+                      ; QCO                     ; QUILACO                 ; 8308
+                      ; CNT                     ; CANTERAS                ; 8309
+                      ; CRA                     ; CANICURA                ; 8309
+                      ; LVM                     ; VILLA MERCEDES          ; 8309
+                      ; QLO                     ; QUILLECO                ; 8309
+                      ; LBQ                     ; BUENURAQUI              ; 8310
+                      ; SRO                     ; SAN ROSENDO             ; 8310
+                      ; COC                     ; LOLCO                   ; 8311
+                      ; LBO                     ; LOS PLACERES            ; 8311
+                      ; LBS                     ; LOS BRUJOS              ; 8311
+                      ; LGH                     ; EL GUACHI               ; 8311
+                      ; LNV                     ; LAS NIEVES              ; 8311
+                      ; LVU                     ; VILLUCURA               ; 8311
+                      ; SBB                     ; SANTA BARBARA           ; 8311
+                      ; HUP                     ; HUEPIL                  ; 8312
+                      ; LPO                     ; POLCURA                 ; 8312
+                      ; LTP                     ; TRUPAN                  ; 8312
+                      ; TCP                     ; TUCAPEL                 ; 8312
+                      ; AOO                     ; ALTO BIO BIO            ; 8314
+                      ; EYY                     ; ESTACION YUMBEL         ; 8313
+                      ; LRC                     ; RIO CLARO - LOS ANGE    ; 8313
+                      ; RCO                     ; RALCO                   ; 8314
+                      ; ZLA                     ; MONTE AGUILA            ; 8313
+                      ; ZLL                     ; PANGUE                  ; 8314
+                      ; ZLN                     ; RALCO LEPOY             ; 8314
+                      ; ZOT                     ; CASA LOLCO              ; 8314
+                      ; ZRI                     ; COMUNIDAD CANICU        ; 8314
+                      ; ZTV                     ; TERMAS DEL AVELLANO     ; 8314
+                      ; ZYU                     ; YUMBEL                  ; 8313
+                      ; YAI                     ; CHILLAN                 ; 8401
+                      ; BLN                     ; BULNES                  ; 8402
+                      ; QML                     ; QUINCHAMALI             ; 8402
+                      ; CQU                     ; COBQUECURA              ; 8403
+                      ; YBU                     ; BUCHUPUREO              ; 8403
+                      ; YPL                     ; PULLAY                  ; 8403
+                      ; ZCG                     ; SAN IGNACIO - CONCEP    ; 8404
+                      ; ZER                     ; RAQUIL                  ; 8404
+                      ; ZIR                     ; CONAIR                  ; 8404
+                      ; ZNA                     ; NUEVA ALDEA             ; 8404
+                      ; ZNY                     ; NIPAS                   ; 8404
+                      ; ZOU                     ; COELEMU                 ; 8404
+                      ; CUH                     ; COIHUECO                ; 8405
+                      ; FRQ                     ; FUNDO LOS ROBLES        ; 8405
+                      ; LQP                     ; LA CAPILLA - CHILLAN    ; 8405
+                      ; MPD                     ; MINAS DEL PRADO         ; 8405
+                      ; YTA                     ; TANILVORO               ; 8405
+                      ; YAV                     ; CHILLAN VIEJO           ; 8406
+                      ; YRU                     ; RUCAPEQUEN              ; 8406
+                      ; QNA                     ; QUIRIQUINA              ; 8407
+                      ; YCX                     ; EL CARMEN - CHILLAN     ; 8407
+                      ; YLO                     ; LOS CASTANOS            ; 8407
+                      ; YPU                     ; PUEBLO SECO             ; 8407
+                      ; YTU                     ; TREGUALEMU              ; 8407
+                      ; NIN                     ; NINHUE                  ; 8408
+                      ; YCN                     ; CANCHA ALEGRE           ; 8408
+                      ; YCO                     ; COIPIN                  ; 8408
+                      ; YEL                     ; EL PARRON               ; 8408
+                      ; YPO                     ; POCILLAS                ; 8408
+                      ; YTR                     ; TORRECILLA              ; 8408
+                      ; NYY                     ; NIQUEN                  ; 8409
+                      ; SQZ                     ; SAN PEDRO - CHILLAN     ; 8410
+                      ; YGE                     ; GENERAL CRUZ            ; 8410
+                      ; ZPC                     ; PEMUCO                  ; 8410
+                      ; PNO                     ; PINTO                   ; 8411
+                      ; 49H                     ; PORTEZUELO              ; 8412
+                      ; YCF                     ; CONFLUENCIA             ; 8412
+                      ; QLL                     ; QUILLON                 ; 8413
+                      ; QIH                     ; QUIRIHUE                ; 8414
+                      ; RNQ                     ; RANQUIL                 ; 8415
+                      ; SCS                     ; SAN CARLOS - CHILLAN    ; 8416
+                      ; YCA                     ; CACHAPOAL - CHILLAN     ; 8416
+                      ; YES                     ; EL SAUCE                ; 8416
+                      ; YNA                     ; NAHUELTORO              ; 8416
+                      ; YSN                     ; SAN GREGORIO NIQUEN     ; 8416
+                      ; YZE                     ; ZEMITA                  ; 8416
+                      ; SFB                     ; SAN FABIAN DE ALICO     ; 8417
+                      ; YLA                     ; LA PUNTILLA             ; 8417
+                      ; YLP                     ; LOS PUQUIOS             ; 8417
+                      ; SIG                     ; SAN IGNACIO - CHILLA    ; 8418
+                      ; SMW                     ; SAN MIGUEL              ; 8418
+                      ; YLS                     ; LAS TRANCAS             ; 8418
+                      ; YRE                     ; RECINTO                 ; 8418
+                      ; YTE                     ; TERMAS DE CHILLAN       ; 8418
+                      ; ZAY                     ; ZAPALLAR - CHILLAN      ; 8418
+                      ; SNL                     ; SAN NICOLAS             ; 8419
+                      ; YCL                     ; COLMUYAO                ; 8420
+                      ; YME                     ; MELA                    ; 8420
+                      ; TRH                     ; TREHUACO                ; 8420
+                      ; YCH                     ; CHOLGUAN                ; 8421
+                      ; YCM                     ; CAMPANARIO              ; 8421
+                      ; YEY                     ; EL SALTILLO             ; 8421
+                      ; YGY                     ; YUNGAY                  ; 8421
+                      ; ZPP                     ; PANGAL - LOS ANGELES    ; 8421
+                      ; CJN                     ; CAJON                   ; 9101
+                      ; LZA                     ; LABRANZA                ; 9101
+                      ; MQH                     ; MAQUEHUE                ; 9101
+                      ; MTR                     ; METRENCO                ; 9101
+                      ; ZCO                     ; TEMUCO                  ; 9101
+                      ; ZGE                     ; GENERAL LOPEZ           ; 9101
+                      ; ZUN                     ; PILLANLELBUN            ; 9101
+                      ; CRH                     ; CARAHUE                 ; 9102
+                      ; VAC                     ; CAMARONES - TEMUCO      ; 9102
+                      ; VZA                     ; VILLA ARAUCANIA         ; 9102
+                      ; ZLE                     ; LOBERIA                 ; 9102
+                      ; ZNH                     ; NEHUENTUE               ; 9102
+                      ; ZTK                     ; TROVOLHUE               ; 9102
+                      ; MFN                     ; PLAYA NEGRA             ; 9103
+                      ; NCO                     ; CUNCO                   ; 9103
+                      ; PPM                     ; PUERTO PUMA             ; 9103
+                      ; ZHL                     ; HELO SUR                ; 9103
+                      ; ZLH                     ; LAS HORTENCIAS          ; 9103
+                      ; ZSO                     ; LOS LAURELES            ; 9103
+                      ; ZTB                     ; TERMAS DE SAN SEBAST    ; 9103
+                      ; GAR                     ; TERMAS DE PANGUI        ; 9104
+                      ; PUE                     ; PUESCO                  ; 9104
+                      ; RRH                     ; CURARREHUE              ; 9104
+                      ; TSL                     ; TERMAS DE SAN LUIS      ; 9104
+                      ; ZGO                     ; REIGOLIL                ; 9104
+                      ; FIE                     ; FREIRE                  ; 9105
+                      ; MBA                     ; MISION BOROA            ; 9105
+                      ; QUP                     ; QUEPE                   ; 9105
+                      ; GAL                     ; GALVARINO               ; 9106
+                      ; ZXR                     ; RUCATRARO               ; 9106
+                      ; GEA                     ; GORBEA                  ; 9107
+                      ; ZLR                     ; LASTARRIA               ; 9107
+                      ; ZQT                     ; QUITRATUE               ; 9107
+                      ; AST                     ; AGUA SANTA              ; 9108
+                      ; CAU                     ; PUA                     ; 9108
+                      ; CLU                     ; COLONIA LAUTARO         ; 9108
+                      ; LTR                     ; LAUTARO                 ; 9108
+                      ; ZLD                     ; LOS PRADOS              ; 9108
+                      ; ZRT                     ; RETEN DOLLINCO          ; 9108
+                      ; CRS                     ; CRUCES                  ; 9109
+                      ; LOC                     ; LONCOCHE                ; 9109
+                      ; MLP                     ; MELIPEUCO               ; 9110
+                      ; ZIC                     ; ICALMA                  ; 9110
+                      ; ZLV                     ; LOMACURA                ; 9110
+                      ; ZMY                     ; TERMAS DE MOLULCO       ; 9110
+                      ; BOA                     ; BOROA                   ; 9111
+                      ; NIP                     ; NUEVA IMPERIAL          ; 9111
+                      ; ZGV                     ; ALMAGRO                 ; 9111
+                      ; PCS                     ; PADRE LAS CASAS         ; 9112
+                      ; ZEA                     ; EL ALAMBRADO            ; 9112
+                      ; PQO                     ; PERQUENCO               ; 9113
+                      ; SSO                     ; SELVA OSCURA            ; 9113
+                      ; PQN                     ; PITRUFQUEN              ; 9114
+                      ; ZLK                     ; RADAL - TEMUCO          ; 9114
+                      ; SSP                     ; SAN PEDRO - TEMUCO      ; 9115
+                      ; ZCB                     ; CABURGUA                ; 9115
+                      ; ZMT                     ; TERMAS DE MENETUE       ; 9115
+                      ; ZPU                     ; PUCON                   ; 9115
+                      ; ZRE                     ; REFUGIO                 ; 9115
+                      ; ZTM                     ; TERMAS DE PALGUIN       ; 9115
+                      ; ZTR                     ; TERMAS DE HUIFE         ; 9115
+                      ; ZTZ                     ; HUIFE                   ; 9115
+                      ; BBD                     ; BOCA BUDI               ; 9116
+                      ; ZPS                     ; PUERTO SAAVEDRA         ; 9116
+                      ; PEC                     ; PELECO                  ; 9117
+                      ; TEO                     ; TEODORO SCHMIDT         ; 9117
+                      ; ZBR                     ; BARROS ARANA            ; 9117
+                      ; ZPM                     ; PUERTO DOMINGUEZ        ; 9117
+                      ; TOL                     ; TOLTEN                  ; 9118
+                      ; UAL                     ; HUALPIN                 ; 9118
+                      ; ZCM                     ; COMUY                   ; 9118
+                      ; ZQL                     ; QUILQUE                 ; 9118
+                      ; VIL                     ; VILCUN                  ; 9119
+                      ; ZCC                     ; CHERQUENCO              ; 9119
+                      ; ZRF                     ; REFUGIO LLAIMA          ; 9119
+                      ; ZSP                     ; SAN PATRICIO            ; 9119
+                      ; VRR                     ; VILLARRICA              ; 9120
+                      ; ZHS                     ; HUISCAPI                ; 9120
+                      ; ZPD                     ; PEDREGOSO               ; 9120
+                      ; CHL                     ; CHOLCHOL                ; 9121
+                      ; LLH                     ; MAITENREHUE             ; 9201
+                      ; LVB                     ; VEGAS BLANCAS           ; 9201
+                      ; PDA                     ; PIEDRA DEL AGUILA       ; 9201
+                      ; ZOL                     ; ANGOL                   ; 9201
+                      ; CDA                     ; CANADA                  ; 9202
+                      ; CPI                     ; COLLIPULLI              ; 9202
+                      ; EAG                     ; EL AMARGO               ; 9202
+                      ; HDF                     ; CURACO                  ; 9202
+                      ; LLE                     ; LOLENCO                 ; 9202
+                      ; LYY                     ; NANCO                   ; 9202
+                      ; MTW                     ; TERMAS DE PEMEHUE       ; 9202
+                      ; TTE                     ; TRINTRE                 ; 9202
+                      ; ZPB                     ; PORVENIR                ; 9202
+                      ; CCC                     ; CURACAUTIN              ; 9203
+                      ; ZBN                     ; LA SOMBRA               ; 9203
+                      ; ZMN                     ; MANZANAR                ; 9203
+                      ; ZOH                     ; MALALCAHUELO            ; 9203
+                      ; ZTS                     ; TERMAS DE RIO BLANCO    ; 9203
+                      ; ERL                     ; ERCILLA                 ; 9204
+                      ; ZPH                     ; PAILAHUENQUE            ; 9204
+                      ; IRA                     ; LIUCURA - TEMUCO        ; 9205
+                      ; LLN                     ; LOLEN                   ; 9205
+                      ; LQY                     ; LONQUIMAY               ; 9205
+                      ; ZQN                     ; QUINQUEN                ; 9205
+                      ; ZSI                     ; SIERRA NEVADA           ; 9205
+                      ; ZTY                     ; TROYO                   ; 9205
+                      ; NNH                     ; NAHUELVE                ; 9206
+                      ; SUS                     ; LOS SAUCES              ; 9206
+                      ; SZZ                     ; SANTA ROSA - TEMUCO     ; 9206
+                      ; ZCT                     ; CENTENARIO              ; 9206
+                      ; CPP                     ; CAPITAN PASTENE         ; 9207
+                      ; LUM                     ; LUMACO                  ; 9207
+                      ; ZNN                     ; PICHIPELLAHUEN          ; 9207
+                      ; ZRL                     ; RELUN                   ; 9207
+                      ; PUR                     ; PUREN - TEMUCO          ; 9208
+                      ; LTJ                     ; TIJERAL                 ; 9209
+                      ; MNC                     ; MININCO                 ; 9209
+                      ; RNA                     ; RENAICO                 ; 9209
+                      ; ZEN                     ; TRAIGUEN                ; 9210
+                      ; ZQE                     ; QUECHEREGUAS            ; 9210
+                      ; VIC                     ; VICTORIA                ; 9211
+                      ; ZJM                     ; LAS MARIPOSAS - TEMU    ; 9211
+                      ; ZTD                     ; TERMAS DE TOLHUACA      ; 9211
+                      ; ZTQ                     ; TRES ESQUINAS           ; 9211
+                      ; ALE                     ; ALERCE                  ; 10101
+                      ; ETL                     ; EL TEPUAL               ; 10101
+                      ; PCA                     ; CALETA LA ARENA         ; 10101
+                      ; PCT                     ; CORRENTOSO              ; 10101
+                      ; PLW                     ; LENCA                   ; 10101
+                      ; PMC                     ; PUERTO MONTT            ; 10101
+                      ; PTE                     ; QUILLAIPE               ; 10101
+                      ; PZH                     ; CHAMIZA                 ; 10101
+                      ; RPM                     ; RANCHO PUERTO MONTT     ; 10101
+                      ; CBU                     ; CALBUCO                 ; 10102
+                      ; PXY                     ; HUELMO                  ; 10102
+                      ; CMO                     ; COCHAMO                 ; 10103
+                      ; PBS                     ; BANOS DE SOTOMO         ; 10103
+                      ; PPL                     ; PUELO                   ; 10103
+                      ; PRA                     ; RALUN                   ; 10103
+                      ; PWA                     ; EL BARRACO              ; 10103
+                      ; PWC                     ; CANUTILLAR              ; 10103
+                      ; PWZ                     ; ROLLIZO                 ; 10103
+                      ; FSA                     ; FRESIA                  ; 10104
+                      ; PMA                     ; MAICHIHUE               ; 10104
+                      ; PPD                     ; PARGA                   ; 10104
+                      ; FRT                     ; FRUTILLAR               ; 10105
+                      ; ZPY                     ; PARAGUAY                ; 10105
+                      ; ZTG                     ; TEGUALDA                ; 10105
+                      ; LLA                     ; LOLCURA                 ; 10106
+                      ; LMU                     ; LOS MUERMOS             ; 10106
+                      ; PLS                     ; LAS QUEMAS              ; 10106
+                      ; PWF                     ; RIO FRIO                ; 10106
+                      ; LLQ                     ; LLANQUIHUE              ; 10107
+                      ; LNT                     ; LONCOTORO               ; 10107
+                      ; PCL                     ; COLEGUAL - PUERTO MO    ; 10107
+                      ; PWT                     ; LOS PELLINES - PUERT    ; 10107
+                      ; CRU                     ; CARELMAPU               ; 10108
+                      ; MAU                     ; MAULLIN                 ; 10108
+                      ; MSQ                     ; MISQUIHUE               ; 10108
+                      ; PPA                     ; PANGAL - PUERTO MONT    ; 10108
+                      ; PPP                     ; PUELPUN                 ; 10108
+                      ; ZGA                     ; PARGUA                  ; 10108
+                      ; ENS                     ; ENSENADA                ; 10109
+                      ; NBR                     ; NUEVA BRAUNAU           ; 10109
+                      ; OSC                     ; LOS RISCOS              ; 10109
+                      ; PTH                     ; PETROHUE                ; 10109
+                      ; PWP                     ; LA POSA                 ; 10109
+                      ; RIS                     ; RIO SUR                 ; 10109
+                      ; ZPV                     ; PUERTO VARAS            ; 10109
+                      ; CGE                     ; CURAHUE                 ; 10201
+                      ; CTR                     ; CASTRO                  ; 10201
+                      ; PAB                     ; ABTAO                   ; 10201
+                      ; ACD                     ; ANCUD                   ; 10202
+                      ; CAO                     ; CHACAO                  ; 10202
+                      ; CHG                     ; CAULIN                  ; 10202
+                      ; GBN                     ; GUALBUN                 ; 10202
+                      ; PQT                     ; QUETELMAHUE             ; 10202
+                      ; CUO                     ; CUCAO                   ; 10203
+                      ; PDN                     ; CHADMO CENTRAL          ; 10203
+                      ; PTU                     ; TEUPA                   ; 10203
+                      ; ZCH                     ; CHONCHI                 ; 10203
+                      ; CVL                     ; CURACO DE VELEZ         ; 10204
+                      ; QCH                     ; QUINCHAO                ; 10204
+                      ; DLE                     ; DALCAHUE                ; 10205
+                      ; JJN                     ; SAN JUAN                ; 10205
+                      ; PAT                     ; ALTO BUTALCURA          ; 10205
+                      ; PME                     ; MECHUQUE                ; 10205
+                      ; QIA                     ; QUICAVI                 ; 10205
+                      ; ADO                     ; ALDACHILDO              ; 10206
+                      ; PQE                     ; PUQUELDON               ; 10206
+                      ; AHI                     ; AHONI                   ; 10207
+                      ; PCN                     ; CONTAY                  ; 10207
+                      ; PPU                     ; PAILDAD                 ; 10207
+                      ; PWU                     ; AITUI                   ; 10207
+                      ; QLE                     ; QUEILEN                 ; 10207
+                      ; PHI                     ; HUILDAD                 ; 10208
+                      ; PWD                     ; TRINCAO - CASTRO        ; 10208
+                      ; PWI                     ; COINCO - CASTRO         ; 10208
+                      ; PYA                     ; YALDAD                  ; 10208
+                      ; QLN                     ; QUELLON                 ; 10208
+                      ; QUV                     ; QUELLON VIEJO           ; 10208
+                      ; RQL                     ; RANCHO QUELLON          ; 10208
+                      ; HNO                     ; HUILLINCO               ; 10209
+                      ; PAU                     ; AUCAR                   ; 10209
+                      ; PDG                     ; DEGAN                   ; 10209
+                      ; PLI                     ; LINAO                   ; 10209
+                      ; PLU                     ; LLIUCO                  ; 10209
+                      ; PMN                     ; MANAO - CASTRO          ; 10209
+                      ; PZB                     ; BELBEN                  ; 10209
+                      ; PZG                     ; AGUAS  BUENAS           ; 10209
+                      ; QUE                     ; QUEMCHI                 ; 10209
+                      ; APO                     ; APIAO                   ; 10210
+                      ; PHC                     ; CHAULINEC               ; 10210
+                      ; ZAO                     ; ACHAO                   ; 10210
+                      ; OAR                     ; CANCURA                 ; 10301
+                      ; OSD                     ; PICHI DAMAS             ; 10301
+                      ; OSM                     ; LAS LUMAS               ; 10301
+                      ; ZMV                     ; MONTE VERDE             ; 10301
+                      ; ZOS                     ; OSORNO                  ; 10301
+                      ; ZRM                     ; REMEHUE                 ; 10301
+                      ; LDS                     ; LAS CASCADAS            ; 10302
+                      ; OOC                     ; CENTRAL RUPANCO         ; 10302
+                      ; PCY                     ; PUERTO OCTAY            ; 10302
+                      ; PNG                     ; PIEDRAS NEGRAS          ; 10302
+                      ; XPF                     ; PUERTO FONCK            ; 10302
+                      ; ZEP                     ; LOS BAJOS               ; 10302
+                      ; ZPK                     ; PUERTO CLOCKER          ; 10302
+                      ; ZRD                     ; REFUGIO LA PICADA       ; 10302
+                      ; OAM                     ; CASMA                   ; 10303
+                      ; OOR                     ; CRUCERO                 ; 10303
+                      ; OOT                     ; CORTE ALTO              ; 10303
+                      ; PRE                     ; PURRANQUE               ; 10303
+                      ; ZEU                     ; LOS CORRALES            ; 10303
+                      ; ZHY                     ; HUEYUSCA                ; 10303
+                      ; ZIX                     ; CONCORDIA               ; 10303
+                      ; ENL                     ; ENTRE LAGOS             ; 10304
+                      ; OOI                     ; PUERTO RICO             ; 10304
+                      ; PYH                     ; PUYEHUE                 ; 10304
+                      ; ZAA                     ; AGUAS CALIENTES - OS    ; 10304
+                      ; ZAC                     ; ANTICURA                ; 10304
+                      ; ZEE                     ; EL ENCANTO              ; 10304
+                      ; ZEO                     ; EL ISLOTE               ; 10304
+                      ; ZLY                     ; NILQUE                  ; 10304
+                      ; ZPJ                     ; PAJARITOS               ; 10304
+                      ; ZRN                     ; REFUGIO ANTILLANCA      ; 10304
+                      ; ZTH                     ; TERMAS DE PUYEHUE       ; 10304
+                      ; OET                     ; MILLANTUE               ; 10305
+                      ; OOL                     ; CHAHUILCO               ; 10305
+                      ; RNC                     ; RIO NEGRO               ; 10305
+                      ; ZEB                     ; EL BOLSON               ; 10305
+                      ; ZHM                     ; HUILMA                  ; 10305
+                      ; OEH                     ; PUCATRIHUE              ; 10306
+                      ; OOA                     ; CONTACO                 ; 10306
+                      ; OOH                     ; PUAUCHO                 ; 10306
+                      ; SJD                     ; S.JUAN DE LA COSTA      ; 10306
+                      ; ZBH                     ; BAHIA MANSA             ; 10306
+                      ; ZWQ                     ; MAICOLPUE               ; 10306
+                      ; OER                     ; CHIRRE                  ; 10307
+                      ; OLE                     ; PURRAPEL                ; 10307
+                      ; OLO                     ; CARACOL                 ; 10307
+                      ; SPL                     ; SAN PABLO - OSORNO      ; 10307
+                      ; ZFI                     ; FILUCO                  ; 10307
+                      ; PBB                     ; CALETA SANTA BARBARA    ; 10401
+                      ; PBX                     ; BUILL                   ; 10401
+                      ; PCG                     ; CALETA GONZALO          ; 10401
+                      ; PTM                     ; TERMAS EL AMARILLO      ; 10401
+                      ; TCD                     ; PUERTO CARDENAS         ; 10401
+                      ; ZCN                     ; CHAITEN                 ; 10401
+                      ; FTF                     ; FUTALEUFU               ; 10402
+                      ; PIE                     ; PUERTO PIEDRA           ; 10402
+                      ; PLG                     ; LAGO YELCHO             ; 10402
+                      ; PRZ                     ; PUERTO RAMIREZ          ; 10402
+                      ; PVI                     ; VILLA SANTA LUCIA       ; 10402
+                      ; ALN                     ; AULEN                   ; 10403
+                      ; HLH                     ; HUALAIHUE               ; 10403
+                      ; HRP                     ; HORNOPIREN              ; 10403
+                      ; PAY                     ; AYACARA                 ; 10403
+                      ; PCM                     ; CONTAO                  ; 10403
+                      ; PGX                     ; LLANADA GRANDE          ; 10403
+                      ; PHN                     ; HUINAY                  ; 10403
+                      ; PPI                     ; PICHANCO                ; 10403
+                      ; PPR                     ; PRIMER CORRAL           ; 10403
+                      ; PSE                     ; SEGUNDO CORRAL          ; 10403
+                      ; PWQ                     ; CHAPARANO               ; 10403
+                      ; PWS                     ; CHOLGO                  ; 10403
+                      ; PWX                     ; CALETA HUALAIHUE        ; 10403
+                      ; PWY                     ; POYO                    ; 10403
+                      ; TLE                     ; TERMAS DE LLANCATUE     ; 10403
+                      ; PLE                     ; PALENA                  ; 10404
+                      ; PVL                     ; VILLA VANGUARDIA        ; 10404
+                      ; BBA                     ; BALMACEDA               ; 11101
+                      ; BNO                     ; BANO NUEVO              ; 11101
+                      ; GAX                     ; COYHAIQUE ALTO          ; 11101
+                      ; GLS                     ; LAGUNA SAN RAFAEL       ; 11101
+                      ; GNG                     ; NIREGUAO                ; 11101
+                      ; GVZ                     ; VILLA ORTEGA            ; 11101
+                      ; GXQ                     ; COYHAIQUE               ; 11101
+                      ; JUN                     ; LA JUNTA - COYHAIQUE    ; 11102
+                      ; LVE                     ; LAGO VERDE              ; 11102
+                      ; AGR                     ; PUERTO AGUIRRE          ; 11201
+                      ; GMH                     ; MANIHUALES              ; 11201
+                      ; GMT                     ; MINA EL TOQUI           ; 11201
+                      ; GSM                     ; SANTA MARIA DEL MAR     ; 11201
+                      ; GVH                     ; PUERTO GAVIOTA          ; 11201
+                      ; IAU                     ; EL GATO                 ; 11201
+                      ; MHS                     ; VILLA MANIHUALES        ; 11201
+                      ; PCC                     ; PUERTO CHACABUCO        ; 11201
+                      ; WPA                     ; PUERTO AYSEN            ; 11201
+                      ; CNS                     ; CISNES                  ; 11202
+                      ; GLT                     ; LA TAPERA               ; 11202
+                      ; GRC                     ; RIO CISNES              ; 11202
+                      ; GTP                     ; TERMAS DE PUYUHUAPI     ; 11202
+                      ; PCI                     ; PUERTO CISNES           ; 11202
+                      ; VGL                     ; VILLA AMENGUAL          ; 11202
+                      ; YUH                     ; PUYUHUAPI               ; 11202
+                      ; GCA                     ; GUAITECAS               ; 11203
+                      ; GIA                     ; ISLA ANGAMOS            ; 11203
+                      ; GIB                     ; ISLA BENJAMIN           ; 11203
+                      ; GII                     ; ISLA IPUN               ; 11203
+                      ; GIL                     ; ISLA LEVEL              ; 11203
+                      ; GIM                     ; ISLA MELCHOR            ; 11203
+                      ; GIN                     ; ISLA NALCAYEC           ; 11203
+                      ; GIP                     ; ISLA CUPTANA            ; 11203
+                      ; GIV                     ; ISLA VICTORIA           ; 11203
+                      ; GIZ                     ; ISLA IZAZO              ; 11203
+                      ; NKA                     ; MELINKA                 ; 11203
+                      ; ANE                     ; LAGO COCHRANE           ; 11301
+                      ; CCL                     ; COCHRANE                ; 11301
+                      ; GVC                     ; VILLA CHACABUCO         ; 11301
+                      ; GXP                     ; PUERTO HERRADURA        ; 11301
+                      ; OHG                     ; O HIGGINS               ; 11302
+                      ; VOH                     ; VILLA OHIGGINS          ; 11302
+                      ; GIC                     ; ISLA CAMPANA            ; 11303
+                      ; GIY                     ; ISLA PATRICIO LYNCH     ; 11303
+                      ; GMJ                     ; ISLA MERINO JARPA       ; 11303
+                      ; GPY                     ; PUERTO YUNGAY           ; 11303
+                      ; TOR                     ; CALETA TORTEL           ; 11303
+                      ; TRT                     ; TORTEL                  ; 11303
+                      ; CCH                     ; CHILE CHICO             ; 11401
+                      ; GPF                     ; PUERTO FACHINAL         ; 11401
+                      ; GPX                     ; PUERTO MURTA            ; 11401
+                      ; GPZ                     ; PUERTO SANCHEZ          ; 11401
+                      ; PBI                     ; PUERTO BERTRAND         ; 11401
+                      ; PGU                     ; PUERTO GUADAL           ; 11401
+                      ; TGL                     ; PUERTO TRANQUILO        ; 11401
+                      ; GIQ                     ; PUERTO ING.IBANEZ       ; 11402
+                      ; GLV                     ; LEVICAN                 ; 11402
+                      ; RIB                     ; RIO IBANEZ              ; 11402
+                      ; VCC                     ; VILLA CERRO CASTILLO    ; 11402
+                      ; CAB                     ; CABEZA DE MAR           ; 12101
+                      ; ESJ                     ; ESTANCIA SAN JUAN       ; 12101
+                      ; FBL                     ; FUERTE BULNES           ; 12101
+                      ; MPK                     ; MINA PECKET             ; 12101
+                      ; PUQ                     ; PUNTA ARENAS            ; 12101
+                      ; RPU                     ; RANCHO PUNTA ARENAS     ; 12101
+                      ; TCN                     ; TERMINAL CABO NEGRO     ; 12101
+                      ; LBL                     ; LAGUNA BLANCA           ; 12102
+                      ; EVT                     ; ENTRE VIENTOS           ; 12103
+                      ; MRC                     ; MORRO CHICO             ; 12103
+                      ; PPN                     ; PUERTO ALTAMIRANO       ; 12103
+                      ; RGG                     ; RIO GRANDE              ; 12103
+                      ; RVE                     ; RIO VERDE               ; 12103
+                      ; VTT                     ; VILLA TEHUELCHES        ; 12103
+                      ; GKE                     ; GAIKE                   ; 12104
+                      ; MAY                     ; MONTE AYMOND            ; 12104
+                      ; PDU                     ; PUNTA DELGADA           ; 12104
+                      ; PES                     ; ESTANCIA SN GREGORIO    ; 12104
+                      ; PGL                     ; GALLEGOS CHICOS         ; 12104
+                      ; PZA                     ; TERMINAL SAN GREGORI    ; 12104
+                      ; SGG                     ; SAN GREGORIO - PUNTA    ; 12104
+                      ; CEU                     ; CALETA EUGENIA          ; 12201
+                      ; HOR                     ; CABO DE HORNOS          ; 12201
+                      ; INV                     ; ISLA NAVARINO           ; 12201
+                      ; LTA                     ; LAPATAIA                ; 12201
+                      ; PTO                     ; PUERTO TORO             ; 12201
+                      ; PWL                     ; PUERTO WILLIAMS         ; 12201
+                      ; YEN                     ; YENDEGAIA               ; 12201
+                      ; ATC                     ; ANTARTICA               ; 12202
+                      ; ARM                     ; ARMONIA                 ; 12301
+                      ; IDW                     ; ISLA DAWSON             ; 12301
+                      ; PPG                     ; PAMPA GUANACOS          ; 12301
+                      ; PZP                     ; PUERTO PERCY            ; 12301
+                      ; SRU                     ; SECCION RUSSFIN         ; 12301
+                      ; ZPR                     ; PORVENIR - PUNTA ARE    ; 12301
+                      ; CSM                     ; CERRO SOMBRERO          ; 12302
+                      ; ECH                     ; ESTANCIA CHINA CR.      ; 12302
+                      ; ELO                     ; ESTANCIA LOS OLIVOS     ; 12302
+                      ; KSB                     ; SAN SEBASTIAN           ; 12302
+                      ; MTS                     ; MANANTIALES             ; 12302
+                      ; ONA                     ; ONAISIN                 ; 12302
+                      ; PRI                     ; PRIMAVERA               ; 12302
+                      ; QEN                     ; CULLEN                  ; 12302
+                      ; PCX                     ; CAMERON                 ; 12303
+                      ; PPC                     ; PUERTO CONDOR           ; 12303
+                      ; PPY                     ; PUERTO YARTAU           ; 12303
+                      ; PTI                     ; TIMAUKEL                ; 12303
+                      ; UOR                     ; PUERTO ARTURO           ; 12303
+                      ; CEC                     ; CERRO CASTILLO          ; 12401
+                      ; PLJ                     ; LA JUNTA                ; 12401
+                      ; PNT                     ; PUERTO NATALES          ; 12401
+                      ; PPB                     ; PUERTO BORIES           ; 12401
+                      ; RBS                     ; RUBENS                  ; 12401
+                      ; RTT                     ; RIO TURBIO              ; 12401
+                      ; ESV                     ; ESTANCIA VICTORINA      ; 12402
+                      ; PHE                     ; PEHOE                   ; 12402
+                      ; TRP                     ; TORRES DEL PAINE        ; 12402
+                      ; SCL                     ; SANTIAGO                ; 13101
+                      ; RRI                     ; CERRILLOS - SANTIAGO    ; 13102
+                      ; CNV                     ; CERRO NAVIA             ; 13103
+                      ; CNH                     ; CONCHALI                ; 13104
+                      ; EBO                     ; EL BOSQUE               ; 13105
+                      ; ECE                     ; ESTACION CENTRAL        ; 13106
+                      ; HRB                     ; HUECHURABA              ; 13107
+                      ; IDP                     ; INDEPENDENCIA           ; 13108
+                      ; LCN                     ; LA CISTERNA             ; 13109
+                      ; LFD                     ; LA FLORIDA              ; 13110
+                      ; LGJ                     ; LA GRANJA               ; 13111
+                      ; LPT                     ; LA PINTANA              ; 13112
+                      ; LRN                     ; LA REINA                ; 13113
+                      ; LCD                     ; LAS CONDES              ; 13114
+                      ; FAR                     ; FARELLONES              ; 13115
+                      ; LBR                     ; LO BARNECHEA            ; 13115
+                      ; LEP                     ; LO ESPEJO               ; 13116
+                      ; LPR                     ; LO PRADO                ; 13117
+                      ; MAC                     ; MACUL                   ; 13118
+                      ; MAI                     ; MAIPU                   ; 13119
+                      ; NNA                     ; NUNOA                   ; 13120
+                      ; PAC                     ; PEDRO AGUIRRE CERDA     ; 13121
+                      ; PNL                     ; PENALOLEN               ; 13122
+                      ; PRO                     ; PROVIDENCIA             ; 13123
+                      ; AMB                     ; AEROPUERTO ARTURO ME    ; 13124
+                      ; PUD                     ; PUDAHUEL                ; 13124
+                      ; QLC                     ; QUILICURA               ; 13125
+                      ; QTN                     ; QUINTA NORMAL           ; 13126
+                      ; RLT                     ; RECOLETA - SANTIAGO     ; 13127
+                      ; REN                     ; RENCA                   ; 13128
+                      ; SJQ                     ; SAN JOAQUIN             ; 13129
+                      ; SMG                     ; SAN MIGUEL - STGO.      ; 13130
+                      ; SRN                     ; SAN RAMON               ; 13131
+                      ; VTC                     ; VITACURA                ; 13132
+                      ; PAL                     ; PUENTE ALTO             ; 13201
+                      ; SEC                     ; EL CANELO               ; 13201
+                      ; SLO                     ; LA OBRA                 ; 13201
+                      ; SLV                     ; LAS VERTIENTES          ; 13201
+                      ; IPQ                     ; ISLA DE PIRQUE          ; 13202
+                      ; PIR                     ; PIRQUE                  ; 13202
+                      ; EME                     ; EL MELOCOTON            ; 13203
+                      ; SAF                     ; SAN ALFONSO - STGO      ; 13203
+                      ; SCY                     ; CHACAY                  ; 13203
+                      ; SGB                     ; SAN GABRIEL             ; 13203
+                      ; SJS                     ; SAN JOSE DE MAIPO       ; 13203
+                      ; SLS                     ; LAS MELOSAS             ; 13203
+                      ; SMI                     ; EL MANZANILLO           ; 13203
+                      ; SMT                     ; LOS MAITENES            ; 13203
+                      ; SRV                     ; VILLA DEL VALLE         ; 13203
+                      ; STQ                     ; LO VALDES               ; 13203
+                      ; SVV                     ; EL VOLCAN - SANTIAGO    ; 13203
+                      ; SYY                     ; GUAYACAN                ; 13203
+                      ; XQT                     ; LOS QUELTEHUES          ; 13203
+                      ; CHW                     ; CHICUREO                ; 13301
+                      ; COL                     ; COLINA - SANTIAGO       ; 13301
+                      ; ESB                     ; ESMERALDA - SANTIAGO    ; 13301
+                      ; SLN                     ; LAS CANTERAS            ; 13301
+                      ; LSG                     ; LAMPA                   ; 13302
+                      ; SBX                     ; BATUCO - SANTIAGO       ; 13302
+                      ; CBO                     ; CERRO BLANCO            ; 13303
+                      ; POL                     ; POLPAICO                ; 13303
+                      ; TIL                     ; TIL TIL                 ; 13303
+                      ; SBD                     ; SAN BERNARDO            ; 13401
+                      ; MIP                     ; MAIPO                   ; 13402
+                      ; ZBU                     ; BUIN                    ; 13402
+                      ; CDT                     ; CALERA DE TANGO         ; 13403
+                      ; SAJ                     ; ALTO JAHUEL             ; 13403
+                      ; CHP                     ; CHAMPA                  ; 13404
+                      ; HOS                     ; HOSPITAL                ; 13404
+                      ; SHU                     ; HUELQUEN                ; 13404
+                      ; SLD                     ; LINDEROS                ; 13404
+                      ; SMP                     ; SANTA MARTA - STGO      ; 13404
+                      ; SPT                     ; PINTUE                  ; 13404
+                      ; TTO                     ; EL TRANSITO - SANTIA    ; 13404
+                      ; ZPN                     ; PAINE                   ; 13404
+                      ; ZUU                     ; RANGUE                  ; 13404
+                      ; AAN                     ; CHOCALAN                ; 13501
+                      ; CLP                     ; CULIPRAN                ; 13501
+                      ; IRE                     ; POMAIRE                 ; 13501
+                      ; SLM                     ; LAS MARIPOSAS - MELI    ; 13501
+                      ; SMD                     ; MANDINGA                ; 13501
+                      ; SMN                     ; SAN MANUEL              ; 13501
+                      ; SPB                     ; PABELLON - MELIPILLA    ; 13501
+                      ; ZCD                     ; CODIGUA                 ; 13501
+                      ; ZMP                     ; MELIPILLA               ; 13501
+                      ; ALH                     ; ALHUE                   ; 13502
+                      ; HAC                     ; LO CHACON               ; 13502
+                      ; LZU                     ; LA CRUZ MELIPILLA       ; 13502
+                      ; MMZ                     ; EL MEMBRILLO            ; 13502
+                      ; SVH                     ; VILLA ALHUE             ; 13502
+                      ; ZKU                     ; LONCHA                  ; 13502
+                      ; CLY                     ; COLLIGUAY               ; 13503
+                      ; CVI                     ; CURACAVI                ; 13503
+                      ; LYR                     ; LOS ARRAYANES           ; 13503
+                      ; TRB                     ; EL TREBOL               ; 13503
+                      ; KET                     ; LOLENCO - MELIPILLA     ; 13504
+                      ; MPO                     ; MARIA PINTO             ; 13504
+                      ; SBR                     ; BOLLENAR                ; 13504
+                      ; SCM                     ; CHOROMBO                ; 13504
+                      ; SIS                     ; SANTA INES              ; 13504
+                      ; SLR                     ; LOS RULOS               ; 13504
+                      ; BUU                     ; BUCALEMU                ; 13505
+                      ; CZA                     ; CRUCE LAS ARANAS        ; 13505
+                      ; KPR                     ; PUNTA TORO              ; 13505
+                      ; SPH                     ; PUEBLO HUNDIDO          ; 13505
+                      ; SPO                     ; SAN PEDRO - MELIPILL    ; 13505
+                      ; SQM                     ; QUIMCAHUE               ; 13505
+                      ; ZXX                     ; LOYCA                   ; 13505
+                      ; TNT                     ; TALAGANTE               ; 13601
+                      ; EPC                     ; EL PAICO                ; 13602
+                      ; ZTE                     ; EL MONTE                ; 13602
+                      ; IDM                     ; ISLA DE MAIPO           ; 13603
+                      ; LQN                     ; LONQUEN                 ; 13604
+                      ; PHT                     ; PADRE HURTADO           ; 13604
+                      ; MLL                     ; MALLOCO                 ; 13605
+                      ; PFL                     ; PENAFLOR                ; 13605
+                      ; CNA                     ; CURINANCO               ; 14101
+                      ; LML                     ; LOS MOLINOS             ; 14101
+                      ; LPS                     ; LOS PELLINES - VALDI    ; 14101
+                      ; NBL                     ; NIEBLA                  ; 14101
+                      ; NUC                     ; PUNUCAPA                ; 14101
+                      ; ZAL                     ; VALDIVIA - VALDIVIA     ; 14101
+                      ; ZAP                     ; TRALCAO                 ; 14101
+                      ; ZYH                     ; HUEYELHUE               ; 14101
+                      ; PTC                     ; PUNTA CHAIHUIN          ; 14102
+                      ; ZCR                     ; CORRAL                  ; 14102
+                      ; LNC                     ; LANCO                   ; 14103
+                      ; LRA                     ; LA LEONERA - VALDIVI    ; 14103
+                      ; MAL                     ; MALALHUE                ; 14103
+                      ; ZLW                     ; LA CAPILLA - VALDIV     ; 14103
+                      ; ZPO                     ; PURULON                 ; 14103
+                      ; ZSA                     ; SALTO DEL AGUA          ; 14103
+                      ; ANH                     ; ANTILHUE                ; 14104
+                      ; COA                     ; COLEGUAL - VALDIVIA     ; 14104
+                      ; HIC                     ; HUICHACO                ; 14104
+                      ; LAG                     ; LOS LAGOS               ; 14104
+                      ; OSN                     ; LIPINGUE                ; 14104
+                      ; PUC                     ; PUCONO                  ; 14104
+                      ; XGR                     ; RINIHUE                 ; 14104
+                      ; ZFO                     ; FOLILCO                 ; 14104
+                      ; ZHI                     ; HUITE                   ; 14104
+                      ; ZPX                     ; PUCARA                  ; 14104
+                      ; ZRU                     ; RUNCA                   ; 14104
+                      ; FAE                     ; FUNDO ALTUE             ; 14105
+                      ; MFL                     ; MAFIL                   ; 14105
+                      ; ZAE                     ; PUERTO PAICO            ; 14105
+                      ; ZAX                     ; CHANCOYAN               ; 14105
+                      ; CHY                     ; PICHOY                  ; 14106
+                      ; MEH                     ; MEHUIN                  ; 14106
+                      ; MQA                     ; S.J. DE LA MARIQUINA    ; 14106
+                      ; ZCI                     ; CIRUELOS - VALDIVIA     ; 14106
+                      ; ZFF                     ; FUERTE SAN LUIS         ; 14106
+                      ; ZPG                     ; PURINGUE                ; 14106
+                      ; ZQU                     ; QUEULE - VALDIVIA       ; 14106
+                      ; MMO                     ; MANAO - VALDIVIA        ; 14107
+                      ; OSE                     ; LOS CONALES - OSORNO    ; 14107
+                      ; PAI                     ; PAILLACO                ; 14107
+                      ; RMN                     ; REUMEN                  ; 14107
+                      ; TRR                     ; TRAITRACO               ; 14107
+                      ; ZLP                     ; LA PENA                 ; 14107
+                      ; ZLX                     ; LOS ULMOS               ; 14107
+                      ; ZPI                     ; PICHIRROPULLI           ; 14107
+                      ; CHS                     ; CHOSHUENCO              ; 14108
+                      ; CPE                     ; CONARIPE                ; 14108
+                      ; LCY                     ; LICAN RAY               ; 14108
+                      ; NCU                     ; NANCUL                  ; 14108
+                      ; NTM                     ; NELTUME                 ; 14108
+                      ; PGE                     ; PULLINGUE               ; 14108
+                      ; PGP                     ; PANGUIPULLI             ; 14108
+                      ; TRC                     ; TERMAS DE CONARIPE      ; 14108
+                      ; ZCZ                     ; CALAFQUEN               ; 14108
+                      ; ZFQ                     ; PUERTO FUY              ; 14108
+                      ; ZLS                     ; LOS TALLOS              ; 14108
+                      ; ZNC                     ; ENCO                    ; 14108
+                      ; ZPT                     ; PUERTO PIRIHUEICO       ; 14108
+                      ; ZVC                     ; LIQUINE                 ; 14108
+                      ; ZZQ                     ; CARIRRINGUE             ; 14108
+                      ; LVS                     ; LAS VENTANAS            ; 14201
+                      ; OAA                     ; LA BARRA                ; 14201
+                      ; ODA                     ; TRINIDAD                ; 14201
+                      ; ORO                     ; EL MIRADOR              ; 14201
+                      ; TMA                     ; TRUMAO                  ; 14201
+                      ; ZAQ                     ; LOS CONALES - OSORNO    ; 14201
+                      ; ZHC                     ; HUEICOLLA               ; 14201
+                      ; ZLU                     ; LA UNION                ; 14201
+                      ; ZRP                     ; RAPACO                  ; 14201
+                      ; ZSS                     ; SANTA ELISA             ; 14201
+                      ; COI                     ; COIQUE                  ; 14202
+                      ; EMN                     ; EL MUNDIAL              ; 14202
+                      ; FTR                     ; FUTRONO                 ; 14202
+                      ; LLI                     ; LLIFEN                  ; 14202
+                      ; MLE                     ; MAIHUE                  ; 14202
+                      ; ZBZ                     ; BANOS DE CHIHUIO        ; 14202
+                      ; ZDO                     ; DOLLINCO                ; 14202
+                      ; ZHU                     ; HUEQUECURA              ; 14202
+                      ; ZLO                     ; LOS LLOLLES             ; 14202
+                      ; ZMB                     ; MONTUELA                ; 14202
+                      ; ZXB                     ; CHABRANCO               ; 14202
+                      ; LRO                     ; LAGO RANCO              ; 14203
+                      ; OEU                     ; LLIHUE                  ; 14203
+                      ; OIP                     ; TRAPI                   ; 14203
+                      ; ZEQ                     ; ILIHUE                  ; 14203
+                      ; ZIG                     ; IGNAO                   ; 14203
+                      ; ZVV                     ; VIVANCO                 ; 14203
+                      ; ZZR                     ; RININAHUE               ; 14203
+                      ; LCL                     ; LOS CHILCOS             ; 14204
+                      ; RBN                     ; RIO BUENO               ; 14204
+                      ; ZCY                     ; CAYURRUCA               ; 14204
+                      ; ZNX                     ; CHANCHAN                ; 14204
+                      ; ZSR                     ; SANTA ROSA - OSORNO     ; 14204
+                      ; ZXN                     ; PUERTO NUEVO            ; 14204
+                      ; ACZ                     ; CODPA                   ; 15101
+                      ; AGN                     ; GUANACAHUA              ; 15101
+                      ; AMO                     ; MOLINOS                 ; 15101
+                      ; APR                     ; AUSIPAR                 ; 15101
+                      ; AQE                     ; ESQUINA                 ; 15101
+                      ; ARI                     ; ARICA                   ; 15101
+                      ; ARZ                     ; ALTO RAMIREZ            ; 15101
+                      ; ATI                     ; TIMAR                   ; 15101
+                      ; AVF                     ; VILLA FRONTERA          ; 15101
+                      ; AYA                     ; SOBRAYA                 ; 15101
+                      ; AZA                     ; AZAPA                   ; 15101
+                      ; CZZ                     ; CUZ CUZ - ARICA         ; 15101
+                      ; POC                     ; POCONCHILE              ; 15101
+                      ; RAR                     ; RANCHO ARICA            ; 15101
+                      ; SOR                     ; SORA                    ; 15101
+                      ; CAM                     ; CAMARONES - ARICA       ; 15102
+                      ; CTM                     ; CALETA CAMARONES        ; 15102
+                      ; ICC                     ; CALETA CHICA            ; 15102
+                      ; MIY                     ; MINITA                  ; 15102
+                      ; MMN                     ; MINIMINE                ; 15102
+                      ; QPT                     ; QUIPINTA                ; 15102
+                      ; UCA                     ; SUCA                    ; 15102
+                      ; ZYA                     ; CUYA                    ; 15102
+                      ; ABT                     ; BRITANIA                ; 15201
+                      ; ACC                     ; CHACUYO                 ; 15201
+                      ; ACL                     ; CHOQUELIMPIE            ; 15201
+                      ; ACN                     ; CORONEL ALCERRECA       ; 15201
+                      ; ACP                     ; CHAPIQUINA              ; 15201
+                      ; ACQ                     ; CAQUENA                 ; 15201
+                      ; ALL                     ; GUALLATIRI              ; 15201
+                      ; APH                     ; PACHAMA                 ; 15201
+                      ; API                     ; PARINACOTA              ; 15201
+                      ; ASO                     ; SOCOROMA                ; 15201
+                      ; ATG                     ; TIGNAMAR                ; 15201
+                      ; ATQ                     ; TERMAS DE CHITUNE       ; 15201
+                      ; BNN                     ; BELEN                   ; 15201
+                      ; CGA                     ; LAGO CHUNGARA           ; 15201
+                      ; CQY                     ; COPAQUILLA              ; 15201
+                      ; CYH                     ; CHICAYA                 ; 15201
+                      ; ITT                     ; ITISA                   ; 15201
+                      ; JRI                     ; JURASI                  ; 15201
+                      ; MKU                     ; MAILLKU                 ; 15201
+                      ; PQS                     ; PUQUISA                 ; 15201
+                      ; PTR                     ; PUTRE                   ; 15201
+                      ; TCA                     ; TIMALCHACA              ; 15201
+                      ; TRG                     ; TARUGUIRE               ; 15201
+                      ; ACI                     ; COSAPILLA               ; 15202
+                      ; ATS                     ; AGUAS CALIENTES -ARI    ; 15202
+                      ; AZT                     ; AZUFRERA TACORA         ; 15202
+                      ; GLL                     ; GUACOLLO                ; 15202
+                      ; LGR                     ; GENERAL LAGOS           ; 15202
+                      ; NSH                     ; NASAHUENTO              ; 15202
+                      ; VIU                     ; VILLA INDUSTRIAL        ; 15202
+                      ; VIV                     ; VISVIRI                 ; 15202

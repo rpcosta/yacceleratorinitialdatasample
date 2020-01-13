@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<project name="bindImpexTemplates">
+
+	<!-- Extension Tokens -->
+	<property name="rootPackageToken" value="__ROOT_PACKAGE__"/>
+	<property name="extensionUidToken" value="__EXTENSION_UID__"/>
+	<property name="extensionNameToken" value="__EXTENSION_NAME__"/>
+
+	<!-- User Groups -->
+	<property name="customerGroupIdToken" value="__CUSTOMER_GROUP_UID__"/>
+	<property name="customerGroupNameEnToken" value="__CUSTOMER_GROUP_NAME_EN__"/>
+	<property name="customerGroupNameEsClToken" value="__CUSTOMER_GROUP_NAME_ES_CL__"/>
+	<property name="defaultEmployeePasswordToken" value="__DEFAULT_EMPLOYEE_PASSWORD__"/>
+
+	<!-- Theme -->
+	<property name="themeUidToken" value="__THEME_UID__"/>
+	<property name="themeNameEnToken" value="__THEME_NAME_EN__"/>
+	<property name="themeNameEsClToken" value="__THEME_NAME_ES_CL__"/>
+
+	<!-- Vendors -->
+	<property name="vendorUidToken" value="__VENDOR_UID__"/>
+	<property name="vendorNameToken" value="__VENDOR_NAME__"/>
+	<property name="brandNameToken" value="__BRAND_NAME__"/>
+
+	<!-- Content Catalog -->
+	<property name="contentCatalogUidToken" value="__CONTENT_CATALOG_UID__"/>
+	<property name="contentCatalogNameEnToken" value="__CONTENT_CATALOG_NAME_EN__"/>
+	<property name="contentCatalogNameEsClToken" value="__CONTENT_CATALOG_NAME_ES_CL__"/>
+
+	<!-- Product Catalog -->
+	<property name="productCatalogUidToken" value="__PRODUCT_CATALOG_UID__"/>
+	<property name="productCatalogNameEnToken" value="__PRODUCT_CATALOG_NAME_EN__"/>
+	<property name="productCatalogNameEsClToken" value="__PRODUCT_CATALOG_NAME_ES_CL__"/>
+	<property name="classificationCatalogUidToken" value="__CLASSIFICATION_CATALOG_UID__"/>
+	<property name="classificationCatalogNameEnToken" value="__CLASSIFICATION_CATALOG_NAME_EN__"/>
+	<property name="classificationCatalogNameEsClToken" value="__CLASSIFICATIONT_CATALOG_NAME_ES_CL__"/>
+	<property name="syncJobProductCatalogToken" value="__SYNC_JOB_PRODUCT_CATALOG__"/>
+
+	<!-- Store -->
+	<property name="storeNameToken" value="__STORE_NAME__"/>
+	<property name="storeUidToken" value="__STORE_UID__"/>
+	<property name="storeNameEnToken" value="__STORE_NAME_EN__"/>
+	<property name="storeNameEsClToken" value="__STORE_NAME_ES_CL__"/>
+	<property name="storeSalesOrgCodeToken" value="__STORE_SALES_ORG_CODE__"/>
+	<property name="storePromotionGroupUidToken" value="__STORE_PROMOTION_GROUP_UID__"/>
+
+	<!-- Site -->
+	<property name="siteUidToken" value="__SITE_UID__"/>
+	<property name="siteNameEnToken" value="__SITE_NAME_EN__"/>
+	<property name="siteNameEsClToken" value="__SITE_NAME_ES_CL__"/>
+	<property name="siteDomainToken" value="__SITE_DOMAIN__"/>
+	<property name="siteDomainLowercaseToken" value="__SITE_DOMAIN_LOWERCASE__"/>
+	<property name="siteAliasToken" value="__SITE_ALIAS__"/>
+	<property name="siteAliasLowercaseToken" value="__SITE_ALIAS_LOWERCASE__"/>
+
+	<!-- E-mails -->
+	<property name="fromEmailToken" value="__FROM_EMAIL__"/>
+	<property name="fromNameToken" value="__FROM_NAME__"/>
+	<property name="storeEmailTemplatePrefixToken" value="__STORE_EMAIL_TEMPLATE_PREFIX__"/>
+
+	<!-- Landing Page Specific Layout -->
+	<property name="storeSpecificLandingPageUidToken" value="__STORE_SPECIFIC_LANDING_PAGE_UID__"/>
+	<property name="storeSpecificLandingLayoutPageUidToken" value="__STORE_SPECIFIC_LANDING_LAYOUT_PAGE__"/>
+	<property name="storeSpecificLandingTemplateToken" value="__STORE_SPECIFIC_LANDING_TEMPLATE__"/>
+
+	<!-- Categories -->
+	<property name="categoryPromotionsUidToken" value="__CATEGORY_PROMOTIONS_UID__"/>
+	<property name="categoryPromotionsNameEnToken" value="__CATEGORY_PROMOTIONS_NAME_EN__"/>
+	<property name="categoryPromotionsNameEsClToken" value="__CATEGORY_PROMOTIONS_NAME_ES_CL__"/>
+	<property name="categoryCampainsUidToken" value="__CATEGORY_CAMPAINS_UID__"/>
+	<property name="categoryCampainsNameEnToken" value="__CATEGORY_CAMPAINS_NAME_EN__"/>
+	<property name="categoryCampainsNameEsClToken" value="__CATEGORY_CAMPAINS_NAME_ES_CL__"/>
+
+	<!-- Solr -->
+	<property name="solrSearchConfigUidToken" value="__SOLR_SEARCH_CONFIG_UID__"/>
+	<property name="solrSearchConfigNameToken" value="__SOLR_SEARCH_CONFIG_NAME__"/>
+	<property name="solrSearchPrefixNameToken" value="__SOLR_SEARCH_PREFIX_NAME__"/>
+	<property name="solrIndexedTypeToken" value="__SOLR_INDEXED_TYPE__"/>
+	<property name="solrPriceRangeUidToken" value="__SOLR_PRICE_RANGE_UID__"/>
+	<property name="solrSearchProfileUidToken" value="__SOLR_SEARCH_PROFILE_UID__"/>
+	<property name="csolrSearchProfileNameEnToken" value="__SOLR_SEARCH_PROFILE_NAME_EN__"/>
+	<property name="csolrSearchProfileNameEsClToken" value="__SOLR_SEARCH_PROFILE_NAME_ES_CL__"/>
+
+	<!-- Warehouse -->
+	<property name="warehouseDeliverySampleUidToken" value="__WAREHOUSE_DELIVERY_SAMPLE_UID__"/>
+	<property name="warehousePickupSampleUidToken" value="__WAREHOUSE_PICKUP_SAMPLE_UID__"/>
+	<property name="warehouseSampleEmailToken" value="__WAREHOUSE_SAMPLE_EMAIL__"/>
+	<property name="warehouseDeliverySampleNameToken" value="__WAREHOUSE_DELIVERY_SAMPLE_NAME__"/>
+	<property name="warehousePickupSampleNameToken" value="__WAREHOUSE_PICKUP_SAMPLE_NAME__"/>
+
+	<!-- Google Jobs -->
+	<property name="googleLocationsJobCodeToken" value="__GOOGLE_LOCATIONS_JOB_CODE__"/>
+	<property name="googleProductsJobCodeToken" value="__GOOGLE_PRODUCTS_JOB_CODE__"/>
+	<property name="googleExportJobCodeToken" value="__GOOGLE_EXPORT_JOB_CODE__"/>
+	<property name="googleHostToken" value="__GOOGLE_HOST__"/>
+	<property name="googleUsernameToken" value="__GOOGLE_USERNAME__"/>
+	<property name="googlePasswordToken" value="__GOOGLE_PASSWORD__"/>
+
+	<!-- Sample Promotions -->
+	<property name="samplePromotion1UidToken" value="__SAMPLE_PROMOTION_1_UID__"/>
+	<property name="samplePromotion1NameEnToken" value="__SAMPLE_PROMOTION_1_NAME_EN__"/>
+	<property name="samplePromotion1NameEsClToken" value="__SAMPLE_PROMOTION_1_NAME_ES_CL__"/>
+	<property name="samplePromotion1SourceRuleUidToken" value="__SAMPLE_PROMOTION_1_SOURCE_RULE_UID__"/>
+	<property name="samplePromotion1JsonDescriptionEnToken" value="__SAMPLE_PROMOTION_1_JSON_DESCRIPTION_EN__"/>
+	<property name="samplePromotion1JsonNameEnToken" value="__SAMPLE_PROMOTION_1_JSON_NAME_EN__"/>
+	<property name="samplePromotion1JsonAppliedMessageEnToken" value="__SAMPLE_PROMOTION_1_JSON_APPLIED_MESSAGE_EN__"/>
+	<property name="samplePromotion1JsonDescriptionEsClToken" value="__SAMPLE_PROMOTION_1_JSON_DESCRIPTION_ES_CL__"/>
+	<property name="samplePromotion1JsonNameEsClToken" value="__SAMPLE_PROMOTION_1_JSON_NAME_ES_CL__"/>
+	<property name="samplePromotion1JsonAppliedMessageEsClToken" value="__SAMPLE_PROMOTION_1_JSON_APPLIED_MESSAGE_ES_CL__"/>
+	<property name="samplePromotion1CategoryCodeToken" value="__SAMPLE_PROMOTION_1_CATEGORY_CODE__"/>
+	<property name="samplePromotion2UidToken" value="__SAMPLE_PROMOTION_2_UID__"/>
+	<property name="samplePromotion2NameEnToken" value="__SAMPLE_PROMOTION_2_NAME_EN__"/>
+	<property name="samplePromotion2NameEsClToken" value="__SAMPLE_PROMOTION_2_NAME_ES_CL__"/>
+	<property name="samplePromotion2SourceRuleUidToken" value="__SAMPLE_PROMOTION_2_SOURCE_RULE_UID__"/>
+	<property name="samplePromotion2JsonDescriptionEnToken" value="__SAMPLE_PROMOTION_2_JSON_DESCRIPTION_EN__"/>
+	<property name="samplePromotion2JsonNameEnToken" value="__SAMPLE_PROMOTION_2_JSON_NAME_EN__"/>
+	<property name="samplePromotion2JsonAppliedMessageEnToken" value="__SAMPLE_PROMOTION_2_JSON_APPLIED_MESSAGE_EN__"/>
+	<property name="samplePromotion2JsonDescriptionEsClToken" value="__SAMPLE_PROMOTION_2_JSON_DESCRIPTION_ES_CL__"/>
+	<property name="samplePromotion2JsonNameEsClToken" value="__SAMPLE_PROMOTION_2_JSON_NAME_ES_CL__"/>
+	<property name="samplePromotion2JsonAppliedMessageEsClToken" value="__SAMPLE_PROMOTION_2_JSON_APPLIED_MESSAGE_ES_CL__"/>
+
+	<!-- Sample Categories -->
+	<property name="sampleCategoryNameEnToken" value="__SAMPLE_CATEGORY_NAME_EN__"/>
+	<property name="sampleCategoryNameEsClToken" value="__SAMPLE_CATEGORY_NAME_ES_CL__"/>
+	<property name="sampleCategoryPrefixToken" value="__SAMPLE_CATEGORY_PREFIX__"/>
+	<property name="sampleCategoryGuideSizePrefixToken" value="__SAMPLE_CATEGORY_GUIDE_SIZE_PREFIX__"/>
+
+	<!-- Sample Products -->
+	<property name="sampleProductMaterialNameToken" value="__SAMPLE_PRODUCT_MATERIAL_NAME__"/>
+	<property name="sampleProductBrandNameToken" value="__SAMPLE_PRODUCT_BRAND_NAME__"/>
+
+	<!-- CMS -->
+	<property name="cmsStoreToken" value="__CMS_STORE_PREFIX__"/>
+	<property name="cmsImageToken" value="__CMS_IMAGE_PREFIX__"/>
+	<property name="cmsSocialFacebookToken" value="__CMS_SOCIAL_FACEBOOK_LINK__"/>
+	<property name="cmsSocialInstagramToken" value="__CMS_SOCIAL_INSTAGRAM_LINK__"/>
+	<property name="cmsSocialTwitterToken" value="__CMS_SOCIAL_TWITTER_LINK__"/>
+	<property name="cmsContactPhoneToken" value="__CMS_CONTACT_PHONE__"/>
+	<property name="cmsContactPhoneSFToken" value="__CMS_CONTACT_PHONE_SF__"/>
+	<property name="cmsEmailCVToken" value="__CMS_EMAIL_CV__"/>
+	<property name="cmsEmailCambiosToken" value="__CMS_EMAIL_CAMBIOS__"/>
+
+	<macrodef name="bindImpexTemplate">
+
+		<attribute name="rootPackage" default="${rootPackageToken}"/>
+		<attribute name="extensionUid" default="${extensionUidToken}"/>
+		<attribute name="extensionName" default="${extensionNameToken}"/>
+		<attribute name="customerGroupId" default="${customerGroupIdToken}"/>
+		<attribute name="customerGroupNameEn" default="${customerGroupNameEnToken}"/>
+		<attribute name="customerGroupNameEsCl" default="${customerGroupNameEsClToken}"/>
+		<attribute name="defaultEmployeePassword" default="${defaultEmployeePasswordToken}"/>
+		<attribute name="themeUid" default="${themeUidToken}"/>
+		<attribute name="themeNameEn" default="${themeNameEnToken}"/>
+		<attribute name="themeNameEsCl" default="${themeNameEsClToken}"/>
+		<attribute name="vendorUid" default="${vendorUidToken}"/>
+		<attribute name="vendorName" default="${vendorNameToken}"/>
+		<attribute name="brandName" default="${brandNameToken}"/>
+		<attribute name="contentCatalogUid" default="${contentCatalogUidToken}"/>
+		<attribute name="contentCatalogNameEn" default="${contentCatalogNameEnToken}"/>
+		<attribute name="contentCatalogNameEsCl" default="${contentCatalogNameEsClToken}"/>
+		<attribute name="productCatalogUid" default="${productCatalogUidToken}"/>
+		<attribute name="productCatalogNameEn" default="${productCatalogNameEnToken}"/>
+		<attribute name="productCatalogNameEsCl" default="${productCatalogNameEsClToken}"/>
+		<attribute name="classificationCatalogUid" default="${classificationCatalogUidToken}"/>
+		<attribute name="classificationCatalogNameEn" default="${classificationCatalogNameEnToken}"/>
+		<attribute name="classificationCatalogNameEsCl" default="${classificationCatalogNameEsClToken}"/>
+		<attribute name="syncJobProductCatalog" default="${syncJobProductCatalogToken}"/>
+		<attribute name="storeName" default="${storeNameToken}"/>
+		<attribute name="storeUid" default="${storeUidToken}"/>
+		<attribute name="storeNameEn" default="${storeNameEnToken}"/>
+		<attribute name="storeNameEsCl" default="${storeNameEsClToken}"/>
+		<attribute name="storeSalesOrgCode" default="${storeSalesOrgCodeToken}"/>
+		<attribute name="storePromotionGroupUid" default="${storePromotionGroupUidToken}"/>
+		<attribute name="siteUid" default="${siteUidToken}"/>
+		<attribute name="siteNameEn" default="${siteNameEnToken}"/>
+		<attribute name="siteNameEsCl" default="${siteNameEsClToken}"/>
+		<attribute name="siteDomain" default="${siteDomainToken}"/>
+		<attribute name="siteDomainLowercase" default="${siteDomainLowercaseToken}"/>
+		<attribute name="siteAlias" default="${siteAliasToken}"/>
+		<attribute name="siteAliasLowercase" default="${siteAliasLowercaseToken}"/>
+		<attribute name="fromEmail" default="${fromEmailToken}"/>
+		<attribute name="fromName" default="${fromNameToken}"/>
+		<attribute name="storeEmailTemplatePrefix" default="${storeEmailTemplatePrefixToken}"/>
+		<attribute name="storeSpecificLandingPageUid" default="${storeSpecificLandingPageUidToken}"/>
+		<attribute name="storeSpecificLandingLayoutPageUid" default="${storeSpecificLandingLayoutPageUidToken}"/>
+		<attribute name="storeSpecificLandingTemplate" default="${storeSpecificLandingTemplateToken}"/>
+		<attribute name="categoryPromotionsUid" default="${categoryPromotionsUidToken}"/>
+		<attribute name="categoryPromotionsNameEn" default="${categoryPromotionsNameEnToken}"/>
+		<attribute name="categoryPromotionsNameEsCl" default="${categoryPromotionsNameEsClToken}"/>
+		<attribute name="categoryCampainsUid" default="${categoryCampainsUidToken}"/>
+		<attribute name="categoryCampainsNameEn" default="${categoryCampainsNameEnToken}"/>
+		<attribute name="categoryCampainsNameEsCl" default="${categoryCampainsNameEsClToken}"/>
+		<attribute name="solrSearchConfigUid" default="${solrSearchConfigUidToken}"/>
+		<attribute name="solrSearchConfigName" default="${solrSearchConfigNameToken}"/>
+		<attribute name="solrSearchPrefixName" default="${solrSearchPrefixNameToken}"/>
+		<attribute name="solrIndexedType" default="${solrIndexedTypeToken}"/>
+		<attribute name="solrPriceRangeUid" default="${solrPriceRangeUidToken}"/>
+		<attribute name="solrSearchProfileUid" default="${solrSearchProfileUidToken}"/>
+		<attribute name="solrSearchProfileNameEn" default="${solrSearchProfileNameEnToken}"/>
+		<attribute name="solrSearchProfileNameEsCl" default="${solrSearchProfileNameEsClToken}"/>
+		<attribute name="warehouseDeliverySampleUid" default="${warehouseDeliverySampleUidToken}"/>
+		<attribute name="warehousePickupSampleUid" default="${warehousePickupSampleUidToken}"/>
+		<attribute name="warehouseSampleEmail" default="${warehouseSampleEmailToken}"/>
+		<attribute name="warehouseDeliverySampleName" default="${warehouseDeliverySampleNameToken}"/>
+		<attribute name="warehousePickupSampleName" default="${warehousePickupSampleNameToken}"/>
+		<attribute name="googleLocationsJobCode" default="${googleLocationsJobCodeToken}"/>
+		<attribute name="googleProductsJobCode" default="${googleProductsJobCodeToken}"/>
+		<attribute name="googleExportJobCode" default="${googleExportJobCodeToken}"/>
+		<attribute name="googleHost" default="${googleHostToken}"/>
+		<attribute name="googleUsername" default="${googleUsernameToken}"/>
+		<attribute name="googlePassword" default="${googlePasswordToken}"/>
+		<attribute name="samplePromotion1Uid" default="${SamplePromotion1UidToken}"/>
+		<attribute name="samplePromotion1NameEn" default="${SamplePromotion1NameEnToken}"/>
+		<attribute name="samplePromotion1NameEsCl" default="${SamplePromotion1NameEsClToken}"/>
+		<attribute name="samplePromotion1SourceRuleUid" default="${SamplePromotion1SourceRuleUidToken}"/>
+		<attribute name="samplePromotion1JsonDescriptionEn" default="${SamplePromotion1JsonDescriptionEnToken}"/>
+		<attribute name="samplePromotion1JsonNameEn" default="${SamplePromotion1JsonNameEnToken}"/>
+		<attribute name="samplePromotion1JsonAppliedMessageEn" default="${SamplePromotion1JsonAppliedMessageEnToken}"/>
+		<attribute name="samplePromotion1JsonDescriptionEsCl" default="${SamplePromotion1JsonDescriptionEsClToken}"/>
+		<attribute name="samplePromotion1JsonNameEsCl" default="${SamplePromotion1JsonNameEsClToken}"/>
+		<attribute name="samplePromotion1JsonAppliedMessageEsCl" default="${SamplePromotion1JsonAppliedMessageEsClToken}"/>
+		<attribute name="samplePromotion1CategoryCode" default="${SamplePromotion1CategoryCodeToken}"/>
+		<attribute name="samplePromotion2Uid" default="${SamplePromotion2UidToken}"/>
+		<attribute name="samplePromotion2NameEn" default="${SamplePromotion2NameEnToken}"/>
+		<attribute name="samplePromotion2NameEsCl" default="${SamplePromotion2NameEsClToken}"/>
+		<attribute name="samplePromotion2SourceRuleUid" default="${SamplePromotion2SourceRuleUidToken}"/>
+		<attribute name="samplePromotion2JsonDescriptionEn" default="${SamplePromotion2JsonDescriptionEnToken}"/>
+		<attribute name="samplePromotion2JsonNameEn" default="${SamplePromotion2JsonNameEnToken}"/>
+		<attribute name="samplePromotion2JsonAppliedMessageEn" default="${SamplePromotion2JsonAppliedMessageEnToken}"/>
+		<attribute name="samplePromotion2JsonDescriptionEsCl" default="${SamplePromotion2JsonDescriptionEsClToken}"/>
+		<attribute name="samplePromotion2JsonNameEsCl" default="${SamplePromotion2JsonNameEsClToken}"/>
+		<attribute name="samplePromotion2JsonAppliedMessageEsCl" default="${SamplePromotion2JsonAppliedMessageEsClToken}"/>
+		<attribute name="sampleCategoryNameEn" default="${SampleCategoryNameEnToken}"/>
+		<attribute name="sampleCategoryNameEsCl" default="${SampleCategoryNameEsClToken}"/>
+		<attribute name="sampleCategoryPrefix" default="${SampleCategoryPrefixToken}"/>
+		<attribute name="sampleCategoryGuideSizePrefix" default="${SampleCategoryGuideSizePrefixToken}"/>
+		<attribute name="sampleProductMaterialName" default="${SampleProductMaterialNameToken}"/>
+		<attribute name="sampleProductBrandName" default="${SampleProductBrandNameToken}"/>
+		<attribute name="cmsStore" default="${CMSStoreToken}"/>
+		<attribute name="cmsImage" default="${CMSImageToken}"/>
+		<attribute name="cmsSocialFacebook" default="${CMSSocialFacebookToken}"/>
+		<attribute name="cmsSocialInstagram" default="${CMSSocialInstagramToken}"/>
+		<attribute name="cmsSocialTwitter" default="${CMSSocialTwitterToken}"/>
+		<attribute name="cmsContactPhone" default="${CMSContactPhoneToken}"/>
+		<attribute name="cmsContactPhoneSF" default="${CMSContactPhoneSFToken}"/>
+		<attribute name="cmsEmailCV" default="${CMSEmailCVToken}"/>
+		<attribute name="cmsEmailCambios" default="${CMSEmailCambiosToken}"/>
+
+		<attribute name="addonname"/>
+
+		<sequential>
+			<for list="coredata,sampledata" param="data">
+				<sequential>
+					<for list="contentCatalogs/catalogName,productCatalogs/catalogName,stores/storeName" param="catalog">
+						<sequential>
+							<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/@{data}/@{catalog}/"/>
+							<if>
+								<available file="${destPath}"/>
+								<then>
+									<for list="${rootPackageToken},${extensionUidToken},${extensionNameToken},${customerGroupIdToken},${customerGroupNameEnToken},${customerGroupNameEsClToken},${defaultEmployeePasswordToken},${themeUidToken},${themeNameEnToken},${themeNameEsClToken},${vendorUidToken},${vendorNameToken},${brandNameToken},${contentCatalogUidToken},${contentCatalogNameEnToken},${contentCatalogNameEsClToken},${productCatalogUidToken},${productCatalogNameEnToken},${productCatalogNameEsClToken},${classificationCatalogUidToken},${classificationCatalogNameEnToken},${classificationCatalogNameEsClToken},${syncJobProductCatalogToken},${storeNameToken},${storeUidToken},${storeNameEnToken},${storeNameEsClToken},${storeSalesOrgCodeToken},${storePromotionGroupUidToken},${siteNameEnToken},${siteNameEsClToken},${siteDomainLowercaseToken},${siteAliasToken},${siteAliasLowercaseToken},${fromEmailToken},${fromNameToken},${storeEmailTemplatePrefixToken},${storeSpecificLandingPageUidToken},${storeSpecificLandingLayoutPageUidToken},${storeSpecificLandingTemplateToken},${categoryPromotionsUidToken},${categoryPromotionsNameEnToken},${categoryPromotionsNameEsClToken},${categoryCampainsUidToken},${categoryCampainsNameEnToken},${categoryCampainsNameEsClToken},${solrSearchConfigUidToken},${solrSearchConfigNameToken},${solrSearchPrefixNameToken},${solrIndexedTypeToken},${solrPriceRangeUidToken},${solrSearchProfileUidToken},${solrSearchProfileNameEnToken},${solrSearchProfileNameEsClToken},${warehouseDeliverySampleUidToken},${warehousePickupSampleUidToken},${warehouseSampleEmailToken},${warehouseDeliverySampleNameToken},${warehousePickupSampleNameToken},${googleLocationsJobCodeToken},${googleProductsJobCodeToken},${googleExportJobCodeToken},${googleHostToken},${googleUsernameToken},${googlePasswordToken},${samplePromotion1UidToken},${samplePromotion1NameEnToken},${samplePromotion1NameEsClToken},${samplePromotion1SourceRuleUidToken},${samplePromotion1JsonDescriptionEnToken},${samplePromotion1JsonNameEnToken},${samplePromotion1JsonAppliedMessageEnToken},${samplePromotion1JsonDescriptionEsClToken},${samplePromotion1JsonNameEsClToken},${samplePromotion1JsonAppliedMessageEsClToken},${samplePromotion1CategoryCodeToken},${samplePromotion2UidToken},${samplePromotion2NameEnToken},${samplePromotion2NameEsClToken},${samplePromotion2SourceRuleUidToken},${samplePromotion2JsonDescriptionEnToken},${samplePromotion2JsonNameEnToken},${samplePromotion2JsonAppliedMessageEnToken},${samplePromotion2JsonDescriptionEsClToken},${samplePromotion2JsonNameEsClToken},${samplePromotion2JsonAppliedMessageEsClToken},${sampleCategoryNameEnToken},${sampleCategoryNameEsClToken},${sampleCategoryPrefixToken},${sampleCategoryGuideSizePrefixToken},${sampleProductMaterialNameToken},${sampleProductBrandNameToken},${cmsStoreToken},${cmsImageToken},${cmsSocialFacebookToken},${cmsSocialInstagramToken},${cmsSocialTwitterToken},${cmsContactPhoneToken},${cmsContactPhoneSFToken},${cmsEmailCVToken},${cmsEmailCambiosToken}" param="token">
+										<sequential>
+											<replace dir="${destPath}" token="${token}" value="@{token}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${token}] was replaced by [@{token}]"/>
+										</sequential>
+									</for>
+								</then>
+								<else>
+									<echo message="No impex templates found for @{addonname}, location: ${destPath}"/>
+								</else>
+							</if>
+						</sequential>
+					</for>
+				</sequential>
+			</for>
+		</sequential>
+	</macrodef>
+
+</project>

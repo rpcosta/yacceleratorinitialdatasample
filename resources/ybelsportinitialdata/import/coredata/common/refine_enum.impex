@@ -1,0 +1,32 @@
+########################################
+#             ORDER STATUS             #
+########################################
+$targetOrderStatusType = OrderStatus
+REMOVE $targetOrderStatusType[batchmode = true]; itemtype(code)[unique = true]
+                                               ; $targetOrderStatusType
+
+INSERT_UPDATE $targetOrderStatusType; code[unique = true]         ;
+                                    ; CANCELLING                  ;
+                                    ; CHECKED_VALID               ;
+                                    ; CREATED                     ;
+                                    ; CHECKED_INVALID             ;
+                                    ; ON_VALIDATION               ;
+                                    ; SUSPENDED                   ;
+                                    ; COMPLETED                   ;
+                                    ; PAYMENT_AUTHORIZED          ;
+                                    ; PAID                        ;
+                                    ; PAYMENT_NOT_AUTHORIZED      ;
+                                    ; PAYMENT_AMOUNT_RESERVED     ;
+                                    ; PAYMENT_PENDING             ;
+                                    ; PAYMENT_AMOUNT_NOT_RESERVED ;
+                                    ; PAYMENT_CAPTURED            ;
+                                    ; PAYMENT_NOT_CAPTURED        ;
+                                    ; FRAUD_CHECKED               ;
+                                    ; ORDER_SPLIT                 ;
+                                    ; PROCESSING_ERROR            ;
+                                    ; WAIT_FRAUD_MANUAL_CHECK     ;
+                                    ; IN_PROCESS                  ;
+                                    ; DELIVERED                   ;
+                                    ; CANCELLED                   ;
+                                    ; PARTIALLY_RETURNED          ;
+                                    ; COMPLETELY_RETURNED         ;

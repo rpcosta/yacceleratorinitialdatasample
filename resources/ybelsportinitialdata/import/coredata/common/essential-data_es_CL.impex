@@ -1,0 +1,68 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import essential data for the Accelerator
+#
+
+# Language
+$lang=es_CL
+
+# Languages
+UPDATE Language;isocode[unique=true];name[lang=$lang]
+ ;en;"Ingles"
+ ;es;"Español"
+ ;es_CL;"Español Chileno"
+
+# Currencies
+UPDATE Currency;isocode[unique=true];name[lang=$lang]
+ ;CLP;"Peso Chileno"
+
+# Titles
+UPDATE Title;code[unique=true];name[lang=$lang]
+ ;dr;"Dr."
+ ;miss;"Miss"
+ ;mr;"Mr."
+ ;mrs;"Mrs."
+ ;ms;"Ms."
+ ;rev;"Rev."
+
+# Credit / Debit Cards
+UPDATE CreditCardType;code[unique=true];name[lang=$lang]
+ ;amex;"American Express"
+ ;diners;"Diner's Club"
+ ;maestro;"Maestro"
+ ;master;"Mastercard"
+ ;mastercard_eurocard;"Mastercard/Eurocard"
+ ;switch;"Switch"
+ ;visa;"Visa"
+
+# DistanceUnits for Storelocator 
+UPDATE DistanceUnit;code[unique=true];name[lang=$lang]
+ ;km;"km"
+ ;miles;"miles"
+
+# Product Tax Groups
+UPDATE ProductTaxGroup;code[unique=true];name[lang=$lang]
+ ;cl-tax-full;"CL Impuesto de Venta"
+
+# User Tax Groups
+UPDATE UserTaxGroup;code[unique=true];name[lang=$lang]
+ ;cl-tax-full;"CL Impuestos"
+
+# Tax
+UPDATE Tax;code[unique=true];name[lang=$lang]
+ ;cl-tax-full;"CL Impuesto de Venta"
+
+# Consginment statuses
+UPDATE ConsignmentStatus;code[unique=true];name[lang=$lang]
+ ;CANCELLED;"Cancelled"
+ ;PICKPACK;"Pickpack"
+ ;PICKUP_COMPLETE;"Pickup complete"
+ ;READY;"Ready"
+ ;READY_FOR_PICKUP;"Ready for pickup"
+ ;SHIPPED;"Shipped"
+ ;WAITING;"Waiting"
+
+INSERT_UPDATE Unit;unitType[unique=true];code[unique=true];name[lang=$lang]
+                  ;pieces;pieces;pieza

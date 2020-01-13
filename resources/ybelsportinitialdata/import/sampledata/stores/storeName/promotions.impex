@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Promotions
+
+# Macros / Replacement Parameter definitions
+$productCatalog=__PRODUCT_CATALOG_UID__
+$defaultPromoGrp=__STORE_PROMOTION_GROUP_UID__
+
+$favCustomers=favoriteCustomers
+$bigSpenders=bigSpenders
+$catalogVersion=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$productCatalog]),CatalogVersion.version[default=Online])[default=$productCatalog:Online]
+
+INSERT_UPDATE Category; code[unique = true]; $catalogVersion; name[lang=en]                              ; $catalogVersion; name[lang=es_CL]                              
+                      ; __SAMPLE_PROMOTION_1_UID__ ;                ; "__SAMPLE_PROMOTION_1_NAME_EN__" ; "__SAMPLE_PROMOTION_1_NAME_ES_CL__"
+                      ; __SAMPLE_PROMOTION_2_UID__ ;                ; "__SAMPLE_PROMOTION_2_NAME_EN__" ; "__SAMPLE_PROMOTION_2_NAME_ES_CL__"
+
+INSERT PromotionPriceRow;&tresholdId;Currency(isocode);price
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE OrderThresholdDiscountPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;messageFired[lang=en];messageFired[lang=de];messageFired[lang=ja];messageFired[lang=zh];priority;thresholdTotals(&tresholdId);discountPrices(&priceId)
+
+INSERT_UPDATE PromotionUserRestriction;positive;promotion(code)[unique=true];users(uid)
+
+INSERT PromotionPriceRow;&tresholdId;Currency(isocode);price
+
+INSERT_UPDATE ProductPercentageDiscountPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;percentageDiscount;priority;products(code,$catalogVersion)
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE AcceleratorProductMultiBuyPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;categories(code,$catalogVersion);qualifyingCount;bundlePrices(&priceId)
+
+INSERT_UPDATE AcceleratorProductBOGOFPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;categories(code,$catalogVersion);qualifyingCount;freeCount
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE ProductPerfectPartnerPromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true][unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);partnerProducts(code,$catalogVersion);partnerPrices(&priceId)
+
+INSERT PromotionPriceRow;&priceId;Currency(isocode);price
+
+INSERT_UPDATE ProductBundlePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);bundlePrices(&priceId)
+
+INSERT_UPDATE PromotionSourceRule; code[unique = true]                ; priority; maxAllowedRuns; stackable; ruleGroup(code)           ; conditions; actions; website(Identifier)[default = $defaultPromoGrp]; excludeFromStorefrontDisplay[default = false]; name[lang = es]; description[lang = es]; messageFired[lang = es]; name[lang = en]; description[lang = en]; messageFired[lang = en]
+                                 ; __SAMPLE_PROMOTION_1_SOURCE_RULE_UID__ ; 100     ; 1             ; true     ; productPromotionRuleGroup ;[{"definitionId":"y_qualifying_categories","parameters":{"quantity":{"uuid":"b9a409aa-8b63-4f3b-8f8f-ed6e5a2afdcf","type":"java.lang.Integer","value":1},"catalog":{"uuid":"5804e21d-07d8-466e-8bb1-3381de8384a1","type":"ItemType(Catalog)"},"categories_operator":{"uuid":"26cea91c-a1b0-415d-92d3-6fd0c6fa4053","type":"Enum(de.hybris.platform.ruledefinitions.CollectionOperator)","value":"CONTAINS_ANY"},"excluded_categories":{"uuid":"152b44d7-13e2-4212-982f-cc4cda2b70eb","type":"List(ItemType(Category))"},"categories":{"uuid":"6012d234-5d84-4558-a64c-b3050c70dfc3","type":"List(ItemType(Category))","value":["__SAMPLE_PROMOTION_1_UID__::__PRODUCT_CATALOG_UID__","__SAMPLE_PROMOTION_1_CATEGORY_CODE__::__PRODUCT_CATALOG_UID__"]},"excluded_products":{"uuid":"cefeac1d-81dd-4806-9ed9-fb63f157a090","type":"List(ItemType(Product))"},"operator":{"uuid":"a7d6ce12-2ae9-4f45-9345-9adb15164309","type":"Enum(de.hybris.platform.ruledefinitions.AmountOperator)","value":"GREATER_THAN_OR_EQUAL"}},"children":[]}] ; [{"definitionId":"y_order_entry_percentage_discount","parameters":{"value":{"uuid":"b80a21c0-57b5-40eb-85a4-20a6435aa25a","type":"java.math.BigDecimal","value":10}}}] ; ; ; __SAMPLE_PROMOTION_1_JSON_DESCRIPTION_ES_CL__ ; __SAMPLE_PROMOTION_1_JSON_NAME_ES_CL__ ; __SAMPLE_PROMOTION_1_JSON_APPLIED_MESSAGE_ES_CL__; __SAMPLE_PROMOTION_1_JSON_DESCRIPTION_EN__ ; __SAMPLE_PROMOTION_1_JSON_NAME_EN__ ; __SAMPLE_PROMOTION_1_JSON_APPLIED_MESSAGE_EN__
+                                 ; __SAMPLE_PROMOTION_2_SOURCE_RULE_UID__ ; 100     ; 1             ; true     ; productPromotionRuleGroup ;[{"definitionId":"y_qualifying_categories","parameters":{"quantity":{"uuid":"b9a409aa-8b63-4f3b-8f8f-ed6e5a2afdcf","type":"java.lang.Integer","value":1},"catalog":{"uuid":"5804e21d-07d8-466e-8bb1-3381de8384a1","type":"ItemType(Catalog)"},"categories_operator":{"uuid":"26cea91c-a1b0-415d-92d3-6fd0c6fa4053","type":"Enum(de.hybris.platform.ruledefinitions.CollectionOperator)","value":"CONTAINS_ANY"},"excluded_categories":{"uuid":"152b44d7-13e2-4212-982f-cc4cda2b70eb","type":"List(ItemType(Category))"},"categories":{"uuid":"6012d234-5d84-4558-a64c-b3050c70dfc3","type":"List(ItemType(Category))","value":["__SAMPLE_PROMOTION_2_UID__::__PRODUCT_CATALOG_UID__"]},"excluded_products":{"uuid":"cefeac1d-81dd-4806-9ed9-fb63f157a090","type":"List(ItemType(Product))"},"operator":{"uuid":"a7d6ce12-2ae9-4f45-9345-9adb15164309","type":"Enum(de.hybris.platform.ruledefinitions.AmountOperator)","value":"GREATER_THAN_OR_EQUAL"}},"children":[]}] ; [{"definitionId":"y_order_entry_percentage_discount","parameters":{"value":{"uuid":"b80a21c0-57b5-40eb-85a4-20a6435aa25a","type":"java.math.BigDecimal","value":50}}}] ; ; ; __SAMPLE_PROMOTION_2_JSON_DESCRIPTION_ES_CL__ ; __SAMPLE_PROMOTION_2_JSON_NAME_ES_CL__ ; __SAMPLE_PROMOTION_2_JSON_APPLIED_MESSAGE_ES_CL__; __SAMPLE_PROMOTION_2_JSON_DESCRIPTION_EN__ ; __SAMPLE_PROMOTION_2_JSON_NAME_EN__ ; __SAMPLE_PROMOTION_2_JSON_APPLIED_MESSAGE_EN__

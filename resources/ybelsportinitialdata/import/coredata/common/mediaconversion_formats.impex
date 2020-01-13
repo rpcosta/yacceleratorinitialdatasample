@@ -1,0 +1,25 @@
+$lang = es_CL
+$catalogVersion = catalogVersion(catalog(id[default='__PRODUCT_CATALOG_UID__']), version[default='Staged'])[unique=true];
+
+INSERT_UPDATE ConversionMediaFormat; qualifier[unique = true]; conversion        ; inputFormat(qualifier); conversionStrategy[default = 'java2DUsingScalrMediaConversionStrategy']
+                                   ; 30Wx30H         ; -resize 30x30     ;                       ;
+                                   ; 65Wx65H         ; -resize 65x65     ;                       ;
+                                   ; 96Wx96H         ; -resize 96x96     ;                       ;
+                                   ; 300Wx300H       ; -resize 300x300   ;                       ;
+                                   ; 515Wx515H       ; -resize 515x515   ;                       ;
+                                   ; 1200Wx1200H     ; -resize 1200x1200 ;                       ;
+
+INSERT_UPDATE ConversionGroup; code[unique = true]; supportedFormats(qualifier)
+                             ; ConversionGroup    ; 30Wx30H, 65Wx65H, 96Wx96H, 300Wx300H, 515Wx515H, 1200Wx1200H
+
+INSERT_UPDATE MediaFormat; qualifier[unique = true]
+                         ; 365Wx246H
+
+UPDATE MediaFormat; qualifier[unique = true]; name[lang = $lang]    ; name[lang = en]
+                  ; 1200Wx1200H     ; "1200Wx1200H" ; "1200Wx1200H"
+                  ; 300Wx300H       ; "300Wx300H"   ; "300Wx300H"
+                  ; 30Wx30H         ; "30Wx30H"     ; "30Wx30H"
+                  ; 515Wx515H       ; "515Wx515H"   ; "515Wx515H"
+                  ; 65Wx65H         ; "65Wx65H"     ; "65Wx65H"
+                  ; 96Wx96H         ; "96Wx96H"     ; "96Wx96H"
+                  ; 365Wx246H       ; "365Wx246H"   ; "365Wx246H"
