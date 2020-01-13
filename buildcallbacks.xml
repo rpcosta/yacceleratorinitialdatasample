@@ -64,8 +64,7 @@
 <project name="ybelsportinitialdata_buildcallbacks">
 
 	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
-
-	<!--
+<!--
     <bindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="cl.com.bls.b2c.qkslv"
@@ -170,10 +169,7 @@
 			cmsContactPhone="(+56) 2 2433 6627\n(+56) 2 3239 1829"
 			cmsContactPhoneSF="224336627 o 232391829"
 			cmsEmailCV="contacto@quicksilver.cl"
-			cmsEmailCambios="cambios@quicksilver.cl"/>
-		-->
-
-
+			cmsEmailCambios="cambios@quicksilver.cl"/>-->
 
 	<!-- 
 		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
