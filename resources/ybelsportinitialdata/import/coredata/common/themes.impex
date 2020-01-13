@@ -7,4 +7,4 @@
 #
 
 INSERT_UPDATE SiteTheme;code[unique=true]
-;__THEME_NAME__
+;__THEME_UID__

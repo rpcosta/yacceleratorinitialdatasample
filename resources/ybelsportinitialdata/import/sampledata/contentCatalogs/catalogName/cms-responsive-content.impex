@@ -1048,7 +1048,7 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; na
 # ------------------------------------------------------------
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
-                   ;;__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX____homepage_section4C_banner.jpg;image/png
+                   ;;__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;image/png
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name
                                    ;;__CMS_STORE_PREFIX__HomepageSection4AParagraph;__CMS_STORE_PREFIX__ Homepage Section4A Paragraph
@@ -1069,8 +1069,8 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
 # ------------------------------------------------------------
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
-                   ;;__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX____homepage_section5A_banner.jpg;image/png
-                   ;;__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX____homepage_section5B_banner.jpg;image/png
+                   ;;__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;image/png
+                   ;;__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;image/png
 
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink
                                    ;;__CMS_STORE_PREFIX__HomepageSection5ABanner;__CMS_STORE_PREFIX__ Homepage Section5A Banner;/c/__SAMPLE_CATEGORY_PREFIX__Hombre

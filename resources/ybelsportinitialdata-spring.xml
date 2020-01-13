@@ -14,18 +14,18 @@
 
 	<!-- System Setup -->
 
-	<bean id="yBelsportInitialDataSystemSetup"
+	<bean id="__SITE_ALIAS_LOWERCASE__InitialDataSystemSetup"
 	      class="__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup"
 	      parent="abstractCoreSystemSetup">
-		<property name="coreDataImportService" ref="boldb2cstoreCoreDataImportService"/>
-		<property name="sampleDataImportService" ref="boldb2cstoreSampleDataImportService"/>
+		<property name="coreDataImportService" ref="__SITE_ALIAS_LOWERCASE__CoreDataImportService"/>
+		<property name="sampleDataImportService" ref="__SITE_ALIAS_LOWERCASE__SampleDataImportService"/>
 	</bean>
 
-	<bean id="yBelsportSampleDataImportService"
+	<bean id="__SITE_ALIAS_LOWERCASE__SampleDataImportService"
 		  class="__ROOT_PACKAGE__.initialdata.dataimport.impl.SampleDataImportService"
 		  parent="abstractDataImportService"/>
 
-	<bean id="yBelsportCoreDataImportService"
+	<bean id="__SITE_ALIAS_LOWERCASE__CoreDataImportService"
 		  class="__ROOT_PACKAGE__.initialdata.dataimport.impl.CoreDataImportService"
 		  parent="abstractDataImportService"/>
 

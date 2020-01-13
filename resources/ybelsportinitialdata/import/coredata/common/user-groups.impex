@@ -3,15 +3,15 @@
 # -----------------------------------------------------------------------
 # Import Customers
 #
-$regulargroup=__CUSTOMER_GROUP_UID__
+
 $customergroup=customergroup
-
-
+$regulargroup=__CUSTOMER_GROUP_UID__
 $defaultPassword=__DEFAULT_EMPLOYEE_PASSWORD__
+$lang=en
 
 # Create Customer Group
 INSERT_UPDATE Usergroup;uid[unique=true];groups(uid)[mode=append];name;
-;$regulargroup;$customergroup;__CUSTOMER_GROUP_NAME__
+;$regulargroup;$customergroup;__CUSTOMER_GROUP_NAME_ES_CL__
 
 # Customers
 INSERT_UPDATE Customer;originalUid[unique=true];uid[unique=true];title(code);name;description;sessionLanguage(isocode);sessionCurrency(isocode);groups(uid);password[default=$defaultPassword];&userId;defaultPaymentAddress(&addId);defaultShipmentAddress(&addId)

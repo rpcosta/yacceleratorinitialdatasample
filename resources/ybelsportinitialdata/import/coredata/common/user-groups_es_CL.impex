@@ -3,11 +3,9 @@
 # -----------------------------------------------------------------------
 # Import Customers
 #
-$regulargroup=__CUSTOMER_GROUP_UID__
 $customergroup=customergroup
-
-
-$defaultPassword=__CUSTOMER_GROUP_NAME__
+$regulargroup=__CUSTOMER_GROUP_UID__
+$defaultPassword=__DEFAULT_EMPLOYEE_PASSWORD__
 $lang=es_CL
 
 # Create Customer Group

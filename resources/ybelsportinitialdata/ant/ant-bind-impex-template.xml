@@ -36,7 +36,7 @@
 	<property name="productCatalogNameEsClToken" value="__PRODUCT_CATALOG_NAME_ES_CL__"/>
 	<property name="classificationCatalogUidToken" value="__CLASSIFICATION_CATALOG_UID__"/>
 	<property name="classificationCatalogNameEnToken" value="__CLASSIFICATION_CATALOG_NAME_EN__"/>
-	<property name="classificationCatalogNameEsClToken" value="__CLASSIFICATIONT_CATALOG_NAME_ES_CL__"/>
+	<property name="classificationCatalogNameEsClToken" value="__CLASSIFICATION_CATALOG_NAME_ES_CL__"/>
 	<property name="syncJobProductCatalogToken" value="__SYNC_JOB_PRODUCT_CATALOG__"/>
 
 	<!-- Store -->
@@ -81,8 +81,8 @@
 	<property name="solrIndexedTypeToken" value="__SOLR_INDEXED_TYPE__"/>
 	<property name="solrPriceRangeUidToken" value="__SOLR_PRICE_RANGE_UID__"/>
 	<property name="solrSearchProfileUidToken" value="__SOLR_SEARCH_PROFILE_UID__"/>
-	<property name="csolrSearchProfileNameEnToken" value="__SOLR_SEARCH_PROFILE_NAME_EN__"/>
-	<property name="csolrSearchProfileNameEsClToken" value="__SOLR_SEARCH_PROFILE_NAME_ES_CL__"/>
+	<property name="solrSearchProfileNameEnToken" value="__SOLR_SEARCH_PROFILE_NAME_EN__"/>
+	<property name="solrSearchProfileNameEsClToken" value="__SOLR_SEARCH_PROFILE_NAME_ES_CL__"/>
 
 	<!-- Warehouse -->
 	<property name="warehouseDeliverySampleUidToken" value="__WAREHOUSE_DELIVERY_SAMPLE_UID__"/>
@@ -252,7 +252,13 @@
 		<attribute name="addonname"/>
 
 		<sequential>
-			<for list="coredata,sampledata" param="data">
+
+		<var name="destPath" value="${ext.@{addonname}.path}/resources/"/>
+		<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
+			<include name="@{addonname}-spring.xml"/>
+		</replace>
+
+ 		<for list="coredata,sampledata" param="data">
 				<sequential>
 					<for list="contentCatalogs/catalogName,productCatalogs/catalogName,stores/storeName,common" param="catalog">
 						<sequential>
@@ -260,7 +266,7 @@
 							<if>
 								<available file="${destPath}"/>
 								<then>
-																		<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
+									<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
 										<include name="**/*.impex"/>
 									</replace>
 									<echo message="@{addonname}: token [${rootPackageToken}] was replaced by [@{rootPackage}]"/>

@@ -6,7 +6,7 @@ package de.hybris.platform.ybelsportinitialdata.constants;
 /**
  * Global class for all YBelsportInitialData constants.
  */
-public final class YBelsportInitialDataConstants extends GeneratedYAcceleratorInitialDataConstants
+public final class YBelsportInitialDataConstants 
 {
 	public static final String EXTENSIONNAME = "ybelsportinitialdata";
 

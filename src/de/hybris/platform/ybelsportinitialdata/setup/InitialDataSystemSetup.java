@@ -1,11 +1,11 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package cl.com.bls.b2c.bld.initialdata.setup;
+package de.hybris.platform.ybelsportinitialdata.setup;
 
-import cl.com.bls.b2c.bld.initialdata.constants.Boldb2cstoreInitialDataConstants;
-import cl.com.bls.b2c.bld.initialdata.dataimport.impl.CoreDataImportService;
-import cl.com.bls.b2c.bld.initialdata.dataimport.impl.SampleDataImportService;
+import de.hybris.platform.ybelsportinitialdata.constants.Quicksilverb2cstoreInitialDataConstants;
+import de.hybris.platform.ybelsportinitialdata.dataimport.impl.CoreDataImportService;
+import de.hybris.platform.ybelsportinitialdata.dataimport.impl.SampleDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
 import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.setup.events.CoreDataImportedEvent;
@@ -29,8 +29,8 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(InitialDataSystemSetup.class);
 
-	public static final String STORE_UID = "boldb2cstore";
-	public static final String CATALOG_PREFIX = "bold";
+	public static final String STORE_UID = "quicksilverb2cstore";
+	public static final String CATALOG_PREFIX = "quicksilver";
 
 	private static final String IMPORT_CORE_DATA = "importCoreData";
 	private static final String IMPORT_SAMPLE_DATA = "importSampleData";
@@ -68,11 +68,11 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	{
 		final List<ImportData> importData = new ArrayList<ImportData>();
 
-		final ImportData boldImportData = new ImportData();
-		boldImportData.setProductCatalogName(CATALOG_PREFIX);
-		boldImportData.setContentCatalogNames(Arrays.asList(CATALOG_PREFIX));
-		boldImportData.setStoreNames(Arrays.asList(STORE_UID));
-		importData.add(boldImportData);
+		final ImportData storeImportData = new ImportData();
+		storeImportData.setProductCatalogName(CATALOG_PREFIX);
+		storeImportData.setContentCatalogNames(Arrays.asList(CATALOG_PREFIX));
+		storeImportData.setStoreNames(Arrays.asList(STORE_UID));
+		importData.add(storeImportData);
 
 		getCoreDataImportService().execute(this, context, importData);
 		getEventService().publishEvent(new CoreDataImportedEvent(context, importData));
