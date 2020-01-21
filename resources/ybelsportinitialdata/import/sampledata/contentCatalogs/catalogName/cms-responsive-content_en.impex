@@ -20,15 +20,15 @@ $lang = en
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; __CMS_STORE_PREFIX__SiteLogoComponent ; /images/theme/__CMS_IMAGE_PREFIX__-header-logo.svg ;
+                            ;                          ; SiteLogoComponent ; /images/theme/header-logo.svg ;
 
 
 # CMS Link Components
 UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
-                       ;                          ; __CMS_STORE_PREFIX__AboutSAPCommerceLink  ; "About SAP Commerce Cloud"
-                       ;                          ; __CMS_STORE_PREFIX__AgileCommerceBlogLink ; "Agile Commerce Blog"
-                       ;                          ; __CMS_STORE_PREFIX__TwitterLink           ; "Twitter"
-                       ;                          ; __CMS_STORE_PREFIX__VisitSAPLink          ; "Visit SAP"
+                       ;                          ; AboutSAPCommerceLink  ; "About SAP Commerce Cloud"
+                       ;                          ; AgileCommerceBlogLink ; "Agile Commerce Blog"
+                       ;                          ; TwitterLink           ; "Twitter"
+                       ;                          ; VisitSAPLink          ; "Visit SAP"
 
 # Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; &imageRef                                ; folder(qualifier)[default = 'images']; altText
@@ -37,58 +37,58 @@ UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]     
 
 # CMS Mini Cart Component
 UPDATE MiniCartComponent; $contentCV[unique = true]; uid[unique = true]; name      ; title[lang = $lang]
-                        ;                          ; __CMS_STORE_PREFIX__MiniCart          ; Mini Cart ; "YOUR SHOPPING CART"
+                        ;                          ; MiniCart          ; Mini Cart ; "YOUR SHOPPING CART"
 
 # CMS tabs components
 UPDATE CMSTabParagraphComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]; content[lang = $lang]
-                               ;                          ; __CMS_STORE_PREFIX__deliveryTab       ; Delivery           ; "<div class=""tab-delivery"">Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere. Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</div>"
+                               ;                          ; deliveryTab       ; Delivery           ; "<div class=""tab-delivery"">Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere. Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</div>"
 
 # CMS tabbed jsp include components
 INSERT_UPDATE JspIncludeComponent; $contentCV[unique = true]; uid[unique = true]         ; title[lang = $lang]
-                                 ;                          ; __CMS_STORE_PREFIX__ProductDetailsTabComponent ; "Detalles del producto"
-                                 ;                          ; __CMS_STORE_PREFIX__ProductReviewsTabComponent ; "Reseña"
-                                 ;                          ; __CMS_STORE_PREFIX__ProductSpecsTabComponent   ; "Especificaciones"
+                                 ;                          ; ProductDetailsTabComponent ; "Detalles del producto"
+                                 ;                          ; ProductReviewsTabComponent ; "Reseña"
+                                 ;                          ; ProductSpecsTabComponent   ; "Especificaciones"
 
 # CMS ProductReferences Components
 UPDATE ProductReferencesComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                                 ;                          ; __CMS_STORE_PREFIX__CrossSelling      ; "You may also like..."
-                                 ;                          ; __CMS_STORE_PREFIX__Others            ; "Accessories"
-                                 ;                          ; __CMS_STORE_PREFIX__Similar           ; "You may also like..."
-                                 ;                          ; __CMS_STORE_PREFIX__Accessories       ; "Accessories"
+                                 ;                          ; CrossSelling      ; "You may also like..."
+                                 ;                          ; Others            ; "Accessories"
+                                 ;                          ; Similar           ; "You may also like..."
+                                 ;                          ; Accessories       ; "Accessories"
 
 # CMS PurchasedCategorySuggestion Components
 UPDATE PurchasedCategorySuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-;;__CMS_STORE_PREFIX__PurchasedCategorySuggestions;"You may also like..."
+;;PurchasedCategorySuggestions;"You may also like..."
 
 # CMS CartSuggestion Components
 UPDATE CartSuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                              ;                          ; __CMS_STORE_PREFIX__CartSuggestions   ; "You may also like..."
+                              ;                          ; CartSuggestions   ; "You may also like..."
 
 # Category Pages
 UPDATE CategoryPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
 
 # CMS Navigation Nodes
 UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]                ; title[lang = $lang]
-                        ;                          ; __CMS_STORE_PREFIX__NavNode       ; "__CMS_STORE_PREFIX__ B2C Site"
-                        ;                          ; __CMS_STORE_PREFIX__SiteRootNode  ; "__CMS_STORE_PREFIX__SiteRoot"
+                        ;                          ; NavNode       ; " B2C Site"
+                        ;                          ; SiteRootNode  ; "SiteRoot"
 
 # FAQ Page
 
 # CMS Paragraph Component (Contact information)
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ;                          ; __CMS_STORE_PREFIX__FaqMenuParagraph  ; "<div class=""nav_column"">	<div class=""title_holder"">		<div class=""title"">			<div class=""title-top"">				<span></span>			</div>		</div>		<h2>Frequently asked questions</h2>	</div>	<div class=""item"">		<ul class=""facet_block indent"">			<li><a href=""#a00"">Returns and refunds</a></li>			<li><a href=""#b00"">Delivery information</a></li>			<li><a href=""#c00"">Registration</a></li>			<li><a href=""#d00"">Your online account</a></li>			<li><a href=""#e00"">Orders</a></li>			<li><a href=""#f00"">Promotions and discounts</a></li>			<li><a href=""#g00"">Product and general Informations</a></li>			<li><a href=""#h00"">Store information</a></li>			<li><a href=""#i00"">Business contacts</a></li>			<li><a href=""#j00"">Buying guides</a></li>			<li><a href=""#k00"">Size guides</a></li>			<li><a href=""#l00"">Privacy and security</a></li>		</ul>	</div></div>" ;
-                            ;                          ; __CMS_STORE_PREFIX__FaqTextParagraph  ; "<a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
+                            ;                          ; FaqMenuParagraph  ; "<div class=""nav_column"">	<div class=""title_holder"">		<div class=""title"">			<div class=""title-top"">				<span></span>			</div>		</div>		<h2>Frequently asked questions</h2>	</div>	<div class=""item"">		<ul class=""facet_block indent"">			<li><a href=""#a00"">Returns and refunds</a></li>			<li><a href=""#b00"">Delivery information</a></li>			<li><a href=""#c00"">Registration</a></li>			<li><a href=""#d00"">Your online account</a></li>			<li><a href=""#e00"">Orders</a></li>			<li><a href=""#f00"">Promotions and discounts</a></li>			<li><a href=""#g00"">Product and general Informations</a></li>			<li><a href=""#h00"">Store information</a></li>			<li><a href=""#i00"">Business contacts</a></li>			<li><a href=""#j00"">Buying guides</a></li>			<li><a href=""#k00"">Size guides</a></li>			<li><a href=""#l00"">Privacy and security</a></li>		</ul>	</div></div>" ;
+                            ;                          ; FaqTextParagraph  ; "<a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
 
 # Order Expired Page
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]        ; content[lang = $lang];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
-                            ;                          ; __CMS_STORE_PREFIX__OrderExpiredMenuParagraph ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
-                            ;                          ; __CMS_STORE_PREFIX__OrderExpiredTextParagraph ; "<div class='cms-content order-expired'><div class='information_message neutral'><span class='single'></span><p>This page has expired.</p></div><h2>Dear Customer,</h2><p>Order Status for guest users are only kept for 3 months following the date the order was placed.<br>If you have not received your delivery or have other inquiries, please contact our Customer Service Dept.</p><h3>Be prepared with:</h3><ul class='bullet-list'><li>Your Name</li><li>Order Number (Your Order Number can be found on the confirmation email sent shortly after your order was placed.)</li><li>Order Delivery Address or Pick Up in Store Location</li></ul><p>Our Customer Service professionals will be happy to update you on the status of your order.</p><p class='cms-content-emphasized-big'>Thank you for shopping at hybrisstore.</p></div>" ;
+                            ;                          ; OrderExpiredMenuParagraph ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
+                            ;                          ; OrderExpiredTextParagraph ; "<div class='cms-content order-expired'><div class='information_message neutral'><span class='single'></span><p>This page has expired.</p></div><h2>Dear Customer,</h2><p>Order Status for guest users are only kept for 3 months following the date the order was placed.<br>If you have not received your delivery or have other inquiries, please contact our Customer Service Dept.</p><h3>Be prepared with:</h3><ul class='bullet-list'><li>Your Name</li><li>Order Number (Your Order Number can be found on the confirmation email sent shortly after your order was placed.)</li><li>Order Delivery Address or Pick Up in Store Location</li></ul><p>Our Customer Service professionals will be happy to update you on the status of your order.</p><p class='cms-content-emphasized-big'>Thank you for shopping at hybrisstore.</p></div>" ;
 
 # Terms and Conditions Page
 
 # CMS Paragraph Component (Contact information)
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]              ; content[lang = $lang];
-                            ;                          ; __CMS_STORE_PREFIX__TermsAndConditionsMenuParagraph ; "
+                            ;                          ; TermsAndConditionsMenuParagraph ; "
 
                             <div class=""nav_column"">
 	<div class=""title_holder"">
@@ -130,7 +130,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]     
 		</ul>
 	</div>
 </div>" ;
-;                          ; __CMS_STORE_PREFIX__TermsAndConditionsTextParagraph ; "
+;                          ; TermsAndConditionsTextParagraph ; "
 <div class=""content""><p class=""MsoNormal""><b><u>TÉRMINOS Y CONDICIONES<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
 none windowtext 0cm;padding:0cm"">Agradecemos tu interés por __SITE_ALIAS__ y tu visita a nuestro sitio web. Las siguientes clausulas constituyen las reglas básicas que establecen el buen uso de </span><a href=""http://www.__SITE_DOMAIN__/""><span style=""border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
 padding:0cm"">www.__SITE_DOMAIN__</span></a><span style=""border:none windowtext 1.0pt;
@@ -208,7 +208,7 @@ none windowtext 0cm;padding:0cm"">&nbsp;</span></p>  <p class=""MsoNormal""><b><
 
 # Delivery information component
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = en];
-                            ;                          ; __CMS_STORE_PREFIX__DeliveryInformationComponent  ; "VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES"
+                            ;                          ; DeliveryInformationComponent  ; "VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES"
 
 # Media Content
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                          ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]       ; mime[default = 'image/jpeg']; &imageRef                                    ; folder(qualifier)[default = 'images']; altText
@@ -216,11 +216,11 @@ INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
 
 UPDATE BannerComponent; $contentCV[unique = true]; uid[unique = true]; headline[lang = $lang]; $picture[lang = $lang]; content[lang = $lang]
-                      ;;__CMS_STORE_PREFIX__HomepageSection1Banner1;__CMS_STORE_PREFIX__ Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection1ABanner1;__CMS_STORE_PREFIX__ Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection1BBanner1;__CMS_STORE_PREFIX__ Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection2ABanner;__CMS_STORE_PREFIX__ Homepage Section 2A Banner;__CMS_IMAGE_PREFIX__homepage_section2A_banner.jpg;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection2BBanner;__CMS_STORE_PREFIX__ Homepage Section 2B Banner;__CMS_IMAGE_PREFIX__homepage_section2B_banner.jpg;""
+                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
+                      ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
+                      ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
+                      ;;HomepageSection2ABanner; Homepage Section 2A Banner;__CMS_IMAGE_PREFIX__homepage_section2A_banner.jpg;""
+                      ;;HomepageSection2BBanner; Homepage Section 2B Banner;__CMS_IMAGE_PREFIX__homepage_section2B_banner.jpg;""
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
                    ;;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX__homepage_section1_banner.png;image/png
@@ -249,8 +249,8 @@ INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
 
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]                ; content[lang = $lang]
-                            ;                          ; __CMS_STORE_PREFIX__EmptyCartParagraphComponent       ; "<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
-                            ;                          ; __CMS_STORE_PREFIX__NoSearchResultsParagraphComponent ; "<h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul>"
+                            ;                          ; EmptyCartParagraphComponent       ; "<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
+                            ;                          ; NoSearchResultsParagraphComponent ; "<h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul>"
 
 # Cart Page
 
@@ -259,8 +259,8 @@ INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             
 
 
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]          ; content[lang = $lang]
-                            ;                          ; __CMS_STORE_PREFIX__EmptyCartParagraphComponent ; "<h2>Tu carro de compras está vacío</h2><p>Sugerencias</p><ul><li>Explore nuestros productos seleccionando una categoría arriba</li></ul>"
-                            ;                          ; __CMS_STORE_PREFIX__HelpParagraphComponent      ; "Respondemos a todas tus consultas en el teléfono (+562) 24336627 o (+562) 32391829 o al email __FROM_EMAIL__"
+                            ;                          ; EmptyCartParagraphComponent ; "<h2>Tu carro de compras está vacío</h2><p>Sugerencias</p><ul><li>Explore nuestros productos seleccionando una categoría arriba</li></ul>"
+                            ;                          ; HelpParagraphComponent      ; "Respondemos a todas tus consultas en el teléfono (+562) 24336627 o (+562) 32391829 o al email __FROM_EMAIL__"
 
 #above is the desktop data, below is the responsive data
 UPDATE ProductCarouselComponent; $contentCV[unique = true]; uid[unique = true]                             ; title[lang = $lang]
@@ -311,38 +311,38 @@ INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[un
 
 # CMS Paragraph Component (Contact information)
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = en];
-                            ;                          ; __CMS_STORE_PREFIX__FaqTextParagraph  ; "<div class=""global-alerts""><div class=""alert alert-info"" role=""alert""><strong>Information:</strong> Page Under Construction - Not Completely Functional</div></div><a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
-                            ;                          ; __CMS_STORE_PREFIX__TopInfoParagraphComponent      ; "<ul><li><a href=""/store-finder""><i class=""icon icon-location""></i>&nbsp;<b>tiendas</b></a></li>&nbsp;<li><i class=""icon icon-smartphone""></i>&nbsp; <a href=""tel: +562 224336627""><b>224336627</b></a><span> - </span><a href=""tel: +562 232391829""><b>232391829</b></a></li></ul>" ;
+                            ;                          ; FaqTextParagraph  ; "<div class=""global-alerts""><div class=""alert alert-info"" role=""alert""><strong>Information:</strong> Page Under Construction - Not Completely Functional</div></div><a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
+                            ;                          ; TopInfoParagraphComponent      ; "<ul><li><a href=""/store-finder""><i class=""icon icon-location""></i>&nbsp;<b>tiendas</b></a></li>&nbsp;<li><i class=""icon icon-smartphone""></i>&nbsp; <a href=""tel: +562 224336627""><b>224336627</b></a><span> - </span><a href=""tel: +562 232391829""><b>232391829</b></a></li></ul>" ;
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; __CMS_STORE_PREFIX__SiteLogoComponent ; /images/theme/header-logo.svg
+                            ;                          ; SiteLogoComponent ; /images/theme/__CMS_IMAGE_PREFIX__-header-logo.svg
 
 # CMS Link Components
 UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
-                       ;                          ; __CMS_STORE_PREFIX__AddressBookLink       ; "Libreta de Direcciones"
-                       ;                          ; __CMS_STORE_PREFIX__ImportSavedCartLink   ; "Import Saved Cart"
-                       ;                          ; __CMS_STORE_PREFIX__OrderHistoryLink      ; "Historial de Órdenes"
-                       ;                          ; __CMS_STORE_PREFIX__PersonalDetailsLink   ; "Datos Personales"
-                       ;                          ; __CMS_STORE_PREFIX__QuickOrderLink        ; "Quick Order"
-                       ;                          ; __CMS_STORE_PREFIX__SavedCartsLink        ; "Saved Carts"
-                       ;                          ; __CMS_STORE_PREFIX__UpdateEmailLink       ; "Modificar Correo"
-                       ;                          ; __CMS_STORE_PREFIX__UpdatePasswordLink    ; "Modificar Contraseña"
+                       ;                          ; AddressBookLink       ; "Libreta de Direcciones"
+                       ;                          ; ImportSavedCartLink   ; "Import Saved Cart"
+                       ;                          ; OrderHistoryLink      ; "Historial de Órdenes"
+                       ;                          ; PersonalDetailsLink   ; "Datos Personales"
+                       ;                          ; QuickOrderLink        ; "Quick Order"
+                       ;                          ; SavedCartsLink        ; "Saved Carts"
+                       ;                          ; UpdateEmailLink       ; "Modificar Correo"
+                       ;                          ; UpdatePasswordLink    ; "Modificar Contraseña"
 
 
 # CMS Navigation Nodes
 UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                        ;                          ; __CMS_STORE_PREFIX__MyAccountNavNode  ; "Mi Cuenta"
+                        ;                          ; MyAccountNavNode  ; "Mi Cuenta"
 
 # Content Pages
 UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]     ; title[lang = $lang]
-                  ;                          ; __CMS_STORE_PREFIX__ImportCSVSavedCartPage ; "Importar Carrito Guardado"
-                  ;                          ; __CMS_STORE_PREFIX__Saved-carts            ; "Carritos Guardados"
-                  ;                          ; __CMS_STORE_PREFIX__SavedCartDetailsPage   ; "Detalles del Carrito Guardado"
+                  ;                          ; ImportCSVSavedCartPage ; "Importar Carrito Guardado"
+                  ;                          ; Saved-carts            ; "Carritos Guardados"
+                  ;                          ; SavedCartDetailsPage   ; "Detalles del Carrito Guardado"
 
 # CMS Paragraph Component
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = en]                                                                                        ;
-                            ;                          ; __CMS_STORE_PREFIX__QuickOrderInfoParagraphComponent ; You can add up to 25 valid SKUs below and add to cart. Stock is reserved once products are added to cart. ;
+                            ;                          ; QuickOrderInfoParagraphComponent ; You can add up to 25 valid SKUs below and add to cart. Stock is reserved once products are added to cart. ;
 
 # CMS Footer Navigation Component
 UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]; notice[lang = en][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
@@ -359,68 +359,68 @@ INSERT_UPDATE MediaContainer; qualifier[unique = true]           ; $medias; $con
                             ; __CMS_IMAGE_PREFIX__-errorpage-pagenotfound ; Bels_1400x401_ErrorPage_ES_CL_1400W.png,Bels_480x170_ErrorPage_ES_CL_480W.png,Bels_770x221_ErrorPage_ES_CL_770W.png,Bels_960x275_ErrorPage_ES_CL_960W.png
 
 INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                  ; $mediaContainer                    ; name                                    ; &componentRef;
-                                             ;                          ; __CMS_STORE_PREFIX__ErrorpageBannerComponent ; __CMS_IMAGE_PREFIX__-errorpage-pagenotfound ; __CMS_STORE_PREFIX__ Error Page Banner Component ; __CMS_STORE_PREFIX__ErrorpageBannerComponent
+                                             ;                          ; ErrorpageBannerComponent ; __CMS_IMAGE_PREFIX__-errorpage-pagenotfound ;  Error Page Banner Component ; ErrorpageBannerComponent
 
 # ------------------------------------------------------------
 #  Header Configuration
 # ------------------------------------------------------------
 
 INSERT_UPDATE BoldScrollableTextBannerComponent; $contentCV[unique = true]; uid[unique = true]; text[lang=$lang];
-                                               ;;__CMS_STORE_PREFIX__DeliveryNoticeBanner;"VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES";
+                                               ;;DeliveryNoticeBanner;"VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES";
 
 INSERT_UPDATE BoldLoginComponent ; $contentCV[unique=true] ; uid[unique=true]   ; title[lang=$lang]    ; emailFieldLabel[lang=$lang] ; passFieldLabel[lang=$lang] ; forgotPassLink         ; forgotPassLabel[lang=$lang]  ;   loginButtonLabel[lang=$lang] ; notAMemberLabel[lang=$lang] ; registerLink   ; registerLabel[lang=$lang]
-                                 ;                         ; __CMS_STORE_PREFIX__LoginComponent ; "Accede a tu cuenta" ; "Correo electrónico"        ; "Contraseña"               ; /login/pw/request      ; "¿Olvidaste la contraseña?"  ;   "INICIAR SESIÓN"             ; "¿No eres miembro?"         ; /login       ; "Únete ahora"
+                                 ;                         ; LoginComponent ; "Accede a tu cuenta" ; "Correo electrónico"        ; "Contraseña"               ; /login/pw/request      ; "¿Olvidaste la contraseña?"  ;   "INICIAR SESIÓN"             ; "¿No eres miembro?"         ; /login       ; "Únete ahora"
 
 # ------------------------------------------------------------
 #  Homepage Section 1 Configuration
 # ------------------------------------------------------------
 
 UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang];
-                      ;;__CMS_STORE_PREFIX__HomepageSection1Banner1;__CMS_STORE_PREFIX__ Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection1ABanner1;__CMS_STORE_PREFIX__ Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
-                      ;;__CMS_STORE_PREFIX__HomepageSection1BBanner1;__CMS_STORE_PREFIX__ Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
+                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
+                      ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
+                      ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
 
 # ------------------------------------------------------------
 #  Homepage Section 2 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;__CMS_STORE_PREFIX__HomepageSection2ABanner;__CMS_IMAGE_PREFIX___homepage_section2A_banner.jpg;
-                            ;;__CMS_STORE_PREFIX__HomepageSection2BBanner;__CMS_IMAGE_PREFIX___homepage_section2B_banner.jpg;
+                            ;;HomepageSection2ABanner;__CMS_IMAGE_PREFIX___homepage_section2A_banner.jpg;
+                            ;;HomepageSection2BBanner;__CMS_IMAGE_PREFIX___homepage_section2B_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 4 Configuration
 # ------------------------------------------------------------
 
 UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                            ;;__CMS_STORE_PREFIX__HomepageSection4AParagraph;Destacados
+                            ;;HomepageSection4AParagraph;Destacados
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;__CMS_STORE_PREFIX__HomepageSection4CBanner;__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;
+                            ;;HomepageSection4CBanner;__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 5 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;__CMS_STORE_PREFIX__HomepageSection5ABanner;__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;
-                            ;;__CMS_STORE_PREFIX__HomepageSection5BBanner;__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;
+                            ;;HomepageSection5ABanner;__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;
+                            ;;HomepageSection5BBanner;__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 6 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;__CMS_STORE_PREFIX__HomepageSection6ABanner;__CMS_IMAGE_PREFIX___homepage_section6A_banner.jpg;
-                            ;;__CMS_STORE_PREFIX__HomepageSection6CBanner;__CMS_IMAGE_PREFIX___homepage_section6C_banner.jpg;
+                            ;;HomepageSection6ABanner;__CMS_IMAGE_PREFIX___homepage_section6A_banner.jpg;
+                            ;;HomepageSection6CBanner;__CMS_IMAGE_PREFIX___homepage_section6C_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 7 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;__CMS_STORE_PREFIX__HomepageSection7ABanner;__CMS_IMAGE_PREFIX___homepage_section7A_banner.jpg;
-                            ;;__CMS_STORE_PREFIX__HomepageSection7BBanner;__CMS_IMAGE_PREFIX__homepage_section7B_banner.jpg;
+                            ;;HomepageSection7ABanner;__CMS_IMAGE_PREFIX___homepage_section7A_banner.jpg;
+                            ;;HomepageSection7BBanner;__CMS_IMAGE_PREFIX__homepage_section7B_banner.jpg;
 
 
 # ------------------------------------------------------------
@@ -428,12 +428,12 @@ UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[l
 # ------------------------------------------------------------
 
 UPDATE BoldSocialComponent; $contentCV[unique = true]; uid[unique = true]; name; text[lang=$lang];
-                          ; ; __CMS_STORE_PREFIX__SocialComponent      ; __CMS_STORE_PREFIX__ Social Component ; Síguenos
+                          ; ; SocialComponent      ;  Social Component ; Síguenos
 
 UPDATE BoldSociaLinklComponent; $contentCV[unique = true]; uid[unique = true]; name;
-                              ; ; __CMS_STORE_PREFIX__acebookSocialLinkComponent      ; __CMS_STORE_PREFIX__Facebook Social Link Component
-                              ; ; __CMS_STORE_PREFIX__witterSocialLinkComponent       ; __CMS_STORE_PREFIX__Twitter Social Link Component
-                              ; ; __CMS_STORE_PREFIX__nstagramSocialLinkComponent     ; __CMS_STORE_PREFIX__Instagram Social Link Component
+                              ; ; acebookSocialLinkComponent      ; Facebook Social Link Component
+                              ; ; witterSocialLinkComponent       ; Twitter Social Link Component
+                              ; ; nstagramSocialLinkComponent     ; Instagram Social Link Component
 
 
 # ------------------------------------------------------------
@@ -441,42 +441,42 @@ UPDATE BoldSociaLinklComponent; $contentCV[unique = true]; uid[unique = true]; n
 # ------------------------------------------------------------
 
 UPDATE BoldParagraphBannerComponent; $contentCV[unique = true]; uid[unique = true]; name; title[lang=$lang]; subtitle[lang=$lang];
-                                   ;;__CMS_STORE_PREFIX__HomepageSection9APragraphBanner;__CMS_STORE_PREFIX__ Homepage Section9A Paragraph Banner;Despacho a todo Chile continental
-                                   ;;__CMS_STORE_PREFIX__HomepageSection9BPragraphBanner;__CMS_STORE_PREFIX__ Homepage Section9B Paragraph Banner;Compra con tarjeta de crédito o debito
-                                   ;;__CMS_STORE_PREFIX__HomepageSection9CPragraphBanner;__CMS_STORE_PREFIX__ Homepage Section9C Paragraph Banner;Nuestro sitio web es seguro
-                                   ;;__CMS_STORE_PREFIX__HomepageSection9DPragraphBanner;__CMS_STORE_PREFIX__ Homepage Section9D Paragraph Banner;Cambios Permitidos en tienda
+                                   ;;HomepageSection9APragraphBanner; Homepage Section9A Paragraph Banner;Despacho a todo Chile continental
+                                   ;;HomepageSection9BPragraphBanner; Homepage Section9B Paragraph Banner;Compra con tarjeta de crédito o debito
+                                   ;;HomepageSection9CPragraphBanner; Homepage Section9C Paragraph Banner;Nuestro sitio web es seguro
+                                   ;;HomepageSection9DPragraphBanner; Homepage Section9D Paragraph Banner;Cambios Permitidos en tienda
 
 # ------------------------------------------------------------
 # Footer Configuration
 # ------------------------------------------------------------
 
 INSERT_UPDATE BoldFooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]            ; notice[lang = $lang]                          ; helpTitle[lang = $lang]; helpPhoneMessage[lang = $lang]                     ; helpPhoneNumbers[lang = $lang]          ; helpEmail[lang = $lang]     ;
-                                           ;                          ; __CMS_STORE_PREFIX__FooterNavigationComponent ; "2019 __CMS_STORE_PREFIX__<br/>Todos los derechos reservados" ; "Ayuda"                ; "Respondemos a todas sus consultas en el teléfono" ; "__CMS_CONTACT_PHONE__" ; "__FROM_EMAIL__" ;
+                                           ;                          ; FooterNavigationComponent ; "2019 <br/>Todos los derechos reservados" ; "Ayuda"                ; "Respondemos a todas sus consultas en el teléfono" ; "__CMS_CONTACT_PHONE__" ; "__FROM_EMAIL__" ;
 
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]        ; $contentCV[unique = true]; title[lang = $lang];
-                               ; __CMS_STORE_PREFIX__FooterNavigationNode      ;                          ; Footer Page
-                               ; __CMS_STORE_PREFIX__InformationNavNode        ;                          ; Información
-                               ; __CMS_STORE_PREFIX__FAQNavNode                ;                          ; Preguntas Frecuentes
-                               ; __CMS_STORE_PREFIX__TermsAndConditionsNavNode ;                          ; Términos y Condiciones
-                               ; __CMS_STORE_PREFIX__PrivacyAndSecurityNavNode ;                          ; Privacidad y Seguridad
-                               ; __CMS_STORE_PREFIX__SeeBoletaNavNode          ;                          ; Ver Boleta
-                               ; __CMS_STORE_PREFIX__StoreFinderNavNode        ;                          ; Tiendas
-                               ; __CMS_STORE_PREFIX__CyberDayNavNode           ;                          ; CyberDay Initial Stock Page
+                               ; FooterNavigationNode      ;                          ; Footer Page
+                               ; InformationNavNode        ;                          ; Información
+                               ; FAQNavNode                ;                          ; Preguntas Frecuentes
+                               ; TermsAndConditionsNavNode ;                          ; Términos y Condiciones
+                               ; PrivacyAndSecurityNavNode ;                          ; Privacidad y Seguridad
+                               ; SeeBoletaNavNode          ;                          ; Ver Boleta
+                               ; StoreFinderNavNode        ;                          ; Tiendas
+                               ; CyberDayNavNode           ;                          ; CyberDay Initial Stock Page
 
 INSERT_UPDATE CMSLinkComponent; uid[unique = true]            ; $contentCV[unique = true]; linkname[lang = $lang]
-                              ; __CMS_STORE_PREFIX__FAQNavNodeLink                ;                          ; Preguntas Frecuentes
-                              ; __CMS_STORE_PREFIX__TermsAndConditionsNavNodeLink ;                          ; Términos y Condiciones
-                              ; __CMS_STORE_PREFIX__PrivacyAndSecurityNavNodeLink ;                          ; Privacidad y Seguridad
-                              ; __CMS_STORE_PREFIX__SeeBoletaNavNodeLink          ;                          ; Ver Boleta
-                              ; __CMS_STORE_PREFIX__StoreNavNodeLink              ;                          ; Tiendas
-                              ; __CMS_STORE_PREFIX__CyberDayNavNodeLink           ;                          ; Stock Inicial Cyber
+                              ; FAQNavNodeLink                ;                          ; Preguntas Frecuentes
+                              ; TermsAndConditionsNavNodeLink ;                          ; Términos y Condiciones
+                              ; PrivacyAndSecurityNavNodeLink ;                          ; Privacidad y Seguridad
+                              ; SeeBoletaNavNodeLink          ;                          ; Ver Boleta
+                              ; StoreNavNodeLink              ;                          ; Tiendas
+                              ; CyberDayNavNodeLink           ;                          ; Stock Inicial Cyber
 
 # ------------------------------------------------------------
 # FAQ
 # ------------------------------------------------------------
 
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ; ; __CMS_STORE_PREFIX__FaqMenuParagraph ; "
+                            ; ; FaqMenuParagraph ; "
 <div class=""nav_column"">
 	<div class=""title_holder"">
 		<div class=""title"">
@@ -512,7 +512,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 	</div>
 </div>
 "
-                            ; ; __CMS_STORE_PREFIX__FaqTextParagraph ; "
+                            ; ; FaqTextParagraph ; "
 
 <a name=""00""></a>
 <div class="" textpagetextpage-faqs"">
@@ -700,7 +700,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 # ------------------------------------------------------------
 
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ; ; __CMS_STORE_PREFIX__PrivacyMenuParagraph ; "
+                            ; ; PrivacyMenuParagraph ; "
 <div class=""nav_column"">
 	<div class=""title_holder"">
 		<div class=""title"">
@@ -724,7 +724,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 "
                             ;
 
-                            ; ; __CMS_STORE_PREFIX__PrivacyTextParagraph ; "
+                            ; ; PrivacyTextParagraph ; "
 <a name=""00""></a>
 <div class="" textpagetextpage-faqs"">
 	<div class=""item_container"">

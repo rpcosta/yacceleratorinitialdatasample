@@ -1,0 +1,376 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$contentCatalog=__CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=__PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$category=category(code, $productCV)
+
+# --------------------------------------------------------------------------
+# Level 1. CategoryNavigationComponent
+# --------------------------------------------------------------------------
+INSERT_UPDATE CategoryNavigationComponent;uid[unique=true];$contentCV[unique=true];name;styleClass;&componentRef;navigationNode(&nodeRef);wrapAfter
+;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent;;Category Navigation Component;;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;10
+# --------------------------------------------------------------------------
+# Level 1. ContentSlot
+# --------------------------------------------------------------------------
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
+;;NavigationBarSlot;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent
+;;BottomHeaderSlot; breadcrumbComponent
+# --------------------------------------------------------------------------
+# Level 2. CMSNavigationNode
+# --------------------------------------------------------------------------
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);&nodeRef;children(uid,$contentCV);
+;SiteRootNode;;SiteRootNode;root;;SiteRootNode
+;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;;Categories;SiteRootNode;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode,__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode,__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode,__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode,__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
+# --------------------------------------------------------------------------
+# IMPORTANT! 
+# Create Categories to be associated in CMSLinkComponent 
+# This prevents errors related to load components related 
+# to unexistent categories in Hybris. 
+# --------------------------------------------------------------------------
+INSERT_UPDATE Category;code[unique=true];$productCV[unique=true];
+;__SAMPLE_CATEGORY_PREFIX__Sale;;
+;__SAMPLE_CATEGORY_PREFIX__Hombre;;
+;__SAMPLE_CATEGORY_PREFIX__Accesorios;;
+;__SAMPLE_CATEGORY_PREFIX__Marcas;;
+;__SAMPLE_CATEGORY_PREFIX__Mujer;;
+;__SAMPLE_CATEGORY_PREFIX__Ninos;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics;;
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras;;
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos;;
+# --------------------------------------------------------------------------
+# CMSLinkComponent
+# --------------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;uid[unique=true];$contentCV[unique=true];name;linkName[lang=$language];url;target(code)[default='sameWindow'];$category;
+;__SAMPLE_CATEGORY_PREFIX__Sale_CategoryLink;;Sale Category Link;Sale;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Sale;;__SAMPLE_CATEGORY_PREFIX__Sale
+;__SAMPLE_CATEGORY_PREFIX__Hombre_CategoryLink;;Hombre Category Link;Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Hombre;;__SAMPLE_CATEGORY_PREFIX__Hombre
+;__SAMPLE_CATEGORY_PREFIX__Accesorios_CategoryLink;;Accesorios Category Link;Accesorios;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Accesorios;;__SAMPLE_CATEGORY_PREFIX__Accesorios
+;__SAMPLE_CATEGORY_PREFIX__Marcas_CategoryLink;;Marcas Category Link;Marcas;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Marcas;;__SAMPLE_CATEGORY_PREFIX__Marcas
+;__SAMPLE_CATEGORY_PREFIX__Mujer_CategoryLink;;Mujer Category Link;Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Mujer;;__SAMPLE_CATEGORY_PREFIX__Mujer
+;__SAMPLE_CATEGORY_PREFIX__Ninos_CategoryLink;;Niños Category Link;Niños;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Ninos;;__SAMPLE_CATEGORY_PREFIX__Ninos
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_CategoryLink;;Gymsack  Category Link;Gymsack ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack;;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_CategoryLink;;New Balance Category Link;New Balance;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance;;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_CategoryLink;;Calcetas  Category Link;Calcetas ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas;;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_CategoryLink;;Protección y limpieza  Category Link;Protección y limpieza ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza;;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_CategoryLink;;Asics Tiger Category Link;Asics Tiger;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasAsics;;__SAMPLE_CATEGORY_PREFIX__MarcasAsics
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_CategoryLink;;Zapatillas Niños Category Link;Zapatillas Niños;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__NinosZapatillas;;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_CategoryLink;;Beanie  Category Link;Beanie ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_CategoryLink;;Jordan Category Link;Jordan;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasJordan;;__SAMPLE_CATEGORY_PREFIX__MarcasJordan
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_CategoryLink;;Saucony Category Link;Saucony;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasSaucony;;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_CategoryLink;;Calzado Hombre Category Link;Calzado HombproductReviewSummary.tagre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzado;;__SAMPLE_CATEGORY_PREFIX__HombreCalzado
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans_CategoryLink;;Vans Category Link;Vans;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasVans;;__SAMPLE_CATEGORY_PREFIX__MarcasVans
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_CategoryLink;;Calzado Mujer Category Link;Calzado Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzado;;__SAMPLE_CATEGORY_PREFIX__MujerCalzado
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_CategoryLink;;Snapback  Category Link;Snapback ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback;;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_CategoryLink;;Vestuario Oferta Category Link;Vestuario Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuario;;__SAMPLE_CATEGORY_PREFIX__SaleVestuario
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_CategoryLink;;Adidas Originals Category Link;Adidas Originals;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasAdidas;;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_CategoryLink;;Calzado Oferta Category Link;Calzado Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzado;;__SAMPLE_CATEGORY_PREFIX__SaleCalzado
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike_CategoryLink;;Nike Category Link;Nike;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasNike;;__SAMPLE_CATEGORY_PREFIX__MarcasNike
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_CategoryLink;;Vestuario Hombre Category Link;Vestuario Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuario;;__SAMPLE_CATEGORY_PREFIX__HombreVestuario
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_CategoryLink;;Puma Category Link;Puma;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasPuma;;__SAMPLE_CATEGORY_PREFIX__MarcasPuma
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_CategoryLink;;Accesorios Oferta Category Link;Accesorios Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesorios;;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_CategoryLink;;Reebok Category Link;Reebok;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasReebok;;__SAMPLE_CATEGORY_PREFIX__MarcasReebok
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_CategoryLink;;Vestuario Mujer Category Link;Vestuario Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuario;;__SAMPLE_CATEGORY_PREFIX__MujerVestuario
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_CategoryLink;;Mochilas y Bolsos  Category Link;Mochilas y Bolsos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos;;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_CategoryLink;;Crep Category Link;Crep;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasCrep;;__SAMPLE_CATEGORY_PREFIX__MarcasCrep
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_CategoryLink;;Bananos  Category Link;Bananos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_CategoryLink;;Under Armour Category Link;Under Armour;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour;;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_CategoryLink;;Converse Category Link;Converse;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasConverse;;__SAMPLE_CATEGORY_PREFIX__MarcasConverse
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_CategoryLink;;Petos Oferta Category Link;Petos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_CategoryLink;;Shorts Hombre Category Link;Shorts Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_CategoryLink;;Zapatillas Hombre Category Link;Zapatillas Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_CategoryLink;;Polerones Oferta Category Link;Polerones Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_CategoryLink;;Sandalias Mujer Category Link;Sandalias Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_CategoryLink;;Zapatillas Mujer Category Link;Zapatillas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_CategoryLink;;Pantalones y Calzas Oferta Category Link;Pantalones y Calzas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_CategoryLink;;Polerones Hombre Category Link;Polerones Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_CategoryLink;;Zapatillas Oferta Category Link;Zapatillas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_CategoryLink;;Poleras Hombre Category Link;Poleras Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_CategoryLink;;Pantalones y Calzas Mujer Category Link;Pantalones y Calzas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas;;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_CategoryLink;;Sandalias Hombre Category Link;Sandalias Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_CategoryLink;;Pantalones Hombre Category Link;Pantalones Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_CategoryLink;;Beanie Oferta Category Link;Beanie Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_CategoryLink;;Poleras Oferta Category Link;Poleras Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_CategoryLink;;Sandalias Oferta Category Link;Sandalias Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_CategoryLink;;Protección y limpieza Oferta Category Link;Protección y limpieza Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_CategoryLink;;Polerones Mujer Category Link;Polerones Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_CategoryLink;;Chaquetas y Parkas Hombre Category Link;Chaquetas y Parkas Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_CategoryLink;;Bananos Oferta Category Link;Bananos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_CategoryLink;;Poleras Mujer Category Link;Poleras Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_CategoryLink;;Shorts Oferta Category Link;Shorts Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_CategoryLink;;Chaquetas y Parkas Mujer Category Link;Chaquetas y Parkas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_CategoryLink;;Chaquetas y Parkas Oferta Category Link;Chaquetas y Parkas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_CategoryLink;;Shorts Mujer Category Link;Shorts Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_CategoryLink;;Petos  Category Link;Petos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_CategoryLink;;Gymsack Oferta Category Link;Gymsack Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_CategoryLink;;Calcetas Oferta Category Link;Calcetas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_CategoryLink;;Vestidos Mujer Category Link;Vestidos Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_CategoryLink;;Snapback Oferta Category Link;Snapback Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_CategoryLink;;Mochilas y Bolsos Oferta Category Link;Mochilas y Bolsos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos
+# --------------------------------------------------------------------------
+# CMSNavigationNode
+# --------------------------------------------------------------------------
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;
+;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;Sale Links;
+;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;Accesorios Links;
+;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;Marcas Links;
+;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;Niños Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;Gymsack  Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;New Balance Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;Calcetas  Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;Protección y limpieza  Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;Asics Tiger Links;
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;Zapatillas Niños Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;Beanie  Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;Jordan Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;Saucony Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;Calzado Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;Vans Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;Calzado Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;Snapback  Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;Vestuario Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;Adidas Originals Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;Calzado Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;Nike Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;Vestuario Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;Puma Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;Accesorios Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;Reebok Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;Vestuario Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos  Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;Crep Links;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;Bananos  Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;Under Armour Links;
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;Converse Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;Petos Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;Shorts Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;Zapatillas Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;Polerones Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;Sandalias Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;Zapatillas Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;Pantalones y Calzas Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;Polerones Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;Zapatillas Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;Poleras Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;Pantalones y Calzas Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;Sandalias Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;Pantalones Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;Beanie Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;Poleras Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;Sandalias Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;Protección y limpieza Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;Polerones Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Hombre Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;Bananos Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;Poleras Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;Shorts Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;Chaquetas y Parkas Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;Shorts Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;Petos  Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;Gymsack Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;Calcetas Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;Vestidos Mujer Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;Snapback Oferta Links;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos Oferta Links;
+# --------------------------------------------------------------------------
+# CMSNavigationEntry
+# --------------------------------------------------------------------------
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);navigationNode(CMSNavigationNode.uid,CMSNavigationNode.$contentCV)
+;__SAMPLE_CATEGORY_PREFIX__Sale_NavNodeEntry;;Sale Node Entry;__SAMPLE_CATEGORY_PREFIX__Sale_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNodeEntry;;Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__Hombre_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNodeEntry;;Accesorios Node Entry;__SAMPLE_CATEGORY_PREFIX__Accesorios_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNodeEntry;;Marcas Node Entry;__SAMPLE_CATEGORY_PREFIX__Marcas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNodeEntry;;Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__Mujer_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNodeEntry;;Niños Node Entry;__SAMPLE_CATEGORY_PREFIX__Ninos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNodeEntry;;Gymsack  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNodeEntry;;New Balance Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNodeEntry;;Calcetas  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNodeEntry;;Protección y limpieza  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNodeEntry;;Asics Tiger Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNodeEntry;;Zapatillas Niños Node Entry;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNodeEntry;;Beanie  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNodeEntry;;Jordan Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNodeEntry;;Saucony Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNodeEntry;;Calzado Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNodeEntry;;Vans Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasVans_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNodeEntry;;Calzado Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNodeEntry;;Snapback  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNodeEntry;;Vestuario Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNodeEntry;;Adidas Originals Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNodeEntry;;Calzado Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNodeEntry;;Nike Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasNike_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNodeEntry;;Vestuario Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNodeEntry;;Puma Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNodeEntry;;Accesorios Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNodeEntry;;Reebok Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNodeEntry;;Vestuario Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNodeEntry;;Mochilas y Bolsos  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNodeEntry;;Crep Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNodeEntry;;Bananos  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNodeEntry;;Under Armour Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNodeEntry;;Converse Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNodeEntry;;Petos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNodeEntry;;Shorts Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNodeEntry;;Zapatillas Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNodeEntry;;Polerones Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNodeEntry;;Sandalias Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNodeEntry;;Zapatillas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNodeEntry;;Pantalones y Calzas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNodeEntry;;Polerones Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNodeEntry;;Zapatillas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNodeEntry;;Poleras Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNodeEntry;;Pantalones y Calzas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNodeEntry;;Sandalias Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNodeEntry;;Pantalones Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNodeEntry;;Beanie Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNodeEntry;;Poleras Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNodeEntry;;Sandalias Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNodeEntry;;Protección y limpieza Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNodeEntry;;Polerones Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNodeEntry;;Chaquetas y Parkas Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNodeEntry;;Bananos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNodeEntry;;Poleras Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNodeEntry;;Shorts Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNodeEntry;;Chaquetas y Parkas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNodeEntry;;Chaquetas y Parkas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNodeEntry;;Shorts Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNodeEntry;;Petos  Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNodeEntry;;Gymsack Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNodeEntry;;Calcetas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNodeEntry;;Vestidos Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNodeEntry;;Snapback Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNodeEntry;;Mochilas y Bolsos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode
+# --------------------------------------------------------------------------
+# Create CMSNavigationNode to CMSNavigationNode Relations
+# --------------------------------------------------------------------------
+UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];children(uid,$contentCV);
+;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode
+;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;

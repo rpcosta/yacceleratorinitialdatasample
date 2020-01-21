@@ -1,0 +1,7 @@
+$contentCatalog=__CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$siteResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'application/pdf']; altText; folder(qualifier)[default = '']
+                   ;;TestPDF; Test.pdf; $siteResource/medias/Test.pdf;; Test PDF document;;

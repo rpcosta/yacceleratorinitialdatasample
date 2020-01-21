@@ -10,21 +10,21 @@ $contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCa
 
 # CMS Image Components
 INSERT_UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]                       ; name
-                               ;                          ; __CMS_STORE_PREFIX__EmailBannerSaleNowOnImage                ; __CMS_STORE_PREFIX__ Email Banner Sale Now On Image
-                               ;                          ; __CMS_STORE_PREFIX__EmailBannerFreeDeliveryImage             ; __CMS_STORE_PREFIX__ Email Banner Free Delivery Image
-                               ;                          ; __CMS_STORE_PREFIX__BannerComponent                          ; __CMS_STORE_PREFIX__ Email Banner Component                     
-                               ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailbannerComponent ; __CMS_STORE_PREFIX__ Email Customer Registration Banner Image     
-                               ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailbannerComponent    ; __CMS_STORE_PREFIX__ Email Forgotten Password Banner Image        
-                               ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailBannerComponent    ; __CMS_STORE_PREFIX__ Email Order Confirmation Banner Image        
-                               ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationBannerComponent  ; __CMS_STORE_PREFIX__ Email Consignment in preparation Banner Image
+                               ;                          ; EmailBannerSaleNowOnImage                ;  Email Banner Sale Now On Image
+                               ;                          ; EmailBannerFreeDeliveryImage             ;  Email Banner Free Delivery Image
+                               ;                          ; BannerComponent                          ;  Email Banner Component                     
+                               ;                          ; CustomerRegistrationEmailbannerComponent ;  Email Customer Registration Banner Image     
+                               ;                          ; ForgottenPasswordEmailbannerComponent    ;  Email Forgotten Password Banner Image        
+                               ;                          ; OrderConfirmationEmailBannerComponent    ;  Email Order Confirmation Banner Image        
+                               ;                          ; ConsignmentInPreparationBannerComponent  ;  Email Consignment in preparation Banner Image
 
 
 
 # Content Slots
 UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                                          ; cmsComponents(uid, $contentCV)
-                  ;                          ; __CMS_STORE_PREFIX__BannerComponentSlot                     ; __CMS_STORE_PREFIX__BannerComponent
-                  ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailbannerSlot     ; __CMS_STORE_PREFIX__CustomerRegistrationEmailbannerComponent
-                  ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailBannerSlot        ; __CMS_STORE_PREFIX__OrderConfirmationEmailBannerComponent
-                  ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailbannerSlot        ; __CMS_STORE_PREFIX__ForgottenPasswordEmailbannerComponent
-                  ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailBannerSlot ; __CMS_STORE_PREFIX__ConsignmentInPreparationBannerComponent
+                  ;                          ; BannerComponentSlot                     ; BannerComponent
+                  ;                          ; CustomerRegistrationEmailbannerSlot     ; CustomerRegistrationEmailbannerComponent
+                  ;                          ; OrderConfirmationEmailBannerSlot        ; OrderConfirmationEmailBannerComponent
+                  ;                          ; ForgottenPasswordEmailbannerSlot        ; ForgottenPasswordEmailbannerComponent
+                  ;                          ; ConsignmentInPreparationEmailBannerSlot ; ConsignmentInPreparationBannerComponent
 

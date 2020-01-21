@@ -6,7 +6,7 @@
 #
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__CustomerRegistrationEmailBody;"
+                                   ;;CustomerRegistrationEmailBody;"
 #macro(genHtmlLinkStartTag $url)
 <a href='$url'><font color='#666666'>
 #end
@@ -31,7 +31,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
     <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__DeliverySentEmailBody;"
+                                   ;;DeliverySentEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -169,7 +169,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__ForgottenPasswordEmailBody;"
+                                   ;;ForgottenPasswordEmailBody;"
 #macro(genHtmlLinkStartTag $url)
 <a href='$url'><font color='#666666'>
 #end
@@ -191,7 +191,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
     <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailBody;"
+                                   ;;NotPickedUpConsignmentCanceledEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -285,7 +285,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderCancelledEmailBody;"
+                                   ;;OrderCancelledEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -377,7 +377,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderCollectionReminderEmailBody;"
+                                   ;;OrderCollectionReminderEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -482,7 +482,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderConfirmationEmailBody;"
+                                   ;;OrderConfirmationEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -737,7 +737,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 "
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderMoveToCsEmailBody;"
+                                   ;;OrderMoveToCsEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -830,7 +830,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderPartiallyCanceledEmailBody;"
+                                   ;;OrderPartiallyCanceledEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -911,7 +911,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderPartiallyRefundedEmailBody;"
+                                   ;;OrderPartiallyRefundedEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -992,7 +992,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__OrderRefundEmailBody;"
+                                   ;;OrderRefundEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1084,7 +1084,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__QuoteBuyerCancellationEmailBody;"
+                                   ;;QuoteBuyerCancellationEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1277,7 +1277,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__QuoteBuyerSubmissionEmailBody;"
+                                   ;;QuoteBuyerSubmissionEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1472,7 +1472,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__QuoteExpiredEmailBody;"
+                                   ;;QuoteExpiredEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1673,7 +1673,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__QuoteToExpireSoonEmailBody;"
+                                   ;;QuoteToExpireSoonEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1872,7 +1872,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__ReadyForPickupEmailBody;"
+                                   ;;ReadyForPickupEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -1990,7 +1990,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__PrepareForPickupEmailBody;"
+                                   ;;PrepareForPickupEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end
@@ -2099,7 +2099,7 @@ INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];con
 </table>"
 
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                                   ;;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailBody;"
+                                   ;;ConsignmentInPreparationEmailBody;"
 #macro( genHtmlFont $text )
 <font color='#414a4f' size='2' face='Arial, Helvetica, sans-serif'><b>$text</b></font>
 #end

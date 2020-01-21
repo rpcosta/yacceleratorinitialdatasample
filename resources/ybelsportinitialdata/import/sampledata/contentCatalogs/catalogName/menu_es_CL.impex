@@ -1,0 +1,85 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+$contentCatalog=__CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=__PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$category=category(code, $productCV)
+$language=es_CL
+
+# --------------------------------------------------------------------------
+# CMSNavigationNode
+# --------------------------------------------------------------------------
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];title[lang=$language];
+;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;Sale
+;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;Hombre
+;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;Accesorios
+;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;Marcas
+;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;Mujer
+;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;Niños
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;Gymsack 
+;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;New Balance
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;Calcetas 
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;Protección y limpieza 
+;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;Asics Tiger
+;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;Zapatillas Niños
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;Beanie 
+;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;Jordan
+;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;Saucony
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;Calzado Hombre
+;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;Vans
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;Calzado Mujer
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;Snapback 
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;Vestuario Oferta
+;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;Adidas Originals
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;Calzado Oferta
+;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;Nike
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;Vestuario Hombre
+;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;Puma
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;Accesorios Oferta
+;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;Reebok
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;Vestuario Mujer
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos 
+;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;Crep
+;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;Bananos 
+;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;Under Armour
+;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;Converse
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;Petos Oferta
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;Shorts Hombre
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;Zapatillas Hombre
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;Polerones Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;Sandalias Mujer
+;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;Zapatillas Mujer
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;Pantalones y Calzas Oferta
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;Polerones Hombre
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;Zapatillas Oferta
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;Poleras Hombre
+;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;Pantalones y Calzas Mujer
+;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;Sandalias Hombre
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;Pantalones Hombre
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;Beanie Oferta
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;Poleras Oferta
+;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;Sandalias Oferta
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;Protección y limpieza Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;Polerones Mujer
+;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Hombre
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;Bananos Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;Poleras Mujer
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;Shorts Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Mujer
+;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;Chaquetas y Parkas Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;Shorts Mujer
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;Petos 
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;Gymsack Oferta
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;Calcetas Oferta
+;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;Vestidos Mujer
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;Snapback Oferta
+;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos Oferta

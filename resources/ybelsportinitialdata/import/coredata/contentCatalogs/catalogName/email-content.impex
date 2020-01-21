@@ -14,105 +14,105 @@ $jarResourceCms = $config-jarResourceCmsValue
 $emailPackageName = $config-emailContextPackageName
 
 # Email page Template
-INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                          ; name                                              ; active; frontendTemplateName                ; subject(code)                                      ; htmlTemplate(code)                              ; restrictedPageTypes(code)
-                               ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailTemplate           ; __CMS_STORE_PREFIX__ Customer Registration Email Template              ; true  ; customerRegistrationEmail           ; __CMS_IMAGE_PREFIX___Email_Customer_Registration_Subject           ; __CMS_IMAGE_PREFIX___Email_Customer_Registration_Body           ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailTemplate              ; __CMS_STORE_PREFIX__ Forgotten Password Email Template                 ; true  ; forgottenPasswordEmail              ; __CMS_IMAGE_PREFIX___Email_Forgotten_Password_Subject              ; __CMS_IMAGE_PREFIX___Email_Forgotten_Password_Body              ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailTemplate              ; __CMS_STORE_PREFIX__ Order Confirmation Email Template                 ; true  ; orderConfirmationEmail              ; __CMS_IMAGE_PREFIX___Email_Order_Confirmation_Subject              ; __CMS_IMAGE_PREFIX___Email_Order_Confirmation_Body              ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__DeliverySentEmailTemplate                   ; __CMS_STORE_PREFIX__ Delivery Sent Email Template                      ; true  ; deliverySentEmail                   ; __CMS_IMAGE_PREFIX___Email_Delivery_Sent_Subject                   ; __CMS_IMAGE_PREFIX___Email_Delivery_Sent_Body                   ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmailTemplate                 ; __CMS_STORE_PREFIX__ Ready For Pickup Email Template                   ; true  ; readyForPickupEmail                 ; __CMS_IMAGE_PREFIX___Email_Ready_For_Pickup_Subject                ; __CMS_IMAGE_PREFIX___Email_Ready_For_Pickup_Body                ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmailTemplate                 ; __CMS_STORE_PREFIX__ Order Cancelled Email Template                    ; true  ; orderCancelledEmail                 ; __CMS_IMAGE_PREFIX___Email_Order_Cancelled_Subject                 ; __CMS_IMAGE_PREFIX___Email_Order_Cancelled_Body                 ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderRefundEmailTemplate                    ; __CMS_STORE_PREFIX__ Order Refund Email Template                       ; true  ; orderRefundEmail                    ; __CMS_IMAGE_PREFIX___Email_Order_Refund_Subject                    ; __CMS_IMAGE_PREFIX___Email_Order_Refund_Body                    ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmailTemplate        ; __CMS_STORE_PREFIX__ Order Collection Reminder Email Template          ; true  ; orderCollectionReminderEmail        ; __CMS_IMAGE_PREFIX___Email_Order_Collection_Reminder_Subject       ; __CMS_IMAGE_PREFIX___Email_Order_Collection_Reminder_Body       ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmailTemplate                  ; __CMS_STORE_PREFIX__ Order Moved To CS Email Template                  ; true  ; orderMoveToCsEmail                  ; __CMS_IMAGE_PREFIX___Email_Order_Move_To_CS_Subject                ; __CMS_IMAGE_PREFIX___Email_Order_Move_To_CS_Body                ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTemplate         ; __CMS_STORE_PREFIX__ Order Partially Canceled Email Template           ; true  ; orderPartiallyCanceledEmail         ; __CMS_IMAGE_PREFIX___Email_Order_Partially_Canceled_Subject        ; __CMS_IMAGE_PREFIX___Email_Order_Partially_Canceled_Body        ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTemplate         ; __CMS_STORE_PREFIX__ Order Partially Refunded Email Template           ; true  ; orderPartiallyRefundedEmail         ; __CMS_IMAGE_PREFIX___Email_Order_Partially_Refunded_Subject        ; __CMS_IMAGE_PREFIX___Email_Order_Partially_Refunded_Body        ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTemplate ; __CMS_STORE_PREFIX__ Not Picked Up Consignment Canceled Email Template ; true  ; notPickedUpConsignmentCanceledEmail ; __CMS_IMAGE_PREFIX___Email_NotPickedUpConsignment_Canceled_Subject ; __CMS_IMAGE_PREFIX___Email_NotPickedUpConsignment_Canceled_Body ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmailTemplate               ; __CMS_STORE_PREFIX__ Prepare For Pickup Email Template                 ; true  ; prepareForPickupEmail               ; __CMS_IMAGE_PREFIX___Email_Prepare_For_Pickup_Subject              ; __CMS_IMAGE_PREFIX___Email_Prepare_For_Pickup_Body              ; EmailPage
-                               ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailTemplate       ; __CMS_STORE_PREFIX__ Consignment in preparation Email Template         ; true  ; ConsignmentInPreparationEmail       ; __CMS_IMAGE_PREFIX___Email_Consignment_In_Preparation_Subject      ; __CMS_IMAGE_PREFIX___Email_Consignment_In_Preparation_Body      ; EmailPage
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                          ; name                                              ; active; frontendTemplateName                ; subject(code)                                 ; htmlTemplate(code)                         ; restrictedPageTypes(code)
+                               ;                          ; CustomerRegistrationEmailTemplate           ; Customer Registration Email Template              ; true  ; customerRegistrationEmail           ; Email_Customer_Registration_Subject           ; Email_Customer_Registration_Body           ; EmailPage
+                               ;                          ; ForgottenPasswordEmailTemplate              ; Forgotten Password Email Template                 ; true  ; forgottenPasswordEmail              ; Email_Forgotten_Password_Subject              ; Email_Forgotten_Password_Body              ; EmailPage
+                               ;                          ; OrderConfirmationEmailTemplate              ; Order Confirmation Email Template                 ; true  ; orderConfirmationEmail              ; Email_Order_Confirmation_Subject              ; Email_Order_Confirmation_Body              ; EmailPage
+                               ;                          ; DeliverySentEmailTemplate                   ; Delivery Sent Email Template                      ; true  ; deliverySentEmail                   ; Email_Delivery_Sent_Subject                   ; Email_Delivery_Sent_Body                   ; EmailPage
+                               ;                          ; ReadyForPickupEmailTemplate                 ; Ready For Pickup Email Template                   ; true  ; readyForPickupEmail                 ; Email_Ready_For_Pickup_Subject                ; Email_Ready_For_Pickup_Body                ; EmailPage
+                               ;                          ; OrderCancelledEmailTemplate                 ; Order Cancelled Email Template                    ; true  ; orderCancelledEmail                 ; Email_Order_Cancelled_Subject                 ; Email_Order_Cancelled_Body                 ; EmailPage
+                               ;                          ; OrderRefundEmailTemplate                    ; Order Refund Email Template                       ; true  ; orderRefundEmail                    ; Email_Order_Refund_Subject                    ; Email_Order_Refund_Body                    ; EmailPage
+                               ;                          ; OrderCollectionReminderEmailTemplate        ; Order Collection Reminder Email Template          ; true  ; orderCollectionReminderEmail        ; Email_Order_Collection_Reminder_Subject       ; Email_Order_Collection_Reminder_Body       ; EmailPage
+                               ;                          ; OrderMoveToCsEmailTemplate                  ; Order Moved To CS Email Template                  ; true  ; orderMoveToCsEmail                  ; Email_Order_Move_To_CS_Subject                ; Email_Order_Move_To_CS_Body                ; EmailPage
+                               ;                          ; OrderPartiallyCanceledEmailTemplate         ; Order Partially Canceled Email Template           ; true  ; orderPartiallyCanceledEmail         ; Email_Order_Partially_Canceled_Subject        ; Email_Order_Partially_Canceled_Body        ; EmailPage
+                               ;                          ; OrderPartiallyRefundedEmailTemplate         ; Order Partially Refunded Email Template           ; true  ; orderPartiallyRefundedEmail         ; Email_Order_Partially_Refunded_Subject        ; Email_Order_Partially_Refunded_Body        ; EmailPage
+                               ;                          ; NotPickedUpConsignmentCanceledEmailTemplate ; Not Picked Up Consignment Canceled Email Template ; true  ; notPickedUpConsignmentCanceledEmail ; Email_NotPickedUpConsignment_Canceled_Subject ; Email_NotPickedUpConsignment_Canceled_Body ; EmailPage
+                               ;                          ; PrepareForPickupEmailTemplate               ; Prepare For Pickup Email Template                 ; true  ; prepareForPickupEmail               ; Email_Prepare_For_Pickup_Subject              ; Email_Prepare_For_Pickup_Body              ; EmailPage
+                               ;                          ; ConsignmentInPreparationEmailTemplate       ; Consignment in preparation Email Template         ; true  ; ConsignmentInPreparationEmail       ; Email_Consignment_In_Preparation_Subject      ; Email_Consignment_In_Preparation_Body      ; EmailPage
 
 # Templates for CMS Cockpit Page Edit
 UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                          ; velocityTemplate[translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
-                        ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailTemplate           ; $jarResourceCms/structure-view/structure_customerRegistrationEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailTemplate              ; $jarResourceCms/structure-view/structure_forgottenPasswordEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailTemplate              ; $jarResourceCms/structure-view/structure_orderConfirmationEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__DeliverySentEmailTemplate                   ; $jarResourceCms/structure-view/structure_deliverySentEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmailTemplate                 ; $jarResourceCms/structure-view/structure_readyForPickupEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmailTemplate                 ; $jarResourceCms/structure-view/structure_orderCancelledEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderRefundEmailTemplate                    ; $jarResourceCms/structure-view/structure_orderRefundEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmailTemplate        ; $jarResourceCms/structure-view/structure_orderCollectionReminderEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmailTemplate                  ; $jarResourceCms/structure-view/structure_orderMoveToCSEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTemplate         ; $jarResourceCms/structure-view/structure_orderPartiallyCanceledEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTemplate         ; $jarResourceCms/structure-view/structure_orderPartiallyRefundedEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTemplate ; $jarResourceCms/structure-view/structure_notPickedUpConsignmentCanceledEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmailTemplate               ; $jarResourceCms/structure-view/structure_prepareForPickupEmailTemplate.vm
-                        ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailTemplate       ; $jarResourceCms/structure-view/structure_consignmentInPreparationEmailTemplate.vm
+                        ;                          ; CustomerRegistrationEmailTemplate           ; $jarResourceCms/structure-view/structure_customerRegistrationEmailTemplate.vm
+                        ;                          ; ForgottenPasswordEmailTemplate              ; $jarResourceCms/structure-view/structure_forgottenPasswordEmailTemplate.vm
+                        ;                          ; OrderConfirmationEmailTemplate              ; $jarResourceCms/structure-view/structure_orderConfirmationEmailTemplate.vm
+                        ;                          ; DeliverySentEmailTemplate                   ; $jarResourceCms/structure-view/structure_deliverySentEmailTemplate.vm
+                        ;                          ; ReadyForPickupEmailTemplate                 ; $jarResourceCms/structure-view/structure_readyForPickupEmailTemplate.vm
+                        ;                          ; OrderCancelledEmailTemplate                 ; $jarResourceCms/structure-view/structure_orderCancelledEmailTemplate.vm
+                        ;                          ; OrderRefundEmailTemplate                    ; $jarResourceCms/structure-view/structure_orderRefundEmailTemplate.vm
+                        ;                          ; OrderCollectionReminderEmailTemplate        ; $jarResourceCms/structure-view/structure_orderCollectionReminderEmailTemplate.vm
+                        ;                          ; OrderMoveToCsEmailTemplate                  ; $jarResourceCms/structure-view/structure_orderMoveToCSEmailTemplate.vm
+                        ;                          ; OrderPartiallyCanceledEmailTemplate         ; $jarResourceCms/structure-view/structure_orderPartiallyCanceledEmailTemplate.vm
+                        ;                          ; OrderPartiallyRefundedEmailTemplate         ; $jarResourceCms/structure-view/structure_orderPartiallyRefundedEmailTemplate.vm
+                        ;                          ; NotPickedUpConsignmentCanceledEmailTemplate ; $jarResourceCms/structure-view/structure_notPickedUpConsignmentCanceledEmailTemplate.vm
+                        ;                          ; PrepareForPickupEmailTemplate               ; $jarResourceCms/structure-view/structure_prepareForPickupEmailTemplate.vm
+                        ;                          ; ConsignmentInPreparationEmailTemplate       ; $jarResourceCms/structure-view/structure_consignmentInPreparationEmailTemplate.vm
 
 
 INSERT_UPDATE ComponentTypeGroup; code[unique = true]
                                 ; email
                                 ; banner
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__CustomerRegistrationEmailTemplate']; validComponentTypes(code);
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'CustomerRegistrationEmailTemplate']; validComponentTypes(code);
                              ; SiteLogo           ;                                                                                        ; $wideContent             ; email
                              ; TopContent         ;                                                                                        ; $wideContent             ; email
                              ; BannerContent      ;                                                                                        ; $wideContent             ; banner
                              ; BottomContent      ;                                                                                        ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ForgottenPasswordEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'ForgottenPasswordEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                     ; $wideContent             ; email
                              ; TopContent         ;                                                                                     ; $wideContent             ; email
                              ; BannerContent      ;                                                                                     ; $wideContent             ; banner
                              ; BottomContent      ;                                                                                     ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderConfirmationEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderConfirmationEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                     ; $wideContent             ; email
                              ; TopContent         ;                                                                                     ; $wideContent             ; email
                              ; BannerContent      ;                                                                                     ; $wideContent             ; banner
                              ; BottomContent      ;                                                                                     ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderCancelledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderCancelledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                  ; $wideContent             ; email
                              ; TopContent         ;                                                                                  ; $wideContent             ; email
                              ; BottomContent      ;                                                                                  ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderRefundEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderRefundEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                               ; $wideContent             ; email
                              ; TopContent         ;                                                                               ; $wideContent             ; email
                              ; BottomContent      ;                                                                               ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__DeliverySentEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'DeliverySentEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                ; $wideContent             ; email
                              ; TopContent         ;                                                                                ; $wideContent             ; email
                              ; BottomContent      ;                                                                                ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ReadyForPickupEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'ReadyForPickupEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                  ; $wideContent             ; email
                              ; TopContent         ;                                                                                  ; $wideContent             ; email
                              ; BottomContent      ;                                                                                  ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderCollectionReminderEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderCollectionReminderEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                           ; $wideContent             ; email
                              ; TopContent         ;                                                                                           ; $wideContent             ; email
                              ; BottomContent      ;                                                                                           ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderMoveToCsEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderMoveToCsEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                 ; $wideContent             ; email
                              ; TopContent         ;                                                                                 ; $wideContent             ; email
                              ; BottomContent      ;                                                                                 ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderPartiallyCanceledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                          ; $wideContent             ; email
                              ; TopContent         ;                                                                                          ; $wideContent             ; email
                              ; BottomContent      ;                                                                                          ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'OrderPartiallyRefundedEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                          ; $wideContent             ; email
                              ; TopContent         ;                                                                                          ; $wideContent             ; email
                              ; BottomContent      ;                                                                                          ; $wideContent             ; email
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'NotPickedUpConsignmentCanceledEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ConsignmentInPreparationEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'ConsignmentInPreparationEmailTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo           ;                                                                                                  ; $wideContent             ; email
                              ; TopContent         ;                                                                                                  ; $wideContent             ; email
                              ; BottomContent      ;                                                                                                  ; $wideContent             ; email
@@ -127,196 +127,196 @@ INSERT_UPDATE ComponentTypeGroups2ComponentType; source(code)[unique = true]; ta
 
 # Create Content Slots
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                         ; name                                                  ; active
-                         ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailTopSlot           ; __CMS_STORE_PREFIX__ Default customerRegistration Email Top Slot           ; true
-                         ;                          ; __CMS_STORE_PREFIX__DeliverySentEmailHeaderSlot                ; __CMS_STORE_PREFIX__ Default Delivery Sent Email Header Slot               ; true
-                         ;                          ; __CMS_STORE_PREFIX__DeliverySentEmailTopSlot                   ; __CMS_STORE_PREFIX__ Default deliverySent Email Top Slot                   ; true
-                         ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailTopSlot              ; __CMS_STORE_PREFIX__ Default forgottenPassword Email Top Slot              ; true
-                         ;                          ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTopSlot ; __CMS_STORE_PREFIX__ Default notPickedUpConsignmentCanceled Email Top Slot ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmailTopSlot                 ; __CMS_STORE_PREFIX__ Default orderCancelled Email Top Slot                 ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmailTopSlot        ; __CMS_STORE_PREFIX__ Default orderCollectionReminder Email Top Slot        ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailTopSlot              ; __CMS_STORE_PREFIX__ Default orderConfirmation Email Top Slot              ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmailBannerSlot           ; __CMS_STORE_PREFIX__ Default orderConfirmation Email banner Slot           ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmailTopSlot                  ; __CMS_STORE_PREFIX__ Default orderMoveToCs Email Top Slot                  ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTopSlot         ; __CMS_STORE_PREFIX__ Default orderPartiallyCanceled Email Top Slot         ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTopSlot         ; __CMS_STORE_PREFIX__ Default orderPartiallyRefunded Email Top Slot         ; true
-                         ;                          ; __CMS_STORE_PREFIX__OrderRefundEmailTopSlot                    ; __CMS_STORE_PREFIX__ Default orderRefund Email Top Slot                    ; true
-                         ;                          ; __CMS_STORE_PREFIX__QuoteBuyerCancellationEmailTopSlot         ; __CMS_STORE_PREFIX__ Default quoteBuyerCancellation Email Top Slot         ; true
-                         ;                          ; __CMS_STORE_PREFIX__QuoteBuyerSubmissionEmailTopSlot           ; __CMS_STORE_PREFIX__ Default quoteBuyerSubmission Email Top Slot           ; true
-                         ;                          ; __CMS_STORE_PREFIX__QuoteExpiredEmailTopSlot                   ; __CMS_STORE_PREFIX__ Default quoteExpired Email Top Slot                   ; true
-                         ;                          ; __CMS_STORE_PREFIX__QuoteToExpireSoonEmailTopSlot              ; __CMS_STORE_PREFIX__ Default quoteToExpireSoon Email Top Slot              ; true
-                         ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmailHeaderSlot              ; __CMS_STORE_PREFIX__ Default readyForPickup Email Header Slot              ; true
-                         ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmailTopSlot                 ; __CMS_STORE_PREFIX__ Default readyForPickup Email Top Slot                 ; true
-                         ;                          ; __CMS_STORE_PREFIX__EmailBottomSlot                            ; __CMS_STORE_PREFIX__ Default Email Bottom Slot                             ; true
-                         ;                          ; __CMS_STORE_PREFIX__EmailSiteLogoSlot                          ; __CMS_STORE_PREFIX__ Default Email Site Slot                               ; true
-                         ;                          ; __CMS_STORE_PREFIX__bannerComponentSlot                        ; __CMS_STORE_PREFIX__ Default bannerComponentSlot                           ; true
-                         ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmailbannerSlot        ; __CMS_STORE_PREFIX__ Default CustomerRegistrationEmail banner slot         ; true
-                         ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmailbannerSlot           ; __CMS_STORE_PREFIX__ Default ForgottenPasswordEmail banner slot            ; true
-                         ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmailHeaderSlot            ; __CMS_STORE_PREFIX__ Default prepareForPickup Email Header Slot            ; true
-                         ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmailTopSlot               ; __CMS_STORE_PREFIX__ Default prepareForPickup Email Top Slot               ; true
-                         ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailBannerSlot    ; __CMS_STORE_PREFIX__ Consignment in preparation Email Header Slot          ; true
-                         ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailTopSlot       ; __CMS_STORE_PREFIX__ Consignment in preparation Email Top Slot             ; true
+                         ;                          ; CustomerRegistrationEmailTopSlot           ;  Default customerRegistration Email Top Slot           ; true
+                         ;                          ; DeliverySentEmailHeaderSlot                ;  Default Delivery Sent Email Header Slot               ; true
+                         ;                          ; DeliverySentEmailTopSlot                   ;  Default deliverySent Email Top Slot                   ; true
+                         ;                          ; ForgottenPasswordEmailTopSlot              ;  Default forgottenPassword Email Top Slot              ; true
+                         ;                          ; NotPickedUpConsignmentCanceledEmailTopSlot ;  Default notPickedUpConsignmentCanceled Email Top Slot ; true
+                         ;                          ; OrderCancelledEmailTopSlot                 ;  Default orderCancelled Email Top Slot                 ; true
+                         ;                          ; OrderCollectionReminderEmailTopSlot        ;  Default orderCollectionReminder Email Top Slot        ; true
+                         ;                          ; OrderConfirmationEmailTopSlot              ;  Default orderConfirmation Email Top Slot              ; true
+                         ;                          ; OrderConfirmationEmailBannerSlot           ;  Default orderConfirmation Email banner Slot           ; true
+                         ;                          ; OrderMoveToCsEmailTopSlot                  ;  Default orderMoveToCs Email Top Slot                  ; true
+                         ;                          ; OrderPartiallyCanceledEmailTopSlot         ;  Default orderPartiallyCanceled Email Top Slot         ; true
+                         ;                          ; OrderPartiallyRefundedEmailTopSlot         ;  Default orderPartiallyRefunded Email Top Slot         ; true
+                         ;                          ; OrderRefundEmailTopSlot                    ;  Default orderRefund Email Top Slot                    ; true
+                         ;                          ; QuoteBuyerCancellationEmailTopSlot         ;  Default quoteBuyerCancellation Email Top Slot         ; true
+                         ;                          ; QuoteBuyerSubmissionEmailTopSlot           ;  Default quoteBuyerSubmission Email Top Slot           ; true
+                         ;                          ; QuoteExpiredEmailTopSlot                   ;  Default quoteExpired Email Top Slot                   ; true
+                         ;                          ; QuoteToExpireSoonEmailTopSlot              ;  Default quoteToExpireSoon Email Top Slot              ; true
+                         ;                          ; ReadyForPickupEmailHeaderSlot              ;  Default readyForPickup Email Header Slot              ; true
+                         ;                          ; ReadyForPickupEmailTopSlot                 ;  Default readyForPickup Email Top Slot                 ; true
+                         ;                          ; EmailBottomSlot                            ;  Default Email Bottom Slot                             ; true
+                         ;                          ; EmailSiteLogoSlot                          ;  Default Email Site Slot                               ; true
+                         ;                          ; bannerComponentSlot                        ;  Default bannerComponentSlot                           ; true
+                         ;                          ; CustomerRegistrationEmailbannerSlot        ;  Default CustomerRegistrationEmail banner slot         ; true
+                         ;                          ; ForgottenPasswordEmailbannerSlot           ;  Default ForgottenPasswordEmail banner slot            ; true
+                         ;                          ; PrepareForPickupEmailHeaderSlot            ;  Default prepareForPickup Email Header Slot            ; true
+                         ;                          ; PrepareForPickupEmailTopSlot               ;  Default prepareForPickup Email Top Slot               ; true
+                         ;                          ; ConsignmentInPreparationEmailBannerSlot    ;  Consignment in preparation Email Header Slot          ; true
+                         ;                          ; ConsignmentInPreparationEmailTopSlot       ;  Consignment in preparation Email Top Slot             ; true
 
 # Bind Content Slots to Email Page Templates
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                      ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__CustomerRegistrationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-CustomerRegistrationEmail      ; SiteLogo               ;                                                                                            ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-CustomerRegistrationEmail    ; TopContent             ;                                                                                            ; CustomerRegistrationEmailTopSlot           ; true
-                                    ;                          ; __CMS_STORE_PREFIX__bannerContent-CustomerRegistrationEmail ; bannerContent          ;                                                                                            ; CustomerRegistrationEmailbannerSlot        ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-CustomerRegistrationEmail ; BottomContent          ;                                                                                            ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                      ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'CustomerRegistrationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-CustomerRegistrationEmail      ; SiteLogo               ;                                                                                            ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-CustomerRegistrationEmail    ; TopContent             ;                                                                                            ; CustomerRegistrationEmailTopSlot           ; true
+                                    ;                          ; bannerContent-CustomerRegistrationEmail ; bannerContent          ;                                                                                            ; CustomerRegistrationEmailbannerSlot        ; true
+                                    ;                          ; BottomContent-CustomerRegistrationEmail ; BottomContent          ;                                                                                            ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ForgottenPasswordEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-ForgottenPasswordEmail      ; SiteLogo               ;                                                                                         ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-ForgottenPasswordEmail    ; TopContent             ;                                                                                         ; ForgottenPasswordEmailTopSlot              ; true
-                                    ;                          ; __CMS_STORE_PREFIX__bannerContent-ForgottenPasswordEmail ; bannerContent          ;                                                                                         ; ForgottenPasswordEmailbannerSlot                        ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-ForgottenPasswordEmail ; BottomContent          ;                                                                                         ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ForgottenPasswordEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-ForgottenPasswordEmail      ; SiteLogo               ;                                                                                         ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-ForgottenPasswordEmail    ; TopContent             ;                                                                                         ; ForgottenPasswordEmailTopSlot              ; true
+                                    ;                          ; bannerContent-ForgottenPasswordEmail ; bannerContent          ;                                                                                         ; ForgottenPasswordEmailbannerSlot                        ; true
+                                    ;                          ; BottomContent-ForgottenPasswordEmail ; BottomContent          ;                                                                                         ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderConfirmationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderConfirmationEmail      ; SiteLogo               ;                                                                                         ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderConfirmationEmail    ; TopContent             ;                                                                                         ; OrderConfirmationEmailTopSlot              ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderConfirmationEmail ; BottomContent          ;                                                                                         ; EmailBottomSlot                            ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BannerContent-OrderConfirmationEmail ; bannerContent          ;                                                                                         ; OrderConfirmationEmailBannerSlot        ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderConfirmationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderConfirmationEmail      ; SiteLogo               ;                                                                                         ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderConfirmationEmail    ; TopContent             ;                                                                                         ; OrderConfirmationEmailTopSlot              ; true
+                                    ;                          ; BottomContent-OrderConfirmationEmail ; BottomContent          ;                                                                                         ; EmailBottomSlot                            ; true
+                                    ;                          ; BannerContent-OrderConfirmationEmail ; bannerContent          ;                                                                                         ; OrderConfirmationEmailBannerSlot        ; true
 
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderCancelledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderCancelledEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderCancelledEmail    ; TopContent             ;                                                                                      ; OrderCancelledEmailTopSlot                 ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderCancelledEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderCancelledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderCancelledEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderCancelledEmail    ; TopContent             ;                                                                                      ; OrderCancelledEmailTopSlot                 ; true
+                                    ;                          ; BottomContent-OrderCancelledEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]             ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderRefundEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderRefundEmail      ; SiteLogo               ;                                                                                   ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderRefundEmail    ; TopContent             ;                                                                                   ; OrderRefundEmailTopSlot                    ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderRefundEmail ; BottomContent          ;                                                                                   ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]             ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderRefundEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderRefundEmail      ; SiteLogo               ;                                                                                   ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderRefundEmail    ; TopContent             ;                                                                                   ; OrderRefundEmailTopSlot                    ; true
+                                    ;                          ; BottomContent-OrderRefundEmail ; BottomContent          ;                                                                                   ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]              ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__DeliverySentEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-DeliverySentEmail      ; SiteLogo               ;                                                                                    ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-DeliverySentEmail    ; TopContent             ;                                                                                    ; DeliverySentEmailTopSlot                   ; true
-                                    ;                          ; __CMS_STORE_PREFIX__HeaderContent-DeliverySentEmail ; HeaderContent          ;                                                                                      ; ReadyForPickupEmailHeaderSlot              ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-DeliverySentEmail ; BottomContent          ;                                                                                    ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]              ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'DeliverySentEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-DeliverySentEmail      ; SiteLogo               ;                                                                                    ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-DeliverySentEmail    ; TopContent             ;                                                                                    ; DeliverySentEmailTopSlot                   ; true
+                                    ;                          ; HeaderContent-DeliverySentEmail ; HeaderContent          ;                                                                                      ; ReadyForPickupEmailHeaderSlot              ; true
+                                    ;                          ; BottomContent-DeliverySentEmail ; BottomContent          ;                                                                                    ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ReadyForPickupEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-ReadyForPickupEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__HeaderContent-ReadyForPickupEmail ; HeaderContent          ;                                                                                      ; ReadyForPickupEmailHeaderSlot              ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-ReadyForPickupEmail    ; TopContent             ;                                                                                      ; ReadyForPickupEmailTopSlot                 ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-ReadyForPickupEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ReadyForPickupEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-ReadyForPickupEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; HeaderContent-ReadyForPickupEmail ; HeaderContent          ;                                                                                      ; ReadyForPickupEmailHeaderSlot              ; true
+                                    ;                          ; TopContent-ReadyForPickupEmail    ; TopContent             ;                                                                                      ; ReadyForPickupEmailTopSlot                 ; true
+                                    ;                          ; BottomContent-ReadyForPickupEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__PrepareForPickupEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-PrepareForPickupEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__HeaderContent-PrepareForPickupEmail ; HeaderContent          ;                                                                                      ; PrepareForPickupEmailHeaderSlot            ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-PrepareForPickupEmail    ; TopContent             ;                                                                                      ; PrepareForPickupEmailTopSlot               ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-PrepareForPickupEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'PrepareForPickupEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-PrepareForPickupEmail      ; SiteLogo               ;                                                                                      ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; HeaderContent-PrepareForPickupEmail ; HeaderContent          ;                                                                                      ; PrepareForPickupEmailHeaderSlot            ; true
+                                    ;                          ; TopContent-PrepareForPickupEmail    ; TopContent             ;                                                                                      ; PrepareForPickupEmailTopSlot               ; true
+                                    ;                          ; BottomContent-PrepareForPickupEmail ; BottomContent          ;                                                                                      ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderPartiallyCanceledEmail      ; SiteLogo               ;                                                                                              ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderPartiallyCanceledEmail    ; TopContent             ;                                                                                              ; OrderPartiallyCanceledEmailTopSlot         ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderPartiallyCanceledEmail ; BottomContent          ;                                                                                              ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderPartiallyCanceledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderPartiallyCanceledEmail      ; SiteLogo               ;                                                                                              ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderPartiallyCanceledEmail    ; TopContent             ;                                                                                              ; OrderPartiallyCanceledEmailTopSlot         ; true
+                                    ;                          ; BottomContent-OrderPartiallyCanceledEmail ; BottomContent          ;                                                                                              ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderPartiallyRefundedEmail      ; SiteLogo               ;                                                                                              ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderPartiallyRefundedEmail    ; TopContent             ;                                                                                              ; OrderPartiallyRefundedEmailTopSlot         ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderPartiallyRefundedEmail ; BottomContent          ;                                                                                              ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderPartiallyRefundedEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderPartiallyRefundedEmail      ; SiteLogo               ;                                                                                              ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderPartiallyRefundedEmail    ; TopContent             ;                                                                                              ; OrderPartiallyRefundedEmailTopSlot         ; true
+                                    ;                          ; BottomContent-OrderPartiallyRefundedEmail ; BottomContent          ;                                                                                              ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-NotPickedUpConsignmentCanceledEmail      ; SiteLogo               ;                                                                                                      ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-NotPickedUpConsignmentCanceledEmail    ; TopContent             ;                                                                                                      ; NotPickedUpConsignmentCanceledEmailTopSlot ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-NotPickedUpConsignmentCanceledEmail ; BottomContent          ;                                                                                                      ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                                ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'NotPickedUpConsignmentCanceledEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-NotPickedUpConsignmentCanceledEmail      ; SiteLogo               ;                                                                                                      ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-NotPickedUpConsignmentCanceledEmail    ; TopContent             ;                                                                                                      ; NotPickedUpConsignmentCanceledEmailTopSlot ; true
+                                    ;                          ; BottomContent-NotPickedUpConsignmentCanceledEmail ; BottomContent          ;                                                                                                      ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                         ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__OrderCollectionReminderEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-OrderCollectionReminderEmail      ; SiteLogo               ;                                                                                               ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-OrderCollectionReminderEmail    ; TopContent             ;                                                                                               ; OrderCollectionReminderEmailTopSlot        ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-OrderCollectionReminderEmail ; BottomContent          ;                                                                                               ; EmailBottomSlot                            ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                         ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'OrderCollectionReminderEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-OrderCollectionReminderEmail      ; SiteLogo               ;                                                                                               ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-OrderCollectionReminderEmail    ; TopContent             ;                                                                                               ; OrderCollectionReminderEmailTopSlot        ; true
+                                    ;                          ; BottomContent-OrderCollectionReminderEmail ; BottomContent          ;                                                                                               ; EmailBottomSlot                            ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                          ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = '__CMS_STORE_PREFIX__ConsignmentInPreparationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; __CMS_STORE_PREFIX__SiteLogo-ConsignmentInPreparationEmail      ; SiteLogo               ;                                                                                               ; EmailSiteLogoSlot                          ; true
-                                    ;                          ; __CMS_STORE_PREFIX__TopContent-ConsignmentInPreparationEmail    ; TopContent             ;                                                                                               ; ConsignmentInPreparationEmailTopSlot       ; true
-                                    ;                          ; __CMS_STORE_PREFIX__BottomContent-ConsignmentInPreparationEmail ; BottomContent          ;                                                                                               ; EmailBottomSlot                            ; true
-                                   ;                           ; __CMS_STORE_PREFIX__BannerContent-ConsignmentInPreparationEmail ; bannerContent          ;                                                                                               ; ConsignmentInPreparationEmailBannerSlot    ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                          ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ConsignmentInPreparationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-ConsignmentInPreparationEmail      ; SiteLogo               ;                                                                                               ; EmailSiteLogoSlot                          ; true
+                                    ;                          ; TopContent-ConsignmentInPreparationEmail    ; TopContent             ;                                                                                               ; ConsignmentInPreparationEmailTopSlot       ; true
+                                    ;                          ; BottomContent-ConsignmentInPreparationEmail ; BottomContent          ;                                                                                               ; EmailBottomSlot                            ; true
+                                   ;                           ; BannerContent-ConsignmentInPreparationEmail ; bannerContent          ;                                                                                               ; ConsignmentInPreparationEmailBannerSlot    ; true
 
 # Email Pages
 INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]                  ; name                                     ; masterTemplate(uid, $contentCV)             ; defaultPage; approvalStatus(code)[default = 'approved']
-                       ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmail           ; __CMS_STORE_PREFIX__ Customer Registration Email              ; __CMS_STORE_PREFIX__CustomerRegistrationEmailTemplate           ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmail              ; __CMS_STORE_PREFIX__ Forgotten Password Email                 ; __CMS_STORE_PREFIX__ForgottenPasswordEmailTemplate              ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmail              ; __CMS_STORE_PREFIX__ Order Confirmation Email                 ; __CMS_STORE_PREFIX__OrderConfirmationEmailTemplate              ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__DeliverySentEmail                   ; __CMS_STORE_PREFIX__ Delivery Sent Email                      ; __CMS_STORE_PREFIX__DeliverySentEmailTemplate                   ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmail                 ; __CMS_STORE_PREFIX__ Ready For Pickup Email                   ; __CMS_STORE_PREFIX__ReadyForPickupEmailTemplate                 ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmail                 ; __CMS_STORE_PREFIX__ Order Cancelled Email                    ; __CMS_STORE_PREFIX__OrderCancelledEmailTemplate                 ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__OrderRefundEmail                    ; __CMS_STORE_PREFIX__ Order Refund Email                       ; __CMS_STORE_PREFIX__OrderRefundEmailTemplate                    ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmail        ; __CMS_STORE_PREFIX__ Order Collection Reminder Email          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmailTemplate        ; true       ; ; customerservices@hybris.com ; Customer Services Team
-                       ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmail                  ; __CMS_STORE_PREFIX__ Order Move To CS Email                   ; __CMS_STORE_PREFIX__OrderMoveToCsEmailTemplate                  ; true       ; ; customerservices@hybris.com ; Customer Services Team
-                       ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmail         ; __CMS_STORE_PREFIX__ Order Partially Canceled Email           ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmailTemplate         ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmail         ; __CMS_STORE_PREFIX__ Order Partially Refunded Email           ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmailTemplate         ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmail ; __CMS_STORE_PREFIX__ Not Picked Up Consignment Canceled Email ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmailTemplate ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmail               ; __CMS_STORE_PREFIX__ Preapre For Pickup Email                 ; __CMS_STORE_PREFIX__PrepareForPickupEmailTemplate               ; true       ;
-                       ;                          ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmail       ; __CMS_STORE_PREFIX__ Consignment in preparation Email         ; __CMS_STORE_PREFIX__ConsignmentInPreparationEmailTemplate       ; true       ;
+                       ;                          ; CustomerRegistrationEmail           ;  Customer Registration Email              ; CustomerRegistrationEmailTemplate           ; true       ;
+                       ;                          ; ForgottenPasswordEmail              ;  Forgotten Password Email                 ; ForgottenPasswordEmailTemplate              ; true       ;
+                       ;                          ; OrderConfirmationEmail              ;  Order Confirmation Email                 ; OrderConfirmationEmailTemplate              ; true       ;
+                       ;                          ; DeliverySentEmail                   ;  Delivery Sent Email                      ; DeliverySentEmailTemplate                   ; true       ;
+                       ;                          ; ReadyForPickupEmail                 ;  Ready For Pickup Email                   ; ReadyForPickupEmailTemplate                 ; true       ;
+                       ;                          ; OrderCancelledEmail                 ;  Order Cancelled Email                    ; OrderCancelledEmailTemplate                 ; true       ;
+                       ;                          ; OrderRefundEmail                    ;  Order Refund Email                       ; OrderRefundEmailTemplate                    ; true       ;
+                       ;                          ; OrderCollectionReminderEmail        ;  Order Collection Reminder Email          ; OrderCollectionReminderEmailTemplate        ; true       ; ; customerservices@hybris.com ; Customer Services Team
+                       ;                          ; OrderMoveToCsEmail                  ;  Order Move To CS Email                   ; OrderMoveToCsEmailTemplate                  ; true       ; ; customerservices@hybris.com ; Customer Services Team
+                       ;                          ; OrderPartiallyCanceledEmail         ;  Order Partially Canceled Email           ; OrderPartiallyCanceledEmailTemplate         ; true       ;
+                       ;                          ; OrderPartiallyRefundedEmail         ;  Order Partially Refunded Email           ; OrderPartiallyRefundedEmailTemplate         ; true       ;
+                       ;                          ; NotPickedUpConsignmentCanceledEmail ;  Not Picked Up Consignment Canceled Email ; NotPickedUpConsignmentCanceledEmailTemplate ; true       ;
+                       ;                          ; PrepareForPickupEmail               ;  Preapre For Pickup Email                 ; PrepareForPickupEmailTemplate               ; true       ;
+                       ;                          ; ConsignmentInPreparationEmail       ;  Consignment in preparation Email         ; ConsignmentInPreparationEmailTemplate       ; true       ;
 
 # CMS components velocity templates
-INSERT_UPDATE RendererTemplate; code[unique = true]                         ; contextClass; rendererType(code)[default = 'velocity']
-                              ; __CMS_STORE_PREFIX__-CMSImageComponent-template             ; java.util.Map
-                              ; __CMS_STORE_PREFIX__-BannerComponent-template               ; java.util.Map
-                              ; __CMS_STORE_PREFIX__-SimpleBannerComponent-template         ; java.util.Map
-                              ; __CMS_STORE_PREFIX__-CMSLinkComponent-template              ; java.util.Map
-                              ; __CMS_STORE_PREFIX__-CMSParagraphComponent-template         ; java.util.Map
-                              ; __STORE_UID__-CMSImageComponent-template     ; java.util.Map
-                              ; __STORE_UID__-BannerComponent-template       ; java.util.Map
-                              ; __STORE_UID__-SimpleBannerComponent-template ; java.util.Map
-                              ; __STORE_UID__-CMSLinkComponent-template      ; java.util.Map
-                              ; __STORE_UID__-CMSParagraphComponent-template ; java.util.Map
+INSERT_UPDATE RendererTemplate; code[unique = true]              ; contextClass; rendererType(code)[default = 'velocity']
+                              ; CMSImageComponent-template       ; java.util.Map
+                              ; BannerComponent-template         ; java.util.Map
+                              ; SimpleBannerComponent-template   ; java.util.Map
+                              ; CMSLinkComponent-template        ; java.util.Map
+                              ; CMSParagraphComponent-template   ; java.util.Map
+                              ; CMSImageComponent-template       ; java.util.Map
+                              ; BannerComponent-template         ; java.util.Map
+                              ; SimpleBannerComponent-template   ; java.util.Map
+                              ; CMSLinkComponent-template        ; java.util.Map
+                              ; CMSParagraphComponent-template   ; java.util.Map
 
 # Email velocity templates
-INSERT_UPDATE RendererTemplate; code[unique = true]                                ; contextClass; rendererType(code)[default = 'velocity']
-                              ; __CMS_STORE_PREFIX___Email_Customer_Registration_Body              ; $emailPackageName.CustomerEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Forgotten_Password_Body                 ; $emailPackageName.ForgottenPasswordEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Confirmation_Body                 ; $emailPackageName.OrderNotificationEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Delivery_Sent_Body                      ; $emailPackageName.DeliverySentEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Ready_For_Pickup_Body                   ; $emailPackageName.ReadyForPickupEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Cancelled_Body                    ; $emailPackageName.OrderCancelledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Refund_Body                       ; $emailPackageName.OrderRefundEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Collection_Reminder_Body          ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Move_To_CS_Body                   ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Partially_Canceled_Body           ; $emailPackageName.OrderPartiallyCanceledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Partially_Refunded_Body           ; $emailPackageName.OrderPartiallyRefundedEmailContext
-                              ; __CMS_STORE_PREFIX___Email_NotPickedUpConsignment_Canceled_Body    ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Prepare_For_Pickup_Body                 ; $emailPackageName.PrepareForPickupEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Prepare_For_Pickup_Subject              ; $emailPackageName.PrepareForPickupEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Customer_Registration_Subject           ; $emailPackageName.CustomerEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Forgotten_Password_Subject              ; $emailPackageName.ForgottenPasswordEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Confirmation_Subject              ; $emailPackageName.OrderNotificationEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Delivery_Sent_Subject                   ; $emailPackageName.DeliverySentEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Ready_For_Pickup_Subject                ; $emailPackageName.ReadyForPickupEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Cancelled_Subject                 ; $emailPackageName.OrderCancelledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Refund_Subject                    ; $emailPackageName.OrderRefundEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Collection_Reminder_Subject       ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Move_To_CS_Subject                ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Partially_Canceled_Subject        ; $emailPackageName.OrderPartiallyCanceledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Order_Partially_Refunded_Subject        ; $emailPackageName.OrderPartiallyRefundedEmailContext
-                              ; __CMS_STORE_PREFIX___Email_NotPickedUpConsignment_Canceled_Subject ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Subject      ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
-                              ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Body         ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
+INSERT_UPDATE RendererTemplate; code[unique = true]                           ; contextClass; rendererType(code)[default = 'velocity']
+                              ; Email_Customer_Registration_Body              ; $emailPackageName.CustomerEmailContext
+                              ; Email_Forgotten_Password_Body                 ; $emailPackageName.ForgottenPasswordEmailContext
+                              ; Email_Order_Confirmation_Body                 ; $emailPackageName.OrderNotificationEmailContext
+                              ; Email_Delivery_Sent_Body                      ; $emailPackageName.DeliverySentEmailContext
+                              ; Email_Ready_For_Pickup_Body                   ; $emailPackageName.ReadyForPickupEmailContext
+                              ; Email_Order_Cancelled_Body                    ; $emailPackageName.OrderCancelledEmailContext
+                              ; Email_Order_Refund_Body                       ; $emailPackageName.OrderRefundEmailContext
+                              ; Email_Order_Collection_Reminder_Body          ; $emailPackageName.ConsignmentCollectionReminderEmailContext
+                              ; Email_Order_Move_To_CS_Body                   ; $emailPackageName.ConsignmentCollectionReminderEmailContext
+                              ; Email_Order_Partially_Canceled_Body           ; $emailPackageName.OrderPartiallyCanceledEmailContext
+                              ; Email_Order_Partially_Refunded_Body           ; $emailPackageName.OrderPartiallyRefundedEmailContext
+                              ; Email_NotPickedUpConsignment_Canceled_Body    ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
+                              ; Email_Prepare_For_Pickup_Body                 ; $emailPackageName.PrepareForPickupEmailContext
+                              ; Email_Prepare_For_Pickup_Subject              ; $emailPackageName.PrepareForPickupEmailContext
+                              ; Email_Customer_Registration_Subject           ; $emailPackageName.CustomerEmailContext
+                              ; Email_Forgotten_Password_Subject              ; $emailPackageName.ForgottenPasswordEmailContext
+                              ; Email_Order_Confirmation_Subject              ; $emailPackageName.OrderNotificationEmailContext
+                              ; Email_Delivery_Sent_Subject                   ; $emailPackageName.DeliverySentEmailContext
+                              ; Email_Ready_For_Pickup_Subject                ; $emailPackageName.ReadyForPickupEmailContext
+                              ; Email_Order_Cancelled_Subject                 ; $emailPackageName.OrderCancelledEmailContext
+                              ; Email_Order_Refund_Subject                    ; $emailPackageName.OrderRefundEmailContext
+                              ; Email_Order_Collection_Reminder_Subject       ; $emailPackageName.ConsignmentCollectionReminderEmailContext
+                              ; Email_Order_Move_To_CS_Subject                ; $emailPackageName.ConsignmentCollectionReminderEmailContext
+                              ; Email_Order_Partially_Canceled_Subject        ; $emailPackageName.OrderPartiallyCanceledEmailContext
+                              ; Email_Order_Partially_Refunded_Subject        ; $emailPackageName.OrderPartiallyRefundedEmailContext
+                              ; Email_NotPickedUpConsignment_Canceled_Subject ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
+                              ; Email_Consignment_In_Preparation_Subject      ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
+                              ; Email_Consignment_In_Preparation_Body         ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
 
 # Preview Image for use in the CMS Cockpit
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]    ; mime     ; realfilename               ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]
                    ;                          ; EmailPageModel_preview ; text/gif ; EmailPageModel_preview.gif ; $jarResourceCms/preview-images/EmailPageModel_preview.gif
 
 UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]                  ; previewImage(code, $contentCV)
-                ;                          ; __CMS_STORE_PREFIX__CustomerRegistrationEmail           ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__ForgottenPasswordEmail              ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderConfirmationEmail              ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__DeliverySentEmail                   ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__ReadyForPickupEmail                 ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderCancelledEmail                 ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderRefundEmail                    ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderCollectionReminderEmail        ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderMoveToCsEmail                  ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderPartiallyCanceledEmail         ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__OrderPartiallyRefundedEmail         ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__NotPickedUpConsignmentCanceledEmail ; EmailPageModel_preview
-                ;                          ; __CMS_STORE_PREFIX__PrepareForPickupEmail               ; EmailPageModel_preview
+                ;                          ; CustomerRegistrationEmail           ; EmailPageModel_preview
+                ;                          ; ForgottenPasswordEmail              ; EmailPageModel_preview
+                ;                          ; OrderConfirmationEmail              ; EmailPageModel_preview
+                ;                          ; DeliverySentEmail                   ; EmailPageModel_preview
+                ;                          ; ReadyForPickupEmail                 ; EmailPageModel_preview
+                ;                          ; OrderCancelledEmail                 ; EmailPageModel_preview
+                ;                          ; OrderRefundEmail                    ; EmailPageModel_preview
+                ;                          ; OrderCollectionReminderEmail        ; EmailPageModel_preview
+                ;                          ; OrderMoveToCsEmail                  ; EmailPageModel_preview
+                ;                          ; OrderPartiallyCanceledEmail         ; EmailPageModel_preview
+                ;                          ; OrderPartiallyRefundedEmail         ; EmailPageModel_preview
+                ;                          ; NotPickedUpConsignmentCanceledEmail ; EmailPageModel_preview
+                ;                          ; PrepareForPickupEmail               ; EmailPageModel_preview
 
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink
-                                   ;;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderBanner;__CMS_STORE_PREFIX__ Ready For Pickup Header Banner;"/"
-                                   ;;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderBanner;__CMS_STORE_PREFIX__ Prepare For Pickup Header Banner;"/"
-                                   ;;__CMS_STORE_PREFIX__DeliverySentEmailHeaderBanner;__CMS_STORE_PREFIX__ Delivery Sent Header Banner;"/"
+                                   ;;ReadyForPickupEmailHeaderBanner; Ready For Pickup Header Banner;"/"
+                                   ;;PrepareForPickupEmailHeaderBanner; Prepare For Pickup Header Banner;"/"
+                                   ;;DeliverySentEmailHeaderBanner; Delivery Sent Header Banner;"/"
 
 UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid)
-                  ;;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderSlot;__CMS_STORE_PREFIX__ReadyForPickupEmailHeaderBanner
-                  ;;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderSlot;__CMS_STORE_PREFIX__PrepareForPickupEmailHeaderBanner
-                  ;;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailHeaderSlot;__CMS_STORE_PREFIX__ConsignmentInPreparationEmailHeaderBanner
-                  ;;__CMS_STORE_PREFIX__DeliverySentEmailHeaderSlot;__CMS_STORE_PREFIX__DeliverySentEmailHeaderBanner
+                  ;;ReadyForPickupEmailHeaderSlot;ReadyForPickupEmailHeaderBanner
+                  ;;PrepareForPickupEmailHeaderSlot;PrepareForPickupEmailHeaderBanner
+                  ;;ConsignmentInPreparationEmailHeaderSlot;ConsignmentInPreparationEmailHeaderBanner
+                  ;;DeliverySentEmailHeaderSlot;DeliverySentEmailHeaderBanner
