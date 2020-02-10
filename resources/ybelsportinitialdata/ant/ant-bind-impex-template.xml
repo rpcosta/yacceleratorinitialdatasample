@@ -278,14 +278,26 @@
 					<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
 						<include name="@{addonname}-spring.xml"/>
 					</replace>
-					
-					<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
-					<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
-						<include name="*.java"/>
+
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/"/>
+					<replace dir="${destPath}" token="${siteAliasLowercaseToken}" value="@{siteAliasLowercase}">
+						<include name="@{addonname}-spring.xml"/>
 					</replace>
-					<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
+					
+					<propertyregex property="rootDirectories"
+								   input="@{rootPackage}"
+								   regexp="\."
+								   replace="/"
+								   global="true" />
+
+					<var name="destPath" value="${ext.@{addonname}.path}/src/${rootDirectories}/constants"/>
+					<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
+						<include name="InitialDataConstants.java"/>
+					</replace>
+
+					<var name="destPath" value="${ext.@{addonname}.path}/src/${rootDirectories}/constants/"/>
 					<replace dir="${destPath}" token="${catalogPrefixToken}" value="@{catalogPrefix}">
-						<include name="*.java"/>
+						<include name="InitialDataConstants.java"/>
 					</replace>
 
 			 		<for list="coredata,sampledata" param="data">
@@ -833,7 +845,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/${contentCatalogUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/@{contentCatalogUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>
@@ -842,7 +854,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/${productCatalogUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/@{productCatalogUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>
@@ -851,7 +863,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/${storeUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/@{storeUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>
@@ -861,7 +873,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/${contentCatalogUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/@{contentCatalogUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>
@@ -870,7 +882,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/${productCatalogUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/@{productCatalogUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>
@@ -879,7 +891,7 @@
 			<if>
 				<available file="${srcPath}"/>
 				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/${storeUid}"/>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/@{storeUid}"/>
 					<move file="${srcPath}" tofile="${destPath}"/>
 					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
 				</then>

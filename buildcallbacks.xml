@@ -63,6 +63,8 @@
 
 <project name="ybelsportinitialdata_buildcallbacks">
 
+	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
+
 	<!-- 
 		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
 
@@ -71,9 +73,7 @@
 	<macrodef name="ybelsportinitialdata_before_build">
 		<sequential>
 
-	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
-
-    <ybelsportinitialdata_bindImpexTemplate
+<!--     <ybelsportinitialdata_bindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="cl.com.bls.b2c.qkslv"
             extensionUid="quicksilverb2cstoreinitialdata"
@@ -178,6 +178,113 @@
 			cmsContactPhoneSF="224336627 o 232391829"
 			cmsEmailCV="contacto@quicksilver.cl"
 			cmsEmailCambios="cambios@quicksilver.cl"/>
+ -->
+
+     <ybelsportinitialdata_bindImpexTemplate
+            addonname="ybelsportinitialdata"
+            rootPackage="com.xpto"
+            extensionUid="xptob2cstoreinitialdata"
+            extensionName="xptob2cstoreInitialData"
+            customerGroupId="xptocustomergroup"
+            customerGroupNameEn="Xpto Customer Group"
+            customerGroupNameEsCl="Grupo de Clientes de Xpto"
+            defaultEmployeePassword="12341234"
+			themeUid="xpto"
+			themeNameEn="Xpto"
+			themeNameEsCl="Xpto"
+			vendorUid="xptolo"
+			vendorName="Xpto Vendor"
+			brandName="xpto"
+			contentCatalogUid="xptoContentCatalog"
+			contentCatalogNameEn="Xpto Content Catalog"
+			contentCatalogNameEsCl="Catálogo de Contenido de Xpto"
+			productCatalogUid="xptoProductCatalog"
+			productCatalogNameEn="Xpto Product Catalog"
+			productCatalogNameEsCl="Catálogo de Producto de Xpto"
+			classificationCatalogUid="xptoClassificationCatalog"
+			classificationCatalogNameEn="Xpto Classification Catalog"
+			classificationCatalogNameEsCl="Catálogo de Classificaciónes de Xpto"
+			syncJobProductCatalog="syncXptoProductCatalog"
+			storeName="Xpto" 
+			storeUid="xptob2cstore"
+			storeNameEn="Xpto B2C BaseStore"
+			storeNameEsCl="Tienda Base B2C de Xpto"
+			storeSalesOrgCode="2000"
+			storePromotionGroupUid="xptoCLPromoGrp"
+			siteUid="xptob2cstore"
+			siteNameEn="Xpto B2C Site"
+			siteNameEsCl="Tienda B2C de Xpto"
+			siteDomain="Xpto.CL"
+			siteDomainLowercase="xpto.cl"
+			siteAlias="Xpto"
+			siteAliasLowercase="xpto"
+			fromEmail="servicioalcliente@xpto.cl"
+			fromName="Servicio al Cliente"
+			storeEmailTemplatePrefix="xpto"
+			storeSpecificLandingPageUid="XptoLandingPageTemplate"
+			storeSpecificLandingLayoutPageUid="xptoLandingLayoutPage"
+			storeSpecificLandingTemplate="structure_xptoLandingPageTemplate.vm"
+			categoryPromotionsUid="xptoPromociones"
+			categoryPromotionsNameEn="Xpto Promotions"
+			categoryPromotionsNameEsCl="Promociones de Xpto"
+			categoryCampainsUid="xptoCampanas"
+			categoryCampainsNameEn="Xpto Campaings"
+			categoryCampainsNameEsCl="Campañas de Xpto"
+			solrSearchConfigUid="xptoIndex"
+			solrSearchConfigName="Xpto Solr Index"
+			solrSearchPrefixName="xpto"
+			solrIndexedType="xptoProductType"
+			solrPriceRangeUid="xptoPriceRangeCLP"
+			solrSearchProfileUid="defaultXpto"
+			solrSearchProfileNameEn="Xpto Search Profile"
+			solrSearchProfileNameEsCl="Search Profile de Xpto"
+			warehouseDeliverySampleUid="3019"
+			warehousePickupSampleUid="3000"
+			warehouseSampleEmail="example@xpto.com.cl"
+			warehouseDeliverySampleName="Xpto Bodega Virtual"
+			warehousePickupSampleName="Xpto Bodega Fisica"
+			googleLocationsJobCode="googleLocationsXptoCl"
+			googleProductsJobCode="googleProductsXptoCl"
+			googleExportJobCode="uploadExportsXptoCL"
+			googleHost="setthethirdpartyhost"
+			googleUsername="setgoogleusername"
+			googlePassword="setgooglepassword"
+			samplePromotion1Uid="xptoPromo10Navidad"
+			samplePromotion1NameEn="Xpto Promotion Christmas 10% off"
+			samplePromotion1NameEsCl="Xpto Promoción 10% dcto Navidad"
+			samplePromotion1SourceRuleUid="Xpto-Promo-10-productPercentajeDiscount"
+			samplePromotion1JsonDescriptionEn="Enables 10% off"
+			samplePromotion1JsonNameEn="Christmas 10% Off!"
+			samplePromotion1JsonAppliedMessageEn="You got Christmas 10% off!"
+			samplePromotion1JsonDescriptionEsCl="Incluye 10% de descuento"
+			samplePromotion1JsonNameEsCl="10% de descuento por Navidad!"
+			samplePromotion1JsonAppliedMessageEsCl="¡Obtuviste 10% de descuento por Navidad!"
+			samplePromotion1CategoryCode="qicksilverMujerCalzadoZapatillas"
+			samplePromotion2Uid="xptoPromo50Navidad"
+			samplePromotion2NameEn="Xpto Promotion Christmas 50% off"
+			samplePromotion2NameEsCl="Xpto Promoción 50% dcto Navidad"
+			samplePromotion2SourceRuleUid="Xpto-Promo-50-productPercentajeDiscount"
+			samplePromotion2JsonDescriptionEn="Enables 50% off"
+			samplePromotion2JsonNameEn="Christmas 50% Off!"
+			samplePromotion2JsonAppliedMessageEn="You got Christmas 50% off!"
+			samplePromotion2JsonDescriptionEsCl="Incluye 50% de descuento"
+			samplePromotion2JsonNameEsCl="50% de descuento por Navidad!"
+			samplePromotion2JsonAppliedMessageEsCl="¡Obtuviste 50% de descuento por Navidad!"
+			sampleCategoryNameEn="Xpto"
+			sampleCategoryNameEsCl="Xpto"
+			sampleCategoryPrefix="xpto"
+			sampleCategoryGuideSizePrefix="GSXpto"
+			sampleProductMaterialName="Material"
+			sampleProductBrandName="Xpto"
+			cmsStore="Xpto"
+			cmsImage="xpto"
+			cmsSocialFacebook="https://www.facebook.com/XptoCL/"
+			cmsSocialInstagram="https://www.instagram.com/xpto/"
+			cmsSocialTwitter="https://twitter.com/xpto/"
+			cmsContactPhone="(+56) 2 2433 6627\n(+56) 2 3239 1829"
+			cmsContactPhoneSF="224336627 o 232391829"
+			cmsEmailCV="contacto@xpto.cl"
+			cmsEmailCambios="cambios@xpto.cl"/>
 
 		</sequential>
 	</macrodef>

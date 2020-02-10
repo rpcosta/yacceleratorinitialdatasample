@@ -15,22 +15,22 @@
 	<!-- System Setup -->
 
 	<bean id="__SITE_ALIAS_LOWERCASE__InitialDataSystemSetup"
-	      class="__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup"
+	      class="__ROOT_PACKAGE__.setup.InitialDataSystemSetup"
 	      parent="abstractCoreSystemSetup">
 		<property name="coreDataImportService" ref="__SITE_ALIAS_LOWERCASE__CoreDataImportService"/>
 		<property name="sampleDataImportService" ref="__SITE_ALIAS_LOWERCASE__SampleDataImportService"/>
-		<property name="sampleDataImportService" ref="__SITE_ALIAS_LOWERCASE__UpdateDataImportService"/>
+		<property name="updateDataImportService" ref="__SITE_ALIAS_LOWERCASE__UpdateDataImportService"/>
 	</bean>
 
 	<bean id="__SITE_ALIAS_LOWERCASE__SampleDataImportService"
-		  class="__ROOT_PACKAGE__.initialdata.dataimport.impl.SampleDataImportService"
+		  class="__ROOT_PACKAGE__.dataimport.impl.SampleDataImportService"
 		  parent="abstractDataImportService"/>
 
 	<bean id="__SITE_ALIAS_LOWERCASE__CoreDataImportService"
-		  class="__ROOT_PACKAGE__.initialdata.dataimport.impl.CoreDataImportService"
+		  class="__ROOT_PACKAGE__.dataimport.impl.CoreDataImportService"
 		  parent="abstractDataImportService"/>
 
 	<bean id="__SITE_ALIAS_LOWERCASE__UpdateDataImportService"
-		  class="__ROOT_PACKAGE__.initialdata.dataimport.impl.UpdateDataImportService"
+		  class="__ROOT_PACKAGE__.dataimport.impl.UpdateDataImportService"
 		  parent="abstractDataImportService"/>
 </beans>
