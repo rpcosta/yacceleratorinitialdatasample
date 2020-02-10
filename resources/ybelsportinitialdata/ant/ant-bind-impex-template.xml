@@ -253,552 +253,637 @@
 
 		<sequential>
 
-		<var name="destPath" value="${ext.@{addonname}.path}/resources/"/>
-		<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
-			<include name="@{addonname}-spring.xml"/>
-		</replace>
-		
-		<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
-		<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
-			<include name="*.java"/>
-		</replace>
-		<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
-		<replace dir="${destPath}" token="${catalogPrefixToken}" value="@{catalogPrefix}">
-			<include name="*.java"/>
-		</replace>
+			<fileset id="existing" dir="${ext.@{addonname}.path}/">
+				<patternset id="files">
+					<include name="**/*.impex"/>
+					<include name="**/*.xml"/>
+					<include name="**/*.java"/>
+				</patternset>
+			</fileset>
 
- 		<for list="coredata,sampledata" param="data">
-				<sequential>
-					<for list="contentCatalogs/catalogName,productCatalogs/catalogName,stores/storeName,common" param="catalog">
+			<resourcecount property="count">
+				<fileset id="matches" dir="${ext.@{addonname}.path}/">
+				<patternset refid="files" />
+				<contains text="__" />
+				</fileset>
+			</resourcecount>
+
+			<if>
+				<resourcecount when="greater" count="0" refid="matches" />
+				<then>
+
+					<echo message="@{addonname}: There are remaining tokens found that need replacement! Starting replacing values..."/>
+
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/"/>
+					<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
+						<include name="@{addonname}-spring.xml"/>
+					</replace>
+					
+					<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
+					<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
+						<include name="*.java"/>
+					</replace>
+					<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
+					<replace dir="${destPath}" token="${catalogPrefixToken}" value="@{catalogPrefix}">
+						<include name="*.java"/>
+					</replace>
+
+			 		<for list="coredata,sampledata" param="data">
 						<sequential>
-							<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/@{data}/@{catalog}/"/>
-							<if>
-								<available file="${destPath}"/>
-								<then>
-									<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${rootPackageToken}] was replaced by [@{rootPackage}]"/>
-
-									<replace dir="${destPath}" token="${extensionUidToken}" value="@{extensionUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${extensionUidToken}] was replaced by [@{extensionUid}]"/>
-
-									<replace dir="${destPath}" token="${extensionNameToken}" value="@{extensionName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${extensionNameToken}] was replaced by [@{extensionName}]"/>
-
-									<replace dir="${destPath}" token="${customerGroupIdToken}" value="@{customerGroupId}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${customerGroupIdToken}] was replaced by [@{customerGroupId}]"/>
-
-									<replace dir="${destPath}" token="${customerGroupNameEnToken}" value="@{customerGroupNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${customerGroupNameEnToken}] was replaced by [@{customerGroupNameEn}]"/>
-
-									<replace dir="${destPath}" token="${customerGroupNameEsClToken}" value="@{customerGroupNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${customerGroupNameEsClToken}] was replaced by [@{customerGroupNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${defaultEmployeePasswordToken}" value="@{defaultEmployeePassword}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${defaultEmployeePasswordToken}] was replaced by [@{defaultEmployeePassword}]"/>
-
-									<replace dir="${destPath}" token="${themeUidToken}" value="@{themeUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${themeUidToken}] was replaced by [@{themeUid}]"/>
-
-									<replace dir="${destPath}" token="${themeNameEnToken}" value="@{themeNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${themeNameEnToken}] was replaced by [@{themeNameEn}]"/>
-
-									<replace dir="${destPath}" token="${themeNameEsClToken}" value="@{themeNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${themeNameEsClToken}] was replaced by [@{themeNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${vendorUidToken}" value="@{vendorUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${vendorUidToken}] was replaced by [@{vendorUid}]"/>
-
-									<replace dir="${destPath}" token="${vendorNameToken}" value="@{vendorName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${vendorNameToken}] was replaced by [@{vendorName}]"/>
-
-									<replace dir="${destPath}" token="${brandNameToken}" value="@{brandName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${brandNameToken}] was replaced by [@{brandName}]"/>
-
-									<replace dir="${destPath}" token="${contentCatalogUidToken}" value="@{contentCatalogUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${contentCatalogUidToken}] was replaced by [@{contentCatalogUid}]"/>
-
-									<replace dir="${destPath}" token="${contentCatalogNameEnToken}" value="@{contentCatalogNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${contentCatalogNameEnToken}] was replaced by [@{contentCatalogNameEn}]"/>
-
-									<replace dir="${destPath}" token="${contentCatalogNameEsClToken}" value="@{contentCatalogNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${contentCatalogNameEsClToken}] was replaced by [@{contentCatalogNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${productCatalogUidToken}" value="@{productCatalogUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${productCatalogUidToken}] was replaced by [@{productCatalogUid}]"/>
-
-									<replace dir="${destPath}" token="${productCatalogNameEnToken}" value="@{productCatalogNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${productCatalogNameEnToken}] was replaced by [@{productCatalogNameEn}]"/>
-
-									<replace dir="${destPath}" token="${productCatalogNameEsClToken}" value="@{productCatalogNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${productCatalogNameEsClToken}] was replaced by [@{productCatalogNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${classificationCatalogUidToken}" value="@{classificationCatalogUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${classificationCatalogUidToken}] was replaced by [@{classificationCatalogUid}]"/>
-
-									<replace dir="${destPath}" token="${classificationCatalogNameEnToken}" value="@{classificationCatalogNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${classificationCatalogNameEnToken}] was replaced by [@{classificationCatalogNameEn}]"/>
-
-									<replace dir="${destPath}" token="${classificationCatalogNameEsClToken}" value="@{classificationCatalogNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${classificationCatalogNameEsClToken}] was replaced by [@{classificationCatalogNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${syncJobProductCatalogToken}" value="@{syncJobProductCatalog}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${syncJobProductCatalogToken}] was replaced by [@{syncJobProductCatalog}]"/>
-
-									<replace dir="${destPath}" token="${storeNameToken}" value="@{storeName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeNameToken}] was replaced by [@{storeName}]"/>
-
-									<replace dir="${destPath}" token="${storeUidToken}" value="@{storeUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeUidToken}] was replaced by [@{storeUid}]"/>
-
-									<replace dir="${destPath}" token="${storeNameEnToken}" value="@{storeNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeNameEnToken}] was replaced by [@{storeNameEn}]"/>
-
-									<replace dir="${destPath}" token="${storeNameEsClToken}" value="@{storeNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeNameEsClToken}] was replaced by [@{storeNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${storeSalesOrgCodeToken}" value="@{storeSalesOrgCode}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeSalesOrgCodeToken}] was replaced by [@{storeSalesOrgCode}]"/>
-
-									<replace dir="${destPath}" token="${storePromotionGroupUidToken}" value="@{storePromotionGroupUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storePromotionGroupUidToken}] was replaced by [@{storePromotionGroupUid}]"/>
-
-									<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteUidToken}] was replaced by [@{siteUid}]"/>
-
-									<replace dir="${destPath}" token="${siteNameEnToken}" value="@{siteNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteNameEnToken}] was replaced by [@{siteNameEn}]"/>
-
-									<replace dir="${destPath}" token="${siteNameEsClToken}" value="@{siteNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteNameEsClToken}] was replaced by [@{siteNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${siteDomainToken}" value="@{siteDomain}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteDomainToken}] was replaced by [@{siteDomain}]"/>
-
-									<replace dir="${destPath}" token="${siteDomainLowercaseToken}" value="@{siteDomainLowercase}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteDomainLowercaseToken}] was replaced by [@{siteDomainLowercase}]"/>
-
-									<replace dir="${destPath}" token="${siteAliasToken}" value="@{siteAlias}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteAliasToken}] was replaced by [@{siteAlias}]"/>
-
-									<replace dir="${destPath}" token="${siteAliasLowercaseToken}" value="@{siteAliasLowercase}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${siteAliasLowercaseToken}] was replaced by [@{siteAliasLowercase}]"/>
-
-									<replace dir="${destPath}" token="${fromEmailToken}" value="@{fromEmail}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${fromEmailToken}] was replaced by [@{fromEmail}]"/>
-
-									<replace dir="${destPath}" token="${fromNameToken}" value="@{fromName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${fromNameToken}] was replaced by [@{fromName}]"/>
-
-									<replace dir="${destPath}" token="${storeEmailTemplatePrefixToken}" value="@{storeEmailTemplatePrefix}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeEmailTemplatePrefixToken}] was replaced by [@{storeEmailTemplatePrefix}]"/>
-
-									<replace dir="${destPath}" token="${storeSpecificLandingPageUidToken}" value="@{storeSpecificLandingPageUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeSpecificLandingPageUidToken}] was replaced by [@{storeSpecificLandingPageUid}]"/>
-
-									<replace dir="${destPath}" token="${storeSpecificLandingLayoutPageUidToken}" value="@{storeSpecificLandingLayoutPageUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeSpecificLandingLayoutPageUidToken}] was replaced by [@{storeSpecificLandingLayoutPageUid}]"/>
-
-									<replace dir="${destPath}" token="${storeSpecificLandingTemplateToken}" value="@{storeSpecificLandingTemplate}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${storeSpecificLandingTemplateToken}] was replaced by [@{storeSpecificLandingTemplate}]"/>
-
-									<replace dir="${destPath}" token="${categoryPromotionsUidToken}" value="@{categoryPromotionsUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryPromotionsUidToken}] was replaced by [@{categoryPromotionsUid}]"/>
-
-									<replace dir="${destPath}" token="${categoryPromotionsNameEnToken}" value="@{categoryPromotionsNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryPromotionsNameEnToken}] was replaced by [@{categoryPromotionsNameEn}]"/>
-
-									<replace dir="${destPath}" token="${categoryPromotionsNameEsClToken}" value="@{categoryPromotionsNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryPromotionsNameEsClToken}] was replaced by [@{categoryPromotionsNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${categoryCampainsUidToken}" value="@{categoryCampainsUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryCampainsUidToken}] was replaced by [@{categoryCampainsUid}]"/>
-
-									<replace dir="${destPath}" token="${categoryCampainsNameEnToken}" value="@{categoryCampainsNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryCampainsNameEnToken}] was replaced by [@{categoryCampainsNameEn}]"/>
-
-									<replace dir="${destPath}" token="${categoryCampainsNameEsClToken}" value="@{categoryCampainsNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${categoryCampainsNameEsClToken}] was replaced by [@{categoryCampainsNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchConfigUidToken}" value="@{solrSearchConfigUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchConfigUidToken}] was replaced by [@{solrSearchConfigUid}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchConfigNameToken}" value="@{solrSearchConfigName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchConfigNameToken}] was replaced by [@{solrSearchConfigName}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchPrefixNameToken}" value="@{solrSearchPrefixName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchPrefixNameToken}] was replaced by [@{solrSearchPrefixName}]"/>
-
-									<replace dir="${destPath}" token="${solrIndexedTypeToken}" value="@{solrIndexedType}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrIndexedTypeToken}] was replaced by [@{solrIndexedType}]"/>
-
-									<replace dir="${destPath}" token="${solrPriceRangeUidToken}" value="@{solrPriceRangeUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrPriceRangeUidToken}] was replaced by [@{solrPriceRangeUid}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchProfileUidToken}" value="@{solrSearchProfileUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchProfileUidToken}] was replaced by [@{solrSearchProfileUid}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchProfileNameEnToken}" value="@{solrSearchProfileNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchProfileNameEnToken}] was replaced by [@{solrSearchProfileNameEn}]"/>
-
-									<replace dir="${destPath}" token="${solrSearchProfileNameEsClToken}" value="@{solrSearchProfileNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${solrSearchProfileNameEsClToken}] was replaced by [@{solrSearchProfileNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${warehouseDeliverySampleUidToken}" value="@{warehouseDeliverySampleUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${warehouseDeliverySampleUidToken}] was replaced by [@{warehouseDeliverySampleUid}]"/>
-
-									<replace dir="${destPath}" token="${warehousePickupSampleUidToken}" value="@{warehousePickupSampleUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${warehousePickupSampleUidToken}] was replaced by [@{warehousePickupSampleUid}]"/>
-
-									<replace dir="${destPath}" token="${warehouseSampleEmailToken}" value="@{warehouseSampleEmail}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${warehouseSampleEmailToken}] was replaced by [@{warehouseSampleEmail}]"/>
-
-									<replace dir="${destPath}" token="${warehouseDeliverySampleNameToken}" value="@{warehouseDeliverySampleName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${warehouseDeliverySampleNameToken}] was replaced by [@{warehouseDeliverySampleName}]"/>
-
-									<replace dir="${destPath}" token="${warehousePickupSampleNameToken}" value="@{warehousePickupSampleName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${warehousePickupSampleNameToken}] was replaced by [@{warehousePickupSampleName}]"/>
-
-									<replace dir="${destPath}" token="${googleLocationsJobCodeToken}" value="@{googleLocationsJobCode}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googleLocationsJobCodeToken}] was replaced by [@{googleLocationsJobCode}]"/>
-
-									<replace dir="${destPath}" token="${googleProductsJobCodeToken}" value="@{googleProductsJobCode}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googleProductsJobCodeToken}] was replaced by [@{googleProductsJobCode}]"/>
-
-									<replace dir="${destPath}" token="${googleExportJobCodeToken}" value="@{googleExportJobCode}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googleExportJobCodeToken}] was replaced by [@{googleExportJobCode}]"/>
-
-									<replace dir="${destPath}" token="${googleHostToken}" value="@{googleHost}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googleHostToken}] was replaced by [@{googleHost}]"/>
-
-									<replace dir="${destPath}" token="${googleUsernameToken}" value="@{googleUsername}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googleUsernameToken}] was replaced by [@{googleUsername}]"/>
-
-									<replace dir="${destPath}" token="${googlePasswordToken}" value="@{googlePassword}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${googlePasswordToken}] was replaced by [@{googlePassword}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1UidToken}" value="@{samplePromotion1Uid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1UidToken}] was replaced by [@{samplePromotion1Uid}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1NameEnToken}" value="@{samplePromotion1NameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1NameEnToken}] was replaced by [@{samplePromotion1NameEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1NameEsClToken}" value="@{samplePromotion1NameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1NameEsClToken}] was replaced by [@{samplePromotion1NameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1SourceRuleUidToken}" value="@{samplePromotion1SourceRuleUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1SourceRuleUidToken}] was replaced by [@{samplePromotion1SourceRuleUid}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonDescriptionEnToken}" value="@{samplePromotion1JsonDescriptionEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonDescriptionEnToken}] was replaced by [@{samplePromotion1JsonDescriptionEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonNameEnToken}" value="@{samplePromotion1JsonNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonNameEnToken}] was replaced by [@{samplePromotion1JsonNameEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonAppliedMessageEnToken}" value="@{samplePromotion1JsonAppliedMessageEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonAppliedMessageEnToken}] was replaced by [@{samplePromotion1JsonAppliedMessageEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonDescriptionEsClToken}" value="@{samplePromotion1JsonDescriptionEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonDescriptionEsClToken}] was replaced by [@{samplePromotion1JsonDescriptionEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonNameEsClToken}" value="@{samplePromotion1JsonNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonNameEsClToken}] was replaced by [@{samplePromotion1JsonNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1JsonAppliedMessageEsClToken}" value="@{samplePromotion1JsonAppliedMessageEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1JsonAppliedMessageEsClToken}] was replaced by [@{samplePromotion1JsonAppliedMessageEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion1CategoryCodeToken}" value="@{samplePromotion1CategoryCode}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion1CategoryCodeToken}] was replaced by [@{samplePromotion1CategoryCode}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2UidToken}" value="@{samplePromotion2Uid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2UidToken}] was replaced by [@{samplePromotion2Uid}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2NameEnToken}" value="@{samplePromotion2NameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2NameEnToken}] was replaced by [@{samplePromotion2NameEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2NameEsClToken}" value="@{samplePromotion2NameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2NameEsClToken}] was replaced by [@{samplePromotion2NameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2SourceRuleUidToken}" value="@{samplePromotion2SourceRuleUid}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2SourceRuleUidToken}] was replaced by [@{samplePromotion2SourceRuleUid}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonDescriptionEnToken}" value="@{samplePromotion2JsonDescriptionEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonDescriptionEnToken}] was replaced by [@{samplePromotion2JsonDescriptionEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonNameEnToken}" value="@{samplePromotion2JsonNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonNameEnToken}] was replaced by [@{samplePromotion2JsonNameEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonAppliedMessageEnToken}" value="@{samplePromotion2JsonAppliedMessageEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonAppliedMessageEnToken}] was replaced by [@{samplePromotion2JsonAppliedMessageEn}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonDescriptionEsClToken}" value="@{samplePromotion2JsonDescriptionEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonDescriptionEsClToken}] was replaced by [@{samplePromotion2JsonDescriptionEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonNameEsClToken}" value="@{samplePromotion2JsonNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonNameEsClToken}] was replaced by [@{samplePromotion2JsonNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${samplePromotion2JsonAppliedMessageEsClToken}" value="@{samplePromotion2JsonAppliedMessageEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${samplePromotion2JsonAppliedMessageEsClToken}] was replaced by [@{samplePromotion2JsonAppliedMessageEsCl}]"/>
-
-									<replace dir="${destPath}" token="${sampleCategoryNameEnToken}" value="@{sampleCategoryNameEn}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleCategoryNameEnToken}] was replaced by [@{sampleCategoryNameEn}]"/>
-
-									<replace dir="${destPath}" token="${sampleCategoryNameEsClToken}" value="@{sampleCategoryNameEsCl}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleCategoryNameEsClToken}] was replaced by [@{sampleCategoryNameEsCl}]"/>
-
-									<replace dir="${destPath}" token="${sampleCategoryPrefixToken}" value="@{sampleCategoryPrefix}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleCategoryPrefixToken}] was replaced by [@{sampleCategoryPrefix}]"/>
-
-									<replace dir="${destPath}" token="${sampleCategoryGuideSizePrefixToken}" value="@{sampleCategoryGuideSizePrefix}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleCategoryGuideSizePrefixToken}] was replaced by [@{sampleCategoryGuideSizePrefix}]"/>
-
-									<replace dir="${destPath}" token="${sampleProductMaterialNameToken}" value="@{sampleProductMaterialName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleProductMaterialNameToken}] was replaced by [@{sampleProductMaterialName}]"/>
-
-									<replace dir="${destPath}" token="${sampleProductBrandNameToken}" value="@{sampleProductBrandName}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${sampleProductBrandNameToken}] was replaced by [@{sampleProductBrandName}]"/>
-
-									<replace dir="${destPath}" token="${cmsStoreToken}" value="@{cmsStore}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsStoreToken}] was replaced by [@{cmsStore}]"/>
-
-									<replace dir="${destPath}" token="${cmsImageToken}" value="@{cmsImage}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsImageToken}] was replaced by [@{cmsImage}]"/>
-
-									<replace dir="${destPath}" token="${cmsSocialFacebookToken}" value="@{cmsSocialFacebook}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsSocialFacebookToken}] was replaced by [@{cmsSocialFacebook}]"/>
-
-									<replace dir="${destPath}" token="${cmsSocialInstagramToken}" value="@{cmsSocialInstagram}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsSocialInstagramToken}] was replaced by [@{cmsSocialInstagram}]"/>
-
-									<replace dir="${destPath}" token="${cmsSocialTwitterToken}" value="@{cmsSocialTwitter}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsSocialTwitterToken}] was replaced by [@{cmsSocialTwitter}]"/>
-
-									<replace dir="${destPath}" token="${cmsContactPhoneToken}" value="@{cmsContactPhone}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsContactPhoneToken}] was replaced by [@{cmsContactPhone}]"/>
-
-									<replace dir="${destPath}" token="${cmsContactPhoneSFToken}" value="@{cmsContactPhoneSF}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsContactPhoneSFToken}] was replaced by [@{cmsContactPhoneSF}]"/>
-
-									<replace dir="${destPath}" token="${cmsEmailCVToken}" value="@{cmsEmailCV}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsEmailCVToken}] was replaced by [@{cmsEmailCV}]"/>
-
-									<replace dir="${destPath}" token="${cmsEmailCambiosToken}" value="@{cmsEmailCambios}">
-										<include name="**/*.impex"/>
-									</replace>
-									<echo message="@{addonname}: token [${cmsEmailCambiosToken}] was replaced by [@{cmsEmailCambios}]"/>
-
-								</then>
-								<else>
-									<echo message="No impex templates found for @{addonname}, location: ${destPath}"/>
-								</else>
-							</if>
+							<for list="contentCatalogs/catalogName,productCatalogs/catalogName,stores/storeName,common" param="catalog">
+								<sequential>
+									<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/@{data}/@{catalog}/"/>
+									<if>
+										<available file="${destPath}"/>
+										<then>
+											<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${rootPackageToken}] was replaced by [@{rootPackage}]"/>
+
+											<replace dir="${destPath}" token="${extensionUidToken}" value="@{extensionUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${extensionUidToken}] was replaced by [@{extensionUid}]"/>
+
+											<replace dir="${destPath}" token="${extensionNameToken}" value="@{extensionName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${extensionNameToken}] was replaced by [@{extensionName}]"/>
+
+											<replace dir="${destPath}" token="${customerGroupIdToken}" value="@{customerGroupId}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${customerGroupIdToken}] was replaced by [@{customerGroupId}]"/>
+
+											<replace dir="${destPath}" token="${customerGroupNameEnToken}" value="@{customerGroupNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${customerGroupNameEnToken}] was replaced by [@{customerGroupNameEn}]"/>
+
+											<replace dir="${destPath}" token="${customerGroupNameEsClToken}" value="@{customerGroupNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${customerGroupNameEsClToken}] was replaced by [@{customerGroupNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${defaultEmployeePasswordToken}" value="@{defaultEmployeePassword}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${defaultEmployeePasswordToken}] was replaced by [@{defaultEmployeePassword}]"/>
+
+											<replace dir="${destPath}" token="${themeUidToken}" value="@{themeUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${themeUidToken}] was replaced by [@{themeUid}]"/>
+
+											<replace dir="${destPath}" token="${themeNameEnToken}" value="@{themeNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${themeNameEnToken}] was replaced by [@{themeNameEn}]"/>
+
+											<replace dir="${destPath}" token="${themeNameEsClToken}" value="@{themeNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${themeNameEsClToken}] was replaced by [@{themeNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${vendorUidToken}" value="@{vendorUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${vendorUidToken}] was replaced by [@{vendorUid}]"/>
+
+											<replace dir="${destPath}" token="${vendorNameToken}" value="@{vendorName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${vendorNameToken}] was replaced by [@{vendorName}]"/>
+
+											<replace dir="${destPath}" token="${brandNameToken}" value="@{brandName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${brandNameToken}] was replaced by [@{brandName}]"/>
+
+											<replace dir="${destPath}" token="${contentCatalogUidToken}" value="@{contentCatalogUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${contentCatalogUidToken}] was replaced by [@{contentCatalogUid}]"/>
+
+											<replace dir="${destPath}" token="${contentCatalogNameEnToken}" value="@{contentCatalogNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${contentCatalogNameEnToken}] was replaced by [@{contentCatalogNameEn}]"/>
+
+											<replace dir="${destPath}" token="${contentCatalogNameEsClToken}" value="@{contentCatalogNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${contentCatalogNameEsClToken}] was replaced by [@{contentCatalogNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${productCatalogUidToken}" value="@{productCatalogUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${productCatalogUidToken}] was replaced by [@{productCatalogUid}]"/>
+
+											<replace dir="${destPath}" token="${productCatalogNameEnToken}" value="@{productCatalogNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${productCatalogNameEnToken}] was replaced by [@{productCatalogNameEn}]"/>
+
+											<replace dir="${destPath}" token="${productCatalogNameEsClToken}" value="@{productCatalogNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${productCatalogNameEsClToken}] was replaced by [@{productCatalogNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${classificationCatalogUidToken}" value="@{classificationCatalogUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${classificationCatalogUidToken}] was replaced by [@{classificationCatalogUid}]"/>
+
+											<replace dir="${destPath}" token="${classificationCatalogNameEnToken}" value="@{classificationCatalogNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${classificationCatalogNameEnToken}] was replaced by [@{classificationCatalogNameEn}]"/>
+
+											<replace dir="${destPath}" token="${classificationCatalogNameEsClToken}" value="@{classificationCatalogNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${classificationCatalogNameEsClToken}] was replaced by [@{classificationCatalogNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${syncJobProductCatalogToken}" value="@{syncJobProductCatalog}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${syncJobProductCatalogToken}] was replaced by [@{syncJobProductCatalog}]"/>
+
+											<replace dir="${destPath}" token="${storeNameToken}" value="@{storeName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeNameToken}] was replaced by [@{storeName}]"/>
+
+											<replace dir="${destPath}" token="${storeUidToken}" value="@{storeUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeUidToken}] was replaced by [@{storeUid}]"/>
+
+											<replace dir="${destPath}" token="${storeNameEnToken}" value="@{storeNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeNameEnToken}] was replaced by [@{storeNameEn}]"/>
+
+											<replace dir="${destPath}" token="${storeNameEsClToken}" value="@{storeNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeNameEsClToken}] was replaced by [@{storeNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${storeSalesOrgCodeToken}" value="@{storeSalesOrgCode}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeSalesOrgCodeToken}] was replaced by [@{storeSalesOrgCode}]"/>
+
+											<replace dir="${destPath}" token="${storePromotionGroupUidToken}" value="@{storePromotionGroupUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storePromotionGroupUidToken}] was replaced by [@{storePromotionGroupUid}]"/>
+
+											<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteUidToken}] was replaced by [@{siteUid}]"/>
+
+											<replace dir="${destPath}" token="${siteNameEnToken}" value="@{siteNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteNameEnToken}] was replaced by [@{siteNameEn}]"/>
+
+											<replace dir="${destPath}" token="${siteNameEsClToken}" value="@{siteNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteNameEsClToken}] was replaced by [@{siteNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${siteDomainToken}" value="@{siteDomain}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteDomainToken}] was replaced by [@{siteDomain}]"/>
+
+											<replace dir="${destPath}" token="${siteDomainLowercaseToken}" value="@{siteDomainLowercase}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteDomainLowercaseToken}] was replaced by [@{siteDomainLowercase}]"/>
+
+											<replace dir="${destPath}" token="${siteAliasToken}" value="@{siteAlias}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteAliasToken}] was replaced by [@{siteAlias}]"/>
+
+											<replace dir="${destPath}" token="${siteAliasLowercaseToken}" value="@{siteAliasLowercase}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${siteAliasLowercaseToken}] was replaced by [@{siteAliasLowercase}]"/>
+
+											<replace dir="${destPath}" token="${fromEmailToken}" value="@{fromEmail}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${fromEmailToken}] was replaced by [@{fromEmail}]"/>
+
+											<replace dir="${destPath}" token="${fromNameToken}" value="@{fromName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${fromNameToken}] was replaced by [@{fromName}]"/>
+
+											<replace dir="${destPath}" token="${storeEmailTemplatePrefixToken}" value="@{storeEmailTemplatePrefix}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeEmailTemplatePrefixToken}] was replaced by [@{storeEmailTemplatePrefix}]"/>
+
+											<replace dir="${destPath}" token="${storeSpecificLandingPageUidToken}" value="@{storeSpecificLandingPageUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeSpecificLandingPageUidToken}] was replaced by [@{storeSpecificLandingPageUid}]"/>
+
+											<replace dir="${destPath}" token="${storeSpecificLandingLayoutPageUidToken}" value="@{storeSpecificLandingLayoutPageUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeSpecificLandingLayoutPageUidToken}] was replaced by [@{storeSpecificLandingLayoutPageUid}]"/>
+
+											<replace dir="${destPath}" token="${storeSpecificLandingTemplateToken}" value="@{storeSpecificLandingTemplate}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${storeSpecificLandingTemplateToken}] was replaced by [@{storeSpecificLandingTemplate}]"/>
+
+											<replace dir="${destPath}" token="${categoryPromotionsUidToken}" value="@{categoryPromotionsUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryPromotionsUidToken}] was replaced by [@{categoryPromotionsUid}]"/>
+
+											<replace dir="${destPath}" token="${categoryPromotionsNameEnToken}" value="@{categoryPromotionsNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryPromotionsNameEnToken}] was replaced by [@{categoryPromotionsNameEn}]"/>
+
+											<replace dir="${destPath}" token="${categoryPromotionsNameEsClToken}" value="@{categoryPromotionsNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryPromotionsNameEsClToken}] was replaced by [@{categoryPromotionsNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${categoryCampainsUidToken}" value="@{categoryCampainsUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryCampainsUidToken}] was replaced by [@{categoryCampainsUid}]"/>
+
+											<replace dir="${destPath}" token="${categoryCampainsNameEnToken}" value="@{categoryCampainsNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryCampainsNameEnToken}] was replaced by [@{categoryCampainsNameEn}]"/>
+
+											<replace dir="${destPath}" token="${categoryCampainsNameEsClToken}" value="@{categoryCampainsNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${categoryCampainsNameEsClToken}] was replaced by [@{categoryCampainsNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchConfigUidToken}" value="@{solrSearchConfigUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchConfigUidToken}] was replaced by [@{solrSearchConfigUid}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchConfigNameToken}" value="@{solrSearchConfigName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchConfigNameToken}] was replaced by [@{solrSearchConfigName}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchPrefixNameToken}" value="@{solrSearchPrefixName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchPrefixNameToken}] was replaced by [@{solrSearchPrefixName}]"/>
+
+											<replace dir="${destPath}" token="${solrIndexedTypeToken}" value="@{solrIndexedType}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrIndexedTypeToken}] was replaced by [@{solrIndexedType}]"/>
+
+											<replace dir="${destPath}" token="${solrPriceRangeUidToken}" value="@{solrPriceRangeUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrPriceRangeUidToken}] was replaced by [@{solrPriceRangeUid}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchProfileUidToken}" value="@{solrSearchProfileUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchProfileUidToken}] was replaced by [@{solrSearchProfileUid}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchProfileNameEnToken}" value="@{solrSearchProfileNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchProfileNameEnToken}] was replaced by [@{solrSearchProfileNameEn}]"/>
+
+											<replace dir="${destPath}" token="${solrSearchProfileNameEsClToken}" value="@{solrSearchProfileNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrSearchProfileNameEsClToken}] was replaced by [@{solrSearchProfileNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${warehouseDeliverySampleUidToken}" value="@{warehouseDeliverySampleUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${warehouseDeliverySampleUidToken}] was replaced by [@{warehouseDeliverySampleUid}]"/>
+
+											<replace dir="${destPath}" token="${warehousePickupSampleUidToken}" value="@{warehousePickupSampleUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${warehousePickupSampleUidToken}] was replaced by [@{warehousePickupSampleUid}]"/>
+
+											<replace dir="${destPath}" token="${warehouseSampleEmailToken}" value="@{warehouseSampleEmail}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${warehouseSampleEmailToken}] was replaced by [@{warehouseSampleEmail}]"/>
+
+											<replace dir="${destPath}" token="${warehouseDeliverySampleNameToken}" value="@{warehouseDeliverySampleName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${warehouseDeliverySampleNameToken}] was replaced by [@{warehouseDeliverySampleName}]"/>
+
+											<replace dir="${destPath}" token="${warehousePickupSampleNameToken}" value="@{warehousePickupSampleName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${warehousePickupSampleNameToken}] was replaced by [@{warehousePickupSampleName}]"/>
+
+											<replace dir="${destPath}" token="${googleLocationsJobCodeToken}" value="@{googleLocationsJobCode}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googleLocationsJobCodeToken}] was replaced by [@{googleLocationsJobCode}]"/>
+
+											<replace dir="${destPath}" token="${googleProductsJobCodeToken}" value="@{googleProductsJobCode}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googleProductsJobCodeToken}] was replaced by [@{googleProductsJobCode}]"/>
+
+											<replace dir="${destPath}" token="${googleExportJobCodeToken}" value="@{googleExportJobCode}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googleExportJobCodeToken}] was replaced by [@{googleExportJobCode}]"/>
+
+											<replace dir="${destPath}" token="${googleHostToken}" value="@{googleHost}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googleHostToken}] was replaced by [@{googleHost}]"/>
+
+											<replace dir="${destPath}" token="${googleUsernameToken}" value="@{googleUsername}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googleUsernameToken}] was replaced by [@{googleUsername}]"/>
+
+											<replace dir="${destPath}" token="${googlePasswordToken}" value="@{googlePassword}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${googlePasswordToken}] was replaced by [@{googlePassword}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1UidToken}" value="@{samplePromotion1Uid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1UidToken}] was replaced by [@{samplePromotion1Uid}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1NameEnToken}" value="@{samplePromotion1NameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1NameEnToken}] was replaced by [@{samplePromotion1NameEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1NameEsClToken}" value="@{samplePromotion1NameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1NameEsClToken}] was replaced by [@{samplePromotion1NameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1SourceRuleUidToken}" value="@{samplePromotion1SourceRuleUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1SourceRuleUidToken}] was replaced by [@{samplePromotion1SourceRuleUid}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonDescriptionEnToken}" value="@{samplePromotion1JsonDescriptionEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonDescriptionEnToken}] was replaced by [@{samplePromotion1JsonDescriptionEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonNameEnToken}" value="@{samplePromotion1JsonNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonNameEnToken}] was replaced by [@{samplePromotion1JsonNameEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonAppliedMessageEnToken}" value="@{samplePromotion1JsonAppliedMessageEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonAppliedMessageEnToken}] was replaced by [@{samplePromotion1JsonAppliedMessageEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonDescriptionEsClToken}" value="@{samplePromotion1JsonDescriptionEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonDescriptionEsClToken}] was replaced by [@{samplePromotion1JsonDescriptionEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonNameEsClToken}" value="@{samplePromotion1JsonNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonNameEsClToken}] was replaced by [@{samplePromotion1JsonNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1JsonAppliedMessageEsClToken}" value="@{samplePromotion1JsonAppliedMessageEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1JsonAppliedMessageEsClToken}] was replaced by [@{samplePromotion1JsonAppliedMessageEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion1CategoryCodeToken}" value="@{samplePromotion1CategoryCode}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion1CategoryCodeToken}] was replaced by [@{samplePromotion1CategoryCode}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2UidToken}" value="@{samplePromotion2Uid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2UidToken}] was replaced by [@{samplePromotion2Uid}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2NameEnToken}" value="@{samplePromotion2NameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2NameEnToken}] was replaced by [@{samplePromotion2NameEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2NameEsClToken}" value="@{samplePromotion2NameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2NameEsClToken}] was replaced by [@{samplePromotion2NameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2SourceRuleUidToken}" value="@{samplePromotion2SourceRuleUid}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2SourceRuleUidToken}] was replaced by [@{samplePromotion2SourceRuleUid}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonDescriptionEnToken}" value="@{samplePromotion2JsonDescriptionEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonDescriptionEnToken}] was replaced by [@{samplePromotion2JsonDescriptionEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonNameEnToken}" value="@{samplePromotion2JsonNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonNameEnToken}] was replaced by [@{samplePromotion2JsonNameEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonAppliedMessageEnToken}" value="@{samplePromotion2JsonAppliedMessageEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonAppliedMessageEnToken}] was replaced by [@{samplePromotion2JsonAppliedMessageEn}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonDescriptionEsClToken}" value="@{samplePromotion2JsonDescriptionEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonDescriptionEsClToken}] was replaced by [@{samplePromotion2JsonDescriptionEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonNameEsClToken}" value="@{samplePromotion2JsonNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonNameEsClToken}] was replaced by [@{samplePromotion2JsonNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${samplePromotion2JsonAppliedMessageEsClToken}" value="@{samplePromotion2JsonAppliedMessageEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${samplePromotion2JsonAppliedMessageEsClToken}] was replaced by [@{samplePromotion2JsonAppliedMessageEsCl}]"/>
+
+											<replace dir="${destPath}" token="${sampleCategoryNameEnToken}" value="@{sampleCategoryNameEn}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleCategoryNameEnToken}] was replaced by [@{sampleCategoryNameEn}]"/>
+
+											<replace dir="${destPath}" token="${sampleCategoryNameEsClToken}" value="@{sampleCategoryNameEsCl}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleCategoryNameEsClToken}] was replaced by [@{sampleCategoryNameEsCl}]"/>
+
+											<replace dir="${destPath}" token="${sampleCategoryPrefixToken}" value="@{sampleCategoryPrefix}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleCategoryPrefixToken}] was replaced by [@{sampleCategoryPrefix}]"/>
+
+											<replace dir="${destPath}" token="${sampleCategoryGuideSizePrefixToken}" value="@{sampleCategoryGuideSizePrefix}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleCategoryGuideSizePrefixToken}] was replaced by [@{sampleCategoryGuideSizePrefix}]"/>
+
+											<replace dir="${destPath}" token="${sampleProductMaterialNameToken}" value="@{sampleProductMaterialName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleProductMaterialNameToken}] was replaced by [@{sampleProductMaterialName}]"/>
+
+											<replace dir="${destPath}" token="${sampleProductBrandNameToken}" value="@{sampleProductBrandName}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${sampleProductBrandNameToken}] was replaced by [@{sampleProductBrandName}]"/>
+
+											<replace dir="${destPath}" token="${cmsStoreToken}" value="@{cmsStore}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsStoreToken}] was replaced by [@{cmsStore}]"/>
+
+											<replace dir="${destPath}" token="${cmsImageToken}" value="@{cmsImage}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsImageToken}] was replaced by [@{cmsImage}]"/>
+
+											<replace dir="${destPath}" token="${cmsSocialFacebookToken}" value="@{cmsSocialFacebook}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsSocialFacebookToken}] was replaced by [@{cmsSocialFacebook}]"/>
+
+											<replace dir="${destPath}" token="${cmsSocialInstagramToken}" value="@{cmsSocialInstagram}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsSocialInstagramToken}] was replaced by [@{cmsSocialInstagram}]"/>
+
+											<replace dir="${destPath}" token="${cmsSocialTwitterToken}" value="@{cmsSocialTwitter}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsSocialTwitterToken}] was replaced by [@{cmsSocialTwitter}]"/>
+
+											<replace dir="${destPath}" token="${cmsContactPhoneToken}" value="@{cmsContactPhone}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsContactPhoneToken}] was replaced by [@{cmsContactPhone}]"/>
+
+											<replace dir="${destPath}" token="${cmsContactPhoneSFToken}" value="@{cmsContactPhoneSF}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsContactPhoneSFToken}] was replaced by [@{cmsContactPhoneSF}]"/>
+
+											<replace dir="${destPath}" token="${cmsEmailCVToken}" value="@{cmsEmailCV}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsEmailCVToken}] was replaced by [@{cmsEmailCV}]"/>
+
+											<replace dir="${destPath}" token="${cmsEmailCambiosToken}" value="@{cmsEmailCambios}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${cmsEmailCambiosToken}] was replaced by [@{cmsEmailCambios}]"/>
+
+										</then>
+										<else>
+											<echo message="No impex templates found for @{addonname}, location: ${destPath}"/>
+										</else>
+									</if>
+								</sequential>
+							</for>
 						</sequential>
 					</for>
-				</sequential>
-			</for>
+
+				</then>
+				<else>
+					<echo message="@{addonname}: No tokens found!"/>
+				</else>
+			</if>
+
+			<!-- Rename impex resources folder -->
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/${contentCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/${productCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/storeName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/${storeUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/${contentCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/${productCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/storeName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/${storeUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>															
 		</sequential>
 	</macrodef>
 

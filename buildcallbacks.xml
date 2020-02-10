@@ -63,9 +63,17 @@
 
 <project name="ybelsportinitialdata_buildcallbacks">
 
+	<!-- 
+		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
+
+		${ear.path}: 			path to ear
+	-->
+	<macrodef name="ybelsportinitialdata_before_build">
+		<sequential>
+
 	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
-<!--
-    <ybelsportinitialdatabindImpexTemplate
+
+    <ybelsportinitialdata_bindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="cl.com.bls.b2c.qkslv"
             extensionUid="quicksilverb2cstoreinitialdata"
@@ -169,54 +177,10 @@
 			cmsContactPhone="(+56) 2 2433 6627\n(+56) 2 3239 1829"
 			cmsContactPhoneSF="224336627 o 232391829"
 			cmsEmailCV="contacto@quicksilver.cl"
-			cmsEmailCambios="cambios@quicksilver.cl"/>-->
-
-	<!-- 
-		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
-
-		${ear.path}: 			path to ear
-	-->
-	<macrodef name="ybelsportinitialdata_before_ear">
-		<sequential>
-
-			<!-- you can do anything before the EAR file is being packed -->
+			cmsEmailCambios="cambios@quicksilver.cl"/>
 
 		</sequential>
 	</macrodef>
-
-    <macrodef name="ybelsportinitialdata_only_once_prepare">
-		<sequential>
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/catalogName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/${contentCatalogUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/catalogName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/${productCatalogUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/storeName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/${storeUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/catalogName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/${contentCatalogUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/catalogName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/${productCatalogUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/storeName"/>
-			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/${storeUid}"/>
-			<move file="${srcPath}" tofile="${destPath}"/>
-			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-		</sequential>
-    </macrodef>		
 	
 	<!-- exclude impex files from localization --> 
 	<patternset id="ybelsportinitialdata.localization.pattern">
