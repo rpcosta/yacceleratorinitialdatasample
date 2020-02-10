@@ -75,7 +75,7 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@medi
                    ;;prepareForPickupHeader.jpg;prepareForPickupHeader.jpg;$emailImageResource/prepareForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
                    ;;deliverySentHeader.jpg;deliverySentHeader.jpg;$emailImageResource/deliverySentHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
 
-INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true]                    ; uid[unique=true]           ; media(code)[lang=$lang]
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];media(code,$contentCV)[lang=$lang]
                                    ;;ReadyForPickupEmailHeaderBanner           ; readyForPickupHeader.jpg   ; "/"
                                    ;;PrepareForPickupEmailHeaderBanner         ; prepareForPickupHeader.jpg ; "/"
                                    ;;DeliverySentEmailHeaderBanner             ; deliverySentHeader.jpg     ; "/"

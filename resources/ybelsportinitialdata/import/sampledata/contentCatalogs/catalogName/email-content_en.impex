@@ -20,8 +20,8 @@ $lang = en
 # Media
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                 ; realfilename      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']
                    ;                          ; Banner_email                        ; Banner_email.jpg                             ; $siteResource/images/email/banner.jpg                               ; image/jpg  ; ;
-                   ;                          ; CustomerRegistrationEmail_banner    ; CustomerRegistrationEmail_banner.jpg         ; $siteResource/images/email/_Customer_Registration_Email_Banner.jpg  ; image/jpg  ; ;
-                   ;                          ; ForgottenPasswordEmail_banner       ; ForgottenPasswordEmail_banner.jpg            ; $siteResource/images/email/_Forgotten_Password_Email_Banner.jpg     ; image/jpg  ; ;
+                   ;                          ; CustomerRegistrationEmail_banner    ; CustomerRegistrationEmail_banner.jpg         ; $siteResource/images/email/Customer_Registration_Email_Banner.jpg  ; image/jpg  ; ;
+                   ;                          ; ForgottenPasswordEmail_banner       ; ForgottenPasswordEmail_banner.jpg            ; $siteResource/images/email/Forgotten_Password_Email_Banner.jpg     ; image/jpg  ; ;
                    ;                          ; OrderConfirmationEmailBanner        ; OrderConfirmationEmailBanner.jpg             ; $siteResource/images/email/OrderConfirmationEmailBanner.jpg         ; image/jpg  ; ;
                    ;                          ; ConsignmentInPreparationEmailBanner ; ConsignmentInPreparationEmailBanner.jpg      ; $siteResource/images/email/ConsignmentInPreparationEmailBanner.jpg  ; image/jpg  ; ;
 

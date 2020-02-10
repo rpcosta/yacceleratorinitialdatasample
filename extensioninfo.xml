@@ -3,13 +3,15 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
     	
-    <extension abstractclassprefix="Generated" classprefix="YBelsportInitialData" name="ybelsportinitialdata">
+    <extension abstractclassprefix="Generated" classprefix="InitialData" name="ybelsportinitialdata">
         		
-        <requires-extension name="yacceleratorcore"/>
+        <requires-extension name="belsportb2cstorecore"/>
         		
         <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="de.hybris.platform.ybelsportinitialdata"/>
         		
         <meta key="modulegen-name" value="accelerator"/>
+
+        <meta key="extgen-template-extension" value="true"/>
         	
     </extension>
     

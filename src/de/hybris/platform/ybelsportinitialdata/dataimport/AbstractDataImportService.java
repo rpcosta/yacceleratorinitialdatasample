@@ -18,6 +18,8 @@ import de.hybris.platform.servicelayer.cronjob.PerformResult;
 import de.hybris.platform.servicelayer.event.EventService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
 
 import java.util.HashSet;
@@ -30,6 +32,8 @@ import java.util.Set;
  */
 public abstract class AbstractDataImportService
 {
+	private static final Logger LOG = LoggerFactory.getLogger(AbstractDataImportService.class);
+
 	public static final String ACTIVATE_SOLR_CRON_JOBS = "activateSolrCronJobs";
 	public static final String IMPORT_MOBILE_DATA = "commerceservices.mobile.data.import";
 
@@ -66,7 +70,7 @@ public abstract class AbstractDataImportService
 	protected abstract void importJobs(final String extensionName, final String storeName);
 
 	protected void importAllData(final AbstractSystemSetup systemSetup, final SystemSetupContext context,
-			final ImportData importData, final boolean syncCatalogs)
+			final ImportData importData)
 	{
 		systemSetup.logInfo(context, String.format("Begin importing common data for [%s]", context.getExtensionName()));
 		importCommonData(context.getExtensionName());
@@ -81,39 +85,8 @@ public abstract class AbstractDataImportService
 			importContentCatalog(context.getExtensionName(), contentCatalogName);
 		}
 
-		synchronizeProductCatalog(systemSetup, context, importData.getProductCatalogName(), false);
-		for (final String contentCatalog : importData.getContentCatalogNames())
-		{
-			synchronizeContentCatalog(systemSetup, context, contentCatalog, false);
-		}
 		assignDependent(importData.getProductCatalogName(), importData.getContentCatalogNames());
 
-		if (syncCatalogs)
-		{
-			systemSetup
-					.logInfo(context, String.format("Synchronizing product catalog for [%s]", importData.getProductCatalogName()));
-			final boolean productSyncSuccess = synchronizeProductCatalog(systemSetup, context, importData.getProductCatalogName(),
-					true);
-
-			for (final String contentCatalogName : importData.getContentCatalogNames())
-			{
-				systemSetup.logInfo(context, String.format("Synchronizing content catalog for [%s]", contentCatalogName));
-				synchronizeContentCatalog(systemSetup, context, contentCatalogName, true);
-			}
-
-			if (!productSyncSuccess)
-			{
-				// Rerun the product sync if required
-				systemSetup.logInfo(context,
-						String.format("Rerunning product catalog synchronization for [%s]", importData.getProductCatalogName()));
-				if (!synchronizeProductCatalog(systemSetup, context, importData.getProductCatalogName(), true))
-				{
-					systemSetup.logInfo(context, String.format(
-									"Rerunning product catalog synchronization for [%s], failed. Please consult logs for more details.",
-									importData.getProductCatalogName()));
-				}
-			}
-		}
 
 		for (final String storeName : importData.getStoreNames())
 		{
@@ -126,8 +99,6 @@ public abstract class AbstractDataImportService
 			systemSetup.logInfo(context, String.format("Begin importing solr index data for [%s]", storeName));
 			importSolrIndex(context.getExtensionName(), storeName);
 
-
-
 			if (systemSetup.getBooleanSystemSetupParameter(context, ACTIVATE_SOLR_CRON_JOBS))
 			{
 				systemSetup.logInfo(context, String.format("Activating solr index for [%s]", storeName));
@@ -136,73 +107,7 @@ public abstract class AbstractDataImportService
 		}
 	}
 
-	/**
-	 * Creates and runs a product catalog synchronization job
-	 *
-	 * @param systemSetup
-	 *           the system setup parameters
-	 * @param context
-	 *           the system setup context
-	 * @param catalogName
-	 *           the catalog name
-	 * @param syncCatalogs
-	 *           executes catalog synchronization job if true
-	 * @return true if operation was successful
-	 */
-	public boolean synchronizeProductCatalog(final AbstractSystemSetup systemSetup, final SystemSetupContext context,
-			final String catalogName, final boolean syncCatalogs)
-	{
-		systemSetup.logInfo(context, String.format("Begin synchronizing Product Catalog [%s]", catalogName));
 
-		getSetupSyncJobService().createProductCatalogSyncJob(String.format("%sProductCatalog", catalogName));
-
-		if (syncCatalogs)
-		{
-			final PerformResult syncCronJobResult = getSetupSyncJobService().executeCatalogSyncJob(
-					String.format("%sProductCatalog", catalogName));
-			if (isSyncRerunNeeded(syncCronJobResult))
-			{
-				systemSetup.logInfo(context, String.format("Product Catalog [%s] sync has issues.", catalogName));
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * Creates and runs a content catalog synchronization job
-	 *
-	 * @param systemSetup
-	 *           the system setup parameters
-	 * @param context
-	 *           the system setup context
-	 * @param catalogName
-	 *           the catalog name
-	 * @param syncCatalogs
-	 *           executes catalog synchronization job if true
-	 * @return true if operation was successful
-	 */
-	public boolean synchronizeContentCatalog(final AbstractSystemSetup systemSetup, final SystemSetupContext context,
-			final String catalogName, final boolean syncCatalogs)
-	{
-		systemSetup.logInfo(context, String.format("Begin synchronizing Content Catalog [%s]", catalogName));
-
-		getSetupSyncJobService().createContentCatalogSyncJob(String.format("%sContentCatalog", catalogName));
-
-		if (syncCatalogs)
-		{
-			final PerformResult syncCronJobResult = getSetupSyncJobService().executeCatalogSyncJob(
-					String.format("%sContentCatalog", catalogName));
-			if (isSyncRerunNeeded(syncCronJobResult))
-			{
-				systemSetup.logInfo(context, String.format("Content Catalog [%s] sync has issues.", catalogName));
-				return false;
-			}
-		}
-
-		return true;
-	}
 
 	/**
 	 * Assigns dependent content catalog sync jobs to product catalog sync jobs

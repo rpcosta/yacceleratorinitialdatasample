@@ -9,6 +9,7 @@ import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.util.ResponsiveUtils;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import de.hybris.platform.validation.services.ValidationService;
+import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
 
 import java.io.InputStream;
 import java.util.List;
@@ -19,7 +20,6 @@ import java.util.List;
  */
 public class CoreDataImportService extends AbstractDataImportService
 {
-	public static final String IMPORT_CORE_DATA = "importCoreData";
 
 	@Override
 	public void execute(final AbstractSystemSetup systemSetup, final SystemSetupContext context, final List<ImportData> importData)

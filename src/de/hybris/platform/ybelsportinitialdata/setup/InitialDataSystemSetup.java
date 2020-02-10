@@ -3,9 +3,10 @@
  */
 package de.hybris.platform.ybelsportinitialdata.setup;
 
-import de.hybris.platform.ybelsportinitialdata.constants.Quicksilverb2cstoreInitialDataConstants;
+import de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants;
 import de.hybris.platform.ybelsportinitialdata.dataimport.impl.CoreDataImportService;
 import de.hybris.platform.ybelsportinitialdata.dataimport.impl.SampleDataImportService;
+import de.hybris.platform.ybelsportinitialdata.dataimport.impl.UpdateDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
 import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.setup.events.CoreDataImportedEvent;
@@ -15,29 +16,27 @@ import de.hybris.platform.core.initialization.SystemSetup.Process;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import de.hybris.platform.core.initialization.SystemSetupParameter;
 import de.hybris.platform.core.initialization.SystemSetupParameterMethod;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
+import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-@SystemSetup(extension = YBelsportInitialDataConstants.EXTENSIONNAME)
+@SystemSetup(extension = InitialDataConstants.EXTENSIONNAME)
 public class InitialDataSystemSetup extends AbstractSystemSetup
 {
 	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(InitialDataSystemSetup.class);
 
-	public static final String STORE_UID = "quicksilverb2cstore";
-	public static final String CATALOG_PREFIX = "quicksilver";
-
-	private static final String IMPORT_CORE_DATA = "importCoreData";
-	private static final String IMPORT_SAMPLE_DATA = "importSampleData";
-	private static final String ACTIVATE_SOLR_CRON_JOBS = "activateSolrCronJobs";
-
 	private CoreDataImportService coreDataImportService;
 	private SampleDataImportService sampleDataImportService;
+	private UpdateDataImportService updateDataImportService;
 
 	/**
 	 * Generates the Dropdown and Multi-select boxes for the project data import
@@ -50,8 +49,18 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 
 		params.add(createBooleanSystemSetupParameter(IMPORT_CORE_DATA, "Import Core Data", true));
 		params.add(createBooleanSystemSetupParameter(IMPORT_SAMPLE_DATA, "Import Sample Data", true));
-		params.add(createBooleanSystemSetupParameter(ACTIVATE_SOLR_CRON_JOBS, "Activate Solr Cron Jobs", true));
+		params.add(createBooleanSystemSetupParameter(ACTIVATE_SOLR_CRON_JOBS, "Activate Solr Cron Jobs", false));
+		params.add(createBooleanSystemSetupParameter(SYNCHRONIZE_CONTENT_CATALOG, "Synchronize Content Catalog", false));
+		params.add(createBooleanSystemSetupParameter(SYNCHRONIZE_PRODUCT_CATALOG, "Synchronize Product Catalog", false));
 		// Add more Parameters here as you require
+
+		final List<String> listUpdateDirectories = createSprintDirectoryList(SAP_CX_UPDATE_BASE_FOLDER);
+
+		if(CollectionUtils.isNotEmpty(listUpdateDirectories) ) {
+			for(final String currentDirectory : listUpdateDirectories){
+				params.add(createBooleanSystemSetupParameter("sapcx" + currentDirectory, currentDirectory + " data", false));
+			}
+		}
 
 		return params;
 	}
@@ -79,6 +88,30 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 
 		getSampleDataImportService().execute(this, context, importData);
 		getEventService().publishEvent(new SampleDataImportedEvent(context, importData));
+
+		getUpdateDataImportService().execute(this, context, importData);
+
+	}
+
+	private List<String> createSprintDirectoryList(final String folderName){
+		final File[] files = new File(this.getClass().getResource(folderName).getFile()).listFiles();
+		List<String> sprintDirectoryList = null;
+
+		if (files != null && files.length > 0)
+		{
+			sprintDirectoryList = new ArrayList<>(files.length);
+
+			Arrays.sort(files);
+
+			for (final File file : files){
+				if (file.isDirectory())
+				{
+					sprintDirectoryList.add(file.getName());
+				}
+			}
+		}
+
+		return sprintDirectoryList;
 	}
 
 	public CoreDataImportService getCoreDataImportService()
@@ -101,5 +134,14 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	public void setSampleDataImportService(final SampleDataImportService sampleDataImportService)
 	{
 		this.sampleDataImportService = sampleDataImportService;
+	}
+
+	public UpdateDataImportService getUpdateDataImportService() {
+		return updateDataImportService;
+	}
+
+	@Required
+	public void setUpdateDataImportService(final UpdateDataImportService updateDataImportService) {
+		this.updateDataImportService = updateDataImportService;
 	}
 }

@@ -46,13 +46,13 @@ UPDATE RendererTemplate; code[unique = true]                           ; descrip
                        ; Email_Ready_For_Pickup_Subject                ; "Ready For Pickup Email Subject"                   ; $emailResource/email-readyForPickupSubject.vm
                        ; Email_Prepare_For_Pickup_Body                 ; "Prepare For Pickup Email Body"                    ; $emailResource/email-prepareForPickupBody.vm
                        ; Email_Prepare_For_Pickup_Subject              ; "Prepare For Pickup Email Subject"                 ; $emailResource/email-prepareForPickupSubject.vm
+                       ; Email_Consignment_In_Preparation_Body         ; "Consignment in preparation Email Body"            ; $emailResource/email-consignmentInPreparationBody.vm
+                       ; Email_Consignment_In_Preparation_Subject      ; "Order in Prepartion Email Subject"                ; $emailResource/email-consignmentInPreparationSubject.vm
                        ; __STORE_UID__-BannerComponent-template              ; "__STORE_UID__ CMSBannerComponent Template"         ; $emailResource/email-bannerComponentTemplate.vm
                        ; __STORE_UID__-CMSImageComponent-template            ; "__STORE_UID__ CMSImageComponent Template"          ; $emailResource/email-cmsImageComponentTemplate.vm
                        ; __STORE_UID__-CMSLinkComponent-template             ; "__STORE_UID__ CMSLinkComponent Template"           ; $emailResource/email-cmsLinkComponentTemplate.vm
                        ; __STORE_UID__-CMSParagraphComponent-template        ; "__STORE_UID__ CMSParagraphComponent Template"      ; $emailResource/email-cmsParagraphComponentTemplate.vm
                        ; __STORE_UID__-SimpleBannerComponent-template        ; "__STORE_UID__ CMSSimpleBannerComponent Template"   ; $emailResource/email-bannerComponentTemplate.vm
-                       ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Body         ; "__CMS_STORE_PREFIX__ Consignment in preparation Email Body"            ; $emailResource/email-consignmentInPreparationBody.vm
-                       ; __CMS_STORE_PREFIX___Email_Consignment_In_Preparation_Subject      ; "__CMS_STORE_PREFIX__ Order in Prepartion Email Subject"                ; $emailResource/email-consignmentInPreparationSubject.vm
 
 # Email Pages
 UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]           ; fromEmail[lang = $lang]       ; fromName[lang = $lang]
@@ -75,7 +75,7 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@medi
                    ;;prepareForPickupHeader.jpg;prepareForPickupHeader.jpg;$emailImageResource/prepareForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
                    ;;deliverySentHeader.jpg;deliverySentHeader.jpg;$emailImageResource/deliverySentHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
 
-INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true]                    ; uid[unique=true]           ; media(code)[lang=$lang]
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];media(code,$contentCV)[lang=$lang]
                                    ;;ReadyForPickupEmailHeaderBanner           ; readyForPickupHeader.jpg   ; "/"
                                    ;;PrepareForPickupEmailHeaderBanner         ; prepareForPickupHeader.jpg ; "/"
                                    ;;DeliverySentEmailHeaderBanner             ; deliverySentHeader.jpg     ; "/"

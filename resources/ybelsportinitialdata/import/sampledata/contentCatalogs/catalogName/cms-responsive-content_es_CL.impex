@@ -20,7 +20,7 @@ $lang = es_CL
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; SiteLogoComponent ; /images/theme/header-logo.svg ;
+                            ;                          ; SiteLogoComponent ; header-logo.svg ;
 
 
 # CMS Link Components
@@ -58,7 +58,7 @@ UPDATE ProductReferencesComponent; $contentCV[unique = true]; uid[unique = true]
 
 # CMS PurchasedCategorySuggestion Components
 UPDATE PurchasedCategorySuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-;;PurchasedCategorySuggestions;"You may also like..."
+#;;PurchasedCategorySuggestions;"You may also like..."
 
 # CMS CartSuggestion Components
 UPDATE CartSuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
@@ -207,7 +207,7 @@ none windowtext 0cm;padding:0cm"">&nbsp;</span></p>  <p class=""MsoNormal""><b><
 # Homepage
 
 # Delivery information component
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = en];
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang];
                             ;                          ; DeliveryInformationComponent  ; "VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES"
 
 # Media Content
@@ -216,16 +216,16 @@ INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
 
 UPDATE BannerComponent; $contentCV[unique = true]; uid[unique = true]; headline[lang = $lang]; $picture[lang = $lang]; content[lang = $lang]
-                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
+                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;homepage_section1_banner.png;""
                       ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
                       ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
-                      ;;HomepageSection2ABanner; Homepage Section 2A Banner;__CMS_IMAGE_PREFIX__homepage_section2A_banner.jpg;""
-                      ;;HomepageSection2BBanner; Homepage Section 2B Banner;__CMS_IMAGE_PREFIX__homepage_section2B_banner.jpg;""
+                      ;;HomepageSection2ABanner; Homepage Section 2A Banner;section2A_banner.jpg;""
+                      ;;HomepageSection2BBanner; Homepage Section 2B Banner;section2B_banner.jpg;""
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
-                   ;;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX__homepage_section1_banner.png;image/png
-                   ;;__CMS_IMAGE_PREFIX__homepage_section2A_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX__homepage_section2A_banner.jpg;image/png
-                   ;;__CMS_IMAGE_PREFIX__homepage_section2B_banner.jpg;$siteResource/images/banners/homepage/responsive/__CMS_IMAGE_PREFIX__homepage_section2B_banner.jpg;image/png
+                   ;;section1_banner.png;$siteResource/images/banners/homepage/responsive/homepage_section1_banner.png;image/png
+                   ;;section2A_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2A_banner.jpg;image/png
+                   ;;homepage_section2B_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2B_banner.jpg;image/png
 
 UPDATE ProductCarouselComponent; $contentCV[unique = true]; uid[unique = true]                          ; title[lang = $lang]
                                ;                          ; ElectronicsHomepageProductCarouselComponent ; Our Bestselling Products
@@ -310,13 +310,9 @@ INSERT_UPDATE MediaContainer; qualifier[unique = true]         ; $medias; $conte
 INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                       ; $mediaContainer
 
 # CMS Paragraph Component (Contact information)
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = en];
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang];
                             ;                          ; FaqTextParagraph  ; "<div class=""global-alerts""><div class=""alert alert-info"" role=""alert""><strong>Information:</strong> Page Under Construction - Not Completely Functional</div></div><a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
                             ;                          ; TopInfoParagraphComponent      ; "<ul><li><a href=""/store-finder""><i class=""icon icon-location""></i>&nbsp;<b>tiendas</b></a></li>&nbsp;<li><i class=""icon icon-smartphone""></i>&nbsp; <a href=""tel: +562 224336627""><b>224336627</b></a><span> - </span><a href=""tel: +562 232391829""><b>232391829</b></a></li></ul>" ;
-
-# Site Logo Component
-UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; SiteLogoComponent ; /images/theme/__CMS_IMAGE_PREFIX__-header-logo.svg
 
 # CMS Link Components
 UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
@@ -341,11 +337,11 @@ UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]     ; title[la
                   ;                          ; SavedCartDetailsPage   ; "Detalles del Carrito Guardado"
 
 # CMS Paragraph Component
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = en]                                                                                        ;
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = $lang]                                                                                        ;
                             ;                          ; QuickOrderInfoParagraphComponent ; You can add up to 25 valid SKUs below and add to cart. Stock is reserved once products are added to cart. ;
 
 # CMS Footer Navigation Component
-UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]; notice[lang = en][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
+UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]; notice[lang = $lang][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
 
 # Responsive Error page
 
@@ -356,10 +352,10 @@ INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[uni
                    ; desktop               ;                          ; Bels_960x275_ErrorPage_ES_CL_960W.png   ; $siteResource/images/banners/site/Bels_1400x401_ErrorPage_ES_CL_1400W.png                         ;                                ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ;                                      ; "Página no encontrada"
 
 INSERT_UPDATE MediaContainer; qualifier[unique = true]           ; $medias; $contentCV[unique = true]
-                            ; __CMS_IMAGE_PREFIX__-errorpage-pagenotfound ; Bels_1400x401_ErrorPage_ES_CL_1400W.png,Bels_480x170_ErrorPage_ES_CL_480W.png,Bels_770x221_ErrorPage_ES_CL_770W.png,Bels_960x275_ErrorPage_ES_CL_960W.png
+                            ; errorpage-pagenotfound ; Bels_1400x401_ErrorPage_ES_CL_1400W.png,Bels_480x170_ErrorPage_ES_CL_480W.png,Bels_770x221_ErrorPage_ES_CL_770W.png,Bels_960x275_ErrorPage_ES_CL_960W.png
 
 INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                  ; $mediaContainer                    ; name                                    ; &componentRef;
-                                             ;                          ; ErrorpageBannerComponent ; __CMS_IMAGE_PREFIX__-errorpage-pagenotfound ;  Error Page Banner Component ; ErrorpageBannerComponent
+                                             ;                          ; ErrorpageBannerComponent ; errorpage-pagenotfound ;  Error Page Banner Component ; ErrorpageBannerComponent
 
 # ------------------------------------------------------------
 #  Header Configuration
@@ -376,7 +372,7 @@ INSERT_UPDATE BoldLoginComponent ; $contentCV[unique=true] ; uid[unique=true]   
 # ------------------------------------------------------------
 
 UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang];
-                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;__CMS_IMAGE_PREFIX__homepage_section1_banner.png;""
+                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;homepage_section1_banner.png;""
                       ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
                       ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
 
@@ -385,8 +381,8 @@ UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$l
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection2ABanner;__CMS_IMAGE_PREFIX___homepage_section2A_banner.jpg;
-                            ;;HomepageSection2BBanner;__CMS_IMAGE_PREFIX___homepage_section2B_banner.jpg;
+                            ;;HomepageSection2ABanner;homepage_section2A_banner.jpg;
+                            ;;HomepageSection2BBanner;homepage_section2B_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 4 Configuration
@@ -396,31 +392,31 @@ UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[la
                             ;;HomepageSection4AParagraph;Destacados
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection4CBanner;__CMS_IMAGE_PREFIX___homepage_section4C_banner.jpg;
+                            ;;HomepageSection4CBanner;homepage_section4C_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 5 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection5ABanner;__CMS_IMAGE_PREFIX___homepage_section5A_banner.jpg;
-                            ;;HomepageSection5BBanner;__CMS_IMAGE_PREFIX___homepage_section5B_banner.jpg;
+                            ;;HomepageSection5ABanner;homepage_section5A_banner.jpg;
+                            ;;HomepageSection5BBanner;homepage_section5B_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 6 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection6ABanner;__CMS_IMAGE_PREFIX___homepage_section6A_banner.jpg;
-                            ;;HomepageSection6CBanner;__CMS_IMAGE_PREFIX___homepage_section6C_banner.jpg;
+                            ;;HomepageSection6ABanner;homepage_section6A_banner.jpg;
+                            ;;HomepageSection6CBanner;homepage_section6C_banner.jpg;
 
 # ------------------------------------------------------------
 #  Homepage Section 7 Configuration
 # ------------------------------------------------------------
 
 UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection7ABanner;__CMS_IMAGE_PREFIX___homepage_section7A_banner.jpg;
-                            ;;HomepageSection7BBanner;__CMS_IMAGE_PREFIX__homepage_section7B_banner.jpg;
+                            ;;HomepageSection7ABanner;homepage_section7A_banner.jpg;
+                            ;;HomepageSection7BBanner;homepage_section7B_banner.jpg;
 
 
 # ------------------------------------------------------------
@@ -430,10 +426,6 @@ UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[l
 UPDATE BoldSocialComponent; $contentCV[unique = true]; uid[unique = true]; name; text[lang=$lang];
                           ; ; SocialComponent      ;  Social Component ; Síguenos
 
-UPDATE BoldSociaLinklComponent; $contentCV[unique = true]; uid[unique = true]; name;
-                              ; ; acebookSocialLinkComponent      ; Facebook Social Link Component
-                              ; ; witterSocialLinkComponent       ; Twitter Social Link Component
-                              ; ; nstagramSocialLinkComponent     ; Instagram Social Link Component
 
 
 # ------------------------------------------------------------

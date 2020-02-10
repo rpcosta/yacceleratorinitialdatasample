@@ -65,7 +65,7 @@
 
 	<import file="${ext.ybelsportinitialdata.path}/resources/ybelsportinitialdata/ant/ant-bind-impex-template.xml"/>
 <!--
-    <bindImpexTemplate
+    <ybelsportinitialdatabindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="cl.com.bls.b2c.qkslv"
             extensionUid="quicksilverb2cstoreinitialdata"
@@ -183,6 +183,40 @@
 
 		</sequential>
 	</macrodef>
+
+    <macrodef name="ybelsportinitialdata_only_once_prepare">
+		<sequential>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/catalogName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/${contentCatalogUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/catalogName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/${productCatalogUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/storeName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/${storeUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/catalogName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/${contentCatalogUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/catalogName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/${productCatalogUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/storeName"/>
+			<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/${storeUid}"/>
+			<move file="${srcPath}" tofile="${destPath}"/>
+			<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+		</sequential>
+    </macrodef>		
 	
 	<!-- exclude impex files from localization --> 
 	<patternset id="ybelsportinitialdata.localization.pattern">

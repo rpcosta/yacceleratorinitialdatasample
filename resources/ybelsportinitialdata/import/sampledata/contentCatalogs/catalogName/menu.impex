@@ -13,24 +13,25 @@ $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCata
 $productCatalog=__PRODUCT_CATALOG_UID__
 $productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $category=category(code, $productCV)
+$language=es_CL
 
 # --------------------------------------------------------------------------
 # Level 1. CategoryNavigationComponent
 # --------------------------------------------------------------------------
 INSERT_UPDATE CategoryNavigationComponent;uid[unique=true];$contentCV[unique=true];name;styleClass;&componentRef;navigationNode(&nodeRef);wrapAfter
-;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent;;Category Navigation Component;;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;10
+;CategoryNavComponent;;Category Navigation Component;;CategoryNavComponent;CategoryNavNode;10
 # --------------------------------------------------------------------------
 # Level 1. ContentSlot
 # --------------------------------------------------------------------------
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
-;;NavigationBarSlot;__SAMPLE_CATEGORY_PREFIX__CategoryNavComponent
-;;BottomHeaderSlot; breadcrumbComponent
+;;NavigationBarSlot;CategoryNavComponent
+#;;BottomHeaderSlot; breadcrumbComponent
 # --------------------------------------------------------------------------
 # Level 2. CMSNavigationNode
 # --------------------------------------------------------------------------
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);&nodeRef;children(uid,$contentCV);
 ;SiteRootNode;;SiteRootNode;root;;SiteRootNode
-;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;;Categories;SiteRootNode;__SAMPLE_CATEGORY_PREFIX__CategoryNavNode;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode,__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode,__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode,__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode,__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
+;CategoryNavNode;;Categories;SiteRootNode;CategoryNavNode;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode,__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode,__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode,__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode,__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
 # --------------------------------------------------------------------------
 # IMPORTANT! 
 # Create Categories to be associated in CMSLinkComponent 

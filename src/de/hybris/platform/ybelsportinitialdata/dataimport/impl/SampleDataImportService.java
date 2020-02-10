@@ -9,6 +9,8 @@ import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.util.ResponsiveUtils;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 
+import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -18,11 +20,6 @@ import java.util.List;
  */
 public class SampleDataImportService extends AbstractDataImportService
 {
-	public static final String IMPORT_SAMPLE_DATA = "importSampleData";
-	public static final String SAMPLE_DATA_LOAD = "sampledata.load";
-	public static final String CUSTOMER_SUPPORT_BACKOFFICE_EXTENSION_NAME = "customersupportbackoffice";
-	public static final String ORDER_MANAGEMENT_BACKOFFICE_EXTENSION_NAME = "ordermanagementbackoffice";
-	public static final String ASSISTED_SERVICE_EXTENSION_NAME = "assistedservicestorefront";
 
 	private boolean importSampleProductsAndPromotions = false;
 

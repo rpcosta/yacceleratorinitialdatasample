@@ -2,7 +2,7 @@
 <!--
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
-<project name="bindImpexTemplates">
+<project name="ybelsportinitialdata_bindImpexTemplate">
 
 	<!-- Extension Tokens -->
 	<property name="rootPackageToken" value="__ROOT_PACKAGE__"/>
@@ -143,7 +143,7 @@
 	<property name="cmsEmailCVToken" value="__CMS_EMAIL_CV__"/>
 	<property name="cmsEmailCambiosToken" value="__CMS_EMAIL_CAMBIOS__"/>
 
-	<macrodef name="bindImpexTemplate">
+	<macrodef name="ybelsportinitialdata_bindImpexTemplate">
 
 		<attribute name="rootPackage" default="${rootPackageToken}"/>
 		<attribute name="extensionUid" default="${extensionUidToken}"/>
@@ -256,6 +256,15 @@
 		<var name="destPath" value="${ext.@{addonname}.path}/resources/"/>
 		<replace dir="${destPath}" token="${rootPackageToken}" value="@{rootPackage}">
 			<include name="@{addonname}-spring.xml"/>
+		</replace>
+		
+		<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
+		<replace dir="${destPath}" token="${siteUidToken}" value="@{siteUid}">
+			<include name="*.java"/>
+		</replace>
+		<var name="destPath" value="${ext.@{addonname}.path}/src/"/>
+		<replace dir="${destPath}" token="${catalogPrefixToken}" value="@{catalogPrefix}">
+			<include name="*.java"/>
 		</replace>
 
  		<for list="coredata,sampledata" param="data">

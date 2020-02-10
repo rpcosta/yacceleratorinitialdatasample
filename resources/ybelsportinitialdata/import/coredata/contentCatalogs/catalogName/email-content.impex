@@ -313,9 +313,10 @@ UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]                 
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink
                                    ;;ReadyForPickupEmailHeaderBanner; Ready For Pickup Header Banner;"/"
                                    ;;PrepareForPickupEmailHeaderBanner; Prepare For Pickup Header Banner;"/"
+                                   ;;ConsignmentInPreparationEmailHeaderBanner; Consignment In Preparation Banner;"/"
                                    ;;DeliverySentEmailHeaderBanner; Delivery Sent Header Banner;"/"
 
-UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid)
+UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid,$contentCV)
                   ;;ReadyForPickupEmailHeaderSlot;ReadyForPickupEmailHeaderBanner
                   ;;PrepareForPickupEmailHeaderSlot;PrepareForPickupEmailHeaderBanner
                   ;;ConsignmentInPreparationEmailHeaderSlot;ConsignmentInPreparationEmailHeaderBanner
