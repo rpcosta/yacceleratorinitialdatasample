@@ -46,6 +46,8 @@ UPDATE RendererTemplate; code[unique = true]                           ; descrip
                        ; Email_Ready_For_Pickup_Subject                ; "Ready For Pickup Email Subject"                   ; $emailResource/email-readyForPickupSubject.vm
                        ; Email_Prepare_For_Pickup_Body                 ; "Prepare For Pickup Email Body"                    ; $emailResource/email-prepareForPickupBody.vm
                        ; Email_Prepare_For_Pickup_Subject              ; "Prepare For Pickup Email Subject"                 ; $emailResource/email-prepareForPickupSubject.vm
+                       ; Email_Consignment_In_Preparation_Body         ; "Consignment in preparation Email Body"            ; $emailResource/email-consignmentInPreparationBody.vm
+                       ; Email_Consignment_In_Preparation_Subject      ; "Order in Prepartion Email Subject"                ; $emailResource/email-consignmentInPreparationSubject.vm
                        ; BannerComponent-template                      ; "CMSBannerComponent Template"                      ; $emailResource/email-bannerComponentTemplate.vm
                        ; CMSImageComponent-template                    ; "CMSImageComponent Template"                       ; $emailResource/email-cmsImageComponentTemplate.vm
                        ; CMSLinkComponent-template                     ; "CMSLinkComponent Template"                        ; $emailResource/email-cmsLinkComponentTemplate.vm

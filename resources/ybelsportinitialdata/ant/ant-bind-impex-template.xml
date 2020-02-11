@@ -83,6 +83,7 @@
 	<property name="solrSearchProfileUidToken" value="__SOLR_SEARCH_PROFILE_UID__"/>
 	<property name="solrSearchProfileNameEnToken" value="__SOLR_SEARCH_PROFILE_NAME_EN__"/>
 	<property name="solrSearchProfileNameEsClToken" value="__SOLR_SEARCH_PROFILE_NAME_ES_CL__"/>
+	<property name="solrValueProviderPrefixToken" value="__SOLR_VALUE_PROVIDER_PREFIX__"/>
 
 	<!-- Warehouse -->
 	<property name="warehouseDeliverySampleUidToken" value="__WAREHOUSE_DELIVERY_SAMPLE_UID__"/>
@@ -201,6 +202,7 @@
 		<attribute name="solrSearchProfileUid" default="${solrSearchProfileUidToken}"/>
 		<attribute name="solrSearchProfileNameEn" default="${solrSearchProfileNameEnToken}"/>
 		<attribute name="solrSearchProfileNameEsCl" default="${solrSearchProfileNameEsClToken}"/>
+		<attribute name="solrValueProviderPrefix" default="${solrValueProviderPrefixToken}"/>
 		<attribute name="warehouseDeliverySampleUid" default="${warehouseDeliverySampleUidToken}"/>
 		<attribute name="warehousePickupSampleUid" default="${warehousePickupSampleUidToken}"/>
 		<attribute name="warehouseSampleEmail" default="${warehouseSampleEmailToken}"/>
@@ -253,6 +255,64 @@
 
 		<sequential>
 
+			<!-- Rename impex resources folder -->
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/@{contentCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/@{productCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/storeName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/@{storeUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/@{contentCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/catalogName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/@{productCatalogUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>
+			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/storeName"/>
+			<if>
+				<available file="${srcPath}"/>
+				<then>
+					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/@{storeUid}"/>
+					<move file="${srcPath}" tofile="${destPath}"/>
+					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
+				</then>
+			</if>	
+
 			<fileset id="existing" dir="${ext.@{addonname}.path}/">
 				<patternset id="files">
 					<include name="**/*.impex"/>
@@ -302,7 +362,7 @@
 
 			 		<for list="coredata,sampledata" param="data">
 						<sequential>
-							<for list="contentCatalogs/catalogName,productCatalogs/catalogName,stores/storeName,common" param="catalog">
+							<for list="contentCatalogs/@{contentCatalogUid},productCatalogs/@{productCatalogUid},stores/@{storeUid},common" param="catalog">
 								<sequential>
 									<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/@{data}/@{catalog}/"/>
 									<if>
@@ -588,6 +648,11 @@
 											</replace>
 											<echo message="@{addonname}: token [${solrSearchProfileNameEsClToken}] was replaced by [@{solrSearchProfileNameEsCl}]"/>
 
+											<replace dir="${destPath}" token="${solrValueProviderPrefixToken}" value="@{solrValueProviderPrefix}">
+												<include name="**/*.impex"/>
+											</replace>
+											<echo message="@{addonname}: token [${solrValueProviderPrefixToken}] was replaced by [@{solrValueProviderPrefix}]"/>
+
 											<replace dir="${destPath}" token="${warehouseDeliverySampleUidToken}" value="@{warehouseDeliverySampleUid}">
 												<include name="**/*.impex"/>
 											</replace>
@@ -838,64 +903,7 @@
 					<echo message="@{addonname}: No tokens found!"/>
 				</else>
 			</if>
-
-			<!-- Rename impex resources folder -->
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/catalogName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/contentCatalogs/@{contentCatalogUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/catalogName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/productCatalogs/@{productCatalogUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/storeName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/coredata/stores/@{storeUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>
-
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/catalogName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/contentCatalogs/@{contentCatalogUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/catalogName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/productCatalogs/@{productCatalogUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>
-			<var name="srcPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/storeName"/>
-			<if>
-				<available file="${srcPath}"/>
-				<then>
-					<var name="destPath" value="${ext.@{addonname}.path}/resources/@{addonname}/import/sampledata/stores/@{storeUid}"/>
-					<move file="${srcPath}" tofile="${destPath}"/>
-					<echo message="@{addonname}: srcPath [${srcPath}] was moved to [${destPath}]"/>
-				</then>
-			</if>															
+													
 		</sequential>
 	</macrodef>
 

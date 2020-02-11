@@ -5,15 +5,15 @@ $contentCatalog=__CONTENT_CATALOG_UID__
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $productCatalog=__PRODUCT_CATALOG_UID__
 $productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
 $picture = media(code, $contentCV);
 $medias=medias(code, $contentCV);
 $mediaContainer=media(qualifier, $contentCV);
 $product=product(code, $productCV)
 $category=category(code, $productCV)
-$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
+$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
 $media=media(code, $contentCV);
-$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
+$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
 
 # Language
 $lang = en

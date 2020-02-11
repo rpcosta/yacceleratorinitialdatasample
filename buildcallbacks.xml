@@ -73,7 +73,7 @@
 	<macrodef name="ybelsportinitialdata_before_build">
 		<sequential>
 
-<!--     <ybelsportinitialdata_bindImpexTemplate
+    <ybelsportinitialdata_bindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="cl.com.bls.b2c.qkslv"
             extensionUid="quicksilverb2cstoreinitialdata"
@@ -131,6 +131,7 @@
 			solrSearchProfileUid="defaultQuicksilver"
 			solrSearchProfileNameEn="QuickSilver Search Profile"
 			solrSearchProfileNameEsCl="Search Profile de QuickSilver"
+			solrValueProviderPrefix="quicksilver"
 			warehouseDeliverySampleUid="3019"
 			warehousePickupSampleUid="3000"
 			warehouseSampleEmail="example@quicksilver.com.cl"
@@ -178,8 +179,8 @@
 			cmsContactPhoneSF="224336627 o 232391829"
 			cmsEmailCV="contacto@quicksilver.cl"
 			cmsEmailCambios="cambios@quicksilver.cl"/>
- -->
 
+<!-- 
      <ybelsportinitialdata_bindImpexTemplate
             addonname="ybelsportinitialdata"
             rootPackage="com.xpto"
@@ -285,7 +286,7 @@
 			cmsContactPhoneSF="224336627 o 232391829"
 			cmsEmailCV="contacto@xpto.cl"
 			cmsEmailCambios="cambios@xpto.cl"/>
-
+ -->
 		</sequential>
 	</macrodef>
 	

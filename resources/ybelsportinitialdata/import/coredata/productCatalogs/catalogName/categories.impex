@@ -16,7 +16,7 @@ $categories = target(code, $catalogVersion)[unique = true]
 $contentCatalog=__CONTENT_CATALOG_UID__
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 
-$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.__EXTENSION_NAME__Constants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
 
 INSERT_UPDATE Category;code[unique = true];$catalogVersion;allowedPrincipals(uid)[default = 'customergroup'] ;
                       ;__CATEGORY_PROMOTIONS_UID__    ;                ;                                                 ;
