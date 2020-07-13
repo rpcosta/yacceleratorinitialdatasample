@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package de.hybris.platform.ybelsportinitialdata.constants;
+package de.hybris.platform.ybelsportinitialdata.initialdata.constants;
 
 /**
  * Global class for all Quicksilverb2cstoreinitialdata constants.

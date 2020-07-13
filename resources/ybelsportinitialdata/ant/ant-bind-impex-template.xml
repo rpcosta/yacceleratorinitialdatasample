@@ -159,6 +159,7 @@
 		<attribute name="vendorUid" default="${vendorUidToken}"/>
 		<attribute name="vendorName" default="${vendorNameToken}"/>
 		<attribute name="brandName" default="${brandNameToken}"/>
+		<attribute name="catalogPrefix" default="${catalogPrefixToken}"/>
 		<attribute name="contentCatalogUid" default="${contentCatalogUidToken}"/>
 		<attribute name="contentCatalogNameEn" default="${contentCatalogNameEnToken}"/>
 		<attribute name="contentCatalogNameEsCl" default="${contentCatalogNameEsClToken}"/>

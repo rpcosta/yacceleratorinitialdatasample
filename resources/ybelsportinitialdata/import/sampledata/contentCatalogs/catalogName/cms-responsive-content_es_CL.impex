@@ -1,12 +1,13 @@
 # -----------------------------------------------------------------------
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
-$contentCatalog=__CONTENT_CATALOG_UID__
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
-$productCatalog=__PRODUCT_CATALOG_UID__
-$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
-$picture = media(code, $contentCV);
+$version=Staged
+$contentCatalog= __CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog= __PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource=jar: __ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$picture=media(code, $contentCV);
 $medias=medias(code, $contentCV);
 $mediaContainer=media(qualifier, $contentCV);
 $product=product(code, $productCV)
@@ -20,41 +21,28 @@ $lang = es_CL
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; SiteLogoComponent ; header-logo.svg ;
-
-
-# CMS Link Components
-UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
-                       ;                          ; AboutSAPCommerceLink  ; "About SAP Commerce Cloud"
-                       ;                          ; AgileCommerceBlogLink ; "Agile Commerce Blog"
-                       ;                          ; TwitterLink           ; "Twitter"
-                       ;                          ; VisitSAPLink          ; "Visit SAP"
-
-# Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; &imageRef                                ; folder(qualifier)[default = 'images']; altText
-
-UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]                  ; $picture[lang = $lang]
+;;SiteLogoComponent ; media-__SITE_ALIAS_LOWERCASE__-color.svg;
 
 # CMS Mini Cart Component
-UPDATE MiniCartComponent; $contentCV[unique = true]; uid[unique = true]; name      ; title[lang = $lang]
-                        ;                          ; MiniCart          ; Mini Cart ; "YOUR SHOPPING CART"
+UPDATE MiniCartComponent; $contentCV[unique = true]; uid[unique = true]; name; title[lang = $lang]
+;;MiniCart; Mini Cart ; "YOUR SHOPPING CART"
 
 # CMS tabs components
 UPDATE CMSTabParagraphComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]; content[lang = $lang]
-                               ;                          ; deliveryTab       ; Delivery           ; "<div class=""tab-delivery"">Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere. Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</div>"
+;;deliveryTab; Delivery; "<div class='tab-delivery'>Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere. Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</div>"
 
 # CMS tabbed jsp include components
 INSERT_UPDATE JspIncludeComponent; $contentCV[unique = true]; uid[unique = true]         ; title[lang = $lang]
-                                 ;                          ; ProductDetailsTabComponent ; "Detalles del producto"
-                                 ;                          ; ProductReviewsTabComponent ; "Reseña"
-                                 ;                          ; ProductSpecsTabComponent   ; "Especificaciones"
+;; ProductDetailsTabComponent ; "Detalles del producto"
+;; ProductReviewsTabComponent ; "Reseña"
+;; ProductSpecsTabComponent   ; "Especificaciones"
 
 # CMS ProductReferences Components
 UPDATE ProductReferencesComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                                 ;                          ; CrossSelling      ; "You may also like..."
-                                 ;                          ; Others            ; "Accessories"
-                                 ;                          ; Similar           ; "You may also like..."
-                                 ;                          ; Accessories       ; "Accessories"
+;; CrossSelling      ; "You may also like..."
+;; Others            ; "Accessories"
+;; Similar           ; "You may also like..."
+;; Accessories       ; "Accessories"
 
 # CMS PurchasedCategorySuggestion Components
 UPDATE PurchasedCategorySuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
@@ -62,722 +50,78 @@ UPDATE PurchasedCategorySuggestionComponent; $contentCV[unique = true]; uid[uniq
 
 # CMS CartSuggestion Components
 UPDATE CartSuggestionComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                              ;                          ; CartSuggestions   ; "You may also like..."
+;; CartSuggestions   ; "You may also like..."
 
-# Category Pages
-UPDATE CategoryPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-
-# CMS Navigation Nodes
-UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]                ; title[lang = $lang]
-                        ;                          ; NavNode       ; " B2C Site"
-                        ;                          ; SiteRootNode  ; "SiteRoot"
-
-# FAQ Page
-
-# CMS Paragraph Component (Contact information)
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ;                          ; FaqMenuParagraph  ; "<div class=""nav_column"">	<div class=""title_holder"">		<div class=""title"">			<div class=""title-top"">				<span></span>			</div>		</div>		<h2>Frequently asked questions</h2>	</div>	<div class=""item"">		<ul class=""facet_block indent"">			<li><a href=""#a00"">Returns and refunds</a></li>			<li><a href=""#b00"">Delivery information</a></li>			<li><a href=""#c00"">Registration</a></li>			<li><a href=""#d00"">Your online account</a></li>			<li><a href=""#e00"">Orders</a></li>			<li><a href=""#f00"">Promotions and discounts</a></li>			<li><a href=""#g00"">Product and general Informations</a></li>			<li><a href=""#h00"">Store information</a></li>			<li><a href=""#i00"">Business contacts</a></li>			<li><a href=""#j00"">Buying guides</a></li>			<li><a href=""#k00"">Size guides</a></li>			<li><a href=""#l00"">Privacy and security</a></li>		</ul>	</div></div>" ;
-                            ;                          ; FaqTextParagraph  ; "<a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
 
 # Order Expired Page
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]        ; content[lang = $lang];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
-                            ;                          ; OrderExpiredMenuParagraph ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
-                            ;                          ; OrderExpiredTextParagraph ; "<div class='cms-content order-expired'><div class='information_message neutral'><span class='single'></span><p>This page has expired.</p></div><h2>Dear Customer,</h2><p>Order Status for guest users are only kept for 3 months following the date the order was placed.<br>If you have not received your delivery or have other inquiries, please contact our Customer Service Dept.</p><h3>Be prepared with:</h3><ul class='bullet-list'><li>Your Name</li><li>Order Number (Your Order Number can be found on the confirmation email sent shortly after your order was placed.)</li><li>Order Delivery Address or Pick Up in Store Location</li></ul><p>Our Customer Service professionals will be happy to update you on the status of your order.</p><p class='cms-content-emphasized-big'>Thank you for shopping at hybrisstore.</p></div>" ;
-
-# Terms and Conditions Page
-
-# CMS Paragraph Component (Contact information)
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]              ; content[lang = $lang];
-                            ;                          ; TermsAndConditionsMenuParagraph ; "
-
-                            <div class=""nav_column"">
-	<div class=""title_holder"">
-		<div class=""title"">
-			<div class=""title-top"">
-				<span></span>
-			</div>
-		</div>
-		<h2>Términos y condiciones</h2>
-	</div>
-	<div class=""item"">
-		<ul class=""facet_blockindent"">
-			<li><a href=""#a00"">Nombre de la empresa</a></li>
-			<li><a href=""#b00"">Dirección</a></li>
-			<li><a href=""#c00"">Representante legal </a></li>
-			<li><a href=""#d00"">Compromiso __SITE_ALIAS__ </a></li>
-			<li><a href=""#e00"">Antecedentes generales </a></li>
-			<li><a href=""#f00"">Seguridad en tu compra</a></li>
-			<li><a href=""#g00"">Privacidad</a></li>
-			<li><a href=""#h00"">Protección de datos</a></li>
-			<li><a href=""#i00"">Promociones</a></li>
-			<li><a href=""#j00"">Información de otros sitios web</a></li>
-			<li><a href=""#k00"">Aviso de publicidad </a></li>
-			<li><a href=""#l00"">Autorización de envío de información</a></li>
-			<li><a href=""#m00"">Medios de pago</a></li>
-			<li><a href=""#n00"">Precios</a></li>
-			<li><a href=""#o00"">Formación del consentimiento y validación de la compra</a></li>
-			<li><a href=""#p00"">Derecho de retracto</a></li>
-			<li><a href=""#q00"">Garantía legal</a></li>
-			<li><a href=""#r00"">Devolución de dinero</a></li>
-			<li><a href=""#s00"">Edad mínima de contratación</a></li>
-			<li><a href=""#t00"">Despacho y entrega</a></li>
-			<li><a href=""#u00"">Enlaces externos en nuestro sitio web </a></li>
-			<li><a href=""#v00"">Post venta</a></li>
-			<li><a href=""#w00"">Apoyo venta en línea</a></li>
-			<li><a href=""#x00"">Despacho </a></li>
-			<li><a href=""#y00"">Vigencia de términos y condiciones</a></li>
-
-		</ul>
-	</div>
-</div>" ;
-;                          ; TermsAndConditionsTextParagraph ; "
-<div class=""content""><p class=""MsoNormal""><b><u>TÉRMINOS Y CONDICIONES<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">Agradecemos tu interés por __SITE_ALIAS__ y tu visita a nuestro sitio web. Las siguientes clausulas constituyen las reglas básicas que establecen el buen uso de </span><a href=""http://www.__SITE_DOMAIN__/""><span style=""border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
-padding:0cm"">www.__SITE_DOMAIN__</span></a><span style=""border:none windowtext 1.0pt;
-mso-border-alt:none windowtext 0cm;padding:0cm""><o:p></o:p></span></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>PRINCIPIOS GENERALES<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Nuestro sitio proporciona información de forma clara, precisa y de fácil acceso. Se mantiene una rápida y efectiva comunicación entre nuestro equipo __SITE_ALIAS__ y ustedes, nuestros clientes. Una vez que ingresas a nuestro sitio y navegues con éxito en él, implica que aceptas las condiciones de uso actuales. Lo que no conlleva que podamos cambiar el uso o reglas. Además de estos cambios, podemos modificar, eliminar o cambiar secciones del sitio web en cualquier momento y sin previo aviso, conforme a la Ley N° 19.496. Una vez desarrollado el contrato, enviaremos una confirmación por vía electrónica que garantice el apropiado conocimiento del cliente.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>NUESTRO COMPROMISO __SITE_ALIAS__<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">Si por alguna razón no quedaste conforme con alguno de nuestros productos, tienes la posibilidad de realizar la devolución y de acceder a un reembolso, siempre y cuando no hayan transcurrido más de 10 días luego de que lo recibiste, se encuentre sin uso, contenga las etiquetas originales y se conserve el embalaje original en perfectas condiciones (Esto solo aplica para las compras realizadas a través de la página web y no en tienda física). Si el producto que adquiriste sale defectuoso, tienes derecho a acceder a la garantía legal dentro de 3 meses a partir de la compra. Esto quiere decir que puedes elegir entre el cambio, reparación o devolución de lo pagado. En caso de promociones u ofertas, tienes derecho a recibir información clara sobre las bases y tiempo de duración del producto.<o:p></o:p></span></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>MEDIOS DE PAGO<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Las formas de pago están indicadas en nuestro sitio web, las cuales son tarjetas de crédito y débito vigentes en el sistema de WebPay Plus! El funcionamiento del medio de pago, es responsabilidad exclusival del proveedor del medio de pago (Transbank) Cualquier problema que pueda originarse, el cliente debe contactar a este proveedor.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>PRIVACIDAD</u></b><span style=""mso-bidi-font-family:Arial;letter-spacing:.75pt""><o:p></o:p></span></p>  <p class=""MsoNoSpacing"">Nosotros les aseguramos a nuestros clientes que sus datos personales serán tratados de manera confidencial, conforme a lo establecido por la legislación vigente y exclusivamente utilizados para procesar la compra, el despacho y, en su caso, para el envío de publicidad sobre ofertas y promociones previa autorización. El cliente inscrito en __SITE_ALIAS__, tendrá derecho a requerir información de sus datos personales registrados y disponer la rectificación, eliminación y/o cancelación de estos datos cuando lo estime conveniente, en conformidad a la Ley N° 19.628.<o:p></o:p></p>  <p class=""MsoNoSpacing""><span style=""mso-bidi-font-family:Arial;letter-spacing:
-.75pt"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>PROTECCION DE DATOS<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Adoptamos un sistema de seguridad efectivo y confiable, contamos con un mecanismo de seguridad físico para cuidar los datos de nuestros clientes, __SITE_DOMAIN__ cuenta con certificado de seguridad que evita el fraude o robo de información. El objetivo es proteger y reservar la transacción financiera y pagos del comprador.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>          <p class=""MsoNormal""><b><u>SEGURIDAD EN LAS OFERTAS<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Los precios de nuestros productos y servicios disponibles que tienen vigencia y uso actual no son necesariamente aplicables a otro punto de venta utilizada por __SITE_ALIAS__. Nosotros podremos modificar cualquier información contenida en nuestra página, sin previo aviso.<o:p></o:p></p>  <p class=""MsoNoSpacing""><a name=""_Hlk525810392"">El stock de nuestros productos está publicado dentro del mismo sitio y solo se podrán comprar si el stock del sitio así lo permite. No así en tienda física.<o:p></o:p></a></p>    <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>AVISO DE PUBLICIDAD<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Nuestra publicidad no presenta un contenido que afecte la dignidad o de tipo discriminatorio ya sea nacionalidad, raza, sexo, orientación sexual, religión, social o política. __SITE_ALIAS__ tiene un mensaje claro y nos enfocamos en que sea atractivo o entretenido para nuestros clientes, en donde te informamos aspectos esenciales y destacamos de forma clara nuestros productos y actividades.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>PRECIOS<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">El detalle de los valores de los productos, están expresamente exhibidos en __SITE_DOMAIN__ sólo se aplica para compras efectuadas en el mismo día y en la página web, no son aplicables en las tiendas físicas. Del mismo modo, los precios exhibidos en otras tiendas de __SITE_ALIAS__, no necesariamente aplican a las transacciones realizadas en __SITE_DOMAIN__<o:p></o:p></p>  <p class=""MsoNoSpacing""><span style=""mso-bidi-font-family:Arial;letter-spacing:
-.75pt"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>SERVICIOS DE ATENCIÓN AL CLIENTE<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"" style=""text-align:justify"">Te proporcionamos un servicio amable y de transparencia por eso si tienes alguna duda o necesitas preguntar sobre algún trámite de compra, te ofrecemos una atención al cliente mediante vía telefónica al 224336627&nbsp;o 232391829 o a nuestro email&nbsp;<a href=""mailto:__FROM_EMAIL__""><span style=""border:none windowtext 1.0pt;
-mso-border-alt:none windowtext 0cm;padding:0cm"">__FROM_EMAIL__</span></a>. El objetivo es atender tus consultas, dudas, reclamos, de forma eficiente. Nuestros horarios de atención al cliente son de lunes a viernes, de 9:00 a 18:30 horas.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>DESPACHO DE PRODUCTOS<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">Los productos serán enviados a la dirección que desee el cliente, por tan solo 990 pesos, en nuestros días y horario de despacho: Lunes a Viernes 9:00 a 22:00 hrs y los días Sábado 9:00 a 18:00 hrs. La posibilidad de despacho está sujeta a la cobertura de nuestro operador logístico.</span> Si tienes dudas de tu despacho o necesitas saber más, comunícate con nosotros al&nbsp;224336627 o 232391829 y te informaremos el estado de tu pedido.<o:p></o:p></p>  <p class=""MsoNoSpacing"">El plazo para el despacho de los productos es de 3 a 15 días hábiles desde la fecha de la compra. Se considera día hábil de lunes a viernes y no contabiliza los días feriados que sean dentro de la semana. Por lo que, si usted compró el día 7 de octubre, su pedido llegará entre el 11 de octubre y el 31 de octubre; si usted compró el día 9 de octubre, su pedido deberá llegar entre el 11 de octubre y el 1 de Noviembre; y si usted compró el día 10 de octubre, su pedido deberá llegar entre el 12 de octubre y el 05 de Noviembre. <o:p></o:p></p>  <p class=""MsoNoSpacing"">Al recibir los productos adquiridos, el cliente debe asegurarse de que vengan todos los artículos y en perfectas condiciones, de lo contrario, el cliente puede y debe devolver el despacho adjuntando pruebas de que su despacho venía vulnerado, para esto, debe enviar un correo con las pruebas (fotografías)&nbsp;al correo __FROM_EMAIL__ y/o contactarse a través de los siguientes números de teléfono 224336627&nbsp;o 232391829. El tiempo para reclamar sobre un pedido que llegó incompleto o vulnerado es de un día hábil desde la recepción del producto, si el cliente tarda más en presentar su reclamo lamentablemente este no será considerado por el tiempo transcurrido. <o:p></o:p></p>        <p class=""MsoNormal""><b><u>DERECHO DE RETRACTO<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">El cliente podrá devolver el producto y solicitar la devolución de su dinero, poniendo termino al contrato establecido con la empresa según la ley en un plazo de 10 días contados desde que recepcionó el producto, sin necesidad de invocar ninguna causa, siempre y cuando el producto no se haya deteriorado por un hecho imputable al cliente. <o:p></o:p></p>  <p class=""MsoNoSpacing""><b>Para poder solicitar la anulación: el producto tiene que venir, sin uso, con todas sus etiquetas y su embalaje original, además el cliente deberá presentar la boleta original (timbrada por el SII).</b> Esto solo aplica para la tienda virtual, no podemos realizar devoluciones para tiendas físicas. Para más información de como efectuar la devolución debe llamar al 224336627 o 232391829 o enviar un mail a <a href=""mailto:__FROM_EMAIL__"">__FROM_EMAIL__</a></p><p class=""MsoNoSpacing""><o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>Las anulaciones son de caracter completa, no pueden ser parciales.&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>GARANTÍA LEGAL<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Les recordamos que todo producto cuenta con una garantía legal de 3 meses, desde la recepción del producto, en caso de falla del producto de acuerdo a la ley de protección al consumidor. Si usted compró a través de la página web entonces debe enviar un correo a <a href=""mailto:__FROM_EMAIL__"">__FROM_EMAIL__</a> para que le envíen las indicaciones de cómo debe enviar el producto a nuestras dependencias. Una vez que tengamos el producto en nuestro poder lo enviaremos a evaluación por parte del proveedor, para ver si aplica la garantía. La marca responderá si la falla corresponde a mal uso o si es falla de fabricación, este proceso tendrá un tiempo de 5 días. Cuando tengamos esta respuesta nos comunicaremos con usted para hacérsela saber y explicarle el siguiente paso del proceso.<o:p></o:p></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm;mso-fareast-language:ES-CL"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>DEVOLUCIÓN DE DINERO<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Para realizar la devolución de dinero el producto debe venir en perfecto estado, con todas sus etiquetas y su embalaje original. Solo se puede solicitar la devolución de dinero dentro de los primeros 10 días desde que recibió el pedido y si se cumplen con las condiciones anteriormente mencionadas. <a name=""_Hlk525811812"">Una vez recibido el producto, se verificará que esta en las condiciones detalladas y se procederá a hacer la devolución del dinero al cliente, de acuerdo al medio de pago que este ultimo sostuvo. Este proceso puede demorar hasta 10 días hábiles.<o:p></o:p></a></p>    <p class=""MsoNoSpacing""><span style=""mso-bidi-font-family:Arial;letter-spacing:
-.75pt"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>CONDICIONES DE CONTRATACIÓN<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Tener cumplidos 18 años de edad y tener Cédula Nacional de Identidad vigente<span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm""><o:p></o:p></span></p>  <p class=""MsoNoSpacing""><span style=""mso-bidi-font-family:Arial;letter-spacing:
-.75pt"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>APOYO VENTA EN LÍNEA<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Si usted necesita mayor información o asesoría en su compra, puede contactarse con nosotros en cualquiera de los siguientes números&nbsp;224336627 o 232391829&nbsp;y estaremos encantados de ayudarle. Nuestro horario de atención es de lunes a viernes de 10:00 a 18:30 horas.&nbsp;</p><p class=""MsoNoSpacing""><b style=""box-sizing: border-box; color: rgb(25, 33, 43); font-family: Roboto, sans-serif; font-size: 14px; text-align: justify;""><span style=""box-sizing: border-box; font-size: 15pt; font-family: inherit, serif; color: black; border: 1pt none windowtext; padding: 0cm;"">Cambios de productos.</span></b></p><p class=""MsoNormal"" style=""margin-bottom:0cm;margin-bottom:.0001pt;text-align:
-justify;line-height:13.5pt;vertical-align:baseline""><span style=""font-size:
-10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">Para poder realizar este tipo de cambio, es importante cumplir con lo siguiente:</span><span style=""font-size:10.5pt;
-font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL""><o:p></o:p></span></p><p class=""MsoNormal"" style=""margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:43.5pt;margin-bottom:.0001pt;text-align:justify;text-indent:-25.5pt;
-line-height:13.5pt;vertical-align:baseline""><span style=""font-size:10.0pt;
-font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">-</span><span style=""font-size:7.0pt;font-family:
-&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:
-ES-CL"">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=""font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">Llevar el producto a la tienda física __SITE_ALIAS__ más cercana.</span><span style=""font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
-mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-CL""><o:p></o:p></span></p><p class=""MsoNormal"" style=""margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:43.5pt;margin-bottom:.0001pt;text-align:justify;text-indent:-25.5pt;
-line-height:13.5pt;vertical-align:baseline""><span style=""font-size:10.0pt;
-font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">-</span><span style=""font-size:7.0pt;font-family:
-&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:
-ES-CL"">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=""font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">Entregar la boleta Original timbrada por SII, NO la confirmación de pedido.</span><span style=""font-size:
-10.5pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL""><o:p></o:p></span></p><p class=""MsoNormal"" style=""margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:43.5pt;margin-bottom:.0001pt;text-align:justify;text-indent:-25.5pt;
-line-height:13.5pt;vertical-align:baseline""><span style=""font-size:10.0pt;
-font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">-</span><span style=""font-size:7.0pt;font-family:
-&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:
-ES-CL"">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=""font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">Entregar el producto sin uso, con su envoltorio original y todas sus etiquetas.</span><span style=""font-size:
-10.5pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL""><o:p></o:p></span></p><p class=""MsoNormal"" style=""margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
-margin-left:43.5pt;margin-bottom:.0001pt;text-align:justify;text-indent:-25.5pt;
-line-height:13.5pt;vertical-align:baseline""><span style=""font-size:10.0pt;
-font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">-</span><span style=""font-size:7.0pt;font-family:
-&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:
-ES-CL"">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=""font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">Sera solicitado tu carnet de identidad para realizar el cambio, debes llevarlo.</span><span style=""font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL""><o:p></o:p></span></p><p class=""MsoNormal"" style=""box-sizing: border-box; margin: 0px 0px 0.0001pt; color: rgb(25, 33, 43); font-family: Roboto, sans-serif; font-size: 14px; text-align: justify; line-height: 13.5pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; vertical-align: baseline;"">&nbsp;</p><p class=""MsoNormal"" style=""margin-bottom:0cm;margin-bottom:.0001pt;text-align:
-justify;line-height:13.5pt;vertical-align:baseline""><span style=""font-size:
-10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">Si en la tienda física no encuentras el producto que necesitas, o no tenemos tienda física en la localidad en la que te encuentras envíanos un mail a&nbsp;</span><span style=""font-size:10.5pt;
-font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL""><a href=""mailto:__CMS_EMAIL_CAMBIOS__""><span style=""font-size: 10pt; font-family: &quot;Times New Roman&quot;, serif; color: windowtext; text-decoration-line: none;"">__CMS_EMAIL_CAMBIOS__</span></a></span><span style=""font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">&nbsp;para ayudarte con tu cambio o llámanos al 224336649. En caso de solicitar devolución de dinero, deberás realizar el procedimiento vía web, escribiendo a&nbsp;</span><span style=""font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:
-&quot;Times New Roman&quot;;mso-fareast-language:ES-CL"">servicioalcliente<a href=""mailto:__FROM_EMAIL__""><span style=""font-family:&quot;Times New Roman&quot;,serif;
-color:windowtext"">@</span></a></span><span style=""font-size:10.5pt;font-family:
-&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:
-ES-CL"">bo</span><span style=""font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
-mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-CL""><a href=""mailto:__FROM_EMAIL__""><span style=""font-family:&quot;Times New Roman&quot;,serif;
-color:windowtext"">ld.cl</span></a></span><span style=""font-size:10.0pt;
-font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;
-mso-fareast-language:ES-CL"">&nbsp;o llamando a nuestro número telefónico:&nbsp;224336627&nbsp; o 232391829.</span><span style=""font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
-mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-language:ES-CL""><o:p></o:p></span></p>    <p class=""MsoNormal""><b><u>ENLACES EXTERNOS<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Nuestro sitio web suministra el uso de redes sociales y enlaces externos tales como:&nbsp;<br> Facebook<br> YouTube<br> Instagram<br> Cuando decidas interactuar con alguno de estos enlaces ya mencionados, estarán a tu disposición. No está a nuestro alcance intervenir en el traspaso de datos con las redes sociales mencionadas.<o:p></o:p></p>  <p class=""MsoNoSpacing""><o:p>&nbsp;</o:p></p>  <p class=""MsoNormal""><b><u>CONTACTO<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Para comunicarte con nosotros envíanos un correo a&nbsp;<a href=""mailto:__FROM_EMAIL__""><span style=""border:none windowtext 1.0pt;
-mso-border-alt:none windowtext 0cm;padding:0cm"">__FROM_EMAIL__</span></a>&nbsp;o llámanos al 224336627 o 232391829.<o:p></o:p></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">Dirección Casa Matriz: Américo Vespucio Sur 866, Las Condes (no es tienda, es solo administración)<o:p></o:p></span></p>  <p class=""MsoNoSpacing""><span style=""border:none windowtext 1.0pt;mso-border-alt:
-none windowtext 0cm;padding:0cm"">&nbsp;</span></p>  <p class=""MsoNormal""><b><u>REPRESENTANTE LEGAL Y RAZON SOCIAL:<o:p></o:p></u></b></p>  <p class=""MsoNoSpacing"">Nuestra ración social es Articulos Deportivos Belsport S.A. Rut: 79.950.280-1</p><p class=""MsoNoSpacing"">Nuestro representante legal para todo efecto y relación a __SITE_ALIAS__ es la Sra Gloria Rishmague Buzzo, domiciliada en Américo Vespucio Sur 866, comuna de Las Condes, Santiago de Chile y el número de contacto es 224336627 o 232391829.-<o:p></o:p></p></div>
-" ;
-
-# Homepage
-
-# Delivery information component
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang];
-                            ;                          ; DeliveryInformationComponent  ; "VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES"
-
-# Media Content
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                          ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]       ; mime[default = 'image/jpeg']; &imageRef                                    ; folder(qualifier)[default = 'images']; altText
-
-UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-
-UPDATE BannerComponent; $contentCV[unique = true]; uid[unique = true]; headline[lang = $lang]; $picture[lang = $lang]; content[lang = $lang]
-                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;homepage_section1_banner.png;""
-                      ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
-                      ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
-                      ;;HomepageSection2ABanner; Homepage Section 2A Banner;section2A_banner.jpg;""
-                      ;;HomepageSection2BBanner; Homepage Section 2B Banner;section2B_banner.jpg;""
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]        ; content[lang = $lang];;
+;; OrderExpiredMenuParagraph ;;
+;; OrderExpiredTextParagraph ; "<div class='cms-content order-expired'><div class='information_message neutral'><span class='single'></span><p>This page has expired.</p></div><h2>Dear Customer,</h2><p>Order Status for guest users are only kept for 3 months following the date the order was placed.If you have not received your delivery or have other inquiries, please contact our Customer Service Dept.</p><h3>Be prepared with:</h3><ul class='bullet-list'><li>Your Name</li><li>Order Number (Your Order Number can be found on the confirmation email sent shortly after your order was placed.)</li><li>Order Delivery Address or Pick Up in Store Location</li></ul><p>Our Customer Service professionals will be happy to update you on the status of your order.</p><p class='cms-content-emphasized-big'>Thank you for shopping at hybrisstore.</p></div>" ;
 
 INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
-                   ;;section1_banner.png;$siteResource/images/banners/homepage/responsive/homepage_section1_banner.png;image/png
-                   ;;section2A_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2A_banner.jpg;image/png
-                   ;;homepage_section2B_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2B_banner.jpg;image/png
-
-UPDATE ProductCarouselComponent; $contentCV[unique = true]; uid[unique = true]                          ; title[lang = $lang]
-                               ;                          ; ElectronicsHomepageProductCarouselComponent ; Our Bestselling Products
-
-# Category Landing Page
-
-UPDATE CategoryPage; $contentCV[unique = true]; uid[unique = true]                        ; title[lang = $lang]
-
-# Media Content
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']; altText
-
-UPDATE CategoryFeatureComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]; $picture[lang = $lang]; description[lang = $lang]
-
-UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
+#;;section1_banner.png;$siteResource/images/banners/homepage/responsive/homepage_section1_banner.png;image/png;;section1_banner.png;;
+;;section2A_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2A_banner.jpg;image/png;;section2A_banner.png;;
+;;homepage_section2B_banner.jpg;$siteResource/images/banners/homepage/responsive/homepage_section2B_banner.jpg;image/png;;homepage_section2B_banner.jpg;;
 
 # Search Results Page
 
-# Media Content
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']; altText
-
-UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]                ; content[lang = $lang]
-                            ;                          ; EmptyCartParagraphComponent       ; "<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
-                            ;                          ; NoSearchResultsParagraphComponent ; "<h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul>"
+;; NoSearchResultsParagraphComponent ; "<div><h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul></div>"
 
 # Cart Page
 
-# Media Content
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                       ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']; altText
-
-
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]          ; content[lang = $lang]
-                            ;                          ; EmptyCartParagraphComponent ; "<h2>Tu carro de compras está vacío</h2><p>Sugerencias</p><ul><li>Explore nuestros productos seleccionando una categoría arriba</li></ul>"
-                            ;                          ; HelpParagraphComponent      ; "Respondemos a todas tus consultas en el teléfono (+562) 24336627 o (+562) 32391829 o al email __FROM_EMAIL__"
+;; EmptyCartParagraphComponent ; "<div><h2>Tu carro de compras está vacío</h2><p>Sugerencias</p><ul><li>Explore nuestros productos seleccionando una categoría arriba</li></ul></div>"
+;; HelpParagraphComponent      ; "Respondemos a todas tus consultas en el teléfono (+56) 2 2433 6627 o al email <a href='mailto:__EMAIL_FROM__'>__EMAIL_FROM__.</a>"
 
-#above is the desktop data, below is the responsive data
-UPDATE ProductCarouselComponent; $contentCV[unique = true]; uid[unique = true]                             ; title[lang = $lang]
-
-# Home Page Splash
-
-# Media Content
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                       ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/jpeg']; realfilename                              ; folder(qualifier)[default = 'images']; altText
-
-INSERT_UPDATE MediaContainer; qualifier[unique = true]         ; $medias; $contentCV[unique = true]
-
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                        ; $mediaContainer
-
-# Home page slot 2A
-# Media Content
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/jpeg']; realfilename                             ; folder(qualifier)[default = 'images']; altText
-
-INSERT_UPDATE MediaContainer; qualifier[unique = true]           ; $medias; $contentCV[unique = true]
-
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                            ; $mediaContainer
-
-# Home section 2B
-
-# Media Content
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                          ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/jpeg']; realfilename                                 ; folder(qualifier)[default = 'images']; altText
-
-INSERT_UPDATE MediaContainer; qualifier[unique = true]              ; $medias; $contentCV[unique = true]
-
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                               ; $mediaContainer
-
-# Section 4
-
-# Media Content
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                           ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/jpeg']; realfilename                                  ; folder(qualifier)[default = 'images']; altText
-
-INSERT_UPDATE MediaContainer; qualifier[unique = true]            ; $medias; $contentCV[unique = true]
-
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                          ; $mediaContainer
-
-# Section 5
-
-# Media Content
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/jpeg']; realfilename                             ; folder(qualifier)[default = 'images']; altText
-
-INSERT_UPDATE MediaContainer; qualifier[unique = true]         ; $medias; $contentCV[unique = true]
-
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                       ; $mediaContainer
-
-# CMS Paragraph Component (Contact information)
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang];
-                            ;                          ; FaqTextParagraph  ; "<div class=""global-alerts""><div class=""alert alert-info"" role=""alert""><strong>Information:</strong> Page Under Construction - Not Completely Functional</div></div><a name=""00""></a><div class=""textpage textpage-faqs""><div class=""item_container"">		<h2><a name=""a00""></a>Returns and refunds</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""b00""></a>Delivery information</h2>		<a class=""faq-menulink"" href=""#b01"">Delivery Options</a>		<a class=""faq-menulink"" href=""#b02"">Delivery times &amp; charges</a>		<a class=""faq-menulink"" href=""#b03"">Order tracking information</a>		<a class=""faq-menulink"" href=""#b04"">Courier status information</a>			<h3><a name=""b01""></a>Delivery Options</h3>		<p>			The delivery options available to you are shown in the Checkout area under Delivery Method.<br><br>			Based on your deliver address, these options may not all be available:			</p><ul>			<li>					<b>Home Delivery</b> - Free UK standard delivery on all orders over L50 within 4 working days (*exceptions may apply)				</li>				<li>					<b>Standard delivery</b> -  1 to 2 business days				</li>				<li>					<b>Other delivery method</b>  &ndash; 3 to 5 business days				</li>				<li>				<b>International delivery</b> &ndash; 7 to 10 business days (not all countries are available)				</li>			</ul>		<p></p>		<h3><a name=""b02""></a>Delivery times &amp; charges</h3>		<p>			We deliver the majority of our orders within 4 working days* for L3.99 or FREE on orders over L50 (*exceptions apply, see table below).			</p><ul>				<li>					Deliveries to UK addresses are made Monday to Friday between 9am to 6pm, excluding Bank Holidays. 				</li>				<li>					Deliveries to the Scottish Highlands and Islands, offshore locations and Northern Ireland may take a little longer.<br>					For delivery to ROI addresses please visit our Irish website at hybris.com				</li>				<li>					Multiple items may be delivered in more than one parcel and at different times.				</li>			</ul>		<p></p>	<h3><a name=""b03""></a>Order tracking information</h3>		<p>			We will send you email updates through every stage of your order. In each email your current order's status will be shown. Each order status is explained in the table below. We deliver most parcels via our courier. You can track these parcels by clicking on the parcel reference link on your email. Once you have clicked on the link you will be directed to the courier website. For information on courier statuses please <a href=""#b04"">click here</a>.		</p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>				<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Processing</strong><br>					</td>					<td class=""grey3"">						Your order is being processed.<br>					</td>				</tr>				<!--ROW 2-->	<tr>					<td class=""blue3"">						<strong>Despatched</strong><br>					</td>					<td class=""grey3"">						Your order has been despatched to the courier.<br><br>    For heavy and large products your order is ready to be despatched by our carrier. The carrier will contact you to arrange a suitable date for delivery.<br><br>For Collect from store orders you will receive a further order status update when your item(s) are ready to collect (see below for more information on collect from store statuses)<br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfill<br> payment reversal</strong><br>					</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability, no payment has been taken.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Cancelled<br>Unable to fulfil<br>Payment refunded</strong><br>				</td>					<td class=""grey3"">						Your order has been cancelled due to stock availability. We have processed a refund to your payment card.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Return received</strong><br>					</td>					<td class=""grey3"">Your return has been received. However, due to goods being addressed to the incorrect warehouse there may be a short delay in your refund being processes while the goods are being re-directed.<br><br>					</td>				</tr>				<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Order ready for collection</strong><br>					</td>					<td class=""grey3"">						Your order is ready for collection at your chosen store.<br><br><strong><i>Please note:</i></strong> You must collect your order within 14 days of receiving your notification email.<br><br>					</td>				</tr>				<!--ROW 7-->				<tr>					<td class=""blue3"">						<strong>Collected</strong><br>					</td>					<td class=""grey3"">					Your order has been collected.<br><br>					</td>				</tr>				<!--ROW 8-->				<tr>					<td class=""blue3"">						<strong>Return in progress</strong><br>					</td>					<td class=""grey3"">						We are processing your return.<br><br>					</td>				</tr>				<!--ROW 9-->				<tr>					<td class=""blue3"">						<strong>Return refund complete</strong><br>					</td>					<td class=""grey3"">						We have processed your return.<br><br><strong><i>Please note:</i></strong>  Some banks may take longer than others to process refunds.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<h3><a name=""b04""></a>Courier status information</h3>		<p></p>		<table width=""100%"" cellspacing=""0"" cellpadding=""0"" border=""0"">			<tbody>				<tr>					<th>Status</th>					<th>Description</th>				</tr>			<!--ROW 1-->				<tr>					<td class=""blue3"">						<strong>Order generated</strong><br>					</td>					<td class=""grey3"">						Your order is ready for delivery and has entered into the courier system.<br>					</td>				</tr>				<!--ROW 2-->				<tr>					<td class=""blue3"">						<strong>Receipt at depot </strong><br>					</td>					<td class=""grey3"">					Your parcel has been received at the depot. <br><br>					</td>				</tr>				<!--ROW 3-->				<tr>					<td class=""blue3"">						<strong>Processed at depot</strong><br>					</td>					<td class=""grey3"">						Your parcel has processed through the depot operation and is ready for onward despatch to the courier.<br><br>					</td>				</tr>				<!--ROW 4-->				<tr>					<td class=""blue3"">						<strong>Out for delivery to courier</strong><br>					</td>					<td class=""grey3"">						Your parcel has left the depot for delivery to courier.<br><br>					</td>				</tr>				<!--ROW 5-->				<tr>					<td class=""blue3"">						<strong>Courier to re-attempt</strong><br>					</td>					<td class=""grey3"">						The courier has attempted to deliver your parcel and will try again. You will receive a card to confirm delivery has been attempted.<br><br>					</td>				</tr>			<!--ROW 6-->				<tr>					<td class=""blue3"">						<strong>Delivered to</strong><br>					</td>					<td class=""grey3"">						Your parcel has been delivered.<br><br>					</td>				</tr>			</tbody>		</table>		<p></p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""c00""></a>Registration</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""d00""></a>Your online account</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""e00""></a>Orders</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""f00""></a>Promotions and discounts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""g00""></a>Product and general informations</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""h00""></a>Store information</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>	<div class=""item_container"">		<h2><a name=""i00""></a>Business contacts</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""j00""></a>Buying guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""k00""></a>Size guides</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div>		<div class=""item_container"">		<h2><a name=""l00""></a>Privacy and security</h2>		<p>Text</p>		<a class=""pagetop-link"" href=""#00"">back to top</a>	</div></div>" ;
-                            ;                          ; TopInfoParagraphComponent      ; "<ul><li><a href=""/store-finder""><i class=""icon icon-location""></i>&nbsp;<b>tiendas</b></a></li>&nbsp;<li><i class=""icon icon-smartphone""></i>&nbsp; <a href=""tel: +562 224336627""><b>224336627</b></a><span> - </span><a href=""tel: +562 232391829""><b>232391829</b></a></li></ul>" ;
 
 # CMS Link Components
 UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
-                       ;                          ; AddressBookLink       ; "Libreta de Direcciones"
-                       ;                          ; ImportSavedCartLink   ; "Import Saved Cart"
-                       ;                          ; OrderHistoryLink      ; "Historial de Órdenes"
-                       ;                          ; PersonalDetailsLink   ; "Datos Personales"
-                       ;                          ; QuickOrderLink        ; "Quick Order"
-                       ;                          ; SavedCartsLink        ; "Saved Carts"
-                       ;                          ; UpdateEmailLink       ; "Modificar Correo"
-                       ;                          ; UpdatePasswordLink    ; "Modificar Contraseña"
-
+                       ;; AddressBookLink       ; "Libreta de Direcciones"
+                       ;; ImportSavedCartLink   ; "Import Saved Cart"
+                       ;; OrderHistoryLink      ; "Historial de Órdenes"
+                       ;; PersonalDetailsLink   ; "Datos Personales"
+                       ;; QuickOrderLink        ; "Quick Order"
+                       ;; SavedCartsLink        ; "Carros Guardados"
+                       ;; UpdateEmailLink       ; "Modificar Correo"
+                       ;; UpdatePasswordLink    ; "Modificar Contraseña"
+                       ;; CloseAccountLink    ; "Cerrar Cuenta"
 
 # CMS Navigation Nodes
 UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
-                        ;                          ; MyAccountNavNode  ; "Mi Cuenta"
+;; MyAccountNavNode  ; "Mi Cuenta"
 
 # Content Pages
 UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]     ; title[lang = $lang]
-                  ;                          ; ImportCSVSavedCartPage ; "Importar Carrito Guardado"
-                  ;                          ; Saved-carts            ; "Carritos Guardados"
-                  ;                          ; SavedCartDetailsPage   ; "Detalles del Carrito Guardado"
+                  ;; importCSVSavedCartPage ; "Importar Carro Guardado"
+                  ;; saved-carts            ; "Carros Guardados"
+                  ;; savedCartDetailsPage   ; "Detalles del Carro Guardado"
 
 # CMS Paragraph Component
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = $lang]                                                                                        ;
-                            ;                          ; QuickOrderInfoParagraphComponent ; You can add up to 25 valid SKUs below and add to cart. Stock is reserved once products are added to cart. ;
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = $lang];
+;; QuickOrderInfoParagraphComponent ; You can add up to 25 valid SKUs below and add to cart. Stock is reserved once products are added to cart. ;
 
-# CMS Footer Navigation Component
-UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]; notice[lang = $lang][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
 
 # Responsive Error page
 
-INSERT_UPDATE Media; mediaFormat(qualifier); $contentCV[unique = true]; code[unique = true]                  ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; mime[default = 'image/png']; realfilename                         ; folder(qualifier)[default = 'images']; altText
-                   ; widescreen            ;                          ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ; $siteResource/images/banners/site/Bels_1400x401_ErrorPage_ES_CL_1400W.png                         ;                                ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ;                                      ; "Página no encontrada"
-                   ; mobile                ;                          ; Bels_480x170_ErrorPage_ES_CL_480W.png   ; $siteResource/images/banners/site/Bels_1400x401_ErrorPage_ES_CL_1400W.png                         ;                                ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ;                                      ; "Página no encontrada"
-                   ; tablet                ;                          ; Bels_770x221_ErrorPage_ES_CL_770W.png   ; $siteResource/images/banners/site/Bels_1400x401_ErrorPage_ES_CL_1400W.png                         ;                                ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ;                                      ; "Página no encontrada"
-                   ; desktop               ;                          ; Bels_960x275_ErrorPage_ES_CL_960W.png   ; $siteResource/images/banners/site/Bels_1400x401_ErrorPage_ES_CL_1400W.png                         ;                                ; Bels_1400x401_ErrorPage_ES_CL_1400W.png ;                                      ; "Página no encontrada"
+INSERT_UPDATE Media; mediaFormat(qualifier);$contentCV[unique = true];code[unique = true];@media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true];mime[default = 'image/png'];realfilename;folder(qualifier)[default = 'images'];altText
+; widescreen;; __SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png; $siteResource/images/banners/site/__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;"Página no encontrada"
+; mobile    ;; __SITE_ALIAS___480x170_ErrorPage_ES_CL_480W.png  ; $siteResource/images/banners/site/__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;"Página no encontrada"
+; tablet    ;; __SITE_ALIAS___770x221_ErrorPage_ES_CL_770W.png  ; $siteResource/images/banners/site/__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;"Página no encontrada"
+; desktop   ;; __SITE_ALIAS___960x275_ErrorPage_ES_CL_960W.png  ; $siteResource/images/banners/site/__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;__SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png;;"Página no encontrada"
 
 INSERT_UPDATE MediaContainer; qualifier[unique = true]           ; $medias; $contentCV[unique = true]
-                            ; errorpage-pagenotfound ; Bels_1400x401_ErrorPage_ES_CL_1400W.png,Bels_480x170_ErrorPage_ES_CL_480W.png,Bels_770x221_ErrorPage_ES_CL_770W.png,Bels_960x275_ErrorPage_ES_CL_960W.png
+; errorpage-pagenotfound ; __SITE_ALIAS___1400x401_ErrorPage_ES_CL_1400W.png,__SITE_ALIAS___480x170_ErrorPage_ES_CL_480W.png,__SITE_ALIAS___770x221_ErrorPage_ES_CL_770W.png,__SITE_ALIAS___960x275_ErrorPage_ES_CL_960W.png
 
-INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[unique = true]                  ; $mediaContainer                    ; name                                    ; &componentRef;
-                                             ;                          ; ErrorpageBannerComponent ; errorpage-pagenotfound ;  Error Page Banner Component ; ErrorpageBannerComponent
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique = true];uid[unique = true];$mediaContainer;name;&componentRef;
+;; ErrorpageBannerComponent;errorpage-pagenotfound;Error Page Banner Component;ErrorpageBannerComponent
 
 # ------------------------------------------------------------
 #  Header Configuration
 # ------------------------------------------------------------
 
 INSERT_UPDATE BoldScrollableTextBannerComponent; $contentCV[unique = true]; uid[unique = true]; text[lang=$lang];
-                                               ;;DeliveryNoticeBanner;"VALOR DESPACHO $990 A TODO CHILE CONTINENTAL* | ENTREGA 3 A 15 DÍAS HÁBILES";
+;;DeliveryNoticeBanner;"DESPACHO A $990 TODO CHILE CONTINENTAL* SUJETO A CONTIGENCIA | TIEMPO DE ENTREGA 5 A 15 DÍAS HÁBILES | CONSULTAS AL 224336627 o 232391829";
 
-INSERT_UPDATE BoldLoginComponent ; $contentCV[unique=true] ; uid[unique=true]   ; title[lang=$lang]    ; emailFieldLabel[lang=$lang] ; passFieldLabel[lang=$lang] ; forgotPassLink         ; forgotPassLabel[lang=$lang]  ;   loginButtonLabel[lang=$lang] ; notAMemberLabel[lang=$lang] ; registerLink   ; registerLabel[lang=$lang]
-                                 ;                         ; LoginComponent ; "Accede a tu cuenta" ; "Correo electrónico"        ; "Contraseña"               ; /login/pw/request      ; "¿Olvidaste la contraseña?"  ;   "INICIAR SESIÓN"             ; "¿No eres miembro?"         ; /login       ; "Únete ahora"
-
-# ------------------------------------------------------------
-#  Homepage Section 1 Configuration
-# ------------------------------------------------------------
-
-UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang];
-                      ;;HomepageSection1Banner1; Homepage Section 1 Banner 1;homepage_section1_banner.png;""
-                      ;;HomepageSection1ABanner1; Homepage Section 1A Banner 1;Bels_1400x600_Season_EN_02_1400W.jpg;""
-                      ;;HomepageSection1BBanner1; Homepage Section 1B Banner 1;Bels_1400x600_Season_EN_03_1400W.jpg;""
-
-# ------------------------------------------------------------
-#  Homepage Section 2 Configuration
-# ------------------------------------------------------------
-
-UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection2ABanner;homepage_section2A_banner.jpg;
-                            ;;HomepageSection2BBanner;homepage_section2B_banner.jpg;
-
-# ------------------------------------------------------------
-#  Homepage Section 4 Configuration
-# ------------------------------------------------------------
-
-UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-                            ;;HomepageSection4AParagraph;Destacados
-
-UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection4CBanner;homepage_section4C_banner.jpg;
-
-# ------------------------------------------------------------
-#  Homepage Section 5 Configuration
-# ------------------------------------------------------------
-
-UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection5ABanner;homepage_section5A_banner.jpg;
-                            ;;HomepageSection5BBanner;homepage_section5B_banner.jpg;
-
-# ------------------------------------------------------------
-#  Homepage Section 6 Configuration
-# ------------------------------------------------------------
-
-UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection6ABanner;homepage_section6A_banner.jpg;
-                            ;;HomepageSection6CBanner;homepage_section6C_banner.jpg;
-
-# ------------------------------------------------------------
-#  Homepage Section 7 Configuration
-# ------------------------------------------------------------
-
-UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
-                            ;;HomepageSection7ABanner;homepage_section7A_banner.jpg;
-                            ;;HomepageSection7BBanner;homepage_section7B_banner.jpg;
-
-
-# ------------------------------------------------------------
-#  Homepage Section 8 Configuration
-# ------------------------------------------------------------
-
-UPDATE BoldSocialComponent; $contentCV[unique = true]; uid[unique = true]; name; text[lang=$lang];
-                          ; ; SocialComponent      ;  Social Component ; Síguenos
-
-
-
-# ------------------------------------------------------------
-#  Homepage Section 9 Configuration
-# ------------------------------------------------------------
-
-UPDATE BoldParagraphBannerComponent; $contentCV[unique = true]; uid[unique = true]; name; title[lang=$lang]; subtitle[lang=$lang];
-                                   ;;HomepageSection9APragraphBanner; Homepage Section9A Paragraph Banner;Despacho a todo Chile continental
-                                   ;;HomepageSection9BPragraphBanner; Homepage Section9B Paragraph Banner;Compra con tarjeta de crédito o debito
-                                   ;;HomepageSection9CPragraphBanner; Homepage Section9C Paragraph Banner;Nuestro sitio web es seguro
-                                   ;;HomepageSection9DPragraphBanner; Homepage Section9D Paragraph Banner;Cambios Permitidos en tienda
-
-# ------------------------------------------------------------
-# Footer Configuration
-# ------------------------------------------------------------
-
-INSERT_UPDATE BoldFooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]            ; notice[lang = $lang]                          ; helpTitle[lang = $lang]; helpPhoneMessage[lang = $lang]                     ; helpPhoneNumbers[lang = $lang]          ; helpEmail[lang = $lang]     ;
-                                           ;                          ; FooterNavigationComponent ; "2019 <br/>Todos los derechos reservados" ; "Ayuda"                ; "Respondemos a todas sus consultas en el teléfono" ; "__CMS_CONTACT_PHONE__" ; "__FROM_EMAIL__" ;
-
-INSERT_UPDATE CMSNavigationNode; uid[unique = true]        ; $contentCV[unique = true]; title[lang = $lang];
-                               ; FooterNavigationNode      ;                          ; Footer Page
-                               ; InformationNavNode        ;                          ; Información
-                               ; FAQNavNode                ;                          ; Preguntas Frecuentes
-                               ; TermsAndConditionsNavNode ;                          ; Términos y Condiciones
-                               ; PrivacyAndSecurityNavNode ;                          ; Privacidad y Seguridad
-                               ; SeeBoletaNavNode          ;                          ; Ver Boleta
-                               ; StoreFinderNavNode        ;                          ; Tiendas
-                               ; CyberDayNavNode           ;                          ; CyberDay Initial Stock Page
-
-INSERT_UPDATE CMSLinkComponent; uid[unique = true]            ; $contentCV[unique = true]; linkname[lang = $lang]
-                              ; FAQNavNodeLink                ;                          ; Preguntas Frecuentes
-                              ; TermsAndConditionsNavNodeLink ;                          ; Términos y Condiciones
-                              ; PrivacyAndSecurityNavNodeLink ;                          ; Privacidad y Seguridad
-                              ; SeeBoletaNavNodeLink          ;                          ; Ver Boleta
-                              ; StoreNavNodeLink              ;                          ; Tiendas
-                              ; CyberDayNavNodeLink           ;                          ; Stock Inicial Cyber
-
-# ------------------------------------------------------------
-# FAQ
-# ------------------------------------------------------------
-
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ; ; FaqMenuParagraph ; "
-<div class=""nav_column"">
-	<div class=""title_holder"">
-		<div class=""title"">
-			<div class=""title-top"">
-				<span></span>
-			</div>
-		</div>
-		<h2>Preguntas frecuentes</h2>
-	</div>
-	<div class=""item"">
-  <ul class=""facet_blockindent"">
-    <li><a href=""#a00"">¿Cómo comprar en __SITE_DOMAIN__?</a></li>
-    <li><a href=""#b00"">¿Qué hacer en caso de tener dudas con mi compra?</a></li>
-    <li><a href=""#c00"">Sobre el despacho a domicilio</a></li>
-    <li><a href=""#d00"">¿Qué pasa si no sé qué talla comprar?</a></li>
-    <li><a href=""#e00"">¿Puedo retirar mis productos en alguna de las tiendas __SITE_ALIAS__?</a></li>
-    <li><a href=""#f00"">¿Cómo puedo saber cuándo y a qué hora llegará mi compra?</a></li>
-    <li><a href=""#g00"">¿Puedo cambiar la fecha o dirección de mi despacho?</a></li>
-    <li><a href=""#h00"">¿Cuánto tiempo puede demorar el despacho de mi pedido?</a></li>
-    <li><a href=""#i00"">¿Qué pasa si mi compra no llegó en la fecha que debería?</a></li>
-    <li><a href=""#j00"">¿Qué hago si no llegaron todos los productos que compré?</a></li>
-    <li><a href=""#k00"">¿Qué métodos de pago existen?</a></li>
-    <li><a href=""#l00"">¿Qué pasa si no estoy satisfecho/a con mi compra?</a></li>
-    <li><a href=""#m00"">¿Qué pasa si mi producto está fallado o presenta defectos?</a></li>
-    <li><a href=""#n00"">Hice uso de mi producto y luego presentó problemas ¿Qué puedo hacer en ese caso?</a></li>
-    <li><a href=""#o00"">¿Puedo hacer un pedido por teléfono?</a></li>
-    <li><a href=""#p00"">¿Me tengo que registrar para comprar algo en la tienda online?</a></li>
-    <li><a href=""#q00"">Puedo realizar cambio por talla y/o otro producto en tienda física __SITE_ALIAS__ si compre por __SITE_DOMAIN__?</a></li>
-    <li><a href=""#r00""</a>¿Qué pasa si no estoy en mi casa al momento del despacho?</li>
-    <li><a href=""#s00""</a>Contáctate con nosotros si tienes otras dudas</li>
-    <li><a href=""#t00""</a>Quiero trabajar en __SITE_ALIAS__ ¿Cómo lo hago?</li>
-		</ul>
-	</div>
-</div>
-"
-                            ; ; FaqTextParagraph ; "
-
-<a name=""00""></a>
-<div class="" textpagetextpage-faqs"">
-	<div class=""item_container"">
-		<h3>
-			<a name=""a00""></a>¿Cómo comprar en __SITE_DOMAIN_LOWERCASE__?
-		</h3>
-		<p>¡Compra desde cualquier lugar de santiago, desde tu casa o simplemente porque no puedes con tu ansiedad y necesitas reservar tu producto! comprar en __SITE_DOMAIN_LOWERCASE__ es la mejor solución para ahorrar tiempo sin arriesgar tu estilo. solo debes seleccionar el producto que quieres y agregarlo a tu carro de compra. luego elige tu medio de pago y la dirección donde quieres recibirlo.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""b00""></a>¿Qué hacer en caso de tener dudas con mi compra?
-		</h3>
-		<p>Cualquier duda o pregunta que tengas, puedes contactarnos llamando al 224336627 o 232391829</p>
-
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""c00""></a>Sobre el despacho a domicilio</h3>
-		<p>
-		En __SITE_DOMAIN__ puedes despachar tus productos a la dirección que prefieras o que más te acomode. Puede ser tu casa, oficina, casa de polola, amigos… ¡llegamos donde sea! *Sujeto a la la cobertura de nuestro operador logístico.
-		<br>
-        Al recibir los productos adquiridos, el cliente debe asegurarse de que vengan todos los artículos adquiridos y en perfectas condiciones, de lo contrario, el cliente puede y debe devolver el despacho adjuntando pruebas de que su despacho venia vulnerado, para esto, debe enviar un correo con las pruebas (fotografías) al correo __FROM_EMAIL__ y/o contactarse a través de los siguientes números de teléfono 224336627 o 232391829.</p>
-	</div>
-
-  <div class=""item_container"">
-		<h3>
-			<a name=""d00""></a>¿Qué pasa si no sé qué talla comprar?</h3>
-      <ul>
-  			<li>En cada producto, la última vista del producto es una guía de tallas.</li>
-  			<li>Te recomendamos que te guíes por los CM, mira una zapatilla que ocupes, que te quede bien y en la etiqueta por dentro debe decir los CM, luego busca ese número en la columna CM de la guía de tallas y mire a que talla es equivalente.</li>
-  			<li>Debes fijarte si el modelo que está viendo viene en talla UK o US</li>
-  		</ul>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""e00""></a>¿Puedo retirar mis productos en alguna de las tiendas __SITE_ALIAS_LOWERCASE__?
-		</h3>
-		<p>Por ahora no, pero estamos trabajando para tener disponible ese servicio.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""f00""></a>¿Cómo puedo saber cuándo y a qué hora llegará mi compra?</h3>
-		<p>Puedes hacer seguimiento de tu despacho con el número de seguimiento que enviaremos a tu correo. Podrás saber si ya salió a despacho o aún se encuentra en bodega.
-		<br>
-        Recuerda que nuestros horarios de entrega son. Lunes a Viernes de 09:00 a 22:00 horas y Sábados de 09:00 a 16:00 horas.</p>
-	</div>
-	<div class=""item_container"">
-		<h3>
-			<a name=""g00""></a>¿Puedo cambiar la fecha o dirección de mi despacho?
-		</h3>
-		<p>Una vez que el producto ya fue despachado, no se podrá cambiar esta información. El producto llegará a la dirección que escogiste al momento de tu compra.</p>
-	</div>
-
-  <div class=""item_container"">
-    <h3>
-      <a name=""h00""></a>¿Cuánto tiempo puede demorar el despacho de mi pedido?</h3>
-    <p>El despacho del pedido puede tardar entre 2 a 15 días hábiles.</p>
-  </div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""i00""></a>¿Qué pasa si mi compra no llegó en la fecha que debería?</h3>
-			<p>¡Estamos muy pendientes de ofrecer un servicio óptimo, por lo que tus productos estarán en la fecha, modelo y tamaño que elegiste! Sin embargo, en caso de que el producto no haya llegado en la fecha pactada, envíanos un correo a __FROM_EMAIL__ o llámanos al 224336627 o 232391829</p>
-	</div>
-	<div class=""item_container"">
-		<h3>
-			<a name=""j00""></a>¿Qué hago si no llegaron todos los productos que compré?
-		</h3>
-		<p>Para que tus productos sean despachados en conjunto, debes comprarlos de una sola vez. En caso de que hayas realizado compras diferentes, es posible que cada producto sea despachado por separado, incluso si sólo existen horas de diferencia entre una compra u otra. Si tienes dudas, siempre puedes llamarnos al +224336627 o 232391829.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""k00""></a>¿Qué métodos de pago existen?
-		</h3>
-		<p>¡En nuestra tienda web, puedes pagar con todas las tarjetas de Crédito y Débito, que acepta el sistema de WebPay Plus!
-		<br>
-
-        *El correcto funcionamiento del medio de pago, es única y exclusivamente responsabilidad de Transbank, __STORE_NAME__ no tiene injerencia alguna en el funcionamiento del medio de pago y cualquier problema, el cliente deberá verlo directamente con Transbank y su banco.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""l00""></a>¿Qué pasa si no estoy satisfecho/a con mi compra?
-		</h3>
-		<p>Nuestra idea es que quedes 100% satisfecho con tu compra. Si no estás conforme, puedes realizar la devolución del producto en un plazo de 10 días contados desde la recepción de este.
-
-		<br>
-
-        Si la devolución se realiza fuera de este periodo o el artículo se ha utilizado, estropeado o no se envía en su paquete o caja original, no podremos aceptar la devolución y/o realizar un reembolso del pago. Las devoluciones de ropa solo se aceptarán si no se ha quitado el etiquetado original. Para poder realizar la devolución de tu pedido puedes llamarnos al 224336627 o 232391829o enviando un mail al correo __FROM_EMAIL__ (la devolución es solo para compras realizadas a través de la web, no en tiendas físicas).
-
-        <br>
-
-        Las devoluciones o anulaciones son completas, no se pueden realizar parciales.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""m00""></a>¿Qué pasa si mi producto está fallado o presenta defectos?	</h3>
-
-		<p>En __SITE_ALIAS__ garantizamos la calidad de los productos de nuestros proveedores. Es extremadamente raro que nuestro stock de productos presente daños o defectos.
-		<br>
-
-        Sin embargo, en caso de existir alguna excepción inspeccionamos los productos devueltos. Si el daño es consecuencia de un defecto de fabricación o bien si el producto no cumple con las especificaciones de fábrica, se reembolsará el precio del producto. (siempre que aplique esta condición). En caso de presentarse una falla en su producto dentro de los tres primeros meses desde que lo recibió, por favor contactarnos al mail __FROM_EMAIL__  para que le envíen las indicaciones de cómo debe enviar el producto a nuestras dependencias. Una vez que tengamos el producto lo enviaremos a evaluación por parte del proveedor para ver si aplica la garantía. La marca responderá si la falla corresponde a mal uso o si es falla de fabricación, este proceso tendrá un tiempo de 5 días.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""n00""></a>Hice uso de mi producto y luego presentó problemas ¿qué puedo hacer en ese caso?
-		</h3>
-		<p>Si el problema se debe a motivos distintos a la calidad del material o al proceso de montaje, no será posible realizar el cambio y/o devolución. Estos son algunas situaciones que impiden la devolución o reembolso de la compra:<br>
-		<ul>
-			<li>Si no se han obtenido en www.__SITE_DOMAIN_LOWERCASE__</li>
-			<li>Si se han dañado por un mal uso o negligencia</li>
-			<li>Si se han dañado por un uso indebido o por actividades distintas al fin previsto</li>
-		</ul>
-		</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""o00""></a>¿Puedo hacer un pedido por teléfono?</h3>
-		<p>Todas las compras debes realizarlas a través de internet. La asistencia telefónica es sólo para seguimiento y preguntas generales.</p>
-	</div>
-
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""p00""></a>¿Me tengo que registrar para comprar algo en la tienda online?</h3>
-		<p>Si, debes completar tus datos en las casillas y ¡comprar con esa cuenta las veces que quieras!</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""q00""></a>Puedo realizar cambio por talla y/o otro producto en tienda física __SITE_ALIAS_LOWERCASE__ si compre por __SITE_DOMAIN_LOWERCASE__?</h3>
-		<p>Efectivamente ahora es posible, puedes realizar los siguientes cambios:<br>
-		<ul>
-			<li>Cambio de Numero</li>
-			<li>Cambio por Modelo o Producto</li>
-		</ul>
-
-		</p>
-		Para poder realizar este tipo de cambio, es importante cumplir con lo siguiente:<br>
-		<p>
-			<ul>
-			<li>Llevar el producto a la tienda física __SITE_ALIAS_LOWERCASE__ más cercana.</li>
-			<li>Entregar la boleta Original timbrada por SII, NO la confirmación de pedido.</li>
-			<li>Entregar el producto sin uso, con su envoltorio original y todas sus etiquetas.</li>
-			<li>Sera solicitado tu carnet de identidad para realizar el cambio, debes llevarlo.</li>
-			</ul>
-		</p>
-		<p>Si en la tienda física no encuentras el producto que necesitas, o no tenemos tienda física en la localidad en la que te encuentras envíanos un mail a __CMS_EMAIL_CAMBIOS__ para ayudarte con tu cambio o llámanos al 224336649. En caso de solicitar devolución de dinero, deberás realizar el procedimiento vía web, escribiendo a __FROM_EMAIL__ o llamando a nuestro número telefónico: 224336627  o 232391829.</p>
-	</div>
-
-  <div class=""item_container"">
-		<h3>
-			<a name=""r00""></a>¿Qué pasa si no estoy en mi casa al momento del despacho?</h3>
-		<p>Si el pedido está siendo enviado por Bluexpress, donde se haran hasta 3 intentos de entrega. Si requiere mayor información por favor contactarse con nosotros al correo __FROM_EMAIL__ o llamando a nuestro número telefónico: 224336627  o 232391829.</p>
-	</div>
-
-  <div class=""item_container"">
-		<h3>
-			<a name=""s00""></a>Contáctate con nosotros si tienes otras dudas</h3>
-		<p>Atendemos de Lunes a Viernes, de 9:00 a 18:30 horas en el siguiente número telefónico __CMS_CONTACT_PHONE_SF__</p>
-	</div>
-
-  <div class=""item_container"">
-		<h3>
-			<a name=""t00""></a>Quiero trabajar en __SITE_ALIAS__ ¿Cómo lo hago?</h3>
-		<p>Mándanos tu CV al Mail __CMS_EMAIL_CV__</p>
-	</div>
-
-</div>
-
-" ;
-
-
-# ------------------------------------------------------------
-# Privacy and Security
-# ------------------------------------------------------------
-
-UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
-                            ; ; PrivacyMenuParagraph ; "
-<div class=""nav_column"">
-	<div class=""title_holder"">
-		<div class=""title"">
-			<div class=""title-top"">
-				<span></span>
-			</div>
-		</div>
-		<h2>Privacidad y seguridad</h2>
-	</div>
-	<div class=""item"">
-		<ul class="" facet_blockindent"">
-			<li><a href=""#a00"">Compromiso con nuestros clientes</a></li>
-			<li><a href=""#b00"">Informacion almacenada</a></li>
-			<li><a href=""#c00"">Derechos de usuario</a></li>
-			<li><a href=""#d00"">Uso de datos</a></li>
-			<li><a href=""#e00"">Difusion de informacion</a></li>
-			<li><a href=""#f00"">Clave del usuario</a></li>
-		</ul>
-	</div>
-</div>
-"
-                            ;
-
-                            ; ; PrivacyTextParagraph ; "
-<a name=""00""></a>
-<div class="" textpagetextpage-faqs"">
-	<div class=""item_container"">
-		<h3>
-			<a name=""a00""></a>Compromiso con nuestros clientes
-		</h3>
-		<p>El deber que tenemos es transparentar el vínculo que tenemos contigo en nuestro sitio web www.__SITE_DOMAIN_LOWERCASE__. nuestro sitio contiene información privada y confidencial de las personas que desean realizar algún tipo de compra online.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""b00""></a>Informacion almacenada
-		</h3>
-
-		<p>
-			Esta información personal es requerida para poder realizar alguna compra en nuestro sito web y son las siguientes:
-		</p>
-		<ul>
-			<li>Nombre</li>
-			<li>Apellido</li>
-			<li>Rut</li>
-			<li>Correo electrónico</li>
-			<li>Contraseña</li>
-			<li>Fecha de nacimiento</li>
-		</ul>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""c00""></a>Derechos de usuario
-		</h3>
-
-
-		<p>
-			Si llegas a facilitar tus datos personales en nuestro sitio web, esto se hará de forma voluntaria y tendremos tu permiso para que usemos tus datos conforme a cláusulas de esta política de privacidad. si deseas no otorgar la información solicitada, no podrás conseguir determinados beneficios, solo las personas que faciliten esta información necesaria, podrá acceder a encargar determinados productos y usar los servicios para poder aprovechar de las ofertas o actividades que ofrecemos. así como la transparencia es muy importante para __SITE_ALIAS_LOWERCASE__, se ofrecen opciones para mantener controlado tus datos personales. la compra que se realice por medio de nuestro sitio web se maneja de acuerdo con los principios de privacidad establecidos y reconociendo las normas de uso de protección de datos de carácter personal con respecto a la ley n° 19.628. por lo que no almacenamos en ningún caso, información de tus tarjetas de crédito o débito que utilices en nuestro sitio web.
-</p>
-
-</div>
-
-<div class=""item_container"">
-
-		<h3><a name=""d00""></a>Uso de datos</h3>
-
-		<p>Nuestro sito utiliza la información que ha recopilado para proporcionar una experiencia de compra más agradable y acorde con los estándares de __SITE_ALIAS_LOWERCASE__. los usos más frecuentes de los datos solicitados, son para notificarte sobre la situación de tu pedido o entrega, por lo que podremos usar los datos ya recopilados anteriormente. si has entregado tus datos personales, podremos enviarte algún emails con promociones ya sea algún tipo de oferta u otro tipo de mensaje que tenga relación con nuestros productos. como lanzamientos exclusivos, eventos, etc.</p>
-
-</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""e00""></a>Difusion de información</h3>
-		<p>Nos comprometemos a que tus datos serán tratados con la mayor confidencialidad. __SITE_ALIAS_LOWERCASE__ no vende tus datos a terceros, solo si son necesidades empresariales siempre y cuando la ley lo permita, sus datos serán revelados a empresas o terceros. en cualquier otro tipo de caso no se concederá sus datos personales sin su previa autorización por escrito.</p>
-	</div>
-
-	<div class=""item_container"">
-		<h3>
-			<a name=""f00""></a>Clave del usuario</h3>
-		<p>Cuando ya tengas tu cuenta creada, deberás ingresar tu clave secreta para cualquier tipo de compra que desees realizar, lo que asegura que tu compra sea confiable. esta clave será tu responsabilidad por lo que el sitio web no se hace responsable por el uso de terceros.
-		<br>
-		__SITE_DOMAIN_LOWERCASE__ tiene enlaces que dan acceso a otros sitios web de la red e internet. alingresar a estos link tú asumes que estos sitios no están bajo el control nuestro y aceptas que nosotros no somos responsable por ninguna información o link adicional que se encuentre en dicho sitio o por el uso que se le dé a tal información.
-		</p>
-	</div>
-	</div>
-</div>
-" ;
+UPDATE BoldLoginComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];emailFieldLabel[lang=$lang];passFieldLabel[lang=$lang];forgotPassLink;forgotPassLabel[lang=$lang];loginButtonLabel[lang=$lang];notAMemberLabel[lang=$lang];registerLink;registerLabel[lang=$lang]
+;;BelsportLoginComponent;"Accede a tu cuenta";"Correo electrónico";"Contraseña";/login/pw/request;"¿Olvidaste la contraseña?";"INICIAR SESIÓN";"¿No eres miembro?";/login;"Únete ahora"

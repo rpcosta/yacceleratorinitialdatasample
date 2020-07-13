@@ -8,370 +8,573 @@
 # Information and shall use it only in accordance with the terms of the
 # license agreement you entered into with SAP.
 # -----------------------------------------------------------------------
+$version=Staged
 $contentCatalog=__CONTENT_CATALOG_UID__
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
 $productCatalog=__PRODUCT_CATALOG_UID__
-$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default=$version])[unique=true,default=$productCatalog:$version]
 $category=category(code, $productCV)
-$language=es_CL
+
+$siteResource = jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
 
 # --------------------------------------------------------------------------
-# Level 1. CategoryNavigationComponent
+# Principal CMSNavigationNode Configuration
 # --------------------------------------------------------------------------
-INSERT_UPDATE CategoryNavigationComponent;uid[unique=true];$contentCV[unique=true];name;styleClass;&componentRef;navigationNode(&nodeRef);wrapAfter
-;CategoryNavComponent;;Category Navigation Component;;CategoryNavComponent;CategoryNavNode;10
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];&nodeRef;name;parent(uid, $contentCV);children(uid,$contentCV);
+;;root                 ;root                 ;"__CMS_STORE_PREFIX__ Root"                     ;            ;SiteRootNode
+;;SiteRootNode         ;SiteRootNode         ;"__CMS_STORE_PREFIX__ Site Root Node"           ;root        ;NavNode
+;;NavNode              ;NavNode              ;"__CMS_STORE_PREFIX__ B2C Site"                 ;SiteRootNode;__CMS_STORE_PREFIX__Categories_NN,__CMS_STORE_PREFIX__Footer_NN,__CMS_STORE_PREFIX__MyAccount_NN,__CMS_STORE_PREFIX__Order_NN
+;;__CMS_STORE_PREFIX__Categories_NN;__CMS_STORE_PREFIX__Categories_NN;"__CMS_STORE_PREFIX__ Principal Menu Categories";NavNode     ;__BRAND_NAME__Marcas_NN,__BRAND_NAME__Hombre_NN,__BRAND_NAME__Mujer_NN,__BRAND_NAME__Ninos_NN,__BRAND_NAME__Accesorios_NN,__BRAND_NAME__Ofertas_NN;
+;;__CMS_STORE_PREFIX__Footer_NN    ;__CMS_STORE_PREFIX__Footer_NN    ;"__CMS_STORE_PREFIX__ Footer"                   ;NavNode     ;__BRAND_NAME__Information_NN
+;;__CMS_STORE_PREFIX__MyAccount_NN ;__CMS_STORE_PREFIX__MyAccount_NN ;"__CMS_STORE_PREFIX__ My Account"               ;NavNode     ;
+;;__CMS_STORE_PREFIX__Order_NN     ;__CMS_STORE_PREFIX__Order_NN     ;"__CMS_STORE_PREFIX__ Order"                    ;NavNode     ;
+
+##################################################################################################################################################
+####  MENU CATEGORIAS HEADER
+##################################################################################################################################################
+
 # --------------------------------------------------------------------------
-# Level 1. ContentSlot
+# Categorias :: Definicion
 # --------------------------------------------------------------------------
-INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
-;;NavigationBarSlot;CategoryNavComponent
-#;;BottomHeaderSlot; breadcrumbComponent
-# --------------------------------------------------------------------------
-# Level 2. CMSNavigationNode
-# --------------------------------------------------------------------------
-INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);&nodeRef;children(uid,$contentCV);
-;SiteRootNode;;SiteRootNode;root;;SiteRootNode
-;CategoryNavNode;;Categories;SiteRootNode;CategoryNavNode;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode,__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode,__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode,__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode,__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
-# --------------------------------------------------------------------------
-# IMPORTANT! 
-# Create Categories to be associated in CMSLinkComponent 
-# This prevents errors related to load components related 
-# to unexistent categories in Hybris. 
-# --------------------------------------------------------------------------
-INSERT_UPDATE Category;code[unique=true];$productCV[unique=true];
-;__SAMPLE_CATEGORY_PREFIX__Sale;;
-;__SAMPLE_CATEGORY_PREFIX__Hombre;;
-;__SAMPLE_CATEGORY_PREFIX__Accesorios;;
-;__SAMPLE_CATEGORY_PREFIX__Marcas;;
-;__SAMPLE_CATEGORY_PREFIX__Mujer;;
-;__SAMPLE_CATEGORY_PREFIX__Ninos;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics;;
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras;;
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos;;
+INSERT_UPDATE Category;$productCV[unique = true];code[unique = true]
+#1er Nivel
+;;__BRAND_NAME__Marcas
+;;__BRAND_NAME__Hombre
+;;__BRAND_NAME__Mujer
+;;__BRAND_NAME__Ninos
+;;__BRAND_NAME__Accesorios
+;;__BRAND_NAME__Ofertas
+#;2do Nivel - Marcas
+;;__BRAND_NAME__MarcasAdidas
+;;__BRAND_NAME__MarcasConverse
+;;__BRAND_NAME__MarcasDCshoes
+;;__BRAND_NAME__MarcasFila
+;;__BRAND_NAME__MarcasLotto
+;;__BRAND_NAME__MarcasMitre
+;;__BRAND_NAME__MarcasMolten
+;;__BRAND_NAME__MarcasNewBalance
+;;__BRAND_NAME__MarcasNike
+;;__BRAND_NAME__MarcasPuma
+;;__BRAND_NAME__MarcasReebok
+;;__BRAND_NAME__MarcasSkechers
+;;__BRAND_NAME__MarcasSpalding
+;;__BRAND_NAME__MarcasUmbro
+;;__BRAND_NAME__MarcasUnderArmour
+;;__BRAND_NAME__MarcasVans
+#;2do Nivel - Hombres
+;;__BRAND_NAME__HombreZapatillas
+;;__BRAND_NAME__HombreVestuario
+#;2do Nivel - Mujer
+;;__BRAND_NAME__MujerZapatillas
+;;__BRAND_NAME__MujerVestuario
+#;2do Nivel - Niños
+;;__BRAND_NAME__NinosZapatillas
+;;__BRAND_NAME__NinosVestuario
+;;__BRAND_NAME__NinosAccesorios
+#;2do Nivel - Accesorios
+;;__BRAND_NAME__AccesoriosBalones
+;;__BRAND_NAME__AccesoriosBananos
+;;__BRAND_NAME__AccesoriosBeanies
+;;__BRAND_NAME__AccesoriosCalcetas
+;;__BRAND_NAME__AccesoriosCanilleras
+;;__BRAND_NAME__AccesoriosGuantes
+;;__BRAND_NAME__AccesoriosGymsack
+;;__BRAND_NAME__AccesoriosJockey
+;;__BRAND_NAME__AccesoriosMochilasBolsos
+;;__BRAND_NAME__AccesoriosRodilleras
+;;__BRAND_NAME__AccesoriosToallas
+#;2do Nivel - Ofertas
+;;__BRAND_NAME__OfertasZapatillas
+;;__BRAND_NAME__OfertasVestuario
+;;__BRAND_NAME__OfertasAccesorios
+#;3er Nivel - Hombre Zapatilla
+;;__BRAND_NAME__HombreZapatillasFutbol
+;;__BRAND_NAME__HombreZapatillasBaby
+;;__BRAND_NAME__HombreZapatillasRunning
+;;__BRAND_NAME__HombreZapatillasOutdoor
+;;__BRAND_NAME__HombreZapatillasTraining
+;;__BRAND_NAME__HombreZapatillasBasquetbol
+;;__BRAND_NAME__HombreZapatillasUrbanas
+#;3er Nivel - Hombre Zapatilla
+;;__BRAND_NAME__HombreVestuarioCamisetas
+;;__BRAND_NAME__HombreVestuarioPoleras
+;;__BRAND_NAME__HombreVestuarioPantalones
+;;__BRAND_NAME__HombreVestuarioShorts
+;;__BRAND_NAME__HombreVestuarioPolerones
+#;3er Nivel - Mujer Zapatilla
+;;__BRAND_NAME__MujerZapatillasRunning
+;;__BRAND_NAME__MujerZapatillasOutdoor
+;;__BRAND_NAME__MujerZapatillasTraining
+;;__BRAND_NAME__MujerZapatillasUrbanas
+#;3er Nivel - Mujer Vestuario
+;;__BRAND_NAME__MujerVestuarioPoleras
+;;__BRAND_NAME__MujerVestuarioPolerones
+;;__BRAND_NAME__MujerVestuarioShorts
+#;3er Nivel - Mujer Accesorio
+;;__BRAND_NAME__MujerAccesoriosPantalones
+#;3er Nivel - Ninos Zapatillas
+;;__BRAND_NAME__NinosZapatillasFutbol
+;;__BRAND_NAME__NinosZapatillasBaby
+;;__BRAND_NAME__NinosZapatillasBasquetbol
+;;__BRAND_NAME__NinosZapatillasUrbanas
+;;__BRAND_NAME__NinosZapatillasRunning
+;;__BRAND_NAME__NinosZapatillasTraining
+;;__BRAND_NAME__NinosZapatillasOutdoor
+#;3er Nivel - Ninos Vestuario
+;;__BRAND_NAME__NinosVestuarioPoleras
+;;__BRAND_NAME__NinosVestuarioCamisetas
+;;__BRAND_NAME__NinosVestuarioPolerones
+;;__BRAND_NAME__NinosVestuarioConjuntos
+;;__BRAND_NAME__NinosVestuarioPantalones
+#;3er Nivel - Ninos Accesorios
+;;__BRAND_NAME__NinosAccesoriosBalones
+;;__BRAND_NAME__NinosAccesoriosCanilleras
+;;__BRAND_NAME__NinosAccesoriosGuantes
+;;__BRAND_NAME__NinosAccesoriosMochilas
+;;__BRAND_NAME__NinosAccesoriosJockey
+;;__BRAND_NAME__NinosAccesoriosCalcetas
+
 # --------------------------------------------------------------------------
 # CMSLinkComponent
 # --------------------------------------------------------------------------
-INSERT_UPDATE CMSLinkComponent;uid[unique=true];$contentCV[unique=true];name;linkName[lang=$language];url;target(code)[default='sameWindow'];$category;
-;__SAMPLE_CATEGORY_PREFIX__Sale_CategoryLink;;Sale Category Link;Sale;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Sale;;__SAMPLE_CATEGORY_PREFIX__Sale
-;__SAMPLE_CATEGORY_PREFIX__Hombre_CategoryLink;;Hombre Category Link;Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Hombre;;__SAMPLE_CATEGORY_PREFIX__Hombre
-;__SAMPLE_CATEGORY_PREFIX__Accesorios_CategoryLink;;Accesorios Category Link;Accesorios;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Accesorios;;__SAMPLE_CATEGORY_PREFIX__Accesorios
-;__SAMPLE_CATEGORY_PREFIX__Marcas_CategoryLink;;Marcas Category Link;Marcas;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Marcas;;__SAMPLE_CATEGORY_PREFIX__Marcas
-;__SAMPLE_CATEGORY_PREFIX__Mujer_CategoryLink;;Mujer Category Link;Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Mujer;;__SAMPLE_CATEGORY_PREFIX__Mujer
-;__SAMPLE_CATEGORY_PREFIX__Ninos_CategoryLink;;Niños Category Link;Niños;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__Ninos;;__SAMPLE_CATEGORY_PREFIX__Ninos
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_CategoryLink;;Gymsack  Category Link;Gymsack ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack;;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_CategoryLink;;New Balance Category Link;New Balance;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance;;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_CategoryLink;;Calcetas  Category Link;Calcetas ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas;;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_CategoryLink;;Protección y limpieza  Category Link;Protección y limpieza ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza;;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_CategoryLink;;Asics Tiger Category Link;Asics Tiger;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasAsics;;__SAMPLE_CATEGORY_PREFIX__MarcasAsics
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_CategoryLink;;Zapatillas Niños Category Link;Zapatillas Niños;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__NinosZapatillas;;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_CategoryLink;;Beanie  Category Link;Beanie ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_CategoryLink;;Jordan Category Link;Jordan;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasJordan;;__SAMPLE_CATEGORY_PREFIX__MarcasJordan
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_CategoryLink;;Saucony Category Link;Saucony;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasSaucony;;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_CategoryLink;;Calzado Hombre Category Link;Calzado HombproductReviewSummary.tagre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzado;;__SAMPLE_CATEGORY_PREFIX__HombreCalzado
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans_CategoryLink;;Vans Category Link;Vans;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasVans;;__SAMPLE_CATEGORY_PREFIX__MarcasVans
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_CategoryLink;;Calzado Mujer Category Link;Calzado Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzado;;__SAMPLE_CATEGORY_PREFIX__MujerCalzado
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_CategoryLink;;Snapback  Category Link;Snapback ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback;;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_CategoryLink;;Vestuario Oferta Category Link;Vestuario Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuario;;__SAMPLE_CATEGORY_PREFIX__SaleVestuario
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_CategoryLink;;Adidas Originals Category Link;Adidas Originals;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasAdidas;;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_CategoryLink;;Calzado Oferta Category Link;Calzado Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzado;;__SAMPLE_CATEGORY_PREFIX__SaleCalzado
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike_CategoryLink;;Nike Category Link;Nike;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasNike;;__SAMPLE_CATEGORY_PREFIX__MarcasNike
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_CategoryLink;;Vestuario Hombre Category Link;Vestuario Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuario;;__SAMPLE_CATEGORY_PREFIX__HombreVestuario
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_CategoryLink;;Puma Category Link;Puma;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasPuma;;__SAMPLE_CATEGORY_PREFIX__MarcasPuma
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_CategoryLink;;Accesorios Oferta Category Link;Accesorios Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesorios;;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_CategoryLink;;Reebok Category Link;Reebok;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasReebok;;__SAMPLE_CATEGORY_PREFIX__MarcasReebok
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_CategoryLink;;Vestuario Mujer Category Link;Vestuario Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuario;;__SAMPLE_CATEGORY_PREFIX__MujerVestuario
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_CategoryLink;;Mochilas y Bolsos  Category Link;Mochilas y Bolsos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos;;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_CategoryLink;;Crep Category Link;Crep;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasCrep;;__SAMPLE_CATEGORY_PREFIX__MarcasCrep
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_CategoryLink;;Bananos  Category Link;Bananos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_CategoryLink;;Under Armour Category Link;Under Armour;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour;;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_CategoryLink;;Converse Category Link;Converse;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MarcasConverse;;__SAMPLE_CATEGORY_PREFIX__MarcasConverse
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_CategoryLink;;Petos Oferta Category Link;Petos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_CategoryLink;;Shorts Hombre Category Link;Shorts Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_CategoryLink;;Zapatillas Hombre Category Link;Zapatillas Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_CategoryLink;;Polerones Oferta Category Link;Polerones Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_CategoryLink;;Sandalias Mujer Category Link;Sandalias Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_CategoryLink;;Zapatillas Mujer Category Link;Zapatillas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_CategoryLink;;Pantalones y Calzas Oferta Category Link;Pantalones y Calzas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_CategoryLink;;Polerones Hombre Category Link;Polerones Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_CategoryLink;;Zapatillas Oferta Category Link;Zapatillas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_CategoryLink;;Poleras Hombre Category Link;Poleras Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_CategoryLink;;Pantalones y Calzas Mujer Category Link;Pantalones y Calzas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas;;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_CategoryLink;;Sandalias Hombre Category Link;Sandalias Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_CategoryLink;;Pantalones Hombre Category Link;Pantalones Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_CategoryLink;;Beanie Oferta Category Link;Beanie Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_CategoryLink;;Poleras Oferta Category Link;Poleras Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_CategoryLink;;Sandalias Oferta Category Link;Sandalias Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_CategoryLink;;Protección y limpieza Oferta Category Link;Protección y limpieza Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_CategoryLink;;Polerones Mujer Category Link;Polerones Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_CategoryLink;;Chaquetas y Parkas Hombre Category Link;Chaquetas y Parkas Hombre;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_CategoryLink;;Bananos Oferta Category Link;Bananos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_CategoryLink;;Poleras Mujer Category Link;Poleras Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_CategoryLink;;Shorts Oferta Category Link;Shorts Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_CategoryLink;;Chaquetas y Parkas Mujer Category Link;Chaquetas y Parkas Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_CategoryLink;;Chaquetas y Parkas Oferta Category Link;Chaquetas y Parkas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_CategoryLink;;Shorts Mujer Category Link;Shorts Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_CategoryLink;;Petos  Category Link;Petos ;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_CategoryLink;;Gymsack Oferta Category Link;Gymsack Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_CategoryLink;;Calcetas Oferta Category Link;Calcetas Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_CategoryLink;;Vestidos Mujer Category Link;Vestidos Mujer;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_CategoryLink;;Snapback Oferta Category Link;Snapback Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_CategoryLink;;Mochilas y Bolsos Oferta Category Link;Mochilas y Bolsos Oferta;/Open-Catalogue/c/__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];&linkRef;name;url;target(code)[default = 'sameWindow'];$category;
+;;__BRAND_NAME__Marcas_CL                    ;__BRAND_NAME__Marcas_CL                      ;"__CMS_STORE_PREFIX__ Marcas"                    ;/Open-Catalogue/c/__BRAND_NAME__Marcas                    ;;__BRAND_NAME__Marcas
+;;__BRAND_NAME__Hombre_CL                    ;__BRAND_NAME__Hombre_CL                      ;"__CMS_STORE_PREFIX__ Hombre"                    ;/Open-Catalogue/c/__BRAND_NAME__Hombre                    ;;__BRAND_NAME__Hombre
+;;__BRAND_NAME__Mujer_CL                     ;__BRAND_NAME__Mujer_CL                       ;"__CMS_STORE_PREFIX__ Mujer"                     ;/Open-Catalogue/c/__BRAND_NAME__Mujer                     ;;__BRAND_NAME__Mujer
+;;__BRAND_NAME__Ninos_CL                     ;__BRAND_NAME__Ninos_CL                       ;"__CMS_STORE_PREFIX__ Ninos"                     ;/Open-Catalogue/c/__BRAND_NAME__Ninos                     ;;__BRAND_NAME__Ninos
+;;__BRAND_NAME__Accesorios_CL                ;__BRAND_NAME__Accesorios_CL                  ;"__CMS_STORE_PREFIX__ Accesorios"                ;/Open-Catalogue/c/__BRAND_NAME__Accesorios                ;;__BRAND_NAME__Accesorios
+;;__BRAND_NAME__Ofertas_CL                   ;__BRAND_NAME__Ofertas_CL                     ;"__CMS_STORE_PREFIX__ Ofertas"                   ;/Open-Catalogue/c/__BRAND_NAME__Ofertas                   ;;__BRAND_NAME__Ofertas
+;;__BRAND_NAME__MarcasAdidas_CL              ;__BRAND_NAME__MarcasAdidas_CL                ;"__CMS_STORE_PREFIX__ MarcasAdidas"              ;/Open-Catalogue/c/__BRAND_NAME__MarcasAdidas              ;;__BRAND_NAME__MarcasAdidas
+;;__BRAND_NAME__MarcasConverse_CL            ;__BRAND_NAME__MarcasConverse_CL              ;"__CMS_STORE_PREFIX__ MarcasConverse"            ;/Open-Catalogue/c/__BRAND_NAME__MarcasConverse            ;;__BRAND_NAME__MarcasConverse
+;;__BRAND_NAME__MarcasDCshoes_CL             ;__BRAND_NAME__MarcasDCshoes_CL               ;"__CMS_STORE_PREFIX__ MarcasDCshoes"             ;/Open-Catalogue/c/__BRAND_NAME__MarcasDCshoes             ;;__BRAND_NAME__MarcasDCshoes
+;;__BRAND_NAME__MarcasFila_CL                ;__BRAND_NAME__MarcasFila_CL                  ;"__CMS_STORE_PREFIX__ MarcasFila"                ;/Open-Catalogue/c/__BRAND_NAME__MarcasFila                ;;__BRAND_NAME__MarcasFila
+;;__BRAND_NAME__MarcasLotto_CL               ;__BRAND_NAME__MarcasLotto_CL                 ;"__CMS_STORE_PREFIX__ MarcasLotto"               ;/Open-Catalogue/c/__BRAND_NAME__MarcasLotto               ;;__BRAND_NAME__MarcasLotto
+;;__BRAND_NAME__MarcasMitre_CL               ;__BRAND_NAME__MarcasMitre_CL                 ;"__CMS_STORE_PREFIX__ MarcasMitre"               ;/Open-Catalogue/c/__BRAND_NAME__MarcasMitre               ;;__BRAND_NAME__MarcasMitre
+;;__BRAND_NAME__MarcasMolten_CL              ;__BRAND_NAME__MarcasMolten_CL                ;"__CMS_STORE_PREFIX__ MarcasMolten"              ;/Open-Catalogue/c/__BRAND_NAME__MarcasMolten              ;;__BRAND_NAME__MarcasMolten
+;;__BRAND_NAME__MarcasNewBalance_CL          ;__BRAND_NAME__MarcasNewBalance_CL            ;"__CMS_STORE_PREFIX__ MarcasNewBalance"          ;/Open-Catalogue/c/__BRAND_NAME__MarcasNewBalance          ;;__BRAND_NAME__MarcasNewBalance
+;;__BRAND_NAME__MarcasNike_CL                ;__BRAND_NAME__MarcasNike_CL                  ;"__CMS_STORE_PREFIX__ MarcasNike"                ;/Open-Catalogue/c/__BRAND_NAME__MarcasNike                ;;__BRAND_NAME__MarcasNike
+;;__BRAND_NAME__MarcasPuma_CL                ;__BRAND_NAME__MarcasPuma_CL                  ;"__CMS_STORE_PREFIX__ MarcasPuma"                ;/Open-Catalogue/c/__BRAND_NAME__MarcasPuma                ;;__BRAND_NAME__MarcasPuma
+;;__BRAND_NAME__MarcasReebok_CL              ;__BRAND_NAME__MarcasReebok_CL                ;"__CMS_STORE_PREFIX__ MarcasReebok"              ;/Open-Catalogue/c/__BRAND_NAME__MarcasReebok              ;;__BRAND_NAME__MarcasReebok
+;;__BRAND_NAME__MarcasSkechers_CL            ;__BRAND_NAME__MarcasSkechers_CL              ;"__CMS_STORE_PREFIX__ MarcasSkechers"            ;/Open-Catalogue/c/__BRAND_NAME__MarcasSkechers            ;;__BRAND_NAME__MarcasSkechers
+;;__BRAND_NAME__MarcasSpalding_CL            ;__BRAND_NAME__MarcasSpalding_CL              ;"__CMS_STORE_PREFIX__ MarcasSpalding"            ;/Open-Catalogue/c/__BRAND_NAME__MarcasSpalding            ;;__BRAND_NAME__MarcasSpalding
+;;__BRAND_NAME__MarcasUmbro_CL               ;__BRAND_NAME__MarcasUmbro_CL                 ;"__CMS_STORE_PREFIX__ MarcasUmbro"               ;/Open-Catalogue/c/__BRAND_NAME__MarcasUmbro               ;;__BRAND_NAME__MarcasUmbro
+;;__BRAND_NAME__MarcasUnderArmour_CL         ;__BRAND_NAME__MarcasUnderArmour_CL           ;"__CMS_STORE_PREFIX__ MarcasUnderArmour"         ;/Open-Catalogue/c/__BRAND_NAME__MarcasUnderArmour         ;;__BRAND_NAME__MarcasUnderArmour
+;;__BRAND_NAME__MarcasVans_CL                ;__BRAND_NAME__MarcasVans_CL                  ;"__CMS_STORE_PREFIX__ MarcasVans"                ;/Open-Catalogue/c/__BRAND_NAME__MarcasVans                ;;__BRAND_NAME__MarcasVans
+;;__BRAND_NAME__HombreZapatillas_CL          ;__BRAND_NAME__HombreZapatillas_CL            ;"__CMS_STORE_PREFIX__ HombreZapatillas"          ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillas          ;;__BRAND_NAME__HombreZapatillas
+;;__BRAND_NAME__HombreVestuario_CL           ;__BRAND_NAME__HombreVestuario_CL             ;"__CMS_STORE_PREFIX__ HombreVestuario"           ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuario           ;;__BRAND_NAME__HombreVestuario
+;;__BRAND_NAME__MujerZapatillas_CL           ;__BRAND_NAME__MujerZapatillas_CL             ;"__CMS_STORE_PREFIX__ MujerZapatillas"           ;/Open-Catalogue/c/__BRAND_NAME__MujerZapatillas           ;;__BRAND_NAME__MujerZapatillas
+;;__BRAND_NAME__MujerVestuario_CL            ;__BRAND_NAME__MujerVestuario_CL              ;"__CMS_STORE_PREFIX__ MujerVestuario"            ;/Open-Catalogue/c/__BRAND_NAME__MujerVestuario            ;;__BRAND_NAME__MujerVestuario
+;;__BRAND_NAME__NinosZapatillas_CL           ;__BRAND_NAME__NinosZapatillas_CL             ;"__CMS_STORE_PREFIX__ NinosZapatillas"           ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillas           ;;__BRAND_NAME__NinosZapatillas
+;;__BRAND_NAME__NinosVestuario_CL            ;__BRAND_NAME__NinosVestuario_CL              ;"__CMS_STORE_PREFIX__ NinosVestuario"            ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuario            ;;__BRAND_NAME__NinosVestuario
+;;__BRAND_NAME__NinosAccesorios_CL           ;__BRAND_NAME__NinosAccesorios_CL             ;"__CMS_STORE_PREFIX__ NinosAccesorios"           ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesorios           ;;__BRAND_NAME__NinosAccesorios
+;;__BRAND_NAME__AccesoriosBalones_CL         ;__BRAND_NAME__AccesoriosBalones_CL           ;"__CMS_STORE_PREFIX__ AccesoriosBalones"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosBalones         ;;__BRAND_NAME__AccesoriosBalones
+;;__BRAND_NAME__AccesoriosBananos_CL         ;__BRAND_NAME__AccesoriosBananos_CL           ;"__CMS_STORE_PREFIX__ AccesoriosBananos"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosBananos         ;;__BRAND_NAME__AccesoriosBananos
+;;__BRAND_NAME__AccesoriosBeanies_CL         ;__BRAND_NAME__AccesoriosBeanies_CL           ;"__CMS_STORE_PREFIX__ AccesoriosBeanies"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosBeanies         ;;__BRAND_NAME__AccesoriosBeanies
+;;__BRAND_NAME__AccesoriosCalcetas_CL        ;__BRAND_NAME__AccesoriosCalcetas_CL          ;"__CMS_STORE_PREFIX__ AccesoriosCalcetas"        ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosCalcetas        ;;__BRAND_NAME__AccesoriosCalcetas
+;;__BRAND_NAME__AccesoriosCanilleras_CL      ;__BRAND_NAME__AccesoriosCanilleras_CL        ;"__CMS_STORE_PREFIX__ AccesoriosCanilleras"      ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosCanilleras      ;;__BRAND_NAME__AccesoriosCanilleras
+;;__BRAND_NAME__AccesoriosGuantes_CL         ;__BRAND_NAME__AccesoriosGuantes_CL           ;"__CMS_STORE_PREFIX__ AccesoriosGuantes"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosGuantes         ;;__BRAND_NAME__AccesoriosGuantes
+;;__BRAND_NAME__AccesoriosGymsack_CL         ;__BRAND_NAME__AccesoriosGymsack_CL           ;"__CMS_STORE_PREFIX__ AccesoriosGymsack"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosGymsack         ;;__BRAND_NAME__AccesoriosGymsack
+;;__BRAND_NAME__AccesoriosJockey_CL          ;__BRAND_NAME__AccesoriosJockey_CL            ;"__CMS_STORE_PREFIX__ AccesoriosJockey"          ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosJockey          ;;__BRAND_NAME__AccesoriosJockey
+;;__BRAND_NAME__AccesoriosMochilasBolsos_CL  ;__BRAND_NAME__AccesoriosMochilasBolsos_CL    ;"__CMS_STORE_PREFIX__ AccesoriosMochilasBolsos"  ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosMochilasBolsos  ;;__BRAND_NAME__AccesoriosMochilasBolsos
+;;__BRAND_NAME__AccesoriosRodilleras_CL      ;__BRAND_NAME__AccesoriosRodilleras_CL        ;"__CMS_STORE_PREFIX__ AccesoriosRodilleras"      ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosRodilleras      ;;__BRAND_NAME__AccesoriosRodilleras
+;;__BRAND_NAME__AccesoriosToallas_CL         ;__BRAND_NAME__AccesoriosToallas_CL           ;"__CMS_STORE_PREFIX__ AccesoriosToallas"         ;/Open-Catalogue/c/__BRAND_NAME__AccesoriosToallas         ;;__BRAND_NAME__AccesoriosToallas
+;;__BRAND_NAME__OfertasZapatillas_CL         ;__BRAND_NAME__OfertasZapatillas_CL           ;"__CMS_STORE_PREFIX__ OfertasZapatillas"         ;/Open-Catalogue/c/__BRAND_NAME__OfertasZapatillas         ;;__BRAND_NAME__OfertasZapatillas
+;;__BRAND_NAME__OfertasVestuario_CL          ;__BRAND_NAME__OfertasVestuario_CL            ;"__CMS_STORE_PREFIX__ OfertasVestuario"          ;/Open-Catalogue/c/__BRAND_NAME__OfertasVestuario          ;;__BRAND_NAME__OfertasVestuario
+;;__BRAND_NAME__OfertasAccesorios_CL         ;__BRAND_NAME__OfertasAccesorios_CL           ;"__CMS_STORE_PREFIX__ OfertasAccesorios"         ;/Open-Catalogue/c/__BRAND_NAME__OfertasAccesorios         ;;__BRAND_NAME__OfertasAccesorios
+;;__BRAND_NAME__HombreZapatillasFutbol_CL    ;__BRAND_NAME__HombreZapatillasFutbol_CL      ;"__CMS_STORE_PREFIX__ HombreZapatillasFutbol"    ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasFutbol    ;;__BRAND_NAME__HombreZapatillasFutbol
+;;__BRAND_NAME__HombreZapatillasBaby_CL      ;__BRAND_NAME__HombreZapatillasBaby_CL        ;"__CMS_STORE_PREFIX__ HombreZapatillasBaby"      ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasBaby      ;;__BRAND_NAME__HombreZapatillasBaby
+;;__BRAND_NAME__HombreZapatillasRunning_CL   ;__BRAND_NAME__HombreZapatillasRunning_CL     ;"__CMS_STORE_PREFIX__ HombreZapatillasRunning"   ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasRunning   ;;__BRAND_NAME__HombreZapatillasRunning
+;;__BRAND_NAME__HombreZapatillasOutdoor_CL   ;__BRAND_NAME__HombreZapatillasOutdoor_CL     ;"__CMS_STORE_PREFIX__ HombreZapatillasOutdoor"   ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasOutdoor   ;;__BRAND_NAME__HombreZapatillasOutdoor
+;;__BRAND_NAME__HombreZapatillasTraining_CL  ;__BRAND_NAME__HombreZapatillasTraining_CL    ;"__CMS_STORE_PREFIX__ HombreZapatillasTraining"  ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasTraining  ;;__BRAND_NAME__HombreZapatillasTraining
+;;__BRAND_NAME__HombreZapatillasBasquetbol_CL;__BRAND_NAME__HombreZapatillasBasquetbol_CL  ;"__CMS_STORE_PREFIX__ HombreZapatillasBasquetbol";/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasBasquetbol;;__BRAND_NAME__HombreZapatillasBasquetbol
+;;__BRAND_NAME__HombreZapatillasUrbanas_CL   ;__BRAND_NAME__HombreZapatillasUrbanas_CL     ;"__CMS_STORE_PREFIX__ HombreZapatillasUrbanas"   ;/Open-Catalogue/c/__BRAND_NAME__HombreZapatillasUrbanas   ;;__BRAND_NAME__HombreZapatillasUrbanas
+;;__BRAND_NAME__HombreVestuarioCamisetas_CL  ;__BRAND_NAME__HombreVestuarioCamisetas_CL    ;"__CMS_STORE_PREFIX__ HombreVestuarioCamisetas"  ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuarioCamisetas  ;;__BRAND_NAME__HombreVestuarioCamisetas
+;;__BRAND_NAME__HombreVestuarioPoleras_CL    ;__BRAND_NAME__HombreVestuarioPoleras_CL      ;"__CMS_STORE_PREFIX__ HombreVestuarioPoleras"    ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuarioPoleras    ;;__BRAND_NAME__HombreVestuarioPoleras
+;;__BRAND_NAME__HombreVestuarioPantalones_CL ;__BRAND_NAME__HombreVestuarioPantalones_CL   ;"__CMS_STORE_PREFIX__ HombreVestuarioPantalones" ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuarioPantalones ;;__BRAND_NAME__HombreVestuarioPantalones
+;;__BRAND_NAME__HombreVestuarioShorts_CL     ;__BRAND_NAME__HombreVestuarioShorts_CL       ;"__CMS_STORE_PREFIX__ HombreVestuarioShorts"     ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuarioShorts     ;;__BRAND_NAME__HombreVestuarioShorts
+;;__BRAND_NAME__HombreVestuarioPolerones_CL  ;__BRAND_NAME__HombreVestuarioPolerones_CL    ;"__CMS_STORE_PREFIX__ HombreVestuarioPolerones"  ;/Open-Catalogue/c/__BRAND_NAME__HombreVestuarioPolerones  ;;__BRAND_NAME__HombreVestuarioPolerones
+;;__BRAND_NAME__MujerZapatillasRunning_CL    ;__BRAND_NAME__MujerZapatillasRunning_CL      ;"__CMS_STORE_PREFIX__ MujerZapatillasRunning"    ;/Open-Catalogue/c/__BRAND_NAME__MujerZapatillasRunning    ;;__BRAND_NAME__MujerZapatillasRunning
+;;__BRAND_NAME__MujerZapatillasOutdoor_CL    ;__BRAND_NAME__MujerZapatillasOutdoor_CL      ;"__CMS_STORE_PREFIX__ MujerZapatillasOutdoor"    ;/Open-Catalogue/c/__BRAND_NAME__MujerZapatillasOutdoor    ;;__BRAND_NAME__MujerZapatillasOutdoor
+;;__BRAND_NAME__MujerZapatillasTraining_CL   ;__BRAND_NAME__MujerZapatillasTraining_CL     ;"__CMS_STORE_PREFIX__ MujerZapatillasTraining"   ;/Open-Catalogue/c/__BRAND_NAME__MujerZapatillasTraining   ;;__BRAND_NAME__MujerZapatillasTraining
+;;__BRAND_NAME__MujerZapatillasUrbanas_CL    ;__BRAND_NAME__MujerZapatillasUrbanas_CL      ;"__CMS_STORE_PREFIX__ MujerZapatillasUrbanas"    ;/Open-Catalogue/c/__BRAND_NAME__MujerZapatillasUrbanas    ;;__BRAND_NAME__MujerZapatillasUrbanas
+;;__BRAND_NAME__MujerVestuarioPoleras_CL     ;__BRAND_NAME__MujerVestuarioPoleras_CL       ;"__CMS_STORE_PREFIX__ MujerVestuarioPoleras"     ;/Open-Catalogue/c/__BRAND_NAME__MujerVestuarioPoleras     ;;__BRAND_NAME__MujerVestuarioPoleras
+;;__BRAND_NAME__MujerVestuarioPolerones_CL   ;__BRAND_NAME__MujerVestuarioPolerones_CL     ;"__CMS_STORE_PREFIX__ MujerVestuarioPolerones"   ;/Open-Catalogue/c/__BRAND_NAME__MujerVestuarioPolerones   ;;__BRAND_NAME__MujerVestuarioPolerones
+;;__BRAND_NAME__MujerVestuarioShorts_CL      ;__BRAND_NAME__MujerVestuarioShorts_CL        ;"__CMS_STORE_PREFIX__ MujerVestuarioShorts"      ;/Open-Catalogue/c/__BRAND_NAME__MujerVestuarioShorts      ;;__BRAND_NAME__MujerVestuarioShorts
+;;__BRAND_NAME__MujerAccesoriosPantalones_CL ;__BRAND_NAME__MujerAccesoriosPantalones_CL   ;"__CMS_STORE_PREFIX__ MujerAccesoriosPantalones" ;/Open-Catalogue/c/__BRAND_NAME__MujerAccesoriosPantalones ;;__BRAND_NAME__MujerAccesoriosPantalones
+;;__BRAND_NAME__NinosZapatillasFutbol_CL     ;__BRAND_NAME__NinosZapatillasFutbol_CL       ;"__CMS_STORE_PREFIX__ NinosZapatillasFutbol"     ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasFutbol     ;;__BRAND_NAME__NinosZapatillasFutbol
+;;__BRAND_NAME__NinosZapatillasBaby_CL       ;__BRAND_NAME__NinosZapatillasBaby_CL         ;"__CMS_STORE_PREFIX__ NinosZapatillasBaby"       ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasBaby       ;;__BRAND_NAME__NinosZapatillasBaby
+;;__BRAND_NAME__NinosZapatillasBasquetbol_CL ;__BRAND_NAME__NinosZapatillasBasquetbol_CL   ;"__CMS_STORE_PREFIX__ NinosZapatillasBasquetbol" ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasBasquetbol ;;__BRAND_NAME__NinosZapatillasBasquetbol
+;;__BRAND_NAME__NinosZapatillasUrbanas_CL    ;__BRAND_NAME__NinosZapatillasUrbanas_CL      ;"__CMS_STORE_PREFIX__ NinosZapatillasUrbanas"    ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasUrbanas    ;;__BRAND_NAME__NinosZapatillasUrbanas
+;;__BRAND_NAME__NinosZapatillasRunning_CL    ;__BRAND_NAME__NinosZapatillasRunning_CL      ;"__CMS_STORE_PREFIX__ NinosZapatillasRunning"    ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasRunning    ;;__BRAND_NAME__NinosZapatillasRunning
+;;__BRAND_NAME__NinosZapatillasTraining_CL   ;__BRAND_NAME__NinosZapatillasTraining_CL     ;"__CMS_STORE_PREFIX__ NinosZapatillasTraining"   ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasTraining   ;;__BRAND_NAME__NinosZapatillasTraining
+;;__BRAND_NAME__NinosZapatillasOutdoor_CL    ;__BRAND_NAME__NinosZapatillasOutdoor_CL      ;"__CMS_STORE_PREFIX__ NinosZapatillasOutdoor"    ;/Open-Catalogue/c/__BRAND_NAME__NinosZapatillasOutdoor    ;;__BRAND_NAME__NinosZapatillasOutdoor
+;;__BRAND_NAME__NinosVestuarioPoleras_CL     ;__BRAND_NAME__NinosVestuarioPoleras_CL       ;"__CMS_STORE_PREFIX__ NinosVestuarioPoleras"     ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuarioPoleras     ;;__BRAND_NAME__NinosVestuarioPoleras
+;;__BRAND_NAME__NinosVestuarioCamisetas_CL   ;__BRAND_NAME__NinosVestuarioCamisetas_CL     ;"__CMS_STORE_PREFIX__ NinosVestuarioCamisetas"   ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuarioCamisetas   ;;__BRAND_NAME__NinosVestuarioCamisetas
+;;__BRAND_NAME__NinosVestuarioPolerones_CL   ;__BRAND_NAME__NinosVestuarioPolerones_CL     ;"__CMS_STORE_PREFIX__ NinosVestuarioPolerones"   ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuarioPolerones   ;;__BRAND_NAME__NinosVestuarioPolerones
+;;__BRAND_NAME__NinosVestuarioConjuntos_CL   ;__BRAND_NAME__NinosVestuarioConjuntos_CL     ;"__CMS_STORE_PREFIX__ NinosVestuarioConjuntos"   ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuarioConjuntos   ;;__BRAND_NAME__NinosVestuarioConjuntos
+;;__BRAND_NAME__NinosVestuarioPantalones_CL  ;__BRAND_NAME__NinosVestuarioPantalones_CL    ;"__CMS_STORE_PREFIX__ NinosVestuarioPantalones"  ;/Open-Catalogue/c/__BRAND_NAME__NinosVestuarioPantalones  ;;__BRAND_NAME__NinosVestuarioPantalones
+;;__BRAND_NAME__NinosAccesoriosBalones_CL    ;__BRAND_NAME__NinosAccesoriosBalones_CL      ;"__CMS_STORE_PREFIX__ NinosAccesoriosBalones"    ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosBalones    ;;__BRAND_NAME__NinosAccesoriosBalones
+;;__BRAND_NAME__NinosAccesoriosCanilleras_CL ;__BRAND_NAME__NinosAccesoriosCanilleras_CL   ;"__CMS_STORE_PREFIX__ NinosAccesoriosCanilleras" ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosCanilleras ;;__BRAND_NAME__NinosAccesoriosCanilleras
+;;__BRAND_NAME__NinosAccesoriosGuantes_CL    ;__BRAND_NAME__NinosAccesoriosGuantes_CL      ;"__CMS_STORE_PREFIX__ NinosAccesoriosGuantes"    ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosGuantes    ;;__BRAND_NAME__NinosAccesoriosGuantes
+;;__BRAND_NAME__NinosAccesoriosMochilas_CL   ;__BRAND_NAME__NinosAccesoriosMochilas_CL     ;"__CMS_STORE_PREFIX__ NinosAccesoriosMochilas"   ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosMochilas   ;;__BRAND_NAME__NinosAccesoriosMochilas
+;;__BRAND_NAME__NinosAccesoriosJockey_CL     ;__BRAND_NAME__NinosAccesoriosJockey_CL       ;"__CMS_STORE_PREFIX__ NinosAccesoriosJockey"     ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosJockey     ;;__BRAND_NAME__NinosAccesoriosJockey
+;;__BRAND_NAME__NinosAccesoriosCalcetas_CL   ;__BRAND_NAME__NinosAccesoriosCalcetas_CL     ;"__CMS_STORE_PREFIX__ NinosAccesoriosCalcetas"   ;/Open-Catalogue/c/__BRAND_NAME__NinosAccesoriosCalcetas   ;;__BRAND_NAME__NinosAccesoriosCalcetas
+
 # --------------------------------------------------------------------------
 # CMSNavigationNode
 # --------------------------------------------------------------------------
-INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;
-;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;Sale Links;
-;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;Accesorios Links;
-;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;Marcas Links;
-;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;Niños Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;Gymsack  Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;New Balance Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;Calcetas  Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;Protección y limpieza  Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;Asics Tiger Links;
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;Zapatillas Niños Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;Beanie  Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;Jordan Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;Saucony Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;Calzado Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;Vans Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;Calzado Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;Snapback  Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;Vestuario Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;Adidas Originals Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;Calzado Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;Nike Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;Vestuario Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;Puma Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;Accesorios Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;Reebok Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;Vestuario Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos  Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;Crep Links;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;Bananos  Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;Under Armour Links;
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;Converse Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;Petos Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;Shorts Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;Zapatillas Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;Polerones Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;Sandalias Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;Zapatillas Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;Pantalones y Calzas Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;Polerones Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;Zapatillas Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;Poleras Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;Pantalones y Calzas Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;Sandalias Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;Pantalones Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;Beanie Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;Poleras Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;Sandalias Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;Protección y limpieza Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;Polerones Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Hombre Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;Bananos Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;Poleras Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;Shorts Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;Chaquetas y Parkas Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;Shorts Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;Petos  Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;Gymsack Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;Calcetas Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;Vestidos Mujer Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;Snapback Oferta Links;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos Oferta Links;
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];&nodeRef;name;itemLink
+;;__BRAND_NAME__Marcas_NN                    ;__BRAND_NAME__Marcas_NN                      ;"__CMS_STORE_PREFIX__ Marcas"                    ;/
+;;__BRAND_NAME__Hombre_NN                    ;__BRAND_NAME__Hombre_NN                      ;"__CMS_STORE_PREFIX__ Hombre"                    ;/
+;;__BRAND_NAME__Mujer_NN                     ;__BRAND_NAME__Mujer_NN                       ;"__CMS_STORE_PREFIX__ Mujer"                     ;/
+;;__BRAND_NAME__Ninos_NN                     ;__BRAND_NAME__Ninos_NN                       ;"__CMS_STORE_PREFIX__ Ninos"                     ;/
+;;__BRAND_NAME__Accesorios_NN                ;__BRAND_NAME__Accesorios_NN                  ;"__CMS_STORE_PREFIX__ Accesorios"                ;/
+;;__BRAND_NAME__Ofertas_NN                   ;__BRAND_NAME__Ofertas_NN                     ;"__CMS_STORE_PREFIX__ Ofertas"                   ;/
+;;__BRAND_NAME__MarcasAdidas_NN              ;__BRAND_NAME__MarcasAdidas_NN                ;"__CMS_STORE_PREFIX__ Adidas"                    ;/
+;;__BRAND_NAME__MarcasConverse_NN            ;__BRAND_NAME__MarcasConverse_NN              ;"__CMS_STORE_PREFIX__ Converse"                  ;/
+;;__BRAND_NAME__MarcasDCshoes_NN             ;__BRAND_NAME__MarcasDCshoes_NN               ;"__CMS_STORE_PREFIX__ DCshoes"                   ;/
+;;__BRAND_NAME__MarcasFila_NN                ;__BRAND_NAME__MarcasFila_NN                  ;"__CMS_STORE_PREFIX__ Fila"                      ;/
+;;__BRAND_NAME__MarcasLotto_NN               ;__BRAND_NAME__MarcasLotto_NN                 ;"__CMS_STORE_PREFIX__ Lotto"                     ;/
+;;__BRAND_NAME__MarcasMitre_NN               ;__BRAND_NAME__MarcasMitre_NN                 ;"__CMS_STORE_PREFIX__ Mitre"                     ;/
+;;__BRAND_NAME__MarcasMolten_NN              ;__BRAND_NAME__MarcasMolten_NN                ;"__CMS_STORE_PREFIX__ Molten"                    ;/
+;;__BRAND_NAME__MarcasNewBalance_NN          ;__BRAND_NAME__MarcasNewBalance_NN            ;"__CMS_STORE_PREFIX__ NewBalance"                ;/
+;;__BRAND_NAME__MarcasNike_NN                ;__BRAND_NAME__MarcasNike_NN                  ;"__CMS_STORE_PREFIX__ Nike"                      ;/
+;;__BRAND_NAME__MarcasPuma_NN                ;__BRAND_NAME__MarcasPuma_NN                  ;"__CMS_STORE_PREFIX__ Puma"                      ;/
+;;__BRAND_NAME__MarcasReebok_NN              ;__BRAND_NAME__MarcasReebok_NN                ;"__CMS_STORE_PREFIX__ Reebok"                    ;/
+;;__BRAND_NAME__MarcasSkechers_NN            ;__BRAND_NAME__MarcasSkechers_NN              ;"__CMS_STORE_PREFIX__ Skechers"                  ;/
+;;__BRAND_NAME__MarcasSpalding_NN            ;__BRAND_NAME__MarcasSpalding_NN              ;"__CMS_STORE_PREFIX__ Spalding"                  ;/
+;;__BRAND_NAME__MarcasUmbro_NN               ;__BRAND_NAME__MarcasUmbro_NN                 ;"__CMS_STORE_PREFIX__ Umbro"                     ;/
+;;__BRAND_NAME__MarcasUnderArmour_NN         ;__BRAND_NAME__MarcasUnderArmour_NN           ;"__CMS_STORE_PREFIX__ UnderArmour"               ;/
+;;__BRAND_NAME__MarcasVans_NN                ;__BRAND_NAME__MarcasVans_NN                  ;"__CMS_STORE_PREFIX__ Vans"                      ;/
+;;__BRAND_NAME__HombreZapatillas_NN          ;__BRAND_NAME__HombreZapatillas_NN            ;"__CMS_STORE_PREFIX__ Zapatillas"                ;/
+;;__BRAND_NAME__HombreVestuario_NN           ;__BRAND_NAME__HombreVestuario_NN             ;"__CMS_STORE_PREFIX__ Vestuario"                 ;/
+;;__BRAND_NAME__MujerZapatillas_NN           ;__BRAND_NAME__MujerZapatillas_NN             ;"__CMS_STORE_PREFIX__ Zapatillas"                ;/
+;;__BRAND_NAME__MujerVestuario_NN            ;__BRAND_NAME__MujerVestuario_NN              ;"__CMS_STORE_PREFIX__ Vestuario"                 ;/
+;;__BRAND_NAME__NinosZapatillas_NN           ;__BRAND_NAME__NinosZapatillas_NN             ;"__CMS_STORE_PREFIX__ Zapatillas"                ;/
+;;__BRAND_NAME__NinosVestuario_NN            ;__BRAND_NAME__NinosVestuario_NN              ;"__CMS_STORE_PREFIX__ Vestuario"                 ;/
+;;__BRAND_NAME__NinosAccesorios_NN           ;__BRAND_NAME__NinosAccesorios_NN             ;"__CMS_STORE_PREFIX__ Accesorios"                ;/
+;;__BRAND_NAME__AccesoriosBalones_NN         ;__BRAND_NAME__AccesoriosBalones_NN           ;"__CMS_STORE_PREFIX__ Balones"                   ;/
+;;__BRAND_NAME__AccesoriosBananos_NN         ;__BRAND_NAME__AccesoriosBananos_NN           ;"__CMS_STORE_PREFIX__ Bananos"                   ;/
+;;__BRAND_NAME__AccesoriosBeanies_NN         ;__BRAND_NAME__AccesoriosBeanies_NN           ;"__CMS_STORE_PREFIX__ Beanies"                   ;/
+;;__BRAND_NAME__AccesoriosCalcetas_NN        ;__BRAND_NAME__AccesoriosCalcetas_NN          ;"__CMS_STORE_PREFIX__ Calcetas"                  ;/
+;;__BRAND_NAME__AccesoriosCanilleras_NN      ;__BRAND_NAME__AccesoriosCanilleras_NN        ;"__CMS_STORE_PREFIX__ Canilleras"                ;/
+;;__BRAND_NAME__AccesoriosGuantes_NN         ;__BRAND_NAME__AccesoriosGuantes_NN           ;"__CMS_STORE_PREFIX__ Guantes"                   ;/
+;;__BRAND_NAME__AccesoriosGymsack_NN         ;__BRAND_NAME__AccesoriosGymsack_NN           ;"__CMS_STORE_PREFIX__ Gymsack"                   ;/
+;;__BRAND_NAME__AccesoriosJockey_NN          ;__BRAND_NAME__AccesoriosJockey_NN            ;"__CMS_STORE_PREFIX__ Jockey"                    ;/
+;;__BRAND_NAME__AccesoriosMochilasBolsos_NN  ;__BRAND_NAME__AccesoriosMochilasBolsos_NN    ;"__CMS_STORE_PREFIX__ MochilasBolsos"            ;/
+;;__BRAND_NAME__AccesoriosRodilleras_NN      ;__BRAND_NAME__AccesoriosRodilleras_NN        ;"__CMS_STORE_PREFIX__ Rodilleras"                ;/
+;;__BRAND_NAME__AccesoriosToallas_NN         ;__BRAND_NAME__AccesoriosToallas_NN           ;"__CMS_STORE_PREFIX__ Toallas"                   ;/
+;;__BRAND_NAME__OfertasZapatillas_NN         ;__BRAND_NAME__OfertasZapatillas_NN           ;"__CMS_STORE_PREFIX__ Zapatillas"                ;/
+;;__BRAND_NAME__OfertasVestuario_NN          ;__BRAND_NAME__OfertasVestuario_NN            ;"__CMS_STORE_PREFIX__ Vestuario"                 ;/
+;;__BRAND_NAME__OfertasAccesorios_NN         ;__BRAND_NAME__OfertasAccesorios_NN           ;"__CMS_STORE_PREFIX__ Accesorios"                ;/
+;;__BRAND_NAME__HombreZapatillasFutbol_NN    ;__BRAND_NAME__HombreZapatillasFutbol_NN      ;"__CMS_STORE_PREFIX__ Futbol"                    ;/
+;;__BRAND_NAME__HombreZapatillasBaby_NN      ;__BRAND_NAME__HombreZapatillasBaby_NN        ;"__CMS_STORE_PREFIX__ Baby"                      ;/
+;;__BRAND_NAME__HombreZapatillasRunning_NN   ;__BRAND_NAME__HombreZapatillasRunning_NN     ;"__CMS_STORE_PREFIX__ Running"                   ;/
+;;__BRAND_NAME__HombreZapatillasOutdoor_NN   ;__BRAND_NAME__HombreZapatillasOutdoor_NN     ;"__CMS_STORE_PREFIX__ Outdoor"                   ;/
+;;__BRAND_NAME__HombreZapatillasTraining_NN  ;__BRAND_NAME__HombreZapatillasTraining_NN    ;"__CMS_STORE_PREFIX__ Training"                  ;/
+;;__BRAND_NAME__HombreZapatillasBasquetbol_NN;__BRAND_NAME__HombreZapatillasBasquetbol_NN  ;"__CMS_STORE_PREFIX__ Basquetbol"                ;/
+;;__BRAND_NAME__HombreZapatillasUrbanas_NN   ;__BRAND_NAME__HombreZapatillasUrbanas_NN     ;"__CMS_STORE_PREFIX__ Urbanas"                   ;/
+;;__BRAND_NAME__HombreVestuarioCamisetas_NN  ;__BRAND_NAME__HombreVestuarioCamisetas_NN    ;"__CMS_STORE_PREFIX__ Camisetas"                 ;/
+;;__BRAND_NAME__HombreVestuarioPoleras_NN    ;__BRAND_NAME__HombreVestuarioPoleras_NN      ;"__CMS_STORE_PREFIX__ Poleras"                   ;/
+;;__BRAND_NAME__HombreVestuarioPantalones_NN ;__BRAND_NAME__HombreVestuarioPantalones_NN   ;"__CMS_STORE_PREFIX__ Pantalones"                ;/
+;;__BRAND_NAME__HombreVestuarioShorts_NN     ;__BRAND_NAME__HombreVestuarioShorts_NN       ;"__CMS_STORE_PREFIX__ Shorts"                    ;/
+;;__BRAND_NAME__HombreVestuarioPolerones_NN  ;__BRAND_NAME__HombreVestuarioPolerones_NN    ;"__CMS_STORE_PREFIX__ Polerones"                 ;/
+;;__BRAND_NAME__MujerZapatillasRunning_NN    ;__BRAND_NAME__MujerZapatillasRunning_NN      ;"__CMS_STORE_PREFIX__ Running"                   ;/
+;;__BRAND_NAME__MujerZapatillasOutdoor_NN    ;__BRAND_NAME__MujerZapatillasOutdoor_NN      ;"__CMS_STORE_PREFIX__ Outdoor"                   ;/
+;;__BRAND_NAME__MujerZapatillasTraining_NN   ;__BRAND_NAME__MujerZapatillasTraining_NN     ;"__CMS_STORE_PREFIX__ Training"                  ;/
+;;__BRAND_NAME__MujerZapatillasUrbanas_NN    ;__BRAND_NAME__MujerZapatillasUrbanas_NN      ;"__CMS_STORE_PREFIX__ Urbanas"                   ;/
+;;__BRAND_NAME__MujerVestuarioPoleras_NN     ;__BRAND_NAME__MujerVestuarioPoleras_NN       ;"__CMS_STORE_PREFIX__ Poleras"                   ;/
+;;__BRAND_NAME__MujerVestuarioPolerones_NN   ;__BRAND_NAME__MujerVestuarioPolerones_NN     ;"__CMS_STORE_PREFIX__ Polerones"                 ;/
+;;__BRAND_NAME__MujerVestuarioShorts_NN      ;__BRAND_NAME__MujerVestuarioShorts_NN        ;"__CMS_STORE_PREFIX__ Shorts"                    ;/
+;;__BRAND_NAME__MujerAccesoriosPantalones_NN ;__BRAND_NAME__MujerAccesoriosPantalones_NN   ;"__CMS_STORE_PREFIX__ Pantalones"                ;/
+;;__BRAND_NAME__NinosZapatillasFutbol_NN     ;__BRAND_NAME__NinosZapatillasFutbol_NN       ;"__CMS_STORE_PREFIX__ Futbol"                    ;/
+;;__BRAND_NAME__NinosZapatillasBaby_NN       ;__BRAND_NAME__NinosZapatillasBaby_NN         ;"__CMS_STORE_PREFIX__ Baby"                      ;/
+;;__BRAND_NAME__NinosZapatillasBasquetbol_NN ;__BRAND_NAME__NinosZapatillasBasquetbol_NN   ;"__CMS_STORE_PREFIX__ Basquetbol"                ;/
+;;__BRAND_NAME__NinosZapatillasUrbanas_NN    ;__BRAND_NAME__NinosZapatillasUrbanas_NN      ;"__CMS_STORE_PREFIX__ Urbanas"                   ;/
+;;__BRAND_NAME__NinosZapatillasRunning_NN    ;__BRAND_NAME__NinosZapatillasRunning_NN      ;"__CMS_STORE_PREFIX__ Running"                   ;/
+;;__BRAND_NAME__NinosZapatillasTraining_NN   ;__BRAND_NAME__NinosZapatillasTraining_NN     ;"__CMS_STORE_PREFIX__ Training"                  ;/
+;;__BRAND_NAME__NinosZapatillasOutdoor_NN    ;__BRAND_NAME__NinosZapatillasOutdoor_NN      ;"__CMS_STORE_PREFIX__ Outdoor"                   ;/
+;;__BRAND_NAME__NinosVestuarioPoleras_NN     ;__BRAND_NAME__NinosVestuarioPoleras_NN       ;"__CMS_STORE_PREFIX__ Poleras"                   ;/
+;;__BRAND_NAME__NinosVestuarioCamisetas_NN   ;__BRAND_NAME__NinosVestuarioCamisetas_NN     ;"__CMS_STORE_PREFIX__ Camisetas"                 ;/
+;;__BRAND_NAME__NinosVestuarioPolerones_NN   ;__BRAND_NAME__NinosVestuarioPolerones_NN     ;"__CMS_STORE_PREFIX__ Polerones"                 ;/
+;;__BRAND_NAME__NinosVestuarioConjuntos_NN   ;__BRAND_NAME__NinosVestuarioConjuntos_NN     ;"__CMS_STORE_PREFIX__ Conjuntos"                 ;/
+;;__BRAND_NAME__NinosVestuarioPantalones_NN  ;__BRAND_NAME__NinosVestuarioPantalones_NN    ;"__CMS_STORE_PREFIX__ Pantalones"                ;/
+;;__BRAND_NAME__NinosAccesoriosBalones_NN    ;__BRAND_NAME__NinosAccesoriosBalones_NN      ;"__CMS_STORE_PREFIX__ Balones"                   ;/
+;;__BRAND_NAME__NinosAccesoriosCanilleras_NN ;__BRAND_NAME__NinosAccesoriosCanilleras_NN   ;"__CMS_STORE_PREFIX__ Canilleras"                ;/
+;;__BRAND_NAME__NinosAccesoriosGuantes_NN    ;__BRAND_NAME__NinosAccesoriosGuantes_NN      ;"__CMS_STORE_PREFIX__ Guantes"                   ;/
+;;__BRAND_NAME__NinosAccesoriosMochilas_NN   ;__BRAND_NAME__NinosAccesoriosMochilas_NN     ;"__CMS_STORE_PREFIX__ Mochilas"                  ;/
+;;__BRAND_NAME__NinosAccesoriosJockey_NN     ;__BRAND_NAME__NinosAccesoriosJockey_NN       ;"__CMS_STORE_PREFIX__ Jockey"                    ;/
+;;__BRAND_NAME__NinosAccesoriosCalcetas_NN   ;__BRAND_NAME__NinosAccesoriosCalcetas_NN     ;"__CMS_STORE_PREFIX__ Calcetas"                  ;/
+
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];children(&nodeRef);
+;;__BRAND_NAME__Marcas_NN;__BRAND_NAME__MarcasAdidas_NN,__BRAND_NAME__MarcasConverse_NN,__BRAND_NAME__MarcasDCshoes_NN,__BRAND_NAME__MarcasFila_NN,__BRAND_NAME__MarcasLotto_NN,__BRAND_NAME__MarcasMitre_NN,__BRAND_NAME__MarcasMolten_NN,__BRAND_NAME__MarcasNewBalance_NN,__BRAND_NAME__MarcasNike_NN,__BRAND_NAME__MarcasPuma_NN,__BRAND_NAME__MarcasReebok_NN,__BRAND_NAME__MarcasSkechers_NN,__BRAND_NAME__MarcasSpalding_NN,__BRAND_NAME__MarcasUmbro_NN,__BRAND_NAME__MarcasUnderArmour_NN,__BRAND_NAME__MarcasVans_NN
+
+;;__BRAND_NAME__Hombre_NN;__BRAND_NAME__HombreZapatillas_NN,__BRAND_NAME__HombreVestuario_NN
+
+;;__BRAND_NAME__Mujer_NN;__BRAND_NAME__MujerZapatillas_NN,__BRAND_NAME__MujerVestuario_NN
+
+;;__BRAND_NAME__Ninos_NN;__BRAND_NAME__NinosZapatillas_NN,__BRAND_NAME__NinosVestuario_NN,__BRAND_NAME__NinosAccesorios_NN
+
+;;__BRAND_NAME__Accesorios_NN;__BRAND_NAME__AccesoriosBalones_NN,__BRAND_NAME__AccesoriosBananos_NN,__BRAND_NAME__AccesoriosBeanies_NN,__BRAND_NAME__AccesoriosCalcetas_NN,__BRAND_NAME__AccesoriosCanilleras_NN,__BRAND_NAME__AccesoriosGuantes_NN,__BRAND_NAME__AccesoriosGymsack_NN,__BRAND_NAME__AccesoriosJockey_NN,__BRAND_NAME__AccesoriosMochilasBolsos_NN,__BRAND_NAME__AccesoriosRodilleras_NN,__BRAND_NAME__AccesoriosToallas_NN
+
+;;__BRAND_NAME__Ofertas_NN;__BRAND_NAME__OfertasZapatillas_NN,__BRAND_NAME__OfertasVestuario_NN,__BRAND_NAME__OfertasAccesorios_NN
+
+;;__BRAND_NAME__HombreZapatillas_NN;__BRAND_NAME__HombreZapatillasFutbol_NN,__BRAND_NAME__HombreZapatillasBaby_NN,__BRAND_NAME__HombreZapatillasRunning_NN,__BRAND_NAME__HombreZapatillasOutdoor_NN,__BRAND_NAME__HombreZapatillasTraining_NN,__BRAND_NAME__HombreZapatillasBasquetbol_NN,__BRAND_NAME__HombreZapatillasUrbanas_NN
+;;__BRAND_NAME__HombreVestuario_NN;__BRAND_NAME__HombreVestuarioCamisetas_NN,__BRAND_NAME__HombreVestuarioPoleras_NN,__BRAND_NAME__HombreVestuarioPantalones_NN,__BRAND_NAME__HombreVestuarioShorts_NN,__BRAND_NAME__HombreVestuarioPolerones_NN
+
+;;__BRAND_NAME__MujerZapatillas_NN;__BRAND_NAME__MujerZapatillasRunning_NN,__BRAND_NAME__MujerZapatillasOutdoor_NN,__BRAND_NAME__MujerZapatillasTraining_NN,__BRAND_NAME__MujerZapatillasUrbanas_NN
+;;__BRAND_NAME__MujerVestuario_NN;__BRAND_NAME__MujerVestuarioPoleras_NN,__BRAND_NAME__MujerVestuarioPolerones_NN,__BRAND_NAME__MujerVestuarioShorts_NN,__BRAND_NAME__MujerAccesoriosPantalones_NN
+
+;;__BRAND_NAME__NinosZapatillas_NN;__BRAND_NAME__NinosZapatillasFutbol_NN,__BRAND_NAME__NinosZapatillasBaby_NN,__BRAND_NAME__NinosZapatillasBasquetbol_NN,__BRAND_NAME__NinosZapatillasUrbanas_NN,__BRAND_NAME__NinosZapatillasRunning_NN,__BRAND_NAME__NinosZapatillasTraining_NN,__BRAND_NAME__NinosZapatillasOutdoor_NN
+;;__BRAND_NAME__NinosVestuario_NN;__BRAND_NAME__NinosVestuarioPoleras_NN,__BRAND_NAME__NinosVestuarioCamisetas_NN,__BRAND_NAME__NinosVestuarioPolerones_NN,__BRAND_NAME__NinosVestuarioConjuntos_NN,__BRAND_NAME__NinosVestuarioPantalones_NN
+;;__BRAND_NAME__NinosAccesorios_NN;__BRAND_NAME__NinosAccesoriosBalones_NN,__BRAND_NAME__NinosAccesoriosCanilleras_NN,__BRAND_NAME__NinosAccesoriosGuantes_NN,__BRAND_NAME__NinosAccesoriosMochilas_NN,__BRAND_NAME__NinosAccesoriosJockey_NN,__BRAND_NAME__NinosAccesoriosCalcetas_NN
 # --------------------------------------------------------------------------
 # CMSNavigationEntry
 # --------------------------------------------------------------------------
-INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);navigationNode(CMSNavigationNode.uid,CMSNavigationNode.$contentCV)
-;__SAMPLE_CATEGORY_PREFIX__Sale_NavNodeEntry;;Sale Node Entry;__SAMPLE_CATEGORY_PREFIX__Sale_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNodeEntry;;Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__Hombre_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNodeEntry;;Accesorios Node Entry;__SAMPLE_CATEGORY_PREFIX__Accesorios_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNodeEntry;;Marcas Node Entry;__SAMPLE_CATEGORY_PREFIX__Marcas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNodeEntry;;Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__Mujer_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNodeEntry;;Niños Node Entry;__SAMPLE_CATEGORY_PREFIX__Ninos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNodeEntry;;Gymsack  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNodeEntry;;New Balance Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNodeEntry;;Calcetas  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNodeEntry;;Protección y limpieza  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNodeEntry;;Asics Tiger Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNodeEntry;;Zapatillas Niños Node Entry;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNodeEntry;;Beanie  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNodeEntry;;Jordan Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNodeEntry;;Saucony Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNodeEntry;;Calzado Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNodeEntry;;Vans Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasVans_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNodeEntry;;Calzado Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNodeEntry;;Snapback  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNodeEntry;;Vestuario Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNodeEntry;;Adidas Originals Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNodeEntry;;Calzado Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNodeEntry;;Nike Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasNike_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNodeEntry;;Vestuario Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNodeEntry;;Puma Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNodeEntry;;Accesorios Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNodeEntry;;Reebok Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNodeEntry;;Vestuario Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNodeEntry;;Mochilas y Bolsos  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNodeEntry;;Crep Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNodeEntry;;Bananos  Node Entry;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNodeEntry;;Under Armour Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNodeEntry;;Converse Node Entry;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNodeEntry;;Petos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNodeEntry;;Shorts Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNodeEntry;;Zapatillas Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNodeEntry;;Polerones Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNodeEntry;;Sandalias Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNodeEntry;;Zapatillas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNodeEntry;;Pantalones y Calzas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNodeEntry;;Polerones Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNodeEntry;;Zapatillas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNodeEntry;;Poleras Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNodeEntry;;Pantalones y Calzas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNodeEntry;;Sandalias Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNodeEntry;;Pantalones Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNodeEntry;;Beanie Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNodeEntry;;Poleras Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNodeEntry;;Sandalias Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNodeEntry;;Protección y limpieza Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNodeEntry;;Polerones Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNodeEntry;;Chaquetas y Parkas Hombre Node Entry;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNodeEntry;;Bananos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNodeEntry;;Poleras Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNodeEntry;;Shorts Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNodeEntry;;Chaquetas y Parkas Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNodeEntry;;Chaquetas y Parkas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNodeEntry;;Shorts Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNodeEntry;;Petos  Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNodeEntry;;Gymsack Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNodeEntry;;Calcetas Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNodeEntry;;Vestidos Mujer Node Entry;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNodeEntry;;Snapback Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNodeEntry;;Mochilas y Bolsos Oferta Node Entry;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_CategoryLink;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode
+INSERT_UPDATE CMSNavigationEntry;$contentCV[unique = true];uid[unique = true];name;item(&linkRef);navigationNode(&nodeRef)
+;;__BRAND_NAME__Marcas_NE                      ;"__CMS_STORE_PREFIX__ Marcas"                    ;__BRAND_NAME__Marcas_CL                      ;__BRAND_NAME__Marcas_NN                      ;
+;;__BRAND_NAME__Hombre_NE                      ;"__CMS_STORE_PREFIX__ Hombre"                    ;__BRAND_NAME__Hombre_CL                      ;__BRAND_NAME__Hombre_NN                      ;
+;;__BRAND_NAME__Mujer_NE                       ;"__CMS_STORE_PREFIX__ Mujer"                     ;__BRAND_NAME__Mujer_CL                       ;__BRAND_NAME__Mujer_NN                       ;
+;;__BRAND_NAME__Ninos_NE                       ;"__CMS_STORE_PREFIX__ Ninos"                     ;__BRAND_NAME__Ninos_CL                       ;__BRAND_NAME__Ninos_NN                       ;
+;;__BRAND_NAME__Accesorios_NE                  ;"__CMS_STORE_PREFIX__ Accesorios"                ;__BRAND_NAME__Accesorios_CL                  ;__BRAND_NAME__Accesorios_NN                  ;
+;;__BRAND_NAME__Ofertas_NE                     ;"__CMS_STORE_PREFIX__ Ofertas"                   ;__BRAND_NAME__Ofertas_CL                     ;__BRAND_NAME__Ofertas_NN                     ;
+;;__BRAND_NAME__MarcasAdidas_NE                ;"__CMS_STORE_PREFIX__ Adidas"                    ;__BRAND_NAME__MarcasAdidas_CL                ;__BRAND_NAME__MarcasAdidas_NN                ;
+;;__BRAND_NAME__MarcasConverse_NE              ;"__CMS_STORE_PREFIX__ Converse"                  ;__BRAND_NAME__MarcasConverse_CL              ;__BRAND_NAME__MarcasConverse_NN              ;
+;;__BRAND_NAME__MarcasDCshoes_NE               ;"__CMS_STORE_PREFIX__ DC shoes"                  ;__BRAND_NAME__MarcasDCshoes_CL               ;__BRAND_NAME__MarcasDCshoes_NN               ;
+;;__BRAND_NAME__MarcasFila_NE                  ;"__CMS_STORE_PREFIX__ Fila"                      ;__BRAND_NAME__MarcasFila_CL                  ;__BRAND_NAME__MarcasFila_NN                  ;
+;;__BRAND_NAME__MarcasLotto_NE                 ;"__CMS_STORE_PREFIX__ Lotto"                     ;__BRAND_NAME__MarcasLotto_CL                 ;__BRAND_NAME__MarcasLotto_NN                 ;
+;;__BRAND_NAME__MarcasMitre_NE                 ;"__CMS_STORE_PREFIX__ Mitre"                     ;__BRAND_NAME__MarcasMitre_CL                 ;__BRAND_NAME__MarcasMitre_NN                 ;
+;;__BRAND_NAME__MarcasMolten_NE                ;"__CMS_STORE_PREFIX__ Molten"                    ;__BRAND_NAME__MarcasMolten_CL                ;__BRAND_NAME__MarcasMolten_NN                ;
+;;__BRAND_NAME__MarcasNewBalance_NE            ;"__CMS_STORE_PREFIX__ NewBalance"                ;__BRAND_NAME__MarcasNewBalance_CL            ;__BRAND_NAME__MarcasNewBalance_NN            ;
+;;__BRAND_NAME__MarcasNike_NE                  ;"__CMS_STORE_PREFIX__ Nike"                      ;__BRAND_NAME__MarcasNike_CL                  ;__BRAND_NAME__MarcasNike_NN                  ;
+;;__BRAND_NAME__MarcasPuma_NE                  ;"__CMS_STORE_PREFIX__ Puma"                      ;__BRAND_NAME__MarcasPuma_CL                  ;__BRAND_NAME__MarcasPuma_NN                  ;
+;;__BRAND_NAME__MarcasReebok_NE                ;"__CMS_STORE_PREFIX__ Reebok"                    ;__BRAND_NAME__MarcasReebok_CL                ;__BRAND_NAME__MarcasReebok_NN                ;
+;;__BRAND_NAME__MarcasSkechers_NE              ;"__CMS_STORE_PREFIX__ Skechers"                  ;__BRAND_NAME__MarcasSkechers_CL              ;__BRAND_NAME__MarcasSkechers_NN              ;
+;;__BRAND_NAME__MarcasSpalding_NE              ;"__CMS_STORE_PREFIX__ Spalding"                  ;__BRAND_NAME__MarcasSpalding_CL              ;__BRAND_NAME__MarcasSpalding_NN              ;
+;;__BRAND_NAME__MarcasUmbro_NE                 ;"__CMS_STORE_PREFIX__ Umbro"                     ;__BRAND_NAME__MarcasUmbro_CL                 ;__BRAND_NAME__MarcasUmbro_NN                 ;
+;;__BRAND_NAME__MarcasUnderArmour_NE           ;"__CMS_STORE_PREFIX__ Under Armour"              ;__BRAND_NAME__MarcasUnderArmour_CL           ;__BRAND_NAME__MarcasUnderArmour_NN           ;
+;;__BRAND_NAME__MarcasVans_NE                  ;"__CMS_STORE_PREFIX__ Vans"                      ;__BRAND_NAME__MarcasVans_CL                  ;__BRAND_NAME__MarcasVans_NN                  ;
+;;__BRAND_NAME__HombreZapatillas_NE            ;"__CMS_STORE_PREFIX__ Zapatillas"                ;__BRAND_NAME__HombreZapatillas_CL            ;__BRAND_NAME__HombreZapatillas_NN            ;
+;;__BRAND_NAME__HombreVestuario_NE             ;"__CMS_STORE_PREFIX__ Vestuario"                 ;__BRAND_NAME__HombreVestuario_CL             ;__BRAND_NAME__HombreVestuario_NN             ;
+;;__BRAND_NAME__MujerZapatillas_NE             ;"__CMS_STORE_PREFIX__ Zapatillas"                ;__BRAND_NAME__MujerZapatillas_CL             ;__BRAND_NAME__MujerZapatillas_NN             ;
+;;__BRAND_NAME__MujerVestuario_NE              ;"__CMS_STORE_PREFIX__ Vestuario"                 ;__BRAND_NAME__MujerVestuario_CL              ;__BRAND_NAME__MujerVestuario_NN              ;
+;;__BRAND_NAME__NinosZapatillas_NE             ;"__CMS_STORE_PREFIX__ Zapatillas"                ;__BRAND_NAME__NinosZapatillas_CL             ;__BRAND_NAME__NinosZapatillas_NN             ;
+;;__BRAND_NAME__NinosVestuario_NE              ;"__CMS_STORE_PREFIX__ Vestuario"                 ;__BRAND_NAME__NinosVestuario_CL              ;__BRAND_NAME__NinosVestuario_NN              ;
+;;__BRAND_NAME__NinosAccesorios_NE             ;"__CMS_STORE_PREFIX__ Accesorios"                ;__BRAND_NAME__NinosAccesorios_CL             ;__BRAND_NAME__NinosAccesorios_NN             ;
+;;__BRAND_NAME__AccesoriosBalones_NE           ;"__CMS_STORE_PREFIX__ Balones"                   ;__BRAND_NAME__AccesoriosBalones_CL           ;__BRAND_NAME__AccesoriosBalones_NN           ;
+;;__BRAND_NAME__AccesoriosBananos_NE           ;"__CMS_STORE_PREFIX__ Bananos"                   ;__BRAND_NAME__AccesoriosBananos_CL           ;__BRAND_NAME__AccesoriosBananos_NN           ;
+;;__BRAND_NAME__AccesoriosBeanies_NE           ;"__CMS_STORE_PREFIX__ Beanies"                   ;__BRAND_NAME__AccesoriosBeanies_CL           ;__BRAND_NAME__AccesoriosBeanies_NN           ;
+;;__BRAND_NAME__AccesoriosCalcetas_NE          ;"__CMS_STORE_PREFIX__ Calcetas"                  ;__BRAND_NAME__AccesoriosCalcetas_CL          ;__BRAND_NAME__AccesoriosCalcetas_NN          ;
+;;__BRAND_NAME__AccesoriosCanilleras_NE        ;"__CMS_STORE_PREFIX__ Canilleras"                ;__BRAND_NAME__AccesoriosCanilleras_CL        ;__BRAND_NAME__AccesoriosCanilleras_NN        ;
+;;__BRAND_NAME__AccesoriosGuantes_NE           ;"__CMS_STORE_PREFIX__ Guantes"                   ;__BRAND_NAME__AccesoriosGuantes_CL           ;__BRAND_NAME__AccesoriosGuantes_NN           ;
+;;__BRAND_NAME__AccesoriosGymsack_NE           ;"__CMS_STORE_PREFIX__ Gymsack"                   ;__BRAND_NAME__AccesoriosGymsack_CL           ;__BRAND_NAME__AccesoriosGymsack_NN           ;
+;;__BRAND_NAME__AccesoriosJockey_NE            ;"__CMS_STORE_PREFIX__ Jockey"                    ;__BRAND_NAME__AccesoriosJockey_CL            ;__BRAND_NAME__AccesoriosJockey_NN            ;
+;;__BRAND_NAME__AccesoriosMochilasBolsos_NE    ;"__CMS_STORE_PREFIX__ MochilasBolsos"            ;__BRAND_NAME__AccesoriosMochilasBolsos_CL    ;__BRAND_NAME__AccesoriosMochilasBolsos_NN    ;
+;;__BRAND_NAME__AccesoriosRodilleras_NE        ;"__CMS_STORE_PREFIX__ Rodilleras"                ;__BRAND_NAME__AccesoriosRodilleras_CL        ;__BRAND_NAME__AccesoriosRodilleras_NN        ;
+;;__BRAND_NAME__AccesoriosToallas_NE           ;"__CMS_STORE_PREFIX__ Toallas"                   ;__BRAND_NAME__AccesoriosToallas_CL           ;__BRAND_NAME__AccesoriosToallas_NN           ;
+;;__BRAND_NAME__OfertasZapatillas_NE           ;"__CMS_STORE_PREFIX__ Zapatillas"                ;__BRAND_NAME__OfertasZapatillas_CL           ;__BRAND_NAME__OfertasZapatillas_NN           ;
+;;__BRAND_NAME__OfertasVestuario_NE            ;"__CMS_STORE_PREFIX__ Vestuario"                 ;__BRAND_NAME__OfertasVestuario_CL            ;__BRAND_NAME__OfertasVestuario_NN            ;
+;;__BRAND_NAME__OfertasAccesorios_NE           ;"__CMS_STORE_PREFIX__ Accesorios"                ;__BRAND_NAME__OfertasAccesorios_CL           ;__BRAND_NAME__OfertasAccesorios_NN           ;
+;;__BRAND_NAME__HombreZapatillasFutbol_NE      ;"__CMS_STORE_PREFIX__ Futbol"                    ;__BRAND_NAME__HombreZapatillasFutbol_CL      ;__BRAND_NAME__HombreZapatillasFutbol_NN      ;
+;;__BRAND_NAME__HombreZapatillasBaby_NE        ;"__CMS_STORE_PREFIX__ Baby"                      ;__BRAND_NAME__HombreZapatillasBaby_CL        ;__BRAND_NAME__HombreZapatillasBaby_NN        ;
+;;__BRAND_NAME__HombreZapatillasRunning_NE     ;"__CMS_STORE_PREFIX__ Running"                   ;__BRAND_NAME__HombreZapatillasRunning_CL     ;__BRAND_NAME__HombreZapatillasRunning_NN     ;
+;;__BRAND_NAME__HombreZapatillasOutdoor_NE     ;"__CMS_STORE_PREFIX__ Outdoor"                   ;__BRAND_NAME__HombreZapatillasOutdoor_CL     ;__BRAND_NAME__HombreZapatillasOutdoor_NN     ;
+;;__BRAND_NAME__HombreZapatillasTraining_NE    ;"__CMS_STORE_PREFIX__ Training"                  ;__BRAND_NAME__HombreZapatillasTraining_CL    ;__BRAND_NAME__HombreZapatillasTraining_NN    ;
+;;__BRAND_NAME__HombreZapatillasBasquetbol_NE  ;"__CMS_STORE_PREFIX__ Basquetbol"                ;__BRAND_NAME__HombreZapatillasBasquetbol_CL  ;__BRAND_NAME__HombreZapatillasBasquetbol_NN  ;
+;;__BRAND_NAME__HombreZapatillasUrbanas_NE     ;"__CMS_STORE_PREFIX__ Urbanas"                   ;__BRAND_NAME__HombreZapatillasUrbanas_CL     ;__BRAND_NAME__HombreZapatillasUrbanas_NN     ;
+;;__BRAND_NAME__HombreVestuarioCamisetas_NE    ;"__CMS_STORE_PREFIX__ Camisetas"                 ;__BRAND_NAME__HombreVestuarioCamisetas_CL    ;__BRAND_NAME__HombreVestuarioCamisetas_NN    ;
+;;__BRAND_NAME__HombreVestuarioPoleras_NE      ;"__CMS_STORE_PREFIX__ Poleras"                   ;__BRAND_NAME__HombreVestuarioPoleras_CL      ;__BRAND_NAME__HombreVestuarioPoleras_NN      ;
+;;__BRAND_NAME__HombreVestuarioPantalones_NE   ;"__CMS_STORE_PREFIX__ Pantalones"                ;__BRAND_NAME__HombreVestuarioPantalones_CL   ;__BRAND_NAME__HombreVestuarioPantalones_NN   ;
+;;__BRAND_NAME__HombreVestuarioShorts_NE       ;"__CMS_STORE_PREFIX__ Shorts"                    ;__BRAND_NAME__HombreVestuarioShorts_CL       ;__BRAND_NAME__HombreVestuarioShorts_NN       ;
+;;__BRAND_NAME__HombreVestuarioPolerones_NE    ;"__CMS_STORE_PREFIX__ Polerones"                 ;__BRAND_NAME__HombreVestuarioPolerones_CL    ;__BRAND_NAME__HombreVestuarioPolerones_NN    ;
+;;__BRAND_NAME__MujerZapatillasRunning_NE      ;"__CMS_STORE_PREFIX__ Running"                   ;__BRAND_NAME__MujerZapatillasRunning_CL      ;__BRAND_NAME__MujerZapatillasRunning_NN      ;
+;;__BRAND_NAME__MujerZapatillasOutdoor_NE      ;"__CMS_STORE_PREFIX__ Outdoor"                   ;__BRAND_NAME__MujerZapatillasOutdoor_CL      ;__BRAND_NAME__MujerZapatillasOutdoor_NN      ;
+;;__BRAND_NAME__MujerZapatillasTraining_NE     ;"__CMS_STORE_PREFIX__ Training"                  ;__BRAND_NAME__MujerZapatillasTraining_CL     ;__BRAND_NAME__MujerZapatillasTraining_NN     ;
+;;__BRAND_NAME__MujerZapatillasUrbanas_NE      ;"__CMS_STORE_PREFIX__ Urbanas"                   ;__BRAND_NAME__MujerZapatillasUrbanas_CL      ;__BRAND_NAME__MujerZapatillasUrbanas_NN      ;
+;;__BRAND_NAME__MujerVestuarioPoleras_NE       ;"__CMS_STORE_PREFIX__ Poleras"                   ;__BRAND_NAME__MujerVestuarioPoleras_CL       ;__BRAND_NAME__MujerVestuarioPoleras_NN       ;
+;;__BRAND_NAME__MujerVestuarioPolerones_NE     ;"__CMS_STORE_PREFIX__ Polerones"                 ;__BRAND_NAME__MujerVestuarioPolerones_CL     ;__BRAND_NAME__MujerVestuarioPolerones_NN     ;
+;;__BRAND_NAME__MujerVestuarioShorts_NE        ;"__CMS_STORE_PREFIX__ Shorts"                    ;__BRAND_NAME__MujerVestuarioShorts_CL        ;__BRAND_NAME__MujerVestuarioShorts_NN        ;
+;;__BRAND_NAME__MujerAccesoriosPantalones_NE   ;"__CMS_STORE_PREFIX__ Pantalones"                ;__BRAND_NAME__MujerAccesoriosPantalones_CL   ;__BRAND_NAME__MujerAccesoriosPantalones_NN   ;
+;;__BRAND_NAME__NinosZapatillasFutbol_NE       ;"__CMS_STORE_PREFIX__ Futbol"                    ;__BRAND_NAME__NinosZapatillasFutbol_CL       ;__BRAND_NAME__NinosZapatillasFutbol_NN       ;
+;;__BRAND_NAME__NinosZapatillasBaby_NE         ;"__CMS_STORE_PREFIX__ Baby"                      ;__BRAND_NAME__NinosZapatillasBaby_CL         ;__BRAND_NAME__NinosZapatillasBaby_NN         ;
+;;__BRAND_NAME__NinosZapatillasBasquetbol_NE   ;"__CMS_STORE_PREFIX__ Basquetbol"                ;__BRAND_NAME__NinosZapatillasBasquetbol_CL   ;__BRAND_NAME__NinosZapatillasBasquetbol_NN   ;
+;;__BRAND_NAME__NinosZapatillasUrbanas_NE      ;"__CMS_STORE_PREFIX__ Urbanas"                   ;__BRAND_NAME__NinosZapatillasUrbanas_CL      ;__BRAND_NAME__NinosZapatillasUrbanas_NN      ;
+;;__BRAND_NAME__NinosZapatillasRunning_NE      ;"__CMS_STORE_PREFIX__ Running"                   ;__BRAND_NAME__NinosZapatillasRunning_CL      ;__BRAND_NAME__NinosZapatillasRunning_NN      ;
+;;__BRAND_NAME__NinosZapatillasTraining_NE     ;"__CMS_STORE_PREFIX__ Training"                  ;__BRAND_NAME__NinosZapatillasTraining_CL     ;__BRAND_NAME__NinosZapatillasTraining_NN     ;
+;;__BRAND_NAME__NinosZapatillasOutdoor_NE      ;"__CMS_STORE_PREFIX__ Outdoor"                   ;__BRAND_NAME__NinosZapatillasOutdoor_CL      ;__BRAND_NAME__NinosZapatillasOutdoor_NN      ;
+;;__BRAND_NAME__NinosVestuarioPoleras_NE       ;"__CMS_STORE_PREFIX__ Poleras"                   ;__BRAND_NAME__NinosVestuarioPoleras_CL       ;__BRAND_NAME__NinosVestuarioPoleras_NN       ;
+;;__BRAND_NAME__NinosVestuarioCamisetas_NE     ;"__CMS_STORE_PREFIX__ Camisetas"                 ;__BRAND_NAME__NinosVestuarioCamisetas_CL     ;__BRAND_NAME__NinosVestuarioCamisetas_NN     ;
+;;__BRAND_NAME__NinosVestuarioPolerones_NE     ;"__CMS_STORE_PREFIX__ Polerones"                 ;__BRAND_NAME__NinosVestuarioPolerones_CL     ;__BRAND_NAME__NinosVestuarioPolerones_NN     ;
+;;__BRAND_NAME__NinosVestuarioConjuntos_NE     ;"__CMS_STORE_PREFIX__ Conjuntos"                 ;__BRAND_NAME__NinosVestuarioConjuntos_CL     ;__BRAND_NAME__NinosVestuarioConjuntos_NN     ;
+;;__BRAND_NAME__NinosVestuarioPantalones_NE    ;"__CMS_STORE_PREFIX__ Pantalones"                ;__BRAND_NAME__NinosVestuarioPantalones_CL    ;__BRAND_NAME__NinosVestuarioPantalones_NN    ;
+;;__BRAND_NAME__NinosAccesoriosBalones_NE      ;"__CMS_STORE_PREFIX__ Balones"                   ;__BRAND_NAME__NinosAccesoriosBalones_CL      ;__BRAND_NAME__NinosAccesoriosBalones_NN      ;
+;;__BRAND_NAME__NinosAccesoriosCanilleras_NE   ;"__CMS_STORE_PREFIX__ Canilleras"                ;__BRAND_NAME__NinosAccesoriosCanilleras_CL   ;__BRAND_NAME__NinosAccesoriosCanilleras_NN   ;
+;;__BRAND_NAME__NinosAccesoriosGuantes_NE      ;"__CMS_STORE_PREFIX__ Guantes"                   ;__BRAND_NAME__NinosAccesoriosGuantes_CL      ;__BRAND_NAME__NinosAccesoriosGuantes_NN      ;
+;;__BRAND_NAME__NinosAccesoriosMochilas_NE     ;"__CMS_STORE_PREFIX__ Mochilas"                  ;__BRAND_NAME__NinosAccesoriosMochilas_CL     ;__BRAND_NAME__NinosAccesoriosMochilas_NN     ;
+;;__BRAND_NAME__NinosAccesoriosJockey_NE       ;"__CMS_STORE_PREFIX__ Jockey"                    ;__BRAND_NAME__NinosAccesoriosJockey_CL       ;__BRAND_NAME__NinosAccesoriosJockey_NN       ;
+;;__BRAND_NAME__NinosAccesoriosCalcetas_NE     ;"__CMS_STORE_PREFIX__ Calcetas"                  ;__BRAND_NAME__NinosAccesoriosCalcetas_CL     ;__BRAND_NAME__NinosAccesoriosCalcetas_NN     ;
+
 # --------------------------------------------------------------------------
-# Create CMSNavigationNode to CMSNavigationNode Relations
+# Definition: Component - CategoryNavigationComponent
 # --------------------------------------------------------------------------
-UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];children(uid,$contentCV);
-;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode,__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode,__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode
-;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode,__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode,__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode,__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;
+INSERT_UPDATE CategoryNavigationComponent;$contentCV[unique=true];uid[unique=true];&componentRefname;name;styleClass;navigationNode(&nodeRef);wrapAfter
+;;__CMS_STORE_PREFIX__CategoryNavComponent;__CMS_STORE_PREFIX__CategoryNavComponent;"__CMS_STORE_PREFIX__ Category Navigation Component";;__CMS_STORE_PREFIX__Categories_NN;10
+
+# --------------------------------------------------------------------------
+# Definition: Component - ContentSlot
+# --------------------------------------------------------------------------
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
+;;NavigationBarSlot;__CMS_STORE_PREFIX__CategoryNavComponent
+
+########################################################################################################################################################################
+####  MENU usuario
+########################################################################################################################################################################
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];&linkRef;name;url;target(code)[default = 'sameWindow']
+;;__BRAND_NAME__PersonalDetails_CL   ;__BRAND_NAME__PersonalDetails_CL   ;"__CMS_STORE_PREFIX__ Personal Details"  ;/my-account/update-profile  ;
+;;__BRAND_NAME__UpdateEmail_CL       ;__BRAND_NAME__UpdateEmail_CL       ;"__CMS_STORE_PREFIX__ Update Email"      ;/my-account/update-email    ;
+;;__BRAND_NAME__ChangePassword_CL    ;__BRAND_NAME__ChangePassword_CL    ;"__CMS_STORE_PREFIX__ Change Password"   ;/my-account/update-password ;
+;;__BRAND_NAME__OrderHistory_CL      ;__BRAND_NAME__OrderHistory_CL      ;"__CMS_STORE_PREFIX__ Order History"     ;/my-account/orders          ;
+;;__BRAND_NAME__AddressBook_CL       ;__BRAND_NAME__AddressBook_CL       ;"__CMS_STORE_PREFIX__ Address Book"      ;/my-account/address-book    ;
+;;__BRAND_NAME__PaymentDetails_CL    ;__BRAND_NAME__PaymentDetails_CL    ;"__CMS_STORE_PREFIX__ Payment Details"   ;/my-account/payment-details ;
+;;__BRAND_NAME__SavedCarts_CL        ;__BRAND_NAME__SavedCarts_CL        ;"__CMS_STORE_PREFIX__ Saved Carts"       ;/my-account/saved-carts     ;
+;;__BRAND_NAME__ConsentManagement_CL ;__BRAND_NAME__ConsentManagement_CL ;"__CMS_STORE_PREFIX__ Consent Management";/my-account/consents        ;
+;;__BRAND_NAME__CloseAccount_CL      ;__BRAND_NAME__CloseAccount_CL      ;"__CMS_STORE_PREFIX__ Close Account"     ;/my-account/close-account   ;
+
+
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];&nodeRef;name;visible
+;;__BRAND_NAME__PersonalDetails_NN   ;__BRAND_NAME__PersonalDetails_NN   ;"__CMS_STORE_PREFIX__ Personal Details"  ;true
+;;__BRAND_NAME__UpdateEmail_NN       ;__BRAND_NAME__UpdateEmail_NN       ;"__CMS_STORE_PREFIX__ Update Email"      ;true
+;;__BRAND_NAME__ChangePassword_NN    ;__BRAND_NAME__ChangePassword_NN    ;"__CMS_STORE_PREFIX__ Change Password"   ;true
+;;__BRAND_NAME__OrderHistory_NN      ;__BRAND_NAME__OrderHistory_NN      ;"__CMS_STORE_PREFIX__ Order History"     ;true
+;;__BRAND_NAME__AddressBook_NN       ;__BRAND_NAME__AddressBook_NN       ;"__CMS_STORE_PREFIX__ Address Book"      ;true
+;;__BRAND_NAME__PaymentDetails_NN    ;__BRAND_NAME__PaymentDetails_NN    ;"__CMS_STORE_PREFIX__ Payment Details"   ;false
+;;__BRAND_NAME__SavedCarts_NN        ;__BRAND_NAME__SavedCarts_NN        ;"__CMS_STORE_PREFIX__ Saved Carts"       ;true
+;;__BRAND_NAME__ConsentManagement_NN ;__BRAND_NAME__ConsentManagement_NN ;"__CMS_STORE_PREFIX__ Consent Management";false
+;;__BRAND_NAME__CloseAccount_NN      ;__BRAND_NAME__CloseAccount_NN      ;"__CMS_STORE_PREFIX__ Close Account"     ;false
+
+
+INSERT_UPDATE CMSNavigationEntry;$contentCV[unique = true];uid[unique = true];name;item(&linkRef);navigationNode(&nodeRef);
+;;__BRAND_NAME__PersonalDetails_NE  ;"__CMS_STORE_PREFIX__ Personal Details"   ;__BRAND_NAME__PersonalDetails_CL   ;__BRAND_NAME__PersonalDetails_NN   ;
+;;__BRAND_NAME__UpdateEmail_NE      ;"__CMS_STORE_PREFIX__ Update Email"       ;__BRAND_NAME__UpdateEmail_CL       ;__BRAND_NAME__UpdateEmail_NN       ;
+;;__BRAND_NAME__ChangePassword_NE   ;"__CMS_STORE_PREFIX__ Change Password"    ;__BRAND_NAME__ChangePassword_CL    ;__BRAND_NAME__ChangePassword_NN    ;
+;;__BRAND_NAME__AddressBook_NE      ;"__CMS_STORE_PREFIX__ Address Book"       ;__BRAND_NAME__OrderHistory_CL      ;__BRAND_NAME__OrderHistory_NN      ;
+;;__BRAND_NAME__OrderHistory_NE     ;"__CMS_STORE_PREFIX__ Order History"      ;__BRAND_NAME__AddressBook_CL       ;__BRAND_NAME__AddressBook_NN       ;
+;;__BRAND_NAME__PaymentDetails_NE   ;"__CMS_STORE_PREFIX__ Payment Details"    ;__BRAND_NAME__PaymentDetails_CL    ;__BRAND_NAME__PaymentDetails_NN    ;
+;;__BRAND_NAME__SavedCarts_NE       ;"__CMS_STORE_PREFIX__ Saved Carts"        ;__BRAND_NAME__SavedCarts_CL        ;__BRAND_NAME__SavedCarts_NN        ;
+;;__BRAND_NAME__ConsentManagement_NE;"__CMS_STORE_PREFIX__ Consent Management" ;__BRAND_NAME__ConsentManagement_CL ;__BRAND_NAME__ConsentManagement_NN ;
+;;__BRAND_NAME__CloseAccount_NE     ;"__CMS_STORE_PREFIX__ Close Account"      ;__BRAND_NAME__CloseAccount_CL      ;__BRAND_NAME__CloseAccount_NN      ;
+
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];children(uid,$contentCV);
+;;__CMS_STORE_PREFIX__MyAccount_NN ;__BRAND_NAME__PersonalDetails_NN,__BRAND_NAME__UpdateEmail_NN,__BRAND_NAME__ChangePassword_NN,__BRAND_NAME__AddressBook_NN,__BRAND_NAME__OrderHistory_NN,__BRAND_NAME__SavedCarts_NN
+
+INSERT_UPDATE NavigationComponent;$contentCV[unique = true];uid[unique = true];&componentRef;name;styleClass;navigationNode(&nodeRef)
+;;__CMS_STORE_PREFIX__MyAccountComponent;__CMS_STORE_PREFIX__MyAccountComponent;"My Account";accNavComponent;__CMS_STORE_PREFIX__MyAccount_NN;
+
+# create a user restriction
+INSERT_UPDATE CMSUserRestriction;$contentCV[unique = true];&userRestriction;name;uid[unique = true];users(uid)
+;;AnonymousUserRestriction;Anonymous User Restriction;AnonymousUserRestriction;anonymous
+
+# create a inverse restriction
+INSERT_UPDATE CMSInverseRestriction;$contentCV[unique = true];name;originalRestriction(&userRestriction)[allownull = true];uid[unique = true];components(&componentRef)
+;;Logged in User;AnonymousUserRestriction;LoggedInUser;__CMS_STORE_PREFIX__MyAccountComponent
+
+# add my account navigation component to a content slot
+INSERT_UPDATE ContentSlot;$contentCV[unique = true];uid[unique = true];cmsComponents(uid, $contentCV)
+;;HeaderLinksSlot;__CMS_STORE_PREFIX__MyAccountComponent
+
+
+################################################################################################################################################################
+####  MENU footer
+################################################################################################################################################################
+# ------------------------------------------------------------
+#  CyberDay Page
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='application/pdf']; folder(qualifier)[default='documents']
+;;__CMS_STORE_PREFIX__-cyberday.pdf;__CMS_STORE_PREFIX__-cyberday.pdf;$siteResource/pdf/__CMS_STORE_PREFIX__-cyberday.pdf;;
+
+# ------------------------------------------------------------
+#  CMSLinkComponent
+# ------------------------------------------------------------
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];&linkRef;name;url;target(code)[default = 'sameWindow']
+;;__BRAND_NAME__VerBoleta_CL           ;__BRAND_NAME__VerBoleta_CL            ;"__CMS_STORE_PREFIX__ Ver Boleta"             ;http://asp402r.paperless.cl/boleta__CMS_STORE_PREFIX__/ ;;
+;;__BRAND_NAME__PrivacidadySeguridad_CL;__BRAND_NAME__PrivacidadySeguridad_CL ;"__CMS_STORE_PREFIX__ Privacidad y Seguridad" ;/privacyandsecure                           ;;
+;;__BRAND_NAME__PreguntasFrecuentes_CL ;__BRAND_NAME__PreguntasFrecuentes_CL  ;"__CMS_STORE_PREFIX__ Preguntas Frecuentes"   ;/faq                                        ;;
+;;__BRAND_NAME__Tiendas_CL             ;__BRAND_NAME__Tiendas_CL              ;"__CMS_STORE_PREFIX__ Tiendas"                ;/store-finder                               ;;
+;;__BRAND_NAME__TerminosyCondiciones_CL;__BRAND_NAME__TerminosyCondiciones_CL ;"__CMS_STORE_PREFIX__ Términos y Condiciones" ;/termsAndConditions                         ;;
+;;__BRAND_NAME__StockInicialCyberDay_CL;__BRAND_NAME__StockInicialCyberDay_CL ;"__CMS_STORE_PREFIX__ Stock Inicial CyberDay" ;/medias/__CMS_STORE_PREFIX__-cyberday.pdf               ;;
+
+# ------------------------------------------------------------
+#  CMSNavigationNode
+# ------------------------------------------------------------
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];&nodeRef;name;
+;;__BRAND_NAME__Information_NN         ;__BRAND_NAME__Information_NN         ;"__CMS_STORE_PREFIX__ Information Page"       ;
+;;__BRAND_NAME__VerBoleta_NN           ;__BRAND_NAME__VerBoleta_NN           ;"__CMS_STORE_PREFIX__ Ver Boleta"             ;
+;;__BRAND_NAME__PrivacidadySeguridad_NN;__BRAND_NAME__PrivacidadySeguridad_NN;"__CMS_STORE_PREFIX__ Privacidad y Seguridad" ;
+;;__BRAND_NAME__PreguntasFrecuentes_NN ;__BRAND_NAME__PreguntasFrecuentes_NN ;"__CMS_STORE_PREFIX__ Preguntas Frecuentes"   ;
+;;__BRAND_NAME__Tiendas_NN             ;__BRAND_NAME__Tiendas_NN             ;"__CMS_STORE_PREFIX__ Tiendas"                ;
+;;__BRAND_NAME__TerminosyCondiciones_NN;__BRAND_NAME__TerminosyCondiciones_NN;"__CMS_STORE_PREFIX__ Términos y Condiciones" ;
+;;__BRAND_NAME__StockInicialCyberDay_NN;__BRAND_NAME__StockInicialCyberDay_NN;"__CMS_STORE_PREFIX__ Stock Inicial CyberDay" ;
+
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];children(&nodeRef);
+;;__BRAND_NAME__Information_NN ;__BRAND_NAME__VerBoleta_NN,__BRAND_NAME__PrivacidadySeguridad_NN,__BRAND_NAME__PreguntasFrecuentes_NN,__BRAND_NAME__Tiendas_NN,__BRAND_NAME__TerminosyCondiciones_NN,__BRAND_NAME__StockInicialCyberDay_NN
+
+# ------------------------------------------------------------
+#  CMSNavigationEntry
+# ------------------------------------------------------------
+INSERT_UPDATE CMSNavigationEntry;$contentCV[unique = true];uid[unique = true];name;item(&linkRef);navigationNode(&nodeRef);
+;;__BRAND_NAME__VerBoleta_NE           ;"__CMS_STORE_PREFIX__ Ver Boleta            ";__BRAND_NAME__VerBoleta_CL           ;__BRAND_NAME__VerBoleta_NN           ;
+;;__BRAND_NAME__PrivacidadySeguridad_NE;"__CMS_STORE_PREFIX__ Privacidad y Seguridad";__BRAND_NAME__PrivacidadySeguridad_CL;__BRAND_NAME__PrivacidadySeguridad_NN;
+;;__BRAND_NAME__PreguntasFrecuentes_NE ;"__CMS_STORE_PREFIX__ Preguntas Frecuentes  ";__BRAND_NAME__PreguntasFrecuentes_CL ;__BRAND_NAME__PreguntasFrecuentes_NN ;
+;;__BRAND_NAME__Tiendas_NE             ;"__CMS_STORE_PREFIX__ Tiendas               ";__BRAND_NAME__Tiendas_CL             ;__BRAND_NAME__Tiendas_NN             ;
+;;__BRAND_NAME__TerminosyCondiciones_NE;"__CMS_STORE_PREFIX__ Terminos y Condiciones";__BRAND_NAME__TerminosyCondiciones_CL;__BRAND_NAME__TerminosyCondiciones_NN;
+;;__BRAND_NAME__StockInicialCyberDay_NE;"__CMS_STORE_PREFIX__ Stock Inicial CyberDay";__BRAND_NAME__StockInicialCyberDay_CL;__BRAND_NAME__StockInicialCyberDay_NN;
+
+# ------------------------------------------------------------
+#  BlsCustomFooterNavigationComponent
+# ------------------------------------------------------------
+INSERT_UPDATE Media; $contentCV[unique = true];code[unique = true];realfilename;@media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default = 'image/jpeg']; altText  ; folder(qualifier)[default = 'images']
+;;media-footer-badges.png  ;footer-badges.png   ;$siteResource/images/theme/footer-badges.png  ;image/png;Badges  ;
+;;media-footer-payments.png;footer-payments.png ;$siteResource/images/theme/footer-payments.png;image/png;Payments;
+
+INSERT_UPDATE BlsCustomFooterNavigationComponent;$contentCV[unique = true];uid[unique = true];name;logoImage(code, $contentCV);emailIconClasses;phoneIconClasses;navigationNode(uid, $contentCV);badgesImage(code, $contentCV) ; paymentImage(code, $contentCV);wrapAfter
+;;FooterNavigationComponent;"__CMS_STORE_PREFIX__ Footer Navigation Component";media-__BRAND_NAME__port-blanco.svg;icon icon-mail; icon icon-assistant ; __BRAND_NAME__Information_NN;media-footer-badges.png;media-footer-payments.png;5
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV)
+;;FooterSlot;FooterNavigationComponent
+
+##################################################################################################################################################################
+####  MENU Quick Order
+##################################################################################################################################################################
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];&linkRef;name;url;styleAttributes;target(code)[default = 'sameWindow']
+;;__BRAND_NAME__QuickOrder_CL;__BRAND_NAME__QuickOrder_CL;"__CMS_STORE_PREFIX__ Quick Order";/quickOrder;;;
+
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];&nodeRef;name;parent(uid, $contentCV);links(&linkRef)
+;;__BRAND_NAME__QuickOrder_NN;__BRAND_NAME__QuickOrder_NN;"__CMS_STORE_PREFIX__ Quick Order";__CMS_STORE_PREFIX__Order_NN;__BRAND_NAME__QuickOrder_CL;
+
+INSERT_UPDATE CMSNavigationEntry;$contentCV[unique = true];uid[unique = true];name;navigationNode(&nodeRef);item(&linkRef);
+;;__BRAND_NAME__QuickOrder_NE;"Quick Order";__BRAND_NAME__QuickOrder_NN;__BRAND_NAME__QuickOrder_CL;
+
+INSERT_UPDATE NavigationComponent;$contentCV[unique = true];uid[unique = true];&componentRef;name;styleClass;navigationNode(&nodeRef);visible
+;;__CMS_STORE_PREFIX__OrderComponent;__CMS_STORE_PREFIX__OrderComponent;"__CMS_STORE_PREFIX__ Order Component";nav-order-tools;__CMS_STORE_PREFIX__Order_NN;false
+
+##################################################################################################################################################################
+####  MENU Import Saved Cart
+##################################################################################################################################################################
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];&linkRef;name;url;styleAttributes;target(code)[default = 'sameWindow']
+;;__BRAND_NAME__ImportSavedCart_CL;__BRAND_NAME__ImportSavedCart_CL ;"__CMS_STORE_PREFIX__ Import Saved Cart";/import/csv/saved-cart;;;
+
+INSERT_UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];&nodeRef;name;parent(uid, $contentCV);links(&linkRef)
+;;__BRAND_NAME__ImportSavedCart_NN;__BRAND_NAME__ImportSavedCart_NN ;"__CMS_STORE_PREFIX__ Import Saved Cart";__CMS_STORE_PREFIX__Order_NN;__BRAND_NAME__ImportSavedCart_CL
+
+INSERT_UPDATE CMSNavigationEntry;$contentCV[unique = true];uid[unique = true];name;navigationNode(&nodeRef);item(&linkRef);
+;;__BRAND_NAME__ImportSavedCart_NE;"__CMS_STORE_PREFIX__ Import Saved Cart";__BRAND_NAME__ImportSavedCart_NN;__BRAND_NAME__ImportSavedCart_CL;
+
+##################################################################################################################################################################
+####  UPDATE CMSNavigationNode
+##################################################################################################################################################################
+
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];children(&nodeRef);
+;;__CMS_STORE_PREFIX__Order_NN; __BRAND_NAME__QuickOrder_NN,__BRAND_NAME__ImportSavedCart_NN

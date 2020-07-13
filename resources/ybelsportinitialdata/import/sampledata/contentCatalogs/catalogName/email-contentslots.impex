@@ -2,6 +2,12 @@
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
 # Content Slots
+
+$contentCatalog = __CONTENT_CATALOG_UID__
+
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
 UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
 ;;CustomerRegistrationEmailTopSlot;EmailBannerSaleNowOnImage,CustomerRegistrationEmailBody
 ;;DeliverySentEmailTopSlot;DeliverySentEmailBody

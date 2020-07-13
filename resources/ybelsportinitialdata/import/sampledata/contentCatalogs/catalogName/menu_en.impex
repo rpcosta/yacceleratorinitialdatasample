@@ -8,78 +8,282 @@
 # Information and shall use it only in accordance with the terms of the
 # license agreement you entered into with SAP.
 # -----------------------------------------------------------------------
+$version=Staged
 $contentCatalog=__CONTENT_CATALOG_UID__
-$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
 $productCatalog=__PRODUCT_CATALOG_UID__
-$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default=$version])[unique=true,default=$productCatalog:$version]
 $category=category(code, $productCV)
-$language=en
+
+$siteResource = jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$lang=en
+
+
+
+# --------------------------------------------------------------------------
+# Principal CMSNavigationNode Configuration
+# --------------------------------------------------------------------------
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;root                 ;"Root"                     ;"Root"
+;;SiteRootNode         ;"Site Root Node"           ;"Site Root Node"
+;;NavNode              ;"B2C Site"                 ;"B2C Site"
+;;__CMS_STORE_PREFIX__Categories_NN;"Principal Menu Categories";"Principal Menu Categories"
+;;__CMS_STORE_PREFIX__Footer_NN    ;"Footer"                   ;"Footer"
+;;__CMS_STORE_PREFIX__MyAccount_NN ;"Mi Cuenta"                ;"Mi Cuenta"
+;;__CMS_STORE_PREFIX__Order_NN     ;"Ordenes"                  ;"Ordenes"
+
+
+################################################################################################################################################
+####  MENU CATEGORIAS HEADER
+################################################################################################################################################
+
+# --------------------------------------------------------------------------
+# CMSLinkComponent
+# --------------------------------------------------------------------------
+
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkName[lang = $lang];
+;;__BRAND_NAME__Marcas_CL                    ;"Marcas"                      ;
+;;__BRAND_NAME__Hombre_CL                    ;"Hombre"                      ;
+;;__BRAND_NAME__Mujer_CL                     ;"Mujer"                       ;
+;;__BRAND_NAME__Ninos_CL                     ;"Niños"                       ;
+;;__BRAND_NAME__Accesorios_CL                ;"Accesorios"                  ;
+;;__BRAND_NAME__Ofertas_CL                   ;"Ofertas"                     ;
+;;__BRAND_NAME__MarcasAdidas_CL              ;"Adidas      "                ;
+;;__BRAND_NAME__MarcasConverse_CL            ;"Converse    "                ;
+;;__BRAND_NAME__MarcasDCshoes_CL             ;"DC Shoes    "                ;
+;;__BRAND_NAME__MarcasFila_CL                ;"Fila        "                ;
+;;__BRAND_NAME__MarcasLotto_CL               ;"Lotto       "                ;
+;;__BRAND_NAME__MarcasMitre_CL               ;"Mitre       "                ;
+;;__BRAND_NAME__MarcasMolten_CL              ;"Molten      "                ;
+;;__BRAND_NAME__MarcasNewBalance_CL          ;"New Balance "                ;
+;;__BRAND_NAME__MarcasNike_CL                ;"Nike        "                ;
+;;__BRAND_NAME__MarcasPuma_CL                ;"Puma        "                ;
+;;__BRAND_NAME__MarcasReebok_CL              ;"Reebok      "                ;
+;;__BRAND_NAME__MarcasSkechers_CL            ;"Skechers    "                ;
+;;__BRAND_NAME__MarcasSpalding_CL            ;"Spalding    "                ;
+;;__BRAND_NAME__MarcasUmbro_CL               ;"Umbro       "                ;
+;;__BRAND_NAME__MarcasUnderArmour_CL         ;"Under Armour"                ;
+;;__BRAND_NAME__MarcasVans_CL                ;"Vans        "                ;
+;;__BRAND_NAME__HombreZapatillas_CL          ;"Zapatillas"                  ;
+;;__BRAND_NAME__HombreVestuario_CL           ;"Vestuario"                   ;
+;;__BRAND_NAME__MujerZapatillas_CL           ;"Zapatillas"                  ;
+;;__BRAND_NAME__MujerVestuario_CL            ;"Vestuario"                   ;
+;;__BRAND_NAME__NinosZapatillas_CL           ;"Zapatillas"                  ;
+;;__BRAND_NAME__NinosVestuario_CL            ;"Vestuario"                   ;
+;;__BRAND_NAME__NinosAccesorios_CL           ;"Accesorios"                  ;
+;;__BRAND_NAME__AccesoriosBalones_CL         ;"Balones"                     ;
+;;__BRAND_NAME__AccesoriosBananos_CL         ;"Bananos"                     ;
+;;__BRAND_NAME__AccesoriosBeanies_CL         ;"Beanies"                     ;
+;;__BRAND_NAME__AccesoriosCalcetas_CL        ;"Calcetas"                    ;
+;;__BRAND_NAME__AccesoriosCanilleras_CL      ;"Canilleras"                  ;
+;;__BRAND_NAME__AccesoriosGuantes_CL         ;"Guantes"                     ;
+;;__BRAND_NAME__AccesoriosGymsack_CL         ;"Gymsack"                     ;
+;;__BRAND_NAME__AccesoriosJockey_CL          ;"Jockey"                      ;
+;;__BRAND_NAME__AccesoriosMochilasBolsos_CL  ;"Mochilas y Bolsos"           ;
+;;__BRAND_NAME__AccesoriosRodilleras_CL      ;"Rodilleras"                  ;
+;;__BRAND_NAME__AccesoriosToallas_CL         ;"Toallas"                     ;
+;;__BRAND_NAME__OfertasZapatillas_CL         ;"Zapatillas"                  ;
+;;__BRAND_NAME__OfertasVestuario_CL          ;"Vestuario"                   ;
+;;__BRAND_NAME__OfertasAccesorios_CL         ;"Accesorios"                  ;
+;;__BRAND_NAME__HombreZapatillasFutbol_CL    ;"Futbol         "             ;
+;;__BRAND_NAME__HombreZapatillasBaby_CL      ;"Baby Futbol    "             ;
+;;__BRAND_NAME__HombreZapatillasRunning_CL   ;"Running        "             ;
+;;__BRAND_NAME__HombreZapatillasOutdoor_CL   ;"Outdoor        "             ;
+;;__BRAND_NAME__HombreZapatillasTraining_CL  ;"Training       "             ;
+;;__BRAND_NAME__HombreZapatillasBasquetbol_CL;"Basquetbol     "             ;
+;;__BRAND_NAME__HombreZapatillasUrbanas_CL   ;"Urbanas        "             ;
+;;__BRAND_NAME__HombreVestuarioCamisetas_CL  ;"Camisetas      "             ;
+;;__BRAND_NAME__HombreVestuarioPoleras_CL    ;"Poleras        "             ;
+;;__BRAND_NAME__HombreVestuarioPantalones_CL ;"Pantalones     "             ;
+;;__BRAND_NAME__HombreVestuarioShorts_CL     ;"Shorts y Mallas"             ;
+;;__BRAND_NAME__HombreVestuarioPolerones_CL  ;"Polerones      "             ;
+;;__BRAND_NAME__MujerZapatillasRunning_CL    ;"Running"                     ;
+;;__BRAND_NAME__MujerZapatillasOutdoor_CL    ;"Outdoor"                     ;
+;;__BRAND_NAME__MujerZapatillasTraining_CL   ;"Training"                    ;
+;;__BRAND_NAME__MujerZapatillasUrbanas_CL    ;"Urbanas"                     ;
+;;__BRAND_NAME__MujerVestuarioPoleras_CL     ;"Poleras"                     ;
+;;__BRAND_NAME__MujerVestuarioPolerones_CL   ;"Polerones"                   ;
+;;__BRAND_NAME__MujerVestuarioShorts_CL      ;"Shorts"                      ;
+;;__BRAND_NAME__MujerAccesoriosPantalones_CL ;"Pantalones y Leggins"        ;
+;;__BRAND_NAME__NinosZapatillasFutbol_CL     ;"Futbol"                      ;
+;;__BRAND_NAME__NinosZapatillasBaby_CL       ;"Baby"                        ;
+;;__BRAND_NAME__NinosZapatillasBasquetbol_CL ;"Basquetbol"                  ;
+;;__BRAND_NAME__NinosZapatillasUrbanas_CL    ;"Urbanas"                     ;
+;;__BRAND_NAME__NinosZapatillasRunning_CL    ;"Running"                     ;
+;;__BRAND_NAME__NinosZapatillasTraining_CL   ;"Training"                    ;
+;;__BRAND_NAME__NinosZapatillasOutdoor_CL    ;"Outdoor"                     ;
+;;__BRAND_NAME__NinosVestuarioPoleras_CL     ;"Poleras"                     ;
+;;__BRAND_NAME__NinosVestuarioCamisetas_CL   ;"Camisetas"                   ;
+;;__BRAND_NAME__NinosVestuarioPolerones_CL   ;"Polerones"                   ;
+;;__BRAND_NAME__NinosVestuarioConjuntos_CL   ;"Conjuntos"                   ;
+;;__BRAND_NAME__NinosVestuarioPantalones_CL  ;"Pantalones y Leggins"        ;
+;;__BRAND_NAME__NinosAccesoriosBalones_CL    ;"Balones"                     ;
+;;__BRAND_NAME__NinosAccesoriosCanilleras_CL ;"Canilleras"                  ;
+;;__BRAND_NAME__NinosAccesoriosGuantes_CL    ;"Guantes"                     ;
+;;__BRAND_NAME__NinosAccesoriosMochilas_CL   ;"Mochilas"                    ;
+;;__BRAND_NAME__NinosAccesoriosJockey_CL     ;"Jockey"                      ;
+;;__BRAND_NAME__NinosAccesoriosCalcetas_CL   ;"Calcetas"                    ;
 
 # --------------------------------------------------------------------------
 # CMSNavigationNode
 # --------------------------------------------------------------------------
-INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];title[lang=$language];
-;__SAMPLE_CATEGORY_PREFIX__Sale_NavNode;;Sale
-;__SAMPLE_CATEGORY_PREFIX__Hombre_NavNode;;Hombre
-;__SAMPLE_CATEGORY_PREFIX__Accesorios_NavNode;;Accesorios
-;__SAMPLE_CATEGORY_PREFIX__Marcas_NavNode;;Marcas
-;__SAMPLE_CATEGORY_PREFIX__Mujer_NavNode;;Mujer
-;__SAMPLE_CATEGORY_PREFIX__Ninos_NavNode;;Niños
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack_NavNode;;Gymsack 
-;__SAMPLE_CATEGORY_PREFIX__MarcasNewBalance_NavNode;;New Balance
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas_NavNode;;Calcetas 
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza_NavNode;;Protección y limpieza 
-;__SAMPLE_CATEGORY_PREFIX__MarcasAsics_NavNode;;Asics Tiger
-;__SAMPLE_CATEGORY_PREFIX__NinosZapatillas_NavNode;;Zapatillas Niños
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie_NavNode;;Beanie 
-;__SAMPLE_CATEGORY_PREFIX__MarcasJordan_NavNode;;Jordan
-;__SAMPLE_CATEGORY_PREFIX__MarcasSaucony_NavNode;;Saucony
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzado_NavNode;;Calzado Hombre
-;__SAMPLE_CATEGORY_PREFIX__MarcasVans_NavNode;;Vans
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzado_NavNode;;Calzado Mujer
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback_NavNode;;Snapback 
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuario_NavNode;;Vestuario Oferta
-;__SAMPLE_CATEGORY_PREFIX__MarcasAdidas_NavNode;;Adidas Originals
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzado_NavNode;;Calzado Oferta
-;__SAMPLE_CATEGORY_PREFIX__MarcasNike_NavNode;;Nike
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuario_NavNode;;Vestuario Hombre
-;__SAMPLE_CATEGORY_PREFIX__MarcasPuma_NavNode;;Puma
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesorios_NavNode;;Accesorios Oferta
-;__SAMPLE_CATEGORY_PREFIX__MarcasReebok_NavNode;;Reebok
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuario_NavNode;;Vestuario Mujer
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos 
-;__SAMPLE_CATEGORY_PREFIX__MarcasCrep_NavNode;;Crep
-;__SAMPLE_CATEGORY_PREFIX__AccesoriosBananos_NavNode;;Bananos 
-;__SAMPLE_CATEGORY_PREFIX__MarcasUnderArmour_NavNode;;Under Armour
-;__SAMPLE_CATEGORY_PREFIX__MarcasConverse_NavNode;;Converse
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos_NavNode;;Petos Oferta
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioShorts_NavNode;;Shorts Hombre
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas_NavNode;;Zapatillas Hombre
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones_NavNode;;Polerones Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias_NavNode;;Sandalias Mujer
-;__SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas_NavNode;;Zapatillas Mujer
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones_NavNode;;Pantalones y Calzas Oferta
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones_NavNode;;Polerones Hombre
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas_NavNode;;Zapatillas Oferta
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras_NavNode;;Poleras Hombre
-;__SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas_NavNode;;Pantalones y Calzas Mujer
-;__SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias_NavNode;;Sandalias Hombre
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones_NavNode;;Pantalones Hombre
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie_NavNode;;Beanie Oferta
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras_NavNode;;Poleras Oferta
-;__SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias_NavNode;;Sandalias Oferta
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza_NavNode;;Protección y limpieza Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones_NavNode;;Polerones Mujer
-;__SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Hombre
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos_NavNode;;Bananos Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras_NavNode;;Poleras Mujer
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts_NavNode;;Shorts Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas_NavNode;;Chaquetas y Parkas Mujer
-;__SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas_NavNode;;Chaquetas y Parkas Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts_NavNode;;Shorts Mujer
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos_NavNode;;Petos 
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack_NavNode;;Gymsack Oferta
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas_NavNode;;Calcetas Oferta
-;__SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestidos_NavNode;;Vestidos Mujer
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback_NavNode;;Snapback Oferta
-;__SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos_NavNode;;Mochilas y Bolsos Oferta
+
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;__BRAND_NAME__Marcas_NN                     ;"Marcas"                      ;"Marcas"                      ;
+;;__BRAND_NAME__Hombre_NN                     ;"Hombre"                      ;"Hombre"                      ;
+;;__BRAND_NAME__Mujer_NN                      ;"Mujer"                       ;"Mujer"                       ;
+;;__BRAND_NAME__Ninos_NN                      ;"Niños"                       ;"Niños"                       ;
+;;__BRAND_NAME__Accesorios_NN                 ;"Accesorios"                  ;"Accesorios"                  ;
+;;__BRAND_NAME__Ofertas_NN                    ;"Ofertas"                     ;"Ofertas"                     ;
+;;__BRAND_NAME__MarcasAdidas_NN               ;"Adidas      "                ;"Adidas      "                ;
+;;__BRAND_NAME__MarcasConverse_NN             ;"Converse    "                ;"Converse    "                ;
+;;__BRAND_NAME__MarcasDCshoes_NN              ;"DC Shoes    "                ;"DC Shoes    "                ;
+;;__BRAND_NAME__MarcasFila_NN                 ;"Fila        "                ;"Fila        "                ;
+;;__BRAND_NAME__MarcasLotto_NN                ;"Lotto       "                ;"Lotto       "                ;
+;;__BRAND_NAME__MarcasMitre_NN                ;"Mitre       "                ;"Mitre       "                ;
+;;__BRAND_NAME__MarcasMolten_NN               ;"Molten      "                ;"Molten      "                ;
+;;__BRAND_NAME__MarcasNewBalance_NN           ;"New Balance "                ;"New Balance "                ;
+;;__BRAND_NAME__MarcasNike_NN                 ;"Nike        "                ;"Nike        "                ;
+;;__BRAND_NAME__MarcasPuma_NN                 ;"Puma        "                ;"Puma        "                ;
+;;__BRAND_NAME__MarcasReebok_NN               ;"Reebok      "                ;"Reebok      "                ;
+;;__BRAND_NAME__MarcasSkechers_NN             ;"Skechers    "                ;"Skechers    "                ;
+;;__BRAND_NAME__MarcasSpalding_NN             ;"Spalding    "                ;"Spalding    "                ;
+;;__BRAND_NAME__MarcasUmbro_NN                ;"Umbro       "                ;"Umbro       "                ;
+;;__BRAND_NAME__MarcasUnderArmour_NN          ;"Under Armour"                ;"Under Armour"                ;
+;;__BRAND_NAME__MarcasVans_NN                 ;"Vans        "                ;"Vans        "                ;
+;;__BRAND_NAME__HombreZapatillas_NN           ;"Zapatillas"                  ;"Zapatillas"                  ;
+;;__BRAND_NAME__HombreVestuario_NN            ;"Vestuario"                   ;"Vestuario"                   ;
+;;__BRAND_NAME__MujerZapatillas_NN            ;"Zapatillas"                  ;"Zapatillas"                  ;
+;;__BRAND_NAME__MujerVestuario_NN             ;"Vestuario"                   ;"Vestuario"                   ;
+;;__BRAND_NAME__NinosZapatillas_NN            ;"Zapatillas"                  ;"Zapatillas"                  ;
+;;__BRAND_NAME__NinosVestuario_NN             ;"Vestuario"                   ;"Vestuario"                   ;
+;;__BRAND_NAME__NinosAccesorios_NN            ;"Accesorios"                  ;"Accesorios"                  ;
+;;__BRAND_NAME__AccesoriosBalones_NN          ;"Balones"                     ;"Balones"                     ;
+;;__BRAND_NAME__AccesoriosBananos_NN          ;"Bananos"                     ;"Bananos"                     ;
+;;__BRAND_NAME__AccesoriosBeanies_NN          ;"Beanies"                     ;"Beanies"                     ;
+;;__BRAND_NAME__AccesoriosCalcetas_NN         ;"Calcetas"                    ;"Calcetas"                    ;
+;;__BRAND_NAME__AccesoriosCanilleras_NN       ;"Canilleras"                  ;"Canilleras"                  ;
+;;__BRAND_NAME__AccesoriosGuantes_NN          ;"Guantes"                     ;"Guantes"                     ;
+;;__BRAND_NAME__AccesoriosGymsack_NN          ;"Gymsack"                     ;"Gymsack"                     ;
+;;__BRAND_NAME__AccesoriosJockey_NN           ;"Jockey"                      ;"Jockey"                      ;
+;;__BRAND_NAME__AccesoriosMochilasBolsos_NN   ;"Mochilas y Bolsos"           ;"Mochilas y Bolsos"           ;
+;;__BRAND_NAME__AccesoriosRodilleras_NN       ;"Rodilleras"                  ;"Rodilleras"                  ;
+;;__BRAND_NAME__AccesoriosToallas_NN          ;"Toallas"                     ;"Toallas"                     ;
+;;__BRAND_NAME__OfertasZapatillas_NN          ;"Zapatillas"                  ;"Zapatillas"                  ;
+;;__BRAND_NAME__OfertasVestuario_NN           ;"Vestuario"                   ;"Vestuario"                   ;
+;;__BRAND_NAME__OfertasAccesorios_NN          ;"Accesorios"                  ;"Accesorios"                  ;
+;;__BRAND_NAME__HombreZapatillasFutbol_NN     ;"Futbol         "             ;"Futbol         "             ;
+;;__BRAND_NAME__HombreZapatillasBaby_NN       ;"Baby Futbol    "             ;"Baby Futbol    "             ;
+;;__BRAND_NAME__HombreZapatillasRunning_NN    ;"Running        "             ;"Running        "             ;
+;;__BRAND_NAME__HombreZapatillasOutdoor_NN    ;"Outdoor        "             ;"Outdoor        "             ;
+;;__BRAND_NAME__HombreZapatillasTraining_NN   ;"Training       "             ;"Training       "             ;
+;;__BRAND_NAME__HombreZapatillasBasquetbol_NN ;"Basquetbol     "             ;"Basquetbol     "             ;
+;;__BRAND_NAME__HombreZapatillasUrbanas_NN    ;"Urbanas        "             ;"Urbanas        "             ;
+;;__BRAND_NAME__HombreVestuarioCamisetas_NN   ;"Camisetas      "             ;"Camisetas      "             ;
+;;__BRAND_NAME__HombreVestuarioPoleras_NN     ;"Poleras        "             ;"Poleras        "             ;
+;;__BRAND_NAME__HombreVestuarioPantalones_NN  ;"Pantalones     "             ;"Pantalones     "             ;
+;;__BRAND_NAME__HombreVestuarioShorts_NN      ;"Shorts y Mallas"             ;"Shorts y Mallas"             ;
+;;__BRAND_NAME__HombreVestuarioPolerones_NN   ;"Polerones      "             ;"Polerones      "             ;
+;;__BRAND_NAME__MujerZapatillasRunning_NN     ;"Running"                     ;"Running"                     ;
+;;__BRAND_NAME__MujerZapatillasOutdoor_NN     ;"Outdoor"                     ;"Outdoor"                     ;
+;;__BRAND_NAME__MujerZapatillasTraining_NN    ;"Training"                    ;"Training"                    ;
+;;__BRAND_NAME__MujerZapatillasUrbanas_NN     ;"Urbanas"                     ;"Urbanas"                     ;
+;;__BRAND_NAME__MujerVestuarioPoleras_NN      ;"Poleras"                     ;"Poleras"                     ;
+;;__BRAND_NAME__MujerVestuarioPolerones_NN    ;"Polerones"                   ;"Polerones"                   ;
+;;__BRAND_NAME__MujerVestuarioShorts_NN       ;"Shorts"                      ;"Shorts"                      ;
+;;__BRAND_NAME__MujerAccesoriosPantalones_NN  ;"Pantalones y Leggins"        ;"Pantalones y Leggins"        ;
+;;__BRAND_NAME__NinosZapatillasFutbol_NN      ;"Futbol"                      ;"Futbol"                      ;
+;;__BRAND_NAME__NinosZapatillasBaby_NN        ;"Baby"                        ;"Baby"                        ;
+;;__BRAND_NAME__NinosZapatillasBasquetbol_NN  ;"Basquetbol"                  ;"Basquetbol"                  ;
+;;__BRAND_NAME__NinosZapatillasUrbanas_NN     ;"Urbanas"                     ;"Urbanas"                     ;
+;;__BRAND_NAME__NinosZapatillasRunning_NN     ;"Running"                     ;"Running"                     ;
+;;__BRAND_NAME__NinosZapatillasTraining_NN    ;"Training"                    ;"Training"                    ;
+;;__BRAND_NAME__NinosZapatillasOutdoor_NN     ;"Outdoor"                     ;"Outdoor"                     ;
+;;__BRAND_NAME__NinosVestuarioPoleras_NN      ;"Poleras"                     ;"Poleras"                     ;
+;;__BRAND_NAME__NinosVestuarioCamisetas_NN    ;"Camisetas"                   ;"Camisetas"                   ;
+;;__BRAND_NAME__NinosVestuarioPolerones_NN    ;"Polerones"                   ;"Polerones"                   ;
+;;__BRAND_NAME__NinosVestuarioConjuntos_NN    ;"Conjuntos"                   ;"Conjuntos"                   ;
+;;__BRAND_NAME__NinosVestuarioPantalones_NN   ;"Pantalones y Leggins"        ;"Pantalones y Leggins"        ;
+;;__BRAND_NAME__NinosAccesoriosBalones_NN     ;"Balones"                     ;"Balones"                     ;
+;;__BRAND_NAME__NinosAccesoriosCanilleras_NN  ;"Canilleras"                  ;"Canilleras"                  ;
+;;__BRAND_NAME__NinosAccesoriosGuantes_NN     ;"Guantes"                     ;"Guantes"                     ;
+;;__BRAND_NAME__NinosAccesoriosMochilas_NN    ;"Mochilas"                    ;"Mochilas"                    ;
+;;__BRAND_NAME__NinosAccesoriosJockey_NN      ;"Jockey"                      ;"Jockey"                      ;
+;;__BRAND_NAME__NinosAccesoriosCalcetas_NN    ;"Calcetas"                    ;"Calcetas"                    ;
+
+##################################################################################################################################################################
+####  MENU usuario
+##################################################################################################################################################################
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkName[lang = $lang];
+;;__BRAND_NAME__PersonalDetails_CL   ;"Datos Personales"
+;;__BRAND_NAME__UpdateEmail_CL       ;"Modificar Correo"
+;;__BRAND_NAME__ChangePassword_CL    ;"Modificar Contraseña"
+;;__BRAND_NAME__OrderHistory_CL      ;"Historial de Órdenes"
+;;__BRAND_NAME__AddressBook_CL       ;"Libreta de Direcciones"
+;;__BRAND_NAME__PaymentDetails_CL    ;"Detalles de Pago"
+;;__BRAND_NAME__SavedCarts_CL        ;"Carros Guardados"
+;;__BRAND_NAME__ConsentManagement_CL ;"Consent Management"
+;;__BRAND_NAME__CloseAccount_CL      ;"Cerrar la Cuenta"
+
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;__BRAND_NAME__PersonalDetails_NN   ;"Datos Personales"        ;"Datos Personales"
+;;__BRAND_NAME__UpdateEmail_NN       ;"Modificar Correo"        ;"Modificar Correo"
+;;__BRAND_NAME__ChangePassword_NN    ;"Modificar Contraseña"    ;"Modificar Contraseña"
+;;__BRAND_NAME__OrderHistory_NN      ;"Historial de Órdenes"    ;"Historial de Órdenes"
+;;__BRAND_NAME__AddressBook_NN       ;"Libreta de Direcciones"  ;"Libreta de Direcciones"
+;;__BRAND_NAME__PaymentDetails_NN    ;"Detalles de Pago"        ;"Detalles de Pago"
+;;__BRAND_NAME__SavedCarts_NN        ;"Carros Guardados"         ;"Carros Guardados"
+;;__BRAND_NAME__ConsentManagement_NN ;"Consent Management"      ;"Consent Management"
+;;__BRAND_NAME__CloseAccount_NN      ;"Cerrar la Cuenta"        ;"Cerrar la Cuenta"
+
+
+################################################################################################################################################################
+####  MENU footer
+################################################################################################################################################################
+
+# ------------------------------------------------------------
+#  CMSLinkComponent
+# ------------------------------------------------------------
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkName[lang = $lang];
+;;__BRAND_NAME__VerBoleta_CL           ;"Ver Boleta"
+;;__BRAND_NAME__PrivacidadySeguridad_CL;"Privacidad y Seguridad"
+;;__BRAND_NAME__PreguntasFrecuentes_CL ;"Preguntas Frecuentes"
+;;__BRAND_NAME__Tiendas_CL             ;"Tiendas"
+;;__BRAND_NAME__TerminosyCondiciones_CL;"Términos y Condiciones"
+;;__BRAND_NAME__StockInicialCyberDay_CL;"Stock Inicial CyberDay"
+
+# ------------------------------------------------------------
+#  CMSNavigationNode
+# ------------------------------------------------------------
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;__BRAND_NAME__VerBoleta_NN           ;"Ver Boleta"             ;"Ver Boleta"
+;;__BRAND_NAME__PrivacidadySeguridad_NN;"Privacidad y Seguridad" ;"Privacidad y Seguridad"
+;;__BRAND_NAME__PreguntasFrecuentes_NN ;"Preguntas Frecuentes"   ;"Preguntas Frecuentes"
+;;__BRAND_NAME__Tiendas_NN             ;"Tiendas"                ;"Tiendas"
+;;__BRAND_NAME__TerminosyCondiciones_NN;"Términos y Condiciones" ;"Términos y Condiciones"
+;;__BRAND_NAME__StockInicialCyberDay_NN;"Stock Inicial CyberDay" ;"Stock Inicial CyberDay"
+
+# ------------------------------------------------------------
+#  BlsCustomFooterNavigationComponent
+# ------------------------------------------------------------
+UPDATE BlsCustomFooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]; notice[lang = es_CL];helpTitle[lang = es_CL]; helpPhoneMessage[lang = es_CL];helpPhoneNumbers[lang = es_CL];helpEmail[lang = es_CL]
+;; FooterNavigationComponent ; "2020 __CMS_STORE_PREFIX__ <br/>Todos los derechos reservados" ; "Ayuda"; "Respondemos a todas sus consultas en el teléfono" ; "(+56) 2 2433 6627 <br /> (+56) 2 3239 1829" ; "__FROM_EMAIL__" ;
+
+
+##################################################################################################################################################################
+####  MENU Quick Order
+##################################################################################################################################################################
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkName[lang = $lang];
+;;__BRAND_NAME__QuickOrder_CL;"Quick Order"
+
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;__BRAND_NAME__QuickOrder_NN;"Quick Order"
+
+##################################################################################################################################################################
+####  MENU Import Saved Cart
+##################################################################################################################################################################
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkName[lang = $lang];
+;;__BRAND_NAME__ImportSavedCart_CL;"Importar Carrito Guardado"
+
+UPDATE CMSNavigationNode;$contentCV[unique = true];uid[unique = true];title[lang = $lang];itemText[lang = $lang]
+;;__BRAND_NAME__ImportSavedCart_NN;"Importar Carrito Guardado"

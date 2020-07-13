@@ -1,0 +1,485 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+$version=Staged
+$contentCatalog= __CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog= __PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource=jar: __ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$picture=media(code, $contentCV);
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
+$media=media(code, $contentCV);
+$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
+
+# Language
+$lang=es_CL
+
+# Terms and Conditions Page
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]              ; content[lang = $lang];
+;; TermsAndConditionsMenuParagraph ; " <div class='nav_column TermsAndConditionsMenuParagraph'>
+	<div class='title_holder'>
+		<div class='title'>
+			<div class='title-top'>
+				<span></span>
+			</div>
+		</div>
+		<h2>Términos y condiciones</h2>
+	</div>
+	<div class='item'>
+        <ul class='facet_blockindent linksRel'>
+            <li><a href='#t00'>Principios generales</a></li>
+            <li><a href='#t01'>Nuestro compromiso <b>__CMS_STORE_PREFIX__</b></a></li>
+            <li><a href='#t02'>Medios de pago</a></li>
+            <li><a href='#t03'>Privacidad</a></li>
+            <li><a href='#t04'>Protección de datos</a></li>
+            <li><a href='#t05'>Seguridad en las ofertas</a></li>
+            <li><a href='#t06'>Aviso de publicidad</a></li>
+            <li><a href='#t07'>Precios</a></li>
+            <li><a href='#t08'>Servicios de atención al cliente</a></li>
+            <li><a href='#t09'>Despacho de productos</a></li>
+            <li><a href='#t10'>Derecho de retracto</a></li>
+            <li><a href='#t11'>Garantía legal</a></li>
+            <li><a href='#t12'>Devolución de dinero</a></li>
+            <li><a href='#t13'>Condiciones de contratación</a></li>
+            <li><a href='#t14'>Apoyo venta en línea</a></li>
+            <li><a href='#t15'>Contacto</a></li>
+            <li><a href='#t16'>Representante legal y razón social</a></li>
+        </ul>
+	</div>
+</div>" ;
+;; TermsAndConditionsTextParagraph ; "<div class='textpagetextpage-terms TermsAndConditionsTextParagraph'>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t00'>PRINCIPIOS GENERALES</a>
+    </u></h4>
+    <p>
+      Nuestro sitio proporciona información de forma clara, precisa y de fácil acceso. Se mantiene una rápida y efectiva comunicación entre nuestro equipo <b>__CMS_STORE_PREFIX__</b> y ustedes, nuestros clientes. Una vez que ingresas a nuestro sitio y navegues con éxito en él, implica que aceptas las condiciones de uso actuales. Lo que no conlleva que podamos cambiar el uso o reglas. Además de estos cambios, podemos modificar, eliminar o cambiar secciones del sitio web en cualquier momento y sin previo aviso, conforme a la Ley N° 19.496. Una vez desarrollado el contrato, enviaremos una confirmación por vía electrónica que garantice el apropiado conocimiento del cliente.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t01'>NUESTRO COMPROMISO <b>__SITE_ALIAS__</b></a>
+    </u></h4>
+    <p>
+      Si por alguna razón no quedaste conforme con alguno de nuestros productos, tienes la posibilidad de realizar la devolución y de acceder a un reembolso, siempre y cuando no hayan transcurrido más de 10 días luego de que lo recibiste, se encuentre sin uso, contenga las etiquetas originales y se conserve el embalaje original en perfectas condiciones. Si el producto que adquiriste sale defectuoso, tienes derecho a acceder a la garantía legal dentro de 3 meses a partir de la compra. Esto quiere decir que puedes elegir entre el cambio, reparación o devolución de lo pagado. En caso de promociones u ofertas, tienes derecho a recibir información clara sobre las bases y tiempo de duración del producto.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t02'>MEDIOS DE PAGO</a>
+    </u></h4>
+    <p>
+      Las formas de pago están indicadas en nuestro sitio web, las cuales son tarjetas de crédito y débito vigentes en el sistema de WebPay Plus. El funcionamiento del medio de pago, es responsabilidad exclusiva del proveedor del medio de pago (Transbank) Cualquier problema que pueda originarse, el cliente debe contactar a este proveedor.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t03'>PRIVACIDAD</a>
+    </u></h4>
+    <p>
+      Nosotros les aseguramos a nuestros clientes que sus datos personales serán tratados de manera confidencial, conforme a lo establecido por la legislación vigente y exclusivamente utilizados para procesar la compra, el despacho y, en su caso, para el envío de publicidad sobre ofertas y promociones previa autorización. El cliente inscrito en <b>__SITE_DOMAIN_LOWERCASE__</b>, tendrá derecho a requerir información de sus datos personales registrados y disponer la rectificación, eliminación y/o cancelación de estos datos cuando lo estime conveniente, en conformidad a la Ley N° 19.628.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t04'>PROTECCION DE DATOS</a>
+    </u></h4>
+    <p>
+      Adoptamos un sistema de seguridad efectivo y confiable, contamos con un mecanismo de seguridad físico para cuidar los datos de nuestros clientes, <b>__SITE_DOMAIN_LOWERCASE__</b> cuenta con certificado de seguridad que evita el fraude o robo de información. El objetivo es proteger y reservar la transacción financiera y pagos del comprador.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t05'>SEGURIDAD EN LAS OFERTAS</a>
+    </u></h4>
+    <p>
+      Los precios de nuestros productos y servicios disponibles que tienen vigencia y uso actual no son necesariamente aplicables a otro punto de venta utilizada por <b>__CMS_STORE_PREFIX__</b>. Nosotros podremos modificar cualquier información contenida en nuestra página, sin previo aviso.<br/><br/>
+El stock de nuestros productos está siendo actualizado en nuestro sitio constantemente. Lo que no garantiza que puedan no estar disponibles al momento de haber realizado o intentado realizar la compra. Para tales efecto se contactara al cliente y se ofrecerán alternativas vigentes en el momento.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t06'>AVISO DE PUBLICIDAD</a>
+    </u></h4>
+    <p>
+      Nuestra publicidad no presenta un contenido que afecte la dignidad o de tipo discriminatorio ya sea nacionalidad, raza, sexo, orientación sexual, religión, social o política. <b>__CMS_STORE_PREFIX__</b> tiene un mensaje claro y nos enfocamos en que sea atractivo o entretenido para nuestros clientes, en donde te informamos aspectos esenciales y destacamos de forma clara nuestros productos y actividades.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t07'>PRECIOS</a>
+    </u></h4>
+    <p>
+      El detalle de los valores de los productos, están expresamente exhibidos en <b>__SITE_DOMAIN_LOWERCASE__</b> sólo se aplica para compras efectuadas en el mismo día y en la página web.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t08'>SERVICIOS DE ATENCIÓN AL CLIENTE</a>
+    </u></h4>
+    <p>
+      Te proporcionamos un servicio amable y de transparencia por eso si tienes alguna duda o necesitas preguntar sobre algún trámite de compra, te ofrecemos una atención al cliente mediante vía telefónica al <b>+562 2433 6627</b> o <b>+562 3239 1829</b> o a nuestro email <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b>. El objetivo es atender tus consultas, dudas, reclamos, de forma eficiente. Nuestros horarios de atención al cliente son de lunes a viernes, de 9:00 a 18:30 horas.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t09'>DESPACHO DE PRODUCTOS</a>
+    </u></h4>
+    <p>
+      Los productos serán enviados a la dirección que desee el cliente, por tan solo $990 pesos, en nuestros días y horario de despacho: Lunes a Viernes 9:00 a 22:00 hrs y los días Sábado 9:00 a 18:00 hrs. La posibilidad de despacho está sujeta a la cobertura de nuestro operador logístico. Si tienes dudas de tu despacho o necesitas saber más, comunícate con nosotros al <b>+562 2433 6627</b> o <b>+562 3239 1829</b> y te informaremos el estado de tu pedido.
+<br /><br />
+El plazo para el despacho de los productos es de 2 a 7 días hábiles desde la fecha de la compra. Se considera día hábil de lunes a viernes y no contabiliza los días feriados que sean dentro de la semana. Por lo que, si usted compró el día 7 de octubre, su pedido llegará entre el 11 de octubre y el 31 de octubre; si usted compró el día 9 de octubre, su pedido deberá llegar entre el 11 de octubre y el 1 de Noviembre; y si usted compró el día 10 de octubre, su pedido deberá llegar entre el 12 de octubre y el 05 de Noviembre.
+<br /><br />
+Al recibir los productos adquiridos, el cliente debe asegurarse de que vengan todos los artículos y en perfectas condiciones, de lo contrario, el cliente puede y debe devolver el despacho adjuntando pruebas de que su despacho venía vulnerado, para esto, debe enviar un correo con las pruebas (fotografías) al correo <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> y/o contactarse a través de los siguientes números de teléfono <b>+562 2433 6627</b> o <b>+562 3239 1829</b>. El tiempo para reclamar sobre un pedido que llegó incompleto o vulnerado es de un día hábil desde la recepción del producto, si el cliente tarda más en presentar su reclamo lamentablemente este no será considerado por el tiempo transcurrido.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t10'>DERECHO DE RETRACTO</a>
+    </u></h4>
+    <p>
+      El cliente podrá devolver el producto y solicitar la devolución de su dinero, poniendo termino al contrato establecido con la empresa según la ley en un plazo de 10 días contados desde que recepcionó el producto, sin necesidad de invocar ninguna causa, siempre y cuando el producto no se haya deteriorado por un hecho imputable al cliente.
+<br /><br />
+Para poder solicitar la anulación: el producto tiene que venir, sin uso, con todas sus etiquetas y su embalaje original, además el cliente deberá presentar la boleta original (timbrada por el SII). Esto solo aplica para la tienda virtual, no podemos realizar devoluciones para tiendas físicas. Para más información de como efectuar la devolución debe llamar al <b>+562 2433 6627</b> o <b>+562 3239 1829</b> o enviar un mail a <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b>
+<br /><br />
+<b>*Las anulaciones son de caracter completa, no pueden ser parciales. </b>
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t11'>GARANTÍA LEGAL</a>
+    </u></h4>
+    <p>
+      Les recordamos que todo producto cuenta con una garantía legal de 3 meses, desde la recepción del producto, esta garantía aplica en casos de falla del producto de acuerdo a la ley de protección al consumidor. Si usted compró a través de la página web entonces debe enviar un correo a <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> para que le envíen las indicaciones de cómo debe enviar el producto a nuestras dependencias. Una vez que tengamos el producto en nuestro poder lo enviaremos a evaluación por parte del proveedor, para ver si aplica la garantía. El proveedor responderá si la falla corresponde a mal uso o si es falla de fabricación, este proceso tendrá un tiempo de 5 días hábiles. Cuando tengamos esta respuesta nos comunicaremos con usted para hacérsela saber y explicarle el siguiente paso del proceso.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t12'>DEVOLUCIÓN DE DINERO</a>
+    </u></h4>
+    <p>
+      Para realizar la devolución de dinero el producto debe venir en perfecto estado, con todas sus etiquetas y su embalaje original. Solo se puede solicitar la devolución de dinero dentro de los primeros 10 días desde que recibió el pedido y si se cumplen con las condiciones anteriormente mencionadas. Una vez recibido el producto, se verificará que esta en las condiciones detalladas y se procederá a hacer la devolución del dinero al cliente, de acuerdo al medio de pago que este ultimo sostuvo. Este proceso puede demorar hasta 10 días hábiles.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t13'>CONDICIONES DE CONTRATACIÓN</a>
+    </u></h4>
+    <p>
+      Tener cumplidos 18 años de edad y tener Cédula Nacional de Identidad vigente
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t14'>APOYO VENTA EN LÍNEA</a>
+    </u></h4>
+    <p>
+      Si usted necesita mayor información o asesoría en su compra, puede contactarse con nosotros en cualquiera de los siguientes números <b>+562 2433 6627</b> o <b>+562 3239 1829</b> y estaremos encantados de ayudarle. Nuestro horario de atención es de lunes a viernes de 10:00 a 18:30 horas.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t15'>CONTACTO</a>
+    </u></h4>
+    <p>
+      Para comunicarte con nosotros envíanos un correo a <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__ </b> o llámanos al <b>+562 2433 6627</b> o <b>+562 3239 1829</b>.
+<br/><br/>
+Dirección Casa Matriz: Américo Vespucio Sur 866, Las Condes (no es tienda, es solo administración)
+    </p>
+  </div>
+  <div class='item_container'>
+    <h4><u>
+      <a name='t16'>REPRESENTANTE LEGAL Y RAZON SOCIAL:</a>
+    </u></h4>
+    <p>
+      Nuestra ración social es Articulos Deportivos __CMS_STORE_PREFIX__ S.A. Rut: 79.950.280-1
+<br/><br/>
+Nuestro representante legal para todo efecto y relación a __CMS_STORE_PREFIX__ es la Sra Gloria Rishmague Buzzo, domiciliada en Américo Vespucio Sur 866, comuna de Las Condes, Santiago de Chile y el número de contacto es <b>+562 2433 6627</b> o <b>+562 3239 1829</b>.<br/><br/>
+Dirección Casa Matriz: Américo Vespucio Sur 866, Las Condes (no es tienda, es solo administración)
+      </p>
+  </div>
+</div>" ;
+
+# ------------------------------------------------------------
+# FAQ
+# ------------------------------------------------------------
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
+;; FAQMenuParagraph ; "<div class='nav_column'>
+	<div class='title_holder'>
+		<div class='title'>
+			<div class='title-top'>
+				<span></span>
+			</div>
+		</div>
+		<h2>Preguntas frecuentes</h2>
+	</div>
+	<div class='item'>
+  <ul class='facet_blockindent linksRel'>
+    <li><a href='#a00'>¿Cómo comprar en <b>__SITE_DOMAIN_LOWERCASE__</b>?</a></li>
+    <li><a href='#a01'>¿Qué hacer en caso de tener dudas con mi compra?</a></li>
+    <li><a href='#a02'>Sobre el despacho a domicilio</a></li>
+    <li><a href='#a03'>¿Qué pasa si no sé qué talla comprar?</a></li>
+    <li><a href='#a04'>¿Puedo cambiar la fecha o dirección de mi despacho?</a></li>
+    <li><a href='#a05'>¿Cuánto tiempo puede demorar el despacho de mi pedido?</a></li>
+    <li><a href='#a06'>¿Qué pasa si mi compra no llegó en la fecha que debería?</a></li>
+    <li><a href='#a07'>¿Qué hago si no llegaron todos los productos que compré?</a></li>
+    <li><a href='#a08'>¿Qué métodos de pago existen?</a></li>
+    <li><a href='#a09'>¿Qué pasa si no estoy satisfecho/a con mi compra?</a></li>
+    <li><a href='#a10'>¿Qué pasa si mi producto está fallado o presenta defectos?</a></li>
+    <li><a href='#a11'>Hice uso de mi producto y luego presentó problemas ¿qué puedo hacer en ese caso?</a></li>
+    <li><a href='#a12'>¿Puedo hacer un pedido por teléfono?</a></li>
+    <li><a href='#a13'>¿Me tengo que registrar para comprar algo en la tienda online?</a></li>
+    <li><a href='#a14'>¿Qué pasa si no estoy en mi casa al momento del despacho?</a></li>
+    <li><a href='#a15'>Contáctate con nosotros si tienes otras dudas</a></li>
+	</ul>
+	</div>
+</div>"
+;; FAQTextParagraph ; "<div class='textpagetextpage-faqs FAQTextParagraph'>
+  <div class='item_container'>
+    <h3>
+      <a name='a00'></a>
+      ¿Cómo comprar en <b>__SITE_DOMAIN_LOWERCASE__</b>?
+    </h3>
+    <p>
+        Solo debes seleccionar el producto que quieres y agregarlo a tu carro de compra. luego elige tu medio de pago y la dirección donde quieres recibirlo.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a01'></a>
+      ¿Qué hacer en caso de tener dudas con mi compra?
+    </h3>
+    <p>
+        Cualquier duda o pregunta que tengas, puedes contactarnos llamando al <b>+562 2433 6627</b> o <b>+562 3239 1829</b>
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a02'></a>
+      Sobre el despacho a domicilio
+    </h3>
+    <p>
+        En __SITE_DOMAIN_LOWERCASE__ puedes despachar tus productos a la dirección que prefieras o que más te acomode. *Sujeto a la la cobertura de nuestro operador logístico.<br/>
+Al recibir los productos adquiridos, el cliente debe asegurarse de que vengan todos los artículos adquiridos y en perfectas condiciones, de lo contrario, el cliente puede y debe devolver el despacho adjuntando pruebas de que su despacho venia vulnerado, para esto, debe enviar un correo con las pruebas (fotografías) al correo <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> y/o contactarse a través de los siguientes números de teléfono <b>+562 2433 6627</b> o <b>+562 3239 1829</b>.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a03'></a>
+      ¿Qué pasa si no sé qué talla comprar?
+    </h3>
+    <p>
+        En cada producto, sobre la selección de talla disponemos de un Link con el nombre 'Guía de Tallas' el cual, al seleccionarlo automáticamente te desplegará toda la información en cuanto a medidas y equivalencias de tallas del producto.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a04'></a>
+      ¿Puedo cambiar la fecha o dirección de mi despacho?
+    </h3>
+    <p>
+        Una vez que el producto ya fue despachado, no se podrá cambiar esta información. El producto llegará a la dirección que escogiste al momento de tu compra.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a05'></a>
+      ¿Cuánto tiempo puede demorar el despacho de mi pedido?
+    </h3>
+    <p>
+        El despacho del pedido puede tardar entre <b>2 a 7</b> días hábiles.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a06'></a>
+      ¿Qué pasa si mi compra no llegó en la fecha que debería?
+    </h3>
+    <p>
+        Estamos muy pendientes de ofrecer un servicio óptimo, por lo que tus productos estarán en la fecha, modelo y tamaño que elegiste. Sin embargo, en caso de que el producto no haya llegado en la fecha pactada, envíanos un correo a  <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> o llámanos al <b>+562 2433 6627</b> o <b>+562 3239 1829</b>
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a07'></a>
+      ¿Qué hago si no llegaron todos los productos que compré?
+    </h3>
+    <p>
+        Para que tus productos sean despachados en conjunto, debes comprarlos de una sola vez. En caso de que hayas realizado compras diferentes, es posible que cada producto sea despachado por separado, incluso si sólo existen horas de diferencia entre una compra u otra. Si tienes dudas, siempre puedes llamarnos al <b>+562 2433 6627</b> o <b>+562 3239 1829</b>.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a08'></a>
+      ¿Qué métodos de pago existen?
+    </h3>
+    <p>
+        En nuestra tienda web, puedes pagar con todas las tarjetas de Crédito y Débito, que acepta el sistema de WebPay Plus
+<b>*El correcto funcionamiento del medio de pago, es única y exclusivamente responsabilidad de Transbank, __CMS_STORE_PREFIX__ no tiene injerencia alguna en el funcionamiento del medio de pago y cualquier problema, el cliente deberá verlo directamente con Transbank y su banco.</b>
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a09'></a>
+      ¿Qué pasa si no estoy satisfecho/a con mi compra?
+    </h3>
+    <p>
+        Nuestra idea es que quedes 100% satisfecho con tu compra. Si no estás conforme, puedes realizar la devolución del producto en un plazo de 10 días contados desde la recepción de este.
+Si la devolución se realiza fuera de este periodo o el artículo se ha utilizado, estropeado o no se envía en su paquete o caja original, no podremos aceptar la devolución y/o realizar un reembolso del pago. Las devoluciones de ropa solo se aceptarán si no se ha quitado el etiquetado original. Para poder realizar la devolución de tu pedido puedes llamarnos al <b>+562 2433 6627</b> o <b>+562 3239 1829</b> o enviando un mail al correo <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b><br/>
+<b>*Las devoluciones o anulaciones son completas, no se pueden realizar parciales.</b>
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a10'></a>
+      ¿Qué pasa si mi producto está fallado o presenta defectos?
+    </h3>
+    <p>
+        En __CMS_STORE_PREFIX__ garantizamos la calidad de los productos de nuestros proveedores. Es extremadamente raro que nuestro stock de productos presente daños o defectos.
+Sin embargo, en caso de existir alguna excepción inspeccionamos los productos devueltos. Si el daño es consecuencia de un defecto de fabricación o bien si el producto no cumple con las especificaciones de fábrica, se reembolsará el precio del producto. (siempre que aplique esta condición). En caso de presentarse una falla en su producto dentro de los tres primeros meses desde que lo recibió, por favor contactarnos al mail <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> para que le envíen las indicaciones de cómo debe enviar el producto a nuestras dependencias. Una vez que tengamos el producto lo enviaremos a evaluación por parte del proveedor para ver si aplica la garantía. La marca responderá si la falla corresponde a mal uso o si es falla de fabricación, este proceso tendrá un tiempo de 5 días.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a11'></a>
+      Hice uso de mi producto y luego presentó problemas ¿qué puedo hacer en ese caso?
+    </h3>
+    <p>
+        Si el problema se debe a motivos distintos a la calidad del material o al proceso de montaje, no será posible realizar el cambio y/o devolución. Estos son algunas situaciones que impiden la devolución o reembolso de la compra:
+
+    Si no se han obtenido en <b>www.__SITE_DOMAIN_LOWERCASE__</b>
+    Si se han dañado por un mal uso o negligencia
+    Si se han dañado por un uso indebido o por actividades distintas al fin previsto
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a12'></a>
+      ¿Puedo hacer un pedido por teléfono?
+    </h3>
+    <p>
+        Todas las compras debes realizarlas a través de internet. La asistencia telefónica es sólo para seguimiento y preguntas generales.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a13'></a>
+      ¿Me tengo que registrar para comprar algo en la tienda online?
+    </h3>
+    <p>
+        Si, debes completar tus datos en las casillas y ¡comprar con esa cuenta las veces que quieras!
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a14'></a>
+      ¿Qué pasa si no estoy en mi casa al momento del despacho?
+    </h3>
+    <p>
+        Si el pedido está siendo enviado por Bluexpress, se haran hasta 3 intentos de entrega. Si requiere mayor información por favor contactarse con nosotros al correo <b>servicioalcliente@__SITE_DOMAIN_LOWERCASE__</b> o llamando a nuestro número telefónico: <b>+562 2433 6627</b> o  <b>+562 3239 1829</b>.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='a15'></a>
+      Contáctate con nosotros si tienes otras dudas
+    </h3>
+    <p>
+        Atendemos de Lunes a Viernes, de 9:00 a 18:30 horas en el siguiente número telefónico <b>+562 2433 6627</b> o <b>+562 3239 1829</b>
+    </p>
+  </div>
+</div>" ;
+
+# ------------------------------------------------------------
+# Privacy and Security
+# ------------------------------------------------------------
+UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
+;; PrivacyMenuParagraph ; "<div class='nav_column PrivacyMenuParagraph'>
+	<div class='title_holder'>
+		<div class='title'>
+			<div class='title-top'>
+				<span></span>
+			</div>
+		</div>
+		<h2>Privacidad y seguridad</h2>
+	</div>
+	<div class='item'>
+        <ul class='facet_blockindent linksRel'>
+            <li><a href='#f00'>Compromiso con nuestros clientes</a></li>
+            <li><a href='#f01'>Informacion almacenada</a></li>
+            <li><a href='#f02'>Derechos de usuario</a></li>
+            <li><a href='#f03'>Uso de datos</a></li>
+            <li><a href='#f04'>Difusion de información</a></li>
+            <li><a href='#f05'>Clave del usuario</a></li>
+        </ul>
+	</div>
+</div>";
+;; PrivacyTextParagraph ; "<div class='textpagetextpage-faqs PrivacyTextParagraph'>
+  <div class='item_container'>
+    <h3>
+      <a name='f00'></a>
+      Compromiso con nuestros clientes
+    </h3>
+    <p>
+      El deber que tenemos es transparentar el vínculo que tenemos contigo en nuestro sitio web <b>www.__SITE_DOMAIN_LOWERCASE__</b> nuestro sitio contiene información privada y confidencial de las personas que desean realizar algún tipo de compra online.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='f01'></a>
+      Informacion almacenada
+    </h3>
+    <p>
+      La información personal requerida para poder comprar a través de nuestro sitio web es la siguiente: <br /><br />
+    Nombre<br />
+    Apellido<br />
+    Rut<br />
+    Correo electrónico<br />
+    Contraseña<br />
+    Fecha de nacimiento (debes ser mayor de edad)
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='f02'></a>
+      Derechos de usuario
+    </h3>
+    <p>
+      Si llegas a facilitar tus datos personales en nuestro sitio web, esto se hará de forma voluntaria y tendremos tu permiso para que usemos tus datos conforme a cláusulas de esta política de privacidad. Si deseas no otorgar la información solicitada, no podrás conseguir determinados beneficios, solo las personas que faciliten esta información necesaria, podrá acceder a encargar determinados productos y usar los servicios para poder aprovechar de las ofertas o actividades que ofrecemos. Así como la transparencia es muy importante para __CMS_STORE_PREFIX__, se ofrecen opciones para mantener controlado tus datos personales. La compra que se realice por medio de nuestro sitio web se maneja de acuerdo con los principios de privacidad establecidos y reconociendo las normas de uso de protección de datos de carácter personal con respecto a la ley n° 19.628. por lo que no almacenamos en ningún caso, información de tus tarjetas de crédito o débito que utilices en nuestro sitio web.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='f03'></a>
+      Uso de datos
+    </h3>
+    <p>
+      Nuestro sito utiliza la información que ha recopilado para proporcionar una experiencia de compra más agradable y acorde con los estándares de <b>__CMS_STORE_PREFIX__</b>. Los usos más frecuentes de los datos solicitados, son para notificarte sobre la situación de tu pedido o entrega, por lo que podremos usar los datos ya recopilados anteriormente. Si has entregado tus datos personales, podremos enviarte algún email con promociones ya sea algún tipo de oferta u otro tipo de mensaje que tenga relación con nuestros productos, como lanzamientos exclusivos, eventos, etc.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='f04'></a>
+      Difusion de información
+    </h3>
+    <p>
+      Nos comprometemos a que tus datos serán tratados con la mayor confidencialidad. <b>__CMS_STORE_PREFIX__</b> no vende tus datos a terceros, solo si son necesidades empresariales siempre y cuando la ley lo permita, sus datos serán revelados a empresas o terceros. en cualquier otro tipo de caso no se concederá sus datos personales sin su previa autorización por escrito.
+    </p>
+  </div>
+  <div class='item_container'>
+    <h3>
+      <a name='f05'></a>
+      Clave del usuario
+    </h3>
+    <p>
+      Cuando ya tengas tu cuenta creada, deberás ingresar tu clave secreta para cualquier tipo de compra que desees realizar, lo que asegura que tu compra sea confiable. esta clave será tu responsabilidad por lo que el sitio web no se hace responsable por el uso de terceros. <b>__SITE_DOMAIN_LOWERCASE__</b> tiene enlaces que dan acceso a otros sitios web de la red e internet. Ali ngresar a estos link tú asumes que estos sitios no están bajo el control nuestro y aceptas que nosotros no somos responsables por ninguna información o link adicional que se encuentre en dicho sitio o por el uso que se le dé a tal información.
+    </p>
+  </div>
+</div>" ;

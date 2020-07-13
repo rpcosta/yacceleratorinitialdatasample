@@ -36,7 +36,6 @@ INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)
 # Vendor
 INSERT_UPDATE Vendor;code[unique=true];name
 ;default;Default Vendor
-;belsportlo;Belsport Vendor;
 ;__VENDOR_UID__;__VENDOR_NAME__;
 
 INSERT Warehouse;code[unique=true];name;vendor(code)[default=__VENDOR_UID__, forceWrite=true];default[default=false, forceWrite=true]

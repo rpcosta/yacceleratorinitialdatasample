@@ -6,7 +6,7 @@
 #
 
 # Index Type
-$solrIndexedType=__PRODUCT_CATALOG_UID__
+$solrIndexedType=__SOLR_INDEXED_TYPE__
 
 # Language
 $lang=es_CL

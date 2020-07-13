@@ -1,0 +1,98 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+$version=Staged
+$contentCatalog= __CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog= __PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource=jar: __ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$picture=media(code, $contentCV);
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
+$media=media(code, $contentCV);
+$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
+
+# ------------------------------------------------------------
+#  Privacy and Security Page
+# ------------------------------------------------------------
+# CMSParagraphComponent
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;PrivacyMenuParagraph;Privacy Menu Paragraph;PrivacyMenuParagraph
+;;PrivacyTextParagraph;Privacy Text Paragraph;PrivacyTextParagraph
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;Section2ASlot-Privacy;Section2A Slot for Privacy Page;true;PrivacyMenuParagraph;;;
+;;Section2BSlot-Privacy;Section2B Slot for Privacy Page;true;PrivacyTextParagraph;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid, $contentCV)[unique=true][default='privacyandsecure'];contentSlot(uid, $contentCV)[unique=true];;;
+;;Section2A-Privacy;Section2A;;Section2ASlot-Privacy;;;
+;;Section2B-Privacy;Section2B;;Section2BSlot-Privacy;;;
+
+# Privacy Page
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+;;privacyandsecure;;__CMS_STORE_PREFIX__PrivacidadySeguridad_CL
+
+
+# ------------------------------------------------------------
+#   FAQ Page
+# ------------------------------------------------------------
+# CMSParagraphComponent
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;
+;;FAQMenuParagraph;FAQ Menu Paragraph;
+;;FAQTextParagraph;FAQ Text Paragraph;
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid, $contentCV)
+;;Section2ASlot-FAQ;Section2A Slot for FAQ Page;true;FAQMenuParagraph
+;;Section2BSlot-FAQ;Section2B Slot for FAQ Page;true;FAQTextParagraph
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid, $contentCV)[unique=true][default='faq'];contentSlot(uid, $contentCV)[unique=true]
+;;Section2A-FAQ;Section2A;;Section2ASlot-FAQ
+;;Section2B-FAQ;Section2B;;Section2BSlot-FAQ
+
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+;;faq;;__CMS_STORE_PREFIX__PreguntasFrecuentes_CL
+
+# ------------------------------------------------------------
+#  Terms and Conditions Page
+# ------------------------------------------------------------
+# CMSParagraphComponent
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;TermsAndConditionsMenuParagraph;Terms and Conditions Menu Paragraph;TermsAndConditionsMenuParagraph;;;;
+;;TermsAndConditionsTextParagraph;Terms and Conditions Text Paragraph;TermsAndConditionsTextParagraph;;;;
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;Section2ASlot-TermsAndConditions;Section2A Slot for Terms and Conditions Page;true;TermsAndConditionsMenuParagraph;;;
+;;Section2BSlot-TermsAndConditions;Section2B Slot for Terms and Conditions Page;true;TermsAndConditionsTextParagraph;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid, $contentCV)[unique=true][default='termsAndConditions'];contentSlot(uid, $contentCV)[unique=true];;;
+;;Section2A-TermsAndConditions;Section2A;;Section2ASlot-TermsAndConditions;;;
+;;Section2B-TermsAndConditions;Section2B;;Section2BSlot-TermsAndConditions;;;
+
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+;;termsAndConditions;;__CMS_STORE_PREFIX__TerminosyCondiciones_CL
+
+# ------------------------------------------------------------
+#  Store Finder Pag
+# ------------------------------------------------------------
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MiddleContent-StoreFinderPage;Middle Slot for Store Finder Page;true;StoreFinderComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid, $contentCV)[unique=true][default='storefinderPage'];contentSlot(uid, $contentCV)[unique=true]
+;;Middle-StoreFinderPage;MiddleContent;;MiddleContent-StoreFinderPage
+
+# Simple Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV);linkComponents(uid, $contentCV)
+;;storefinderPage;;__CMS_STORE_PREFIX__Tiendas_CL
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;page;actions(uid, $contentCV)
+;;StoreFinderComponent;StoreFinderComponent;"Store Finder Component";storeFinderContent.jsp;ViewStoreAction

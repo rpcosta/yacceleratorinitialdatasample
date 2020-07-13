@@ -1,0 +1,148 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+$version=Staged
+$contentCatalog= __CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog= __PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource=jar: __ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$picture=media(code, $contentCV);
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
+$media=media(code, $contentCV);
+$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
+
+# Language
+$lang = es_CL
+
+# ------------------------------------------------------------
+#  Row 1: Video Component
+# ------------------------------------------------------------
+UPDATE __CMS_STORE_PREFIX__VideoAutoPlayComponent;$contentCV[unique=true];uid[unique=true];srcVideo[lang=$lang];
+;;__CMS_STORE_PREFIX__VideoComponent_row1;"https://recetadrops.cl/video/resources/Drops_YT_1-baja-f%2010-mb.mp4"
+
+# ------------------------------------------------------------
+#  Row 2: Rotating Images Component
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row02-banner1.jpg;row02-principal-banner1.jpg;$siteResource/images/components/row02-principal-banner1.jpg;;;;
+;;row02-banner2.jpg;row02-principal-banner2.jpg;$siteResource/images/components/row02-principal-banner2.jpg;;;;
+
+UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];headline[lang=$lang];$picture[lang=$lang];content[lang=$lang];
+;;__CMS_STORE_PREFIX__Banner1;;row02-banner1.jpg;;
+;;__CMS_STORE_PREFIX__Banner2;;row02-banner2.jpg;;
+
+# ------------------------------------------------------------
+#  Row 3: Rotating Images Component
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row03-banner1.jpg;row03-banner-left.jpg ;$siteResource/images/components/row03-banner-left.jpg ;;
+;;row03-banner2.jpg;row03-banner-right.jpg;$siteResource/images/components/row03-banner-right.jpg;;
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
+;;__CMS_STORE_PREFIX__SimpleBanner1_row3;row03-banner1.jpg;
+;;__CMS_STORE_PREFIX__SimpleBanner2_row3;row03-banner2.jpg;
+
+# ------------------------------------------------------------
+#  Row 4: Brands carousel
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media [translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/png'];altText;folder(qualifier)[default='images']
+;;__BRAND_NAME__Adidas.png    ;__BRAND_NAME__-marcas-adidas.png     ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-adidas.png     ;;"Marcas Adidas"     ;;
+;;__BRAND_NAME__Converse.png  ;__BRAND_NAME__-marcas-converse.png   ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-converse.png   ;;"Marcas Converse"   ;;
+;;__BRAND_NAME__DCshoes.png   ;__BRAND_NAME__-marcas-dcshoes.png    ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-dcshoes.png    ;;"Marcas DC Shoes"   ;;
+;;__BRAND_NAME__Fila.png      ;__BRAND_NAME__-marcas-fila.png       ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-fila.png       ;;"Marcas Fila"       ;;
+;;__BRAND_NAME__Lotto.png     ;__BRAND_NAME__-marcas-lotto.png      ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-lotto.png      ;;"Marcas Lotto"      ;;
+;;__BRAND_NAME__Mitre.png     ;__BRAND_NAME__-marcas-mitre.png      ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-mitre.png      ;;"Marcas Mitre"      ;;
+;;__BRAND_NAME__Molten.png    ;__BRAND_NAME__-marcas-molten.png     ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-molten.png     ;;"Marcas Molten"     ;;
+;;__BRAND_NAME__NewBalance.png;__BRAND_NAME__-marcas-new-balance.png;$siteResource/images/components/brands/__BRAND_NAME__-marcas-new-balance.png;;"Marcas New Balance";;
+;;__BRAND_NAME__Nike.png      ;__BRAND_NAME__-marcas-nike.png       ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-nike.png       ;;"Marcas Nike"       ;;
+;;__BRAND_NAME__Puma.png      ;__BRAND_NAME__-marcas-puma.png       ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-puma.png       ;;"Marcas Puma"       ;;
+;;__BRAND_NAME__Reebok.png    ;__BRAND_NAME__-marcas-reebok.png     ;$siteResource/images/components/brands/__BRAND_NAME__-marcas-reebok.png     ;;"Marcas Reebo"      ;;
+
+UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=es_CL]
+;;BannerM01;__BRAND_NAME__Adidas.png
+;;BannerM02;__BRAND_NAME__Converse.png
+;;BannerM03;__BRAND_NAME__DCshoes.png
+;;BannerM04;__BRAND_NAME__Fila.png
+;;BannerM05;__BRAND_NAME__Lotto.png
+;;BannerM06;__BRAND_NAME__Mitre.png
+;;BannerM09;__BRAND_NAME__Molten.png
+;;BannerM10;__BRAND_NAME__NewBalance.png
+;;BannerM11;__BRAND_NAME__Nike.png
+;;BannerM12;__BRAND_NAME__Puma.png
+;;BannerM13;__BRAND_NAME__Reebok.png
+
+# ------------------------------------------------------------
+#  Row 5: Product carousels title
+# ------------------------------------------------------------
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+;;__CMS_STORE_PREFIX__ProductCarrouselParagraph_row5;"Destacados"
+
+# ------------------------------------------------------------
+#  Row 6:  Product carousel 1
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row06-desktop.jpg;row06-product-carousel1-desktop.jpg;$siteResource/images/components/row06-product-carousel1-desktop.jpg;;;
+#;;row06-mobile.jpg ;row06-product-carousel1-mobile.jpg ;$siteResource/images/components/row06-product-carousel1-mobile.jpg;;;
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
+;;__CMS_STORE_PREFIX__SimpleBanner_row6-desktop;row06-desktop.jpg;
+#;;__CMS_STORE_PREFIX__SimpleBanner_row6-mobile ;row06-mobile.jpg ;
+
+# ------------------------------------------------------------
+#  Row 7: Product Carousels Title
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row07-desktop.jpg;row07-product-carousel2-desktop.jpg;$siteResource/images/components/row07-product-carousel2-desktop.jpg;;;
+;;row07-mobile.jpg ;row07-product-carousel2-mobile.jpg ;$siteResource/images/components/row07-product-carousel2-mobile.jpg ;;;
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
+;;__CMS_STORE_PREFIX__SimpleBanner_row7-desktop;row07-desktop.jpg;
+;;__CMS_STORE_PREFIX__SimpleBanner_row7-mobile ;row07-mobile.jpg ;
+
+# ------------------------------------------------------------
+#  Row 8: Product Carousels 3
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row08-desktop.jpg;row08-product-carousel3-desktop.jpg;$siteResource/images/components/row08-product-carousel3-desktop.jpg;;;
+;;row08-mobile.jpg ;row08-product-carousel3-mobile.jpg ;$siteResource/images/components/row08-product-carousel3-mobile.jpg ;;;
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
+;;__CMS_STORE_PREFIX__SimpleBanner_row8-desktop;row08-desktop.jpg;
+;;__CMS_STORE_PREFIX__SimpleBanner_row8-mobile ;row08-mobile.jpg ;
+
+# ------------------------------------------------------------
+#  Row 9: Product Carousels 4
+# ------------------------------------------------------------
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg'];altText[default='__CMS_STORE_PREFIX__ Home Page'];folder(qualifier)[default='images']
+;;row09-desktop.jpg;row09-product-carousel4-desktop.jpg;$siteResource/images/components/row09-product-carousel4-desktop.jpg;;;
+;;row09-mobile.jpg ;row09-product-carousel4-mobile.jpg ;$siteResource/images/components/row09-product-carousel4-mobile.jpg ;;;
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang];
+;;__CMS_STORE_PREFIX__SimpleBanner_row9-desktop;row09-desktop.jpg;
+;;__CMS_STORE_PREFIX__SimpleBanner_row9-mobile ;row09-mobile.jpg ;
+
+# ------------------------------------------------------------
+#  Row 10: SocialComponent
+# ------------------------------------------------------------
+UPDATE BoldSocialComponent; $contentCV[unique = true]; uid[unique = true];text[lang=$lang];
+;;__CMS_STORE_PREFIX__SocialComponent;"Síguenos"
+
+# ------------------------------------------------------------
+#  Row 11: Instagram Banner Section
+# ------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name;linkName[lang = $lang];url; &linkRef;target(code)[default = 'newWindow']
+;;__CMS_STORE_PREFIX__InstagramTilte;__CMS_STORE_PREFIX__InstagramTilte;Instagram;"https://www.instagram.com/__CMS_STORE_PREFIX__/";__CMS_STORE_PREFIX__InstagramTilte;
+
+# ------------------------------------------------------------
+#  Row 12: Store Benefits
+# ------------------------------------------------------------
+UPDATE BoldParagraphBannerComponent;$contentCV[unique=true];uid[unique=true]; title[lang=$lang]; subtitle[lang=$lang];
+;;__CMS_STORE_PREFIX__StoreBenefits1_row10;"DESPACHO A TODO CHILE CONTINENTAL"     ;;
+;;__CMS_STORE_PREFIX__StoreBenefits2_row10;"COMPRA CON TARJETA DE CRÉDITO O DÉBITO";;
+;;__CMS_STORE_PREFIX__StoreBenefits3_row10;"NUESTRO SITIO WEB ES SEGURO"           ;;
+;;__CMS_STORE_PREFIX__StoreBenefits4_row10;"RETIRA EN TU TIENDA FAVORITA"          ;;

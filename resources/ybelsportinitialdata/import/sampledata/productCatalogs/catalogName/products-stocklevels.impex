@@ -2,11 +2,13 @@
 
 $productCatalog = __PRODUCT_CATALOG_UID__
 $catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$defaultWarehouseCode=__WAREHOUSE_DELIVERY_SAMPLE_UID__
+$defaultWarehouseForPickupCode=__WAREHOUSE_PICKUP_SAMPLE_UID__
 
-INSERT_UPDATE StockLevel; available[unique = true]; warehouse(code)[unique = true]; maxPreOrder; maxStockLevelHistoryCount; overSelling; preOrder; productCode[unique = true]; reserved; inStockStatus(code)
-                        ;99;2019;0;0;0;0;ADB35385130;0
-                        ;99;2019;0;0;0;0;ADB35403065;0
-                        ;99;2019;0;0;0;0;ADB35403070;0
-                        ;99;2010;0;0;0;0;ADB35385130;0
-                        ;99;2010;0;0;0;0;ADB35403065;0
-                        ;99;2010;0;0;0;0;ADB35403070;0
+INSERT_UPDATE StockLevel; available[unique = true]; warehouse(code[default=$defaultWarehouseCode])[unique = true]; maxPreOrder; maxStockLevelHistoryCount; overSelling; preOrder; productCode[unique = true]; reserved; inStockStatus(code)
+                        ;99;;0;0;0;0;ADB35385130;0
+                        ;99;;0;0;0;0;ADB35403065;0
+                        ;99;;0;0;0;0;ADB35403070;0
+                        ;99;;0;0;0;0;ADB35385130;0
+                        ;99;;0;0;0;0;ADB35403065;0
+                        ;99;;0;0;0;0;ADB35403070;0

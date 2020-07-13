@@ -16,7 +16,7 @@ $siteMapUrlLimitPerFile = 50000
 $siteMapLangCur = es_CLClp
 $siteMapPage = Homepage, Product, CategoryLanding, Category, Store, Content, Custom
 $customSiteMapUrls = /Open-Catalogue/c/1?q=%3AtopRated%3AallPromotions%3ABOGOFElectronics%3AallPromotions%3A10DiscountCanonEOS450D%3AallPromotions%3AMultiBuyElectronics%3AallPromotions%3APerfectPartnerElectronics%3AallPromotions%3AProductBundleElectronics, /Brands/c/brands?q=%3Arelevance%3Abrand%3Abrand_5%3Acategory%3A575, /Open-Catalogue/Cameras/Hand-held-Camcorders/c/584?q=%3Arelevance%3Abrand%3Abrand_2, /Open-Catalogue/Components/Power-Supplies/c/816?q=%3Arelevance%3Abrand%3Abrand_5, /Open-Catalogue/Data-storage/Flash-Memory/c/902?q=%3Arelevance%3Abrand%3Abrand_18
-$languages = en, es_CL, es
+$languages = es_CL
 $storeSalesOrganizationCode=__STORE_SALES_ORG_CODE__
 
 # Import config properties into impex macros
@@ -74,7 +74,7 @@ INSERT_UPDATE Trigger; cronJob(code)[unique = true]  ; second; minute; hour; day
                      ; $siteUid-CartRemovalJob       ; 0     ; 5     ; 4   ; -1 ; -1   ; -1  ; false   ; true  ; -1
                      ; $siteUid-UncollectedOrdersJob ; 0     ; 0     ; 6   ; -1 ; -1   ; -1  ; true    ; false ; -1
                      ; $siteUid-SiteMapMediaJob      ; 0     ; 0     ; 6   ; -1 ; -1   ; -1  ; true    ; false ; -1
-                     ; stockReleaseCronJob           ; 0     ; -1    ; -1  ; 1  ; -1   ; -1  ; true    ; true  ; -1
+                     ; stockReleaseCronJob           ; 0     ; 15    ; -1  ; -1  ; -1   ; -1  ; true    ; true  ; -1
 
 #Catalog synchronization
 INSERT_UPDATE CatalogVersionSyncJob; code [unique = true]                ; &nljob  ; syncLanguages(isocode)
@@ -85,3 +85,7 @@ INSERT_UPDATE CatalogVersionSyncCronJob; code[unique = true]    ; job(&nljob); s
 
 INSERT_UPDATE Trigger; cronJob(code)[unique = true]; second; minute; hour; day; month; year; relative; active; maxAcceptableDelay
                      ; __SYNC_JOB_PRODUCT_CATALOG__      ; 0     ; -1    ; -1  ; 1  ; -1   ; -1  ; true    ; true  ; -1
+INSERT_UPDATE BaseSiteForDelivery;basesite(uid)[unique=true];deliverymode(code)[unique=true];erpOrderClass;erpShipmentClass;erpInvoiceType
+                                 ;$siteUid;pickup;__BASE_SITE_FOR_DELIVERY_PICKUP_ERP_ORDER_CLASS__;__BASE_SITE_FOR_DELIVERY_PICKUP_ERP_SHIPMENT_CLASS__;__BASE_SITE_FOR_DELIVERY_PICKUP_ERP_INVOICE_TYPE__
+                                 ;$siteUid;flatRateDelivery;__BASE_SITE_FOR_DELIVERY_FLAT_RATE_DELIVERY_ERP_ORDER_CLASS__;__BASE_SITE_FOR_DELIVERY_FLAT_RATE_DELIVERY_ERP_SHIPMENT_CLASS__;__BASE_SITE_FOR_DELIVERY_FLAT_RATE_DELIVERY_ERP_INVOICE_TYPE__
+

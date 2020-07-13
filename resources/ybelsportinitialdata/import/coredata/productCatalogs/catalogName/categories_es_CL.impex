@@ -12,8 +12,9 @@
 
 $catalogVersion = catalogVersion(catalog(id[default = '__PRODUCT_CATALOG_UID__']), version[default = 'Staged'])[unique = true, default = '__PRODUCT_CATALOG_UID__:Staged']
 $categories = target(code, $catalogVersion)[unique = true]
-$lang = en
+$lang = es_CL
 
 INSERT_UPDATE Category; code[unique = true]; $catalogVersion; name[lang = $lang]; allowedPrincipals(uid)[default = 'customergroup'];
-                      ; __CATEGORY_PROMOTIONS_UID__    ;                ; "__CATEGORY_PROMOTIONS_NAME_ES_CL__" ;                                                  ;
-                      ; __CATEGORY_CAMPAINS_UID__      ;                ; "__CATEGORY_CAMPAINS_NAME_ES_CL__"  ;                                                  ;
+                      ; __BRAND_NAME__Categories  ;                 ; __STORE_NAME__
+                      ; __BRAND_NAME__Promociones ;                 ; Promociones de __STORE_NAME__
+                      ; __BRAND_NAME__Campanas    ;                 ; Campañas de __STORE_NAME__

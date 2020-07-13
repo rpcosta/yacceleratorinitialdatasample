@@ -1,0 +1,306 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+$version=Staged
+$contentCatalog = dropsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog = dropsProductCatalog
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource = jar:cl.com.bls.b2c.rxy.initialdata.constants.InitialDataConstants&/roxyb2cstoreinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$picture = media(code, $contentCV);
+$medias = medias(code, $contentCV);
+$mediaContainer = media(qualifier, $contentCV);
+$product = product(code, $productCV)
+$category = category(code, $productCV)
+$jarResourceCms = jar:cl.com.bls.b2c.rxy.initialdata.constants.InitialDataConstants&/roxyb2cstoreinitialdata/import/sampledata/cockpits/cmscockpit
+$media = media(code, $contentCV);
+$productResource = jar:cl.com.bls.b2c.rxy.initialdata.constants.InitialDataConstants&/roxyb2cstoreinitialdata/import/sampledata/productCatalogs/$productCatalog
+$lang = es_CL
+
+# -----------------------------------------------------------------------#
+#                                                                        #
+#                               COMPONENTS                               #
+#                                                                        #
+# -----------------------------------------------------------------------#
+
+# ------------------------------------------------------------
+# BLS Collapsible Paragraph
+# ------------------------------------------------------------
+INSERT_UPDATE BlsCollapsibleParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+                                              ;;BlsCollapsibleParagraphHomeDrops;"Drops Home Parrafo Colapsable";BlsCollapsibleParagraphHomeDrops
+
+############### Located ###############
+UPDATE BlsCollapsibleParagraphComponent; $contentCV[unique = true]; uid[unique = true];text[lang = $lang];
+                                       ;;BlsCollapsibleParagraphHomeDrops;"<div><p>Si quieres aprovechar de lo que la vida tiene para ofrecer cada día, de las aventuras y las nuevas experiencias, Roxy es la respuesta. Como una marca para todas las mujeres de todo el mundo, Roxy ha inspirado a las mujeres como tu desde 1991, y la facilitando tu activo estilo de vida con productos que lo complementan. Lo que empezó siendo una marca de surf, evoluciono y se volvió una marca de deportes que mezcla lo último en moda y tendencias. Aunque el surf e s el dueño de nuestros corazones, también somos conocidas en las montañas como una marca de snowboard y una marca de esquí y también somos muy conocidas en la comunidad del fitness. Tu energía es contagiosa y nos mantiene motivadas para innovar y proponerte productos increíbles. Roxy es divertida, a la moda y con un espíritu libre. Vuélvete parte de nuestra comunidad y disfruta de nuestra selección de diferentes estilos.</p>
+<h2>DROPS SIEMPRE ESTÁ A LA MODA</h2>
+<p>Llamando a todas las boardriders. Están listas para empezar el día con estilo? Roxy está aquí para asegurar que las mujeres activas tengan la ropa, los zapatos y los accesorios necesarios para lucir de maravilla cada día. Como una marca de surf, snowboard y marca de skate, nos concentramos en facilitarles a las atletas el deporte y que puedan hacer lo que más les gusta. Nuestro objetivo no solo es vestir e inspirar a las mujeres, sino que también a las chicas y niñas. Nuestra pasión por los deportes en tabla empezó desde pequeñas y nos encanta ver que hay niñas a quienes les apasionan los deportes, y verlas volverse profesionales usando Roxy nos enorgullece. Seguido estamos por delante de las últimas tendencias en la moda y en los boardsports que nos ayudan a mezclar nuestro amor por el estilo con nuestro amor por la rutina diaria. Cuando t e pones Roxy, la aventura nunca termina, sobre todo con las patinetas!</p>
+<h2>CON DROPS FITNESS SUBIRÁS DE NIVEL EN TU EJERCICIO</h2>
+<p>Te encanta vivir una vida sana? En Roxy también nos gusta. Diseñamos ropa de fitness para inspirar a las mujeres y que puedan salir de su zona de confort y así poder adoptar el estilo de vida sano. No importa si te gusta la yoga, la natación, el running o cualquier otra actividad, Roxy tiene la colección perfecta de ropa deportiva para que puedas escoger lo que más te guste y te conviene. Nuestra colección fitness incluye zapatos deportivos, accesorios deportivos, bolsas deportivas y ropa deportiva para que puedan mejorar tu manera de ejercitarte y que estés cómoda durante toda tu sesión. Pensamos que deberías de pasar menos tiempo de compras y más tiempo haciendo actividad que te gusten, es por eso que todas nuestras colecciones están disponibles en línea. Cuando usas Roxy puedes ponerte como objetivo cualquier meta y hacer tus sueños realidad. Pues que esperas?</p>
+<h2>DROPS ES LA ÚNICA MARCA DE SURF PARA MUJERES</h2>
+<p>Cuando se trata de surf para mujeres que rinde, Roxy es la una marca que te puedo dar el estilo y la calidad que necesitas. Nuestros trajes de surf para mujeres están diseñados con lo último en tecnología, materiales que te facilitaran tus actividades acuáticas, todo con el estilo más nuevo. Junto con el rendimiento en la ropa de surf, Roxy tiene una larga historia de fusionar la moda y la función para crear colecciones estacionales de trajes de baño. Nuestra gama de trajes de baño incluye estilos tipo bikinis, monokinis y trajes de baño completos. No importa si quieres surfear en surfboard o en longboard, o si quieres hacer tu ejercicio en tu paddle, nuestra colección de trajes de baño para mujer harán que te veas increíble y te sientas cómoda en cualquier actividad que decidas hacer. Hay días en los que tienes ganas de ensenar menos que lo que normalmente ensenas en un bikini, pero tampoco quieres cubrirte tanto como con un traje de surf, pruébate unos de nuestros boardshorts para mujeres y experimenta la comodidad y la calidad de la ropa de surf. Roxy siempre estará anclada al estilo de vida surfista, y esperamos seguir innovando y evolucionando con las futuras tendencias de surf.</p>
+<h2>DROPS ES EXPERTA EN ESQUÍ Y EN SNOWBOARD</h2>
+<p>Cuando las montañas están hablando, la mejor respuesta es Roxy. Durante anos, hemos sido conductoras en el rendimiento de la ropa de esquí y la ropa de snowboard. Como una de las mejores marcas de snowboard y marca de esquí, cada invierno lanzamos una colección de invierno que cuenta con los mejores materiales, calidad y lo último en tecnología- todo lo que se necesita para pasar momentos increíbles en la montaña. No queremos que pases frio y queremos que estés bien protegida, es por eso que tienes una gran variedad de productos para que puedas escoger lo que necesitas: guantes, gorros, bufandas, chaquetas de esquí, chaquetas de snowboard, pantalones de esquí, pantalones de snowboard, gafas de esquí, gafas de snowboard, mascara de esquí, mascara de snowboard, cascos, mochilas de esquí, mochilas de snowboard y mochilas técnicas. Todo nuestro equipo de esquí y equipo de snowboard está probado y aprobado por el team Roxy, y está diseñado por algunas de las mejores esquiadoras y snowboarder del mundo. Cuando se traja de empujar los límites y sobresalir en la montaña, Roxy tiene todo lo necesario para cubrirte de pies a cabeza!</p></div>"
+
+
+# ------------------------------------------------------------
+# BLS Link Component
+# ------------------------------------------------------------
+INSERT_UPDATE BlsLinkBandComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;&componentRef
+                                  ;;BlsLinkBandRoxy;"Roxy Home Link Band Component";/;BlsLinkBandRoxy;
+
+############### Located ###############
+UPDATE BlsLinkBandComponent; $contentCV[unique = true];uid[unique = true];desktopPicture(&mediaRef)[lang = $lang];mobilePicture(&mediaRef)[lang = $lang]
+                           ;;BlsLinkBandRoxy;band-link-desktop.jpg;band-link-mobile.jpg;
+
+INSERT_UPDATE Media;$contentCV[unique=true];folder(qualifier)[default='images'];mediaFormat(qualifier);code[unique=true];&mediaRef;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename ;mime;altText;&imageRef;
+                   ;;;desktop;band-link-desktop.jpg;band-link-desktop.jpg;$siteResource/images/banners/homepage/responsive/band-link-desktop.jpg;band-link-desktop.jpg;image/jpeg;"Roxy Home Desktop";;band-link-desktop.jpg;
+                   ;;;mobile ;band-link-mobile.jpg;band-link-mobile.jpg;$siteResource/images/banners/homepage/responsive/band-link-mobile.jpg ;band-link-mobile.jpg ;image/jpeg;"Roxy Home Desktop";;band-link-mobile.jpg ;
+
+
+# -----------------------------------------------------------------------
+# Bls Horizonal Text Gallery Item
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;BlsHorizonalTextGalleryComponent11;"Link 1 Hz Tx Gallery";/oferta1;;BlsHorizonalTextGalleryComponent11
+                              ;;BlsHorizonalTextGalleryComponent22;"Link 2 Hz Tx Gallery";/oferta2;;BlsHorizonalTextGalleryComponent22
+
+INSERT_UPDATE BlsHorizonalTextGalleryItem; $contentCV[unique = true]; uid[unique = true];name; colorTitle;link(&componentRef);&componentRef
+                                         ;;textGalleryItem11;"Hz Tx Gallery 1"; "#CB3234" ; BlsHorizonalTextGalleryComponent11;textGalleryItem11
+                                         ;;textGalleryItem12;"Hz Tx Gallery 2"; "#3B83BD" ; BlsHorizonalTextGalleryComponent22;textGalleryItem12
+
+INSERT_UPDATE BlsHorizonalTextGalleryComponent; $contentCV[unique = true]; uid[unique = true];name; items(&componentRef);&componentRef
+                                              ;;horizontalTextGallery;"Horizontal Text Gallery Component Roxy"; textGalleryItem11, textGalleryItem12;horizontalTextGallery
+
+############### Located ###############
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkname[lang = $lang]
+                       ;;BlsHorizonalTextGalleryComponent11;"Click Aquí 1";
+                       ;;BlsHorizonalTextGalleryComponent22;"Click Aquí 2";
+
+UPDATE BlsHorizonalTextGalleryItem; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]; text[lang = $lang]
+                                  ;;textGalleryItem11; "Gran Oferta 1 Roja";"imperdible 1"
+                                  ;;textGalleryItem12; "Gran Oferta 2 Azul";"imperdible 2"
+
+# -----------------------------------------------------------------------
+# BlsMultiActionBannerComponent
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;BlsMultiActionBanner1ComponentLink1;"Link 1 BlsMultiActionBanner1";"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner1ComponentLink1
+                              ;;BlsMultiActionBanner1ComponentLink2;"Link 2 BlsMultiActionBanner1";;;BlsMultiActionBanner1ComponentLink2
+                              ;;BlsMultiActionBanner1ComponentLink3;"Link 3 BlsMultiActionBanner1";;;BlsMultiActionBanner1ComponentLink3
+                              ;;BlsMultiActionBanner2ComponentLink1;"/cart" ;"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner2ComponentLink1
+                              ;;BlsMultiActionBanner2ComponentLink2;"Link 2 BlsMultiActionBanner2";"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner2ComponentLink2
+                              ;;BlsMultiActionBanner2ComponentLink3;"Link 3 BlsMultiActionBanner2";;;BlsMultiActionBanner2ComponentLink3
+                              ;;BlsMultiActionBanner3ComponentLink1;"Link 1 BlsMultiActionBanner3";"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner3ComponentLink1
+                              ;;BlsMultiActionBanner3ComponentLink2;"Link 2 BlsMultiActionBanner3";"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner3ComponentLink2
+                              ;;BlsMultiActionBanner3ComponentLink3;"Link 3 BlsMultiActionBanner3";"Roxy/Ropa/c/roxyRopa";;BlsMultiActionBanner3ComponentLink3
+
+
+INSERT_UPDATE BlsMultiActionBannerComponent; $contentCV[unique = true]; uid[unique = true];name;buttonLink1(&componentRef);buttonLink2(&componentRef); buttonLink3(&componentRef); alignmentType(code); &componentRef; title[default=""]; text[default=""];buttonText1[default=""]
+                                           ;;BlsMultiActionBanner1;"Banner MultiAction 1"; BlsMultiActionBanner1ComponentLink1;BlsMultiActionBanner1ComponentLink2; BlsMultiActionBanner1ComponentLink3; CENTER; BlsMultiActionBanner1;;;
+                                           ;;BlsMultiActionBanner2;"Banner MultiAction 2"; BlsMultiActionBanner2ComponentLink1;BlsMultiActionBanner2ComponentLink2; BlsMultiActionBanner2ComponentLink3; RIGHT; BlsMultiActionBanner2;;;
+                                           ;;BlsMultiActionBanner3;"Banner MultiAction 3"; BlsMultiActionBanner3ComponentLink1;BlsMultiActionBanner3ComponentLink2; BlsMultiActionBanner3ComponentLink3; LEFT; BlsMultiActionBanner3;;;
+
+############### Located ###############
+INSERT_UPDATE Media;$contentCV[unique = true];code[unique = true];realfilename;@media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default = 'image/jpeg'];altText;folder(qualifier)[default = 'images']
+                   ;;BannerMultiAction_1_desktop.jpg;BannerMultiAction_1_desktop.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_1_desktop.jpg;image/jpg;;
+                   ;;BannerMultiAction_1_mobile.jpg;BannerMultiAction_1_mobile.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_1_mobile.jpg;image/jpg;;
+                   ;;BannerMultiAction_2_desktop.jpg;BannerMultiAction_2_desktop.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_2_desktop.jpg;image/jpg;;
+                   ;;BannerMultiAction_2_mobile.jpg;BannerMultiAction_2_mobile.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_2_mobile.jpg;image/jpg;;
+                   ;;BannerMultiAction_3_desktop.jpg;BannerMultiAction_3_desktop.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_3_desktop.jpg;image/jpg;;
+                   ;;BannerMultiAction_3_mobile.jpg;BannerMultiAction_3_mobile.jpg;$siteResource/images/banners/homepage/responsive/BannerMultiAction_3_mobile.jpg;image/jpg;;
+
+
+UPDATE BlsMultiActionBannerComponent; $contentCV[unique = true]; uid[unique = true];name;title[lang=$lang]; text[lang=$lang];buttonText1[lang=$lang];buttonText2[lang=$lang];buttonText3[lang=$lang];mobileImage(code,$contentCV)[lang=$lang]; desktopImage(code,$contentCV)[lang=$lang]
+
+
+# -----------------------------------------------------------------------
+# Bls Milti Image Section Component
+# -----------------------------------------------------------------------
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique = true];uid[unique = true];name;&componentRef
+                                   ;;MultiImage1ParagraphComponent;"Tu energía es contagiosa y nos mantiene motivadas para innovar y proponerte productos increíbles. Roxy es divertida, a la moda y con un espíritu libre.";MultiImage1ParagraphComponent
+                                   ;;MultiImage2ParagraphComponent;"Roxy está aquí para asegurar que las mujeres activas tengan la ropa, los zapatos y los accesorios necesarios para lucir de maravilla cada día.";MultiImage2ParagraphComponent
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;MultiImage1Link;"Link 1 Multi Image";"/Roxy/Ropa/c/roxyRopa";;MultiImage1Link
+                              ;;MultiImage2Link;"Link 2 Multi Image";"/cart";;MultiImage2Link
+
+INSERT_UPDATE BlsMultiImageSectionComponent;$contentCV[unique = true];uid[unique = true];name;title;link(&componentRef);linkText;paragraphText(&componentRef);desktopImageContainer;mobileImageContainer;&componentRef
+                                           ;;MultiImageSection1;"Multi Image 1";"";MultiImage1Link;"Ver novedades";MultiImage1ParagraphComponent;;;MultiImageSection1
+                                           ;;MultiImageSection2;"Multi Image 2";"ROXY SIEMPRE ESTÁ A LA MODA";MultiImage2Link;"Descubre la mejor colección";MultiImage2ParagraphComponent;;;MultiImageSection2
+
+
+############### Located ###############
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique = true];uid[unique = true];content[lang = $lang]
+                                   ;;MultiImage1ParagraphComponent;"Tu energía es contagiosa y nos mantiene motivadas para innovar y proponerte productos increíbles. Roxy es divertida, a la moda y con un espíritu libre."
+                                   ;;MultiImage2ParagraphComponent;"Roxy está aquí para asegurar que las mujeres activas tengan la ropa, los zapatos y los accesorios necesarios para lucir de maravilla cada día."
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkname[lang = $lang]
+                              ;;MultiImage1Link;"Link 1"
+                              ;;MultiImage2Link;"Link 2"
+
+INSERT_UPDATE Media;$contentCV[unique=true];folder(qualifier)[default='images'];mediaFormat(qualifier);code[unique=true];&mediaRef;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename ;mime;altText;
+                   ;;;desktop;SeccionMultiImagen1desktop.jpg;SeccionMultiImagen1desktop.jpg;$siteResource/images/banners/homepage/responsive/SeccionMultiImagen1desktop.jpg;SeccionMultiImagen1desktop.jpg;image/jpg;"Multi Image 1";
+                   ;;;mobile;SeccionMultiImagen1mobile.jpg;SeccionMultiImagen1mobile.jpg;$siteResource/images/banners/homepage/responsive/SeccionMultiImagen1mobile.jpg;SeccionMultiImagen1mobile.jpg;image/jpg;"Multi Image 1";
+                   ;;;desktop;SeccionMultiImagen2desktop.jpg;SeccionMultiImagen2desktop.jpg;$siteResource/images/banners/homepage/responsive/SeccionMultiImagen2desktop.jpg;SeccionMultiImagen2desktop.jpg;image/jpg;"Multi Image 2";
+                   ;;;mobile;SeccionMultiImagen2mobile.jpg;SeccionMultiImagen2mobile.jpg;$siteResource/images/banners/homepage/responsive/SeccionMultiImagen2mobile.jpg;SeccionMultiImagen2mobile.jpg;image/jpg;"Multi Image 2";
+
+
+INSERT_UPDATE BlsMultiImageSectionComponent;$contentCV[unique = true];uid[unique = true];name;title[lang = $lang];linkText[lang = $lang];desktopImageContainer(&mediaRef)[lang = $lang];mobileImageContainer(&mediaRef)[lang = $lang]
+                                           ;;MultiImageSection1;"Multi Image 1";"";"Ver novedades";SeccionMultiImagen1desktop.jpg;SeccionMultiImagen1mobile.jpg
+                                           ;;MultiImageSection2;"Multi Image 2";"ROXY SIEMPRE ESTÁ A LA MODA";"Descubre la mejor colección";SeccionMultiImagen2desktop.jpg;SeccionMultiImagen2mobile.jpg
+
+
+# -----------------------------------------------------------------------
+# Bls3ImageSectionItemComponent
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;Bls3ImageSectionItemComponentLink1;"Link 1 Bls3ImageSectionItem";"Roxy/Ropa/c/roxyRopa";;Bls3ImageSectionItemComponentLink1
+                              ;;Bls3ImageSectionItemComponentLink2;"Link 2 Bls3ImageSectionItem";"Roxy/Ropa/c/roxyRopa";;Bls3ImageSectionItemComponentLink2
+                              ;;Bls3ImageSectionItemComponentLink3;"Link 3 Bls3ImageSectionItem";"Roxy/Ropa/c/roxyRopa";;Bls3ImageSectionItemComponentLink3
+
+INSERT_UPDATE Bls3ImageSectionItemComponent; $contentCV[unique = true]; uid[unique = true];name;link(&componentRef);&componentRef
+                                           ;;Bls3ImageSectionItem1;"Bls3ImageSectionItem 1";Bls3ImageSectionItemComponentLink1; Bls3ImageSectionItem1;
+                                           ;;Bls3ImageSectionItem2;"Bls3ImageSectionItem 2";Bls3ImageSectionItemComponentLink2; Bls3ImageSectionItem2;
+                                           ;;Bls3ImageSectionItem3;"Bls3ImageSectionItem 3";Bls3ImageSectionItemComponentLink3; Bls3ImageSectionItem3;
+
+INSERT_UPDATE Bls3ImageSectionComponent; $contentCV[unique = true]; uid[unique = true];name;images(&componentRef);&componentRef
+                                       ;;Bls3ImageSectionComponent;"3 Image Section Component";Bls3ImageSectionItem1,Bls3ImageSectionItem2,Bls3ImageSectionItem3;Bls3ImageSectionComponent
+
+
+############### Located ###############
+INSERT_UPDATE Media;$contentCV[unique=true];folder(qualifier)[default='images'];mediaFormat(qualifier);code[unique=true];&mediaRef;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename ;mime;altText;&imageRef;
+                   ;;;desktop;Seccion3imagenes1.jpg;Seccion3imagenes1.jpg;$siteResource/images/banners/homepage/responsive/Seccion3imagenes1.jpg;Seccion3imagenes1.jpg;image/jpg;"3 Image Sectio IMG1";;Seccion3imagenes1.jpg;
+                   ;;;desktop;Seccion3imagenes2.jpg;Seccion3imagenes2.jpg;$siteResource/images/banners/homepage/responsive/Seccion3imagenes2.jpg;Seccion3imagenes2.jpg;image/jpg;"3 Image Sectio IMG2";;Seccion3imagenes2.jpg;
+                   ;;;desktop;Seccion3imagenes3.jpg;Seccion3imagenes3.jpg;$siteResource/images/banners/homepage/responsive/Seccion3imagenes3.jpg;Seccion3imagenes3.jpg;image/jpg;"3 Image Sectio IMG3";;Seccion3imagenes3.jpg;
+
+
+INSERT_UPDATE Bls3ImageSectionItemComponent; $contentCV[unique = true]; uid[unique = true];name;linkText[lang=$lang];title[lang=$lang];image[lang=$lang](&mediaRef)
+                                           ;;Bls3ImageSectionItem1;"Banner MultiAction 1"; "Comprar ahora";"OVEROLES";Seccion3imagenes1.jpg
+                                           ;;Bls3ImageSectionItem2;"Banner MultiAction 2"; "Comprar ahora";"POLERAS";Seccion3imagenes2.jpg
+                                           ;;Bls3ImageSectionItem3;"Banner MultiAction 3"; "Comprar ahora";"SHORT";Seccion3imagenes3.jpg
+
+INSERT_UPDATE Bls3ImageSectionComponent; $contentCV[unique = true]; uid[unique = true];name;title[lang=$lang]
+                                       ;;Bls3ImageSectionComponent;"3 Image Section Component";"LA COMBINACIÓN PERFECTA"
+
+
+# -----------------------------------------------------------------------
+# Bls Video Action Component
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;BlsVideoActionComponentLink1;"Link 1 Video Action";"Quiksilver/Hombre/c/quiksilverHombre";;BlsVideoActionComponentLink1
+                              ;;BlsVideoActionComponentLink2;"Link 2 Video Action";"Quiksilver/Hombre/c/quiksilverHombre";;BlsVideoActionComponentLink2
+
+INSERT_UPDATE BlsVideoActionComponent; $contentCV[unique = true]; uid[unique = true];name;buttonLink(&componentRef);&componentRef
+                                     ;;BlsVideoActionComponent1;"Video Action 1";BlsVideoActionComponentLink1;BlsVideoActionComponent1
+                                     ;;BlsVideoActionComponent2;"Video Action 2";BlsVideoActionComponentLink2;BlsVideoActionComponent2
+
+
+############### Located ###############
+INSERT_UPDATE Media;$contentCV[unique=true];folder(qualifier)[default='images'];mediaFormat(qualifier);code[unique=true];&mediaRef;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename ;mime;altText;&imageRef;
+                   ;;;mobile;videoAction1mobile.jpg;videoAction1mobile.jpg;$siteResource/images/banners/homepage/responsive/videoAction1mobile.jpg;videoAction1mobile.jpg;image/jpg;"Video Action IMG1";;videoAction1mobile.jpg;
+                   ;;;mobile;videoAction2mobile.jpg;videoAction2mobile.jpg;$siteResource/images/banners/homepage/responsive/videoAction2mobile.jpg;videoAction2mobile.jpg;image/jpg;"Video Action IMG1";;videoAction2mobile.jpg;
+
+UPDATE BlsVideoActionComponent; $contentCV[unique = true]; uid[unique = true];title[lang = $lang];text[lang = $lang];buttonText[lang = $lang];desktopVideoURL[lang = $lang];mobileImage(&mediaRef)[lang = $lang]
+                              ;;BlsVideoActionComponent1;"Nueva Collección";"Diseños con colaboraciones exclusivas";"Ver y disfrutar";"https://www.w3schools.com/html/mov_bbb.mp4";videoAction1mobile.jpg
+                              ;;BlsVideoActionComponent2;"Últimas existencias";"Descuentos imperdibles";"Comprar";"https://www.w3schools.com/html/mov_bbb.mp4";videoAction2mobile.jpg
+
+
+# -----------------------------------------------------------------------
+# BlsBannerImageActionComponent
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;BlsBannerImageActionLink1;"Link 1 BlsBannerImageAction";"Quiksilver/Hombre/c/quiksilverHombre";;BlsBannerImageActionLink1
+                              ;;BlsBannerImageActionLink2;"Link 2 BlsBannerImageAction";"Quiksilver/Hombre/c/quiksilverHombre";;BlsBannerImageActionLink2
+
+INSERT_UPDATE BlsBannerImageActionComponent;$contentCV[unique = true];uid[unique = true];name;buttonLink(&componentRef);alignmentHorizontalType(code);alignmentVerticalType(code);buttonText;&componentRef
+                                           ;;BlsBannerImageAction1;"Bls Banner Image Action 1";BlsBannerImageActionLink1;LEFT ;MIDDLE;"Bttn Text";BlsBannerImageAction1
+                                           ;;BlsBannerImageAction2;"Bls Banner Image Action 2";BlsBannerImageActionLink2;RIGHT;MIDDLE;"Bttn Text";BlsBannerImageAction2
+
+############### Located ###############
+INSERT_UPDATE Media; $contentCV[unique = true]; &mediaRef; code[unique = true];realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; altText; folder(qualifier)[default = 'images']
+                   ;;bannerImageAction1desktop.jpg;bannerImageAction1desktop.jpg;bannerImageAction1desktop.jpg;$siteResource/images/banners/homepage/responsive/bannerImageAction1desktop.jpg;image/jpg;;;
+                   ;;bannerImageAction1PNGdesktop.png;bannerImageAction1PNGdesktop.png;bannerImageAction1PNGdesktop.png;$siteResource/images/banners/homepage/responsive/bannerImageAction1PNGdesktop.png;image/jpg;;;
+                   ;;bannerImageAction1mobile.jpg;bannerImageAction1mobile.jpg;bannerImageAction1mobile.jpg;$siteResource/images/banners/homepage/responsive/bannerImageAction1mobile.jpg;image/jpg;;;
+                   ;;bannerImageAction1PNGmobile.png;bannerImageAction1PNGmobile.png;bannerImageAction1PNGmobile.png;$siteResource/images/banners/homepage/responsive/bannerImageAction1PNGmobile.png;image/jpg;;;
+                   ;;bannerImageAction2desktop.jpg;bannerImageAction2desktop.jpg;bannerImageAction2desktop.jpg;$siteResource/images/banners/homepage/responsive/bannerImageAction2desktop.jpg;image/jpg;;;
+                   ;;bannerImageAction2PNGdesktop.png;bannerImageAction2PNGdesktop.png;bannerImageAction2PNGdesktop.png;$siteResource/images/banners/homepage/responsive/bannerImageAction2PNGdesktop.png;image/jpg;;;
+                   ;;bannerImageAction2mobile.jpg;bannerImageAction2mobile.jpg;bannerImageAction2mobile.jpg;$siteResource/images/banners/homepage/responsive/bannerImageAction2mobile.jpg;image/jpg;;;
+                   ;;bannerImageAction2PNGmobile.png;bannerImageAction2PNGmobile.png;bannerImageAction2PNGmobile.png;$siteResource/images/banners/homepage/responsive/bannerImageAction2PNGmobile.png;image/jpg;;;
+
+UPDATE BlsBannerImageActionComponent; $contentCV[unique = true];uid[unique = true];buttonText[lang = $lang];desktopImageBackground(&mediaRef)[lang = $lang];desktopImageComplimentary(&mediaRef)[lang = $lang]; mobileImageTop(&mediaRef)[lang = $lang];mobileImageBottom(&mediaRef)[lang = $lang]
+                                    ;;BlsBannerImageAction1;"Comprar";bannerImageAction1desktop.jpg;bannerImageAction1PNGdesktop.png;bannerImageAction1mobile.jpg;bannerImageAction1PNGmobile.png
+                                    ;;BlsBannerImageAction2;"Disfruta";bannerImageAction2desktop.jpg;bannerImageAction2PNGdesktop.png;bannerImageAction2mobile.jpg;bannerImageAction2PNGmobile.png
+
+
+# -----------------------------------------------------------------------
+# Bls 3OR4 Items Section Container Component
+# -----------------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name; url;target(code)[default = 'sameWindow'];&componentRef
+                              ;;Bls3ItemsSectionContainerComponentLink1;"Link 1 Bls3ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls3ItemsSectionContainerComponentLink1
+                              ;;Bls3ItemsSectionContainerComponentLink2;"Link 2 Bls3ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls3ItemsSectionContainerComponentLink2
+                              ;;Bls3ItemsSectionContainerComponentLink3;"Link 3 Bls3ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls3ItemsSectionContainerComponentLink3
+                              ;;Bls4ItemsSectionContainerComponentLink1;"Link 1 Bls4ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls4ItemsSectionContainerComponentLink1
+                              ;;Bls4ItemsSectionContainerComponentLink2;"Link 2 Bls4ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls4ItemsSectionContainerComponentLink2
+                              ;;Bls4ItemsSectionContainerComponentLink3;"Link 3 Bls4ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls4ItemsSectionContainerComponentLink3
+                              ;;Bls4ItemsSectionContainerComponentLink4;"Link 4 Bls4ItemsSectionContainer";"Quiksilver/Hombre/c/quiksilverHombre";;Bls4ItemsSectionContainerComponentLink4
+
+INSERT_UPDATE Bls3OR4ItemsSectionContainerComponent; $contentCV[unique = true]; uid[unique = true];name;linkOrButtonTarget(&componentRef);text[default=""];title[default=""];linkOrButtonText[default=""];&componentRef
+                                                   ;; Bls3ItemsSectionContainer1;"Bls 3 Items Section Container 1";Bls3ItemsSectionContainerComponentLink1;;;;Bls3ItemsSectionContainer1
+                                                   ;; Bls3ItemsSectionContainer2;"Bls 3 Items Section Container 2";Bls3ItemsSectionContainerComponentLink2;;;;Bls3ItemsSectionContainer2
+                                                   ;; Bls3ItemsSectionContainer3;"Bls 3 Items Section Container 3";Bls3ItemsSectionContainerComponentLink3;;;;Bls3ItemsSectionContainer3
+                                                   ;; Bls4ItemsSectionContainer1;"Bls 4 Items Section Container 1";Bls4ItemsSectionContainerComponentLink1;;;;Bls4ItemsSectionContainer1
+                                                   ;; Bls4ItemsSectionContainer2;"Bls 4 Items Section Container 2";Bls4ItemsSectionContainerComponentLink2;;;;Bls4ItemsSectionContainer2
+                                                   ;; Bls4ItemsSectionContainer3;"Bls 4 Items Section Container 3";Bls4ItemsSectionContainerComponentLink3;;;;Bls4ItemsSectionContainer3
+                                                   ;; Bls4ItemsSectionContainer4;"Bls 4 Items Section Container 4";Bls4ItemsSectionContainerComponentLink4;;;;Bls4ItemsSectionContainer4
+
+INSERT_UPDATE Bls3OR4ItemsSectionComponent; $contentCV[unique = true]; uid[unique = true];name;sectionType(code); images(&componentRef);&componentRef
+                                          ;;Bls3ItemsSectionComponent;"Bls 3 Items Section";THREE; Bls3ItemsSectionContainer1, Bls3ItemsSectionContainer2, Bls3ItemsSectionContainer3;Bls3ItemsSectionComponent
+                                          ;;Bls4ItemsSectionComponent;"Bls 4 Items Section";FOUR; Bls4ItemsSectionContainer1, Bls4ItemsSectionContainer2, Bls4ItemsSectionContainer3, Bls4ItemsSectionContainer4;Bls4ItemsSectionComponent
+
+############### Located ###############
+UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];linkname[lang = $lang]
+                       ;;Bls3ItemsSectionContainerComponentLink1;"Visitar"
+                       ;;Bls3ItemsSectionContainerComponentLink2;"Comprar Ahora"
+                       ;;Bls3ItemsSectionContainerComponentLink3;"Visitar La Kone"
+                       ;;Bls4ItemsSectionContainerComponentLink1;"Comprar"
+                       ;;Bls4ItemsSectionContainerComponentLink2;"Comprar"
+                       ;;Bls4ItemsSectionContainerComponentLink3;"Comprar"
+                       ;;Bls4ItemsSectionContainerComponentLink4;"Comprar"
+
+INSERT_UPDATE Media;$contentCV[unique=true];folder(qualifier)[default='images'];mediaFormat(qualifier);code[unique=true];&mediaRef;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename ;mime;altText
+                   ;;;desktop;4ItemsSectionImage1.jpg;4ItemsSectionImage1.jpg;$siteResource/images/banners/homepage/responsive/4ItemsSectionImage1.jpg;4ItemsSectionImage1.jpg;image/jpeg;"Quiksilver Home Desktop";
+                   ;;;desktop;4ItemsSectionImage2.jpg;4ItemsSectionImage2.jpg;$siteResource/images/banners/homepage/responsive/4ItemsSectionImage2.jpg;4ItemsSectionImage2.jpg;image/jpeg;"Quiksilver Home Desktop";
+                   ;;;desktop;4ItemsSectionImage3.jpg;4ItemsSectionImage3.jpg;$siteResource/images/banners/homepage/responsive/4ItemsSectionImage3.jpg;4ItemsSectionImage3.jpg;image/jpeg;"Quiksilver Home Desktop";
+                   ;;;desktop;4ItemsSectionImage4.jpg;4ItemsSectionImage4.jpg;$siteResource/images/banners/homepage/responsive/4ItemsSectionImage4.jpg;4ItemsSectionImage4.jpg;image/jpeg;"Quiksilver Home Desktop";
+
+                   ;;;desktop;3ItemsSectionImage1.jpg;3ItemsSectionImage1.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage1.jpg;3ItemsSectionImage1.jpg;image/jpeg;"Quiksilver Home Desktop";
+                   ;;;desktop;3ItemsSectionImage2.jpg;3ItemsSectionImage2.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage2.jpg;3ItemsSectionImage2.jpg;image/jpeg;"Quiksilver Home Desktop";
+                   ;;;desktop;3ItemsSectionImage3.jpg;3ItemsSectionImage3.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage3.jpg;3ItemsSectionImage3.jpg;image/jpeg;"Quiksilver Home Desktop";
+
+                   ;;;mobile;3ItemsSectionImage4.jpg;3ItemsSectionImage4.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage4.jpg;3ItemsSectionImage4.jpg;image/jpeg;"Quiksilver Home Mobile";
+                   ;;;mobile;3ItemsSectionImage5.jpg;3ItemsSectionImage5.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage5.jpg;3ItemsSectionImage5.jpg;image/jpeg;"Quiksilver Home Mobile";
+                   ;;;mobile;3ItemsSectionImage6.jpg;3ItemsSectionImage6.jpg;$siteResource/images/banners/homepage/responsive/3ItemsSectionImage6.jpg;3ItemsSectionImage6.jpg;image/jpeg;"Quiksilver Home Mobile";
+
+
+UPDATE Bls3OR4ItemsSectionContainerComponent; $contentCV[unique = true]; uid[unique = true];title[lang = $lang]; text[lang = $lang]; linkOrButtonText[lang = $lang]; desktopImage(&mediaRef)[lang = $lang];mobileImage(&mediaRef)[lang = $lang];
+                                            ;; Bls3ItemsSectionContainer1;"HOMBRES";"Hombres";"Compra ahora";3ItemsSectionImage1.jpg;3ItemsSectionImage4.jpg;
+                                            ;; Bls3ItemsSectionContainer2;"Niños";"Niños";"Compra ahora";3ItemsSectionImage2.jpg;3ItemsSectionImage5.jpg;
+                                            ;; Bls3ItemsSectionContainer3;"Surf";"Surf";"Compra ahora";3ItemsSectionImage3.jpg;3ItemsSectionImage6.jpg;
+                                            ;; Bls4ItemsSectionContainer1;"Invierno";"Surf en invierno";"Comprar";4ItemsSectionImage1.jpg;
+                                            ;; Bls4ItemsSectionContainer2;"Verano";"Surf en Verano";"Comprar";4ItemsSectionImage2.jpg;
+                                            ;; Bls4ItemsSectionContainer3;"Chamarras";"Chamarras para días fríos";"Comprar";4ItemsSectionImage3.jpg;
+                                            ;; Bls4ItemsSectionContainer4;"Primavera";"Surf en primavera";"Comprar";4ItemsSectionImage4.jpg;
+
+
+# -----------------------------------------------------------------------
+# BlsQuiksilverProductCarouselComponent
+# -----------------------------------------------------------------------
+INSERT_UPDATE BlsQuiksilverProductCarouselComponent;$contentCV[unique = true];uid[unique = true];name;products(code, $productCV);scroll(code);popup;&componentRef
+                                                   ;;BlsQuiksilverProductCarouselComponent;Bls Quiksilver Product Carousel Component;NI804035404,NI708913325,NIAT5628004,RBCN3735,NI804035404,NI708913325;allVisible;false;BlsQuiksilverProductCarouselComponent
+
+
+############### Located ###############
+UPDATE BlsQuiksilverProductCarouselComponent;$contentCV[unique = true];uid[unique = true];title[lang=$lang];
+                                            ;;BlsQuiksilverProductCarouselComponent;"Productos recomendados para tí"
+

@@ -83,7 +83,7 @@ INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[
 ;$solrIndexedType; configurable           ;boolean;            ;    ;    ;    ;    ;    ;productConfigurableProvider            ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
 ;$solrIndexedType; configuratorType       ;string ;            ;    ;    ;    ;    ;    ;productConfiguratorTypeProvider        ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
 ;$solrIndexedType; multidimensional       ;boolean;            ;    ;    ;    ;    ;    ;multidimentionalProductFlagValueProvider  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
-;$solrIndexedType; discountPercentagePromotion;double;;;;;;;belsportDiscountPercentagePromotionValueProvider                ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+;$solrIndexedType; discountPercentagePromotion;double;;;;;;;__SOLR_VALUE_PROVIDER_PREFIX__DiscountPercentagePromotionValueProvider                ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
 
 # Category fields
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost
@@ -205,3 +205,7 @@ INSERT_UPDATE SolrSearchQueryProperty;indexedProperty(name, solrIndexedType(iden
 INSERT_UPDATE AsCategoryAwareSearchProfile;code[unique=true];indexType;catalogVersion(catalog(id),version)[unique=true]
                                           ;__SOLR_SEARCH_PROFILE_UID__;$solrIndexedType;__PRODUCT_CATALOG_UID__:Staged
                                           ;__SOLR_SEARCH_PROFILE_UID__;$solrIndexedType;__PRODUCT_CATALOG_UID__:Online
+
+INSERT_UPDATE AsSearchProfileActivationSet;indexType[unique=true];catalogVersion(catalog(id),version)[unique=true];searchProfiles(code,catalogVersion(catalog(id),version))
+                                          ;$solrIndexedType;$productCatalog:Staged;__SOLR_SEARCH_PROFILE_UID__:$productCatalog:Staged
+                                          ;$solrIndexedType;$productCatalog:Online;__SOLR_SEARCH_PROFILE_UID__:$productCatalog:Online

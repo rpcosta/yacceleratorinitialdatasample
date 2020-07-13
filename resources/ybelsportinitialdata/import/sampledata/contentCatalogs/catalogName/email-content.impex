@@ -4,27 +4,24 @@
 # ImpEx for Importing Email Content
 
 # Macros / Replacement Parameter definitions
+$version        = Staged
 $contentCatalog = __CONTENT_CATALOG_UID__
-
-$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$contentCV      = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
 
 # CMS Image Components
-INSERT_UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]                       ; name
-                               ;                          ; EmailBannerSaleNowOnImage                ;  Email Banner Sale Now On Image
-                               ;                          ; EmailBannerFreeDeliveryImage             ;  Email Banner Free Delivery Image
-                               ;                          ; BannerComponent                          ;  Email Banner Component                     
-                               ;                          ; CustomerRegistrationEmailbannerComponent ;  Email Customer Registration Banner Image     
-                               ;                          ; ForgottenPasswordEmailbannerComponent    ;  Email Forgotten Password Banner Image        
-                               ;                          ; OrderConfirmationEmailBannerComponent    ;  Email Order Confirmation Banner Image        
-                               ;                          ; ConsignmentInPreparationBannerComponent  ;  Email Consignment in preparation Banner Image
-
+INSERT_UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]; name
+;;BannerComponent                         ;Email Banner Component
+;;CustomerRegistrationEmailbannerComponent;Email Customer Registration Banner Image
+;;ForgottenPasswordEmailbannerComponent   ;Email Forgotten Password Banner Image
+;;OrderConfirmationEmailBannerComponent   ;Email Order Confirmation Banner Image
+;;ConsignmentInPreparationBannerComponent ;Email Consignment in preparation Banner Image
 
 
 # Content Slots
-UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                                          ; cmsComponents(uid, $contentCV)
-                  ;                          ; BannerComponentSlot                     ; BannerComponent
-                  ;                          ; CustomerRegistrationEmailbannerSlot     ; CustomerRegistrationEmailbannerComponent
-                  ;                          ; OrderConfirmationEmailBannerSlot        ; OrderConfirmationEmailBannerComponent
-                  ;                          ; ForgottenPasswordEmailbannerSlot        ; ForgottenPasswordEmailbannerComponent
-                  ;                          ; ConsignmentInPreparationEmailBannerSlot ; ConsignmentInPreparationBannerComponent
+UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV)
+;;BannerComponentSlot                    ;BannerComponent
+;;CustomerRegistrationEmailbannerSlot    ;CustomerRegistrationEmailbannerComponent
+;;OrderConfirmationEmailBannerSlot       ;OrderConfirmationEmailBannerComponent
+;;ForgottenPasswordEmailbannerSlot       ;ForgottenPasswordEmailbannerComponent
+;;ConsignmentInPreparationEmailBannerSlot;ConsignmentInPreparationBannerComponent
 

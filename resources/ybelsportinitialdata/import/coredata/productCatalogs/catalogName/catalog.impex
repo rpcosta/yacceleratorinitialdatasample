@@ -6,7 +6,7 @@
 #
 
 $productCatalog=__PRODUCT_CATALOG_UID__
-$classificationCatalog=quicksilverClassificationCatalog
+$classificationCatalog=__CLASSIFICATION_CATALOG_UID__
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $languages=es_CL,es,en
 

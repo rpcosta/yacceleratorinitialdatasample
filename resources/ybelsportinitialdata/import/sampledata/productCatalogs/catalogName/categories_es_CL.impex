@@ -10,80 +10,102 @@
 # -----------------------------------------------------------------------
 # ImpEx for Importing Categories into Store
 
-$catalogVersion = catalogVersion(catalog(id[default = '__PRODUCT_CATALOG_UID__']), version[default = 'Staged'])[unique = true, default = '__PRODUCT_CATALOG_UID__:Staged']
+$catalogVersion = catalogVersion(catalog(id[default = '__BRAND_NAME__ProductCatalog']), version[default = 'Staged'])[unique = true, default = '__BRAND_NAME__ProductCatalog:Staged']
 $categories = target(code, $catalogVersion)[unique = true]
 $lang = es_CL
 
-INSERT_UPDATE Category; code[unique = true]; $catalogVersion; name[lang = $lang];
-                      ; __SAMPLE_CATEGORY_PREFIX__Categories     ;                ; "__SAMPLE_CATEGORY_NAME_EN__"            ;
+INSERT_UPDATE Category; code[unique = true]        ; $catalogVersion ; name[lang = $lang];
+                      ; __BRAND_NAME__Categories  ;                 ; __STORE_NAME__port
+                      ; __BRAND_NAME__Promociones ;                 ; Promociones de __STORE_NAME__port
+                      ; __BRAND_NAME__Campanas    ;                 ; Campañas de __STORE_NAME__port
 
 INSERT_UPDATE Category; code[unique = true]; $catalogVersion; name[lang = $lang]; allowedPrincipals(uid)[default = 'customergroup'];
-                      ; __SAMPLE_CATEGORY_PREFIX__Products       ;                ; "__SAMPLE_CATEGORY_NAME_EN__"            ;                                                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__Marcas         ;                ; "Marcas"          ;                                                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__Hombre         ;                ; "Hombre"          ;                                                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__Mujer          ;                ; "Mujer"           ;                                                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__Ninos          ;                ; "Niños"           ;                                                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__Sale           ;                ; "Sale"            ;                                                  ;
+                      ; __BRAND_NAME__Products       ;                ; __STORE_NAME__port
+                      ; __BRAND_NAME__Marcas         ;                ; Marcas
+                      ; __BRAND_NAME__Hombre         ;                ; Hombre
+                      ; __BRAND_NAME__Mujer          ;                ; Mujer
+                      ; __BRAND_NAME__Ninos          ;                ; Niños
+                      ; __BRAND_NAME__Accesorios     ;                ; Accesorios
+                      ; __BRAND_NAME__Ofertas        ;                ; Ofertas
 
-INSERT_UPDATE Category; code[unique = true]              ; $catalogVersion; name[lang = $lang]      ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasJordan                 ;                ; "Jordan"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasNike                   ;                ; "Nike"                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasAdidas                 ;                ; "Adidas Originals"      ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasConverse               ;                ; "Converse"              ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasPuma                   ;                ; "Puma"                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasVans                   ;                ; "Vans"                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasReebok                 ;                ; "Reebok"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasUnderArmor             ;                ; "Under Armor"           ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasCrep                   ;                ; "Crep"                  ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasAsics                  ;                ; "Asics Tiger"           ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasNewBalance             ;                ; "New Balance"           ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MarcasSaucony                ;                ; "Saucony"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzado                ;                ; "Calzado"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuario              ;                ; "Vestuario"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuario               ;                ; "Vestuario"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzado                 ;                ; "Calzado"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosBananos            ;                ; "Bananos"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosBeanie             ;                ; "Beanie"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosCalcetas           ;                ; "Calcetas"              ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosGymsack            ;                ; "Gymsack"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosMochilasBolsos     ;                ; "Mochilas y Bolsos"     ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosProteccionLimpieza ;                ; "Protección y limpieza" ;
-                      ; __SAMPLE_CATEGORY_PREFIX__AccesoriosSnapback           ;                ; "Snapback"              ;
-                      ; __SAMPLE_CATEGORY_PREFIX__NinosZapatillas              ;                ; "Zapatillas"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzado                  ;                ; "Calzado"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuario                ;                ; "Vestuario"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesorios               ;                ; "Accesorios"            ;
+INSERT_UPDATE Category; code[unique = true]              ; $catalogVersion; name[lang = $lang]
+                      ; __BRAND_NAME__MarcasAdidas      ;                ; Adidas
+                      ; __BRAND_NAME__MarcasConverse    ;                ; Converse
+                      ; __BRAND_NAME__MarcasDCshoes     ;                ; DC Shoes
+                      ; __BRAND_NAME__MarcasFila        ;                ; Fila
+                      ; __BRAND_NAME__MarcasLotto       ;                ; Lotto
+                      ; __BRAND_NAME__MarcasMitre       ;                ; Mitre
+                      ; __BRAND_NAME__MarcasMolten      ;                ; Molten
+                      ; __BRAND_NAME__MarcasNewBalance  ;                ; New Ballance
+                      ; __BRAND_NAME__MarcasNike        ;                ; Nike
+                      ; __BRAND_NAME__MarcasPuma        ;                ; Puma
+                      ; __BRAND_NAME__MarcasReebok      ;                ; Reebok
+                      ; __BRAND_NAME__MarcasSkechers    ;                ; Skechers
+                      ; __BRAND_NAME__MarcasSpalding    ;                ; Spalding
+                      ; __BRAND_NAME__MarcasUmbro       ;                ; Umbro
+                      ; __BRAND_NAME__MarcasUnderArmour ;                ; Under Armor
+                      ; __BRAND_NAME__MarcasVans        ;                ; Vans
+
+INSERT_UPDATE Category; code[unique = true]                 ; $catalogVersion; name[lang = $lang]           ;
+                      ; __BRAND_NAME__HombreZapatillas         ;                ; Zapatillas
+                      ; __BRAND_NAME__HombreVestuario          ;                ; Vestuario
+                      ; __BRAND_NAME__MujerZapatillas          ;                ; Zapatillas
+                      ; __BRAND_NAME__MujerVestuario           ;                ; Vestuario
+                      ; __BRAND_NAME__NinosZapatillas          ;                ; Zapatillas
+                      ; __BRAND_NAME__NinosVestuario           ;                ; Vestuario
+                      ; __BRAND_NAME__NinosAccesorios          ;                ; Accesorios
+                      ; __BRAND_NAME__AccesoriosBalones        ;                ; Balones
+                      ; __BRAND_NAME__AccesoriosBananos        ;                ; Bananos
+                      ; __BRAND_NAME__AccesoriosBeanies        ;                ; Beanies
+                      ; __BRAND_NAME__AccesoriosCalcetas       ;                ; Calcetas
+                      ; __BRAND_NAME__AccesoriosCanilleras     ;                ; Canilleras
+                      ; __BRAND_NAME__AccesoriosGuantes        ;                ; Guantes
+                      ; __BRAND_NAME__AccesoriosGymsack        ;                ; Gymsack
+                      ; __BRAND_NAME__AccesoriosJockey         ;                ; Jockey
+                      ; __BRAND_NAME__AccesoriosMochilasBolsos ;                ; Mochilas y Bolsos
+                      ; __BRAND_NAME__AccesoriosRodilleras     ;                ; Rodilleras
+                      ; __BRAND_NAME__AccesoriosToallas        ;                ; Toallas
+                      ; __BRAND_NAME__OfertasZapatillas        ;                ; Zapatillas
+                      ; __BRAND_NAME__OfertasVestuario         ;                ; Vestuario
+                      ; __BRAND_NAME__OfertasAccesorios        ;                ; Accesorios
 
 INSERT_UPDATE Category; code[unique = true]                  ; $catalogVersion; name[lang = $lang]           ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzadoSandalias           ;                ; "Sandalias"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreCalzadoZapatillas          ;                ; "Zapatillas"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioChaquetasParkas   ;                ; "Chaquetas y Parkas"    ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPoleras           ;                ; "Poleras"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPolerones         ;                ; "Polerones"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioPantalones        ;                ; "Pantalones"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__HombreVestuarioShort             ;                ; "Shorts"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzadoSandalias            ;                ; "Sandalias"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerCalzadoZapatillas           ;                ; "Zapatillas"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioChaquetasParkas    ;                ; "Chaquetas y Parkas"    ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerAccesoriosPantalonesCalzas  ;                ; "Pantalones y Calzas"   ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPetos              ;                ; "Petos"                 ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPoleras            ;                ; "Poleras"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioPolerones          ;                ; "Polerones"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioShorts             ;                ; "Shorts"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__MujerVestuarioVestido            ;                ; "Vestido"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzadoSandalias             ;                ; "Sandalias"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleCalzadoZapatillas            ;                ; "Zapatillas"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioChaquetas           ;                ; "Chaquetas"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPetos               ;                ; "Petos"                 ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosPantalones         ;                ; "Pantalones"            ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPoleras             ;                ; "Poleras"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioPolerones           ;                ; "Polerones"             ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleVestuarioShorts              ;                ; "Shorts"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBananos            ;                ; "Bananos"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosBeanie             ;                ; "Beanie"                ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosCalcetas           ;                ; "Calcetas"              ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosGymsack            ;                ; "Gymsack"               ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosMochilasBolsos     ;                ; "Mochilas y Bolsos"     ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosProteccionLimpieza ;                ; "Proteccion y Limpieza" ;
-                      ; __SAMPLE_CATEGORY_PREFIX__SaleAccesoriosSnapback           ;                ; "Snapback"              ;
+                      ; __BRAND_NAME__HombreZapatillasFutbol     ;                ; Futbol
+                      ; __BRAND_NAME__HombreZapatillasBaby       ;                ; Baby Futbol
+                      ; __BRAND_NAME__HombreZapatillasRunning    ;                ; Running
+                      ; __BRAND_NAME__HombreZapatillasOutdoor    ;                ; Outdoor
+                      ; __BRAND_NAME__HombreZapatillasTraining   ;                ; Training
+                      ; __BRAND_NAME__HombreZapatillasBasquetbol ;                ; Basquetbol
+                      ; __BRAND_NAME__HombreZapatillasUrbanas    ;                ; Urbanas
+                      ; __BRAND_NAME__HombreVestuarioCamisetas   ;                ; Camisetas
+                      ; __BRAND_NAME__HombreVestuarioPoleras     ;                ; Poleras
+                      ; __BRAND_NAME__HombreVestuarioPantalones  ;                ; Pantalones
+                      ; __BRAND_NAME__HombreVestuarioShorts      ;                ; Shorts y Mallas
+                      ; __BRAND_NAME__HombreVestuarioPolerones   ;                ; Polerones
+                      ; __BRAND_NAME__MujerZapatillasRunning     ;                ; Running
+                      ; __BRAND_NAME__MujerZapatillasOutdoor     ;                ; Outdoor
+                      ; __BRAND_NAME__MujerZapatillasTraining    ;                ; Training
+                      ; __BRAND_NAME__MujerZapatillasUrbanas     ;                ; Urbanas
+                      ; __BRAND_NAME__MujerVestuarioPoleras      ;                ; Poleras
+                      ; __BRAND_NAME__MujerVestuarioPolerones    ;                ; Polerones
+                      ; __BRAND_NAME__MujerVestuarioShorts       ;                ; Shorts
+                      ; __BRAND_NAME__MujerAccesoriosPantalones  ;                ; Pantalones y Leggins
+                      ; __BRAND_NAME__NinosZapatillasFutbol      ;                ; Futbol
+                      ; __BRAND_NAME__NinosZapatillasBaby        ;                ; Baby Futbol
+                      ; __BRAND_NAME__NinosZapatillasBasquetbol  ;                ; Basquetbol
+                      ; __BRAND_NAME__NinosZapatillasUrbanas     ;                ; Urbanas
+                      ; __BRAND_NAME__NinosZapatillasRunning     ;                ; Running
+                      ; __BRAND_NAME__NinosZapatillasTraining    ;                ; Training
+                      ; __BRAND_NAME__NinosZapatillasOutdoor     ;                ; Outdoor
+                      ; __BRAND_NAME__NinosVestuarioPoleras      ;                ; Poleras
+                      ; __BRAND_NAME__NinosVestuarioCamisetas    ;                ; Camisetas
+                      ; __BRAND_NAME__NinosVestuarioPolerones    ;                ; Polerones
+                      ; __BRAND_NAME__NinosVestuarioConjuntos    ;                ; Conjuntos
+                      ; __BRAND_NAME__NinosVestuarioPantalones   ;                ; Pantalones y Leggins
+                      ; __BRAND_NAME__NinosAccesoriosBalones     ;                ; Balones
+                      ; __BRAND_NAME__NinosAccesoriosCanilleras  ;                ; Canilleras
+                      ; __BRAND_NAME__NinosAccesoriosGuantes     ;                ; Guantes
+                      ; __BRAND_NAME__NinosAccesoriosMochilas    ;                ; Mochilas
+                      ; __BRAND_NAME__NinosAccesoriosJockey      ;                ; Jockey
+                      ; __BRAND_NAME__NinosAccesoriosCalcetas    ;                ; Calcetas
 

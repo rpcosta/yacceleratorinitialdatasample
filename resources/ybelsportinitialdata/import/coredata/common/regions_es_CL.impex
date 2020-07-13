@@ -14,7 +14,7 @@
 #
 
 # Language
-$lang=en
+$lang=es_CL
 
 # Create Countries
 UPDATE Region;isocode[unique=true];name[lang=$lang]

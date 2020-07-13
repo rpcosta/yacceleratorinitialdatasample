@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package de.hybris.platform.ybelsportinitialdata.dataimport.impl;
+package de.hybris.platform.ybelsportinitialdata.initialdata.dataimport.impl;
 
 import de.hybris.platform.commerceservices.dataimport.AbstractDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
@@ -9,13 +9,15 @@ import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.util.ResponsiveUtils;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import org.apache.commons.collections.CollectionUtils;
+import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
+import static de.hybris.platform.ybelsportinitialdata.initialdata.constants.InitialDataConstants.*;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,25 +57,30 @@ public class UpdateDataImportService extends AbstractDataImportService
 	 * @param folderName
 	 * @return
 	 */
-	private List<String> createSprintDirectoryList(final String folderName){
-		final File[] files = new File(this.getClass().getResource(folderName).getFile()).listFiles();
+	public List<String> createSprintDirectoryList(final String folderName){
+		URL folderResorce = this.getClass().getResource(folderName);
+		if (folderResorce != null) {
+			File updateDataFolder = new File(folderResorce.getFile());
+			final File[] files = updateDataFolder.listFiles();
 		List<String> sprintDirectoryList = null;
 
-		if (files != null && files.length > 0)
-		{
+			if (files != null && files.length > 0) {
 			sprintDirectoryList = new ArrayList<>(files.length);
 
 			Arrays.sort(files);
 
 			for (final File file : files){
-				if (file.isDirectory())
-				{
+					if (file.isDirectory()) {
 					sprintDirectoryList.add(file.getName());
 				}
 			}
 		}
 
 		return sprintDirectoryList;
+		} else {
+			LOG.info("Folder {} not found! No update data will be loaded.", folderName);
+			return Lists.emptyList();
+		}
 	}
 
 	/**

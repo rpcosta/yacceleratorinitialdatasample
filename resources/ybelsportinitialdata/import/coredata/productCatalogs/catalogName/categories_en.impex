@@ -15,5 +15,6 @@ $categories = target(code, $catalogVersion)[unique = true]
 $lang = en
 
 INSERT_UPDATE Category; code[unique = true]; $catalogVersion; name[lang = $lang]; allowedPrincipals(uid)[default = 'customergroup'];
-                      ; __CATEGORY_PROMOTIONS_UID__    ;                ; "__CATEGORY_PROMOTIONS_NAME_EN__" ;                                                  ;
-                      ; __CATEGORY_CAMPAINS_UID__      ;                ; "__CATEGORY_CAMPAINS_NAME_EN__"  ;                                                  ;
+                      ; __BRAND_NAME__Categories  ;                 ; __STORE_NAME__
+                      ; __BRAND_NAME__Promociones ;                 ; __STORE_NAME__ Promotions
+                      ; __BRAND_NAME__Campanas    ;                 ; __STORE_NAME__ Campains

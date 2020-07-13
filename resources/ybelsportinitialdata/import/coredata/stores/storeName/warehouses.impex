@@ -51,7 +51,7 @@ INSERT_UPDATE PointOfService; name[unique = true]; displayName                ; 
 #% endif:
 
 #% if: sampleDataLoad;
-INSERT_UPDATE PointOfService; name[unique = true]; displayName                ; address(&addId); warehouses(code).  ; latitude   ; longitude  ; geocodeTimestamp[dateformat = dd.MM.yyyy]; type(code)[default = STORE]; openingSchedule(code); baseStore(uid); email
+INSERT_UPDATE PointOfService; name[unique = true]; displayName                ; address(&addId); warehouses(code)  ; latitude   ; longitude  ; geocodeTimestamp[dateformat = dd.MM.yyyy]; type(code)[default = STORE]; openingSchedule(code); baseStore(uid); email
                             ; __WAREHOUSE_PICKUP_SAMPLE_UID__                 ; __WAREHOUSE_PICKUP_SAMPLE_NAME__    ; __WAREHOUSE_PICKUP_SAMPLE_UID__           ; __WAREHOUSE_PICKUP_SAMPLE_UID__            ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
                             ; __WAREHOUSE_DELIVERY_SAMPLE_UID__               ; __WAREHOUSE_DELIVERY_SAMPLE_NAME__  ; __WAREHOUSE_DELIVERY_SAMPLE_UID__         ; __WAREHOUSE_DELIVERY_SAMPLE_UID__          ;            ;            ; 11.12.2025                               ; WAREHOUSE                  ;                      ; __STORE_UID__  ; __WAREHOUSE_SAMPLE_EMAIL__
  #% endif:

@@ -1,0 +1,209 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+$version=Staged
+$contentCatalog= __CONTENT_CATALOG_UID__
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
+$productCatalog= __PRODUCT_CATALOG_UID__
+$productCV=catalogVersion(catalog(id[default=$productCatalog]), version[default=$version])[unique=true, default=$productCatalog:$version]
+$siteResource=jar: __ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
+$picture=media(code, $contentCV);
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$jarResourceCms=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/cockpits/cmscockpit
+$media=media(code, $contentCV);
+$productResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/productCatalogs/$productCatalog
+
+# ------------------------------------------------------------
+#  Row 1: Video Component
+# ------------------------------------------------------------
+INSERT_UPDATE __CMS_STORE_PREFIX__VideoAutoPlayComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;autoPlay;
+;;__CMS_STORE_PREFIX__VideoComponent_row1;__CMS_STORE_PREFIX__VideoComponent_row1;"__CMS_STORE_PREFIX__ Video Component";TRUE;
+
+# ------------------------------------------------------------
+#  Row 2: Rotating Images Component
+# ------------------------------------------------------------
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;urlLink;visible
+;;__CMS_STORE_PREFIX__Banner1;__CMS_STORE_PREFIX__Banner1;"/c/__BRAND_NAME__Marcas";true;
+;;__CMS_STORE_PREFIX__Banner2;__CMS_STORE_PREFIX__Banner2;"/c/__BRAND_NAME__Hombre";true;
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;banners(&componentRef);styleClassSelector
+;;__CMS_STORE_PREFIX__RotatingImages_row2;__CMS_STORE_PREFIX__RotatingImages_row2;"__CMS_STORE_PREFIX__ Rotating Images Row 2";__CMS_STORE_PREFIX__Banner1,__CMS_STORE_PREFIX__Banner2;owl-rotating-simple
+
+# ------------------------------------------------------------
+#  Row 3: Complementary Banners
+# ------------------------------------------------------------
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink
+;;__CMS_STORE_PREFIX__SimpleBanner1_row3;__CMS_STORE_PREFIX__SimpleBanner1_row3;"__CMS_STORE_PREFIX__ Simple Banner 1 Row 3";"/c/__BRAND_NAME__Marcas"
+;;__CMS_STORE_PREFIX__SimpleBanner2_row3;__CMS_STORE_PREFIX__SimpleBanner2_row3;"__CMS_STORE_PREFIX__ Simple Banner 2 Row 3";"/c/__BRAND_NAME__Hombre"
+
+# ------------------------------------------------------------
+#  Row 4: Brands carousel
+# ------------------------------------------------------------
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink;
+;;BannerM01;BannerM01;"Banner Home Marca01";"/c/__BRAND_NAME__MarcasAdidas"    ;
+;;BannerM02;BannerM02;"Banner Home Marca02";"/c/__BRAND_NAME__MarcasConverse"  ;
+;;BannerM03;BannerM03;"Banner Home Marca03";"/c/__BRAND_NAME__MarcasDCshoes"   ;
+;;BannerM04;BannerM04;"Banner Home Marca04";"/c/__BRAND_NAME__MarcasFila"      ;
+;;BannerM05;BannerM05;"Banner Home Marca05";"/c/__BRAND_NAME__MarcasLotto"     ;
+;;BannerM06;BannerM06;"Banner Home Marca06";"/c/__BRAND_NAME__MarcasMitre"     ;
+;;BannerM09;BannerM09;"Banner Home Marca09";"/c/__BRAND_NAME__MarcasMolten"    ;
+;;BannerM10;BannerM10;"Banner Home Marca10";"/c/__BRAND_NAME__MarcasNewBalance";
+;;BannerM11;BannerM11;"Banner Home Marca11";"/c/__BRAND_NAME__MarcasNike"      ;
+;;BannerM12;BannerM12;"Banner Home Marca12";"/c/__BRAND_NAME__MarcasPuma"      ;
+;;BannerM13;BannerM13;"Banner Home Marca13";"/c/__BRAND_NAME__MarcasReebok"    ;
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;styleClassSelector;visible
+;;__CMS_STORE_PREFIX__Marcas_row4;__CMS_STORE_PREFIX__Marcas_row4;"__CMS_STORE_PREFIX__ Brands Carousel Row 4";owl-rotating-multi;true
+
+UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];banners(&componentRef)
+;;__CMS_STORE_PREFIX__Marcas_row4;BannerM01,BannerM02,BannerM03,BannerM04,BannerM05,BannerM06,BannerM09,BannerM10,BannerM11,BannerM12,BannerM13
+
+# ------------------------------------------------------------
+#  Row 5: Product Carousels Title
+# ------------------------------------------------------------
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name
+;;__CMS_STORE_PREFIX__ProductCarrouselParagraph_row5;__CMS_STORE_PREFIX__ProductCarrouselParagraph_row5;"__CMS_STORE_PREFIX__ Product Carrousel Paragraph"
+
+# ------------------------------------------------------------
+#  Row 6: Product Carousel 1
+# ------------------------------------------------------------
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;products(code, $productCV);scroll(code);popup;
+;;__CMS_STORE_PREFIX__ProductCarousel_row6;__CMS_STORE_PREFIX__ProductCarousel_row6;"__CMS_STORE_PREFIX__ Product Carousel 1";NIAT5628004, NI314192009, NI883735010, NI804035404;allVisible;false;
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink
+;;__CMS_STORE_PREFIX__SimpleBanner_row6-desktop;__CMS_STORE_PREFIX__SimpleBanner_row6-desktop;"__CMS_STORE_PREFIX__ Simple Banner 1 Desktop";"/c/__BRAND_NAME__Marcas"
+;;__CMS_STORE_PREFIX__SimpleBanner_row6-mobile ;__CMS_STORE_PREFIX__SimpleBanner_row6-mobile ;"__CMS_STORE_PREFIX__ Simple Banner 1 Mobile" ;"/c/__BRAND_NAME__Marcas"
+
+# ------------------------------------------------------------
+#  Row 7: Product Carousels 2
+# ------------------------------------------------------------
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink
+;;__CMS_STORE_PREFIX__SimpleBanner_row7-desktop;__CMS_STORE_PREFIX__SimpleBanner_row7-desktop;"__CMS_STORE_PREFIX__ Simple Banner 2 Desktop";"/c/__BRAND_NAME__Hombre"
+;;__CMS_STORE_PREFIX__SimpleBanner_row7-mobile ;__CMS_STORE_PREFIX__SimpleBanner_row7-mobile ;"__CMS_STORE_PREFIX__ Simple Banner 2 Mobile" ;"/c/__BRAND_NAME__Marcas"
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;products(code, $productCV);scroll(code);popup;
+;;__CMS_STORE_PREFIX__ProductCarousel_row7;__CMS_STORE_PREFIX__ProductCarousel_row7;"__CMS_STORE_PREFIX__ Product Carousel 2";NIAJ0784102, ADEC7351, NI924447700, NI833412024;allVisible;false
+
+# ------------------------------------------------------------
+#  Row 8: Product Carousels 3
+# ------------------------------------------------------------
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;products(code, $productCV);scroll(code);popup;
+;;__CMS_STORE_PREFIX__ProductCarousel_row8;__CMS_STORE_PREFIX__ProductCarousel_row8;"__CMS_STORE_PREFIX__ Product Carousel 3";NI708913325, NI883735010, NIAT5628004, NI804035010;allVisible;false
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink
+;;__CMS_STORE_PREFIX__SimpleBanner_row8-desktop;__CMS_STORE_PREFIX__SimpleBanner_row8-desktop;"__CMS_STORE_PREFIX__ Simple Banner 3 Desktop";"/c/__BRAND_NAME__Marcas"
+;;__CMS_STORE_PREFIX__SimpleBanner_row8-mobile ;__CMS_STORE_PREFIX__SimpleBanner_row8-mobile ;"__CMS_STORE_PREFIX__ Simple Banner 3 Mobile" ;"/c/__BRAND_NAME__Marcas"
+
+# ------------------------------------------------------------
+#  Row 9: Product Carousels 4
+# ------------------------------------------------------------
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;urlLink
+;;__CMS_STORE_PREFIX__SimpleBanner_row9-desktop;__CMS_STORE_PREFIX__SimpleBanner_row9-desktop;"__CMS_STORE_PREFIX__ Simple Banner 4 Desktop";"/c/__BRAND_NAME__Hombre"
+;;__CMS_STORE_PREFIX__SimpleBanner_row9-mobile ;__CMS_STORE_PREFIX__SimpleBanner_row9-mobile ;"__CMS_STORE_PREFIX__ Simple Banner 4 Mobile" ;"/c/__BRAND_NAME__Marcas"
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;products(code, $productCV);scroll(code);popup;
+;;__CMS_STORE_PREFIX__ProductCarousel_row9;__CMS_STORE_PREFIX__ProductCarousel_row9;"__CMS_STORE_PREFIX__ Product Carousel 4";NI804035010, NIAT5628004, ADEC7351, NI924447700;allVisible;false
+
+# ------------------------------------------------------------
+#  Row 10: SocialComponent
+# ------------------------------------------------------------
+INSERT_UPDATE BoldSocialComponent; $contentCV[unique = true]; uid[unique = true];&componentRef; name;visible
+;;__CMS_STORE_PREFIX__SocialComponent;__CMS_STORE_PREFIX__SocialComponent;"__CMS_STORE_PREFIX__ Social Component";false
+
+INSERT_UPDATE BoldSocialLinkComponent; $contentCV[unique = true]; uid[unique = true];&componentRef; name; socialComponent(uid, $contentCV) ; iconClasses; url
+;;__CMS_STORE_PREFIX__FacebookSocialLinkComponent ;__CMS_STORE_PREFIX__FacebookSocialLinkComponent ;"__CMS_STORE_PREFIX__Facebook" ;__CMS_STORE_PREFIX__SocialComponent;icon icon-facebook ;https://www.facebook.com/__CMS_STORE_PREFIX__Chile
+;;__CMS_STORE_PREFIX__TwitterSocialLinkComponent  ;__CMS_STORE_PREFIX__TwitterSocialLinkComponent  ;"__CMS_STORE_PREFIX__Twitter"  ;__CMS_STORE_PREFIX__SocialComponent;icon icon-twitter  ;https://www.twitter.com/__CMS_STORE_PREFIX__/
+;;__CMS_STORE_PREFIX__InstagramSocialLinkComponent;__CMS_STORE_PREFIX__InstagramSocialLinkComponent;"__CMS_STORE_PREFIX__Instagram";__CMS_STORE_PREFIX__SocialComponent;icon icon-instagram;https://www.instagram.com/__CMS_STORE_PREFIX__/
+
+# ------------------------------------------------------------
+#  Row 11: Instagram Banner Section
+# ------------------------------------------------------------
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique = true];uid[unique = true];name;&linkRef
+;;__CMS_STORE_PREFIX__InstagramTilte;__CMS_STORE_PREFIX__InstagramTilte;__CMS_STORE_PREFIX__InstagramTilte;
+
+INSERT_UPDATE Media;$contentCV[unique = true];mediaFormat(qualifier);code[unique = true];@media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default = 'image/jpeg'];altText;folder(qualifier)[default = 'images']
+;;mobile;mobile_instagram_post_not_available.png;$siteResource/images/components/mobile_instagram_post_not_available.png;image/png;;
+;;tablet;tablet_instagram_post_not_available.png;$siteResource/images/components/mobile_instagram_post_not_available.png;image/png;;
+;;desktop;desktop_instagram_post_not_available.png;$siteResource/images/components/widescreen_instagram_post_not_available.png;image/png;;
+;;widescreen;widescreen_instagram_post_not_available.png;$siteResource/images/components/widescreen_instagram_post_not_available.png;image/png;;
+
+INSERT_UPDATE InstagramResponsiveBannerComponent;$contentCV[unique = true];uid[unique = true];name;urlLink;postUrl;$mediaContainer;&componentRef
+;;CAvMp_8lVyI;;"https://www.instagram.com/p/CAvMp_8lVyI/";"https://www.instagram.com/p/CAvMp_8lVyI/";;CAvMp_8lVyI
+;;B-0I2NSA2e1;;"https://www.instagram.com/p/B-0I2NSA2e1/";"https://www.instagram.com/p/B-0I2NSA2e1/";;B-0I2NSA2e1
+;;B-paJuDBc5C;;"https://www.instagram.com/p/B-paJuDBc5C/";"https://www.instagram.com/p/B-paJuDBc5C/";;B-paJuDBc5C
+;;B-P7N4sAVjP;;"https://www.instagram.com/p/B-P7N4sAVjP/";"https://www.instagram.com/p/B-P7N4sAVjP/";;B-P7N4sAVjP
+;;B9r05ZFg56X;;"https://www.instagram.com/p/B9r05ZFg56X/";"https://www.instagram.com/p/B9r05ZFg56X/";;B9r05ZFg56X
+;;B9j_oOAAGFE;;"https://www.instagram.com/p/B9j_oOAAGFE/";"https://www.instagram.com/p/B9j_oOAAGFE/";;B9j_oOAAGFE
+;;B9XOjFLAnks;;"https://www.instagram.com/p/B9XOjFLAnks/";"https://www.instagram.com/p/B9XOjFLAnks/";;B9XOjFLAnks
+
+INSERT_UPDATE InstagramSectionComponent;$contentCV[unique = true];uid[unique = true];banners(&componentRef);&componentRef
+;;__CMS_STORE_PREFIX__InstagramSection;CAvMp_8lVyI,B-0I2NSA2e1,B-paJuDBc5C,B-P7N4sAVjP,B9r05ZFg56X,B9j_oOAAGFE,B9XOjFLAnks;__CMS_STORE_PREFIX__InstagramSection
+
+INSERT_UPDATE InstagramHashtagSectionComponent;$contentCV[unique = true];uid[unique = true];links(&linkRef);&componentRef
+;;__CMS_STORE_PREFIX__InstagramHashtagSection;__CMS_STORE_PREFIX__InstagramTilte;__CMS_STORE_PREFIX__InstagramHashtagSection
+
+# ------------------------------------------------------------
+#  Row 12: Store Benefits
+# ------------------------------------------------------------
+INSERT_UPDATE BoldParagraphBannerComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;iconClasses
+;;__CMS_STORE_PREFIX__StoreBenefits1_row10;__CMS_STORE_PREFIX__StoreBenefits1_row10;"__CMS_STORE_PREFIX__ Store Benefits 1";icon icon-truck
+;;__CMS_STORE_PREFIX__StoreBenefits2_row10;__CMS_STORE_PREFIX__StoreBenefits2_row10;"__CMS_STORE_PREFIX__ Store Benefits 2";icon icon-debit
+;;__CMS_STORE_PREFIX__StoreBenefits3_row10;__CMS_STORE_PREFIX__StoreBenefits3_row10;"__CMS_STORE_PREFIX__ Store Benefits 3";icon icon-secure
+;;__CMS_STORE_PREFIX__StoreBenefits4_row10;__CMS_STORE_PREFIX__StoreBenefits4_row10;"__CMS_STORE_PREFIX__ Store Benefits 4";icon icon-store
+
+# ------------------------------------------------------------
+#  Estructura Home Page
+# ------------------------------------------------------------
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];&refSlot;name;active;cmsComponents(&componentRef)
+;;Section1Slot-Homepage ;Section1Slot-Homepage ;"Section1 Slot for Homepage" ;true;__CMS_STORE_PREFIX__VideoComponent_row1,__CMS_STORE_PREFIX__RotatingImages_row2;
+;;Section2ASlot-Homepage;Section2ASlot-Homepage;"Section2A Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner1_row3
+;;Section2BSlot-Homepage;Section2BSlot-Homepage;"Section2B Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner2_row3
+;;Section3Slot-Homepage ;Section3Slot-Homepage ;"Section3 Slot for Homepage ";true;__CMS_STORE_PREFIX__Marcas_row4
+;;Section4ASlot-Homepage;Section4ASlot-Homepage;"Section4A Slot for Homepage";true;__CMS_STORE_PREFIX__ProductCarrouselParagraph_row5
+;;Section4BSlot-Homepage;Section4BSlot-Homepage;"Section4B Slot for Homepage";true;__CMS_STORE_PREFIX__ProductCarousel_row6
+;;Section4CSlot-Homepage;Section4CSlot-Homepage;"Section4C Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row6-desktop
+;;Section5ASlot-Homepage;Section5ASlot-Homepage;"Section5A Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row7-mobile
+;;Section5BSlot-Homepage;Section5BSlot-Homepage;"Section5B Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row7-desktop
+;;Section5CSlot-Homepage;Section5CSlot-Homepage;"Section5C Slot for Homepage";true;__CMS_STORE_PREFIX__ProductCarousel_row7
+;;Section6ASlot-Homepage;Section6ASlot-Homepage;"Section6A Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row8-mobile
+;;Section6BSlot-Homepage;Section6BSlot-Homepage;"Section6B Slot for Homepage";true;__CMS_STORE_PREFIX__ProductCarousel_row8
+;;Section6CSlot-Homepage;Section6CSlot-Homepage;"Section6C Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row8-desktop
+;;Section7ASlot-Homepage;Section7ASlot-Homepage;"Section7A Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row9-mobile
+;;Section7BSlot-Homepage;Section7BSlot-Homepage;"Section7B Slot for Homepage";true;__CMS_STORE_PREFIX__SimpleBanner_row9-desktop
+;;Section7CSlot-Homepage;Section7CSlot-Homepage;"Section7C Slot for Homepage";true;__CMS_STORE_PREFIX__ProductCarousel_row9
+;;Section8ASlot-Homepage;Section8ASlot-Homepage;"Section8A Slot for Homepage";true;
+;;Section8BSlot-Homepage;Section8BSlot-Homepage;"Section8B Slot for Homepage";true;__CMS_STORE_PREFIX__SocialComponent
+;;Section8CSlot-Homepage;Section8CSlot-Homepage;"Section8C Slot for Homepage";true;__CMS_STORE_PREFIX__InstagramHashtagSection,__CMS_STORE_PREFIX__InstagramSection
+;;Section9ASlot-Homepage;Section9ASlot-Homepage;"Section9A Slot for Homepage";true;__CMS_STORE_PREFIX__StoreBenefits1_row10
+;;Section9BSlot-Homepage;Section9BSlot-Homepage;"Section9B Slot for Homepage";true;__CMS_STORE_PREFIX__StoreBenefits2_row10
+;;Section9CSlot-Homepage;Section9CSlot-Homepage;"Section9C Slot for Homepage";true;__CMS_STORE_PREFIX__StoreBenefits3_row10
+;;Section9DSlot-Homepage;Section9DSlot-Homepage;"Section9D Slot for Homepage";true;__CMS_STORE_PREFIX__StoreBenefits4_row10
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='homepage'];contentSlot(&refSlot)[unique=true]
+;;Section1-Homepage ;Section1 ;;Section1Slot-Homepage
+;;Section2A-Homepage;Section2A;;Section2ASlot-Homepage
+;;Section2B-Homepage;Section2B;;Section2BSlot-Homepage
+;;Section3-Homepage ;Section3 ;;Section3Slot-Homepage
+;;Section4A-Homepage;Section4A;;Section4ASlot-Homepage
+;;Section4B-Homepage;Section4B;;Section4BSlot-Homepage
+;;Section4C-Homepage;Section4C;;Section4CSlot-Homepage
+;;Section5A-Homepage;Section5A;;Section5ASlot-Homepage
+;;Section5B-Homepage;Section5B;;Section5BSlot-Homepage
+;;Section5C-Homepage;Section5C;;Section5CSlot-Homepage
+;;Section6A-Homepage;Section6A;;Section6ASlot-Homepage
+;;Section6B-Homepage;Section6B;;Section6BSlot-Homepage
+;;Section6C-Homepage;Section6C;;Section6CSlot-Homepage
+;;Section7A-Homepage;Section7A;;Section7ASlot-Homepage
+;;Section7B-Homepage;Section7B;;Section7BSlot-Homepage
+;;Section7C-Homepage;Section7C;;Section7CSlot-Homepage
+;;Section8A-Homepage;Section8A;;Section8ASlot-Homepage
+;;Section8B-Homepage;Section8B;;Section8BSlot-Homepage
+;;Section8C-Homepage;Section8C;;Section8CSlot-Homepage
+;;Section9A-Homepage;Section9A;;Section9ASlot-Homepage
+;;Section9B-Homepage;Section9B;;Section9BSlot-Homepage
+;;Section9C-Homepage;Section9C;;Section9CSlot-Homepage
+;;Section9D-Homepage;Section9D;;Section9DSlot-Homepage
+

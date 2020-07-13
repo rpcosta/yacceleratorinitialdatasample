@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package de.hybris.platform.ybelsportinitialdata.dataimport.impl;
+package de.hybris.platform.ybelsportinitialdata.initialdata.dataimport.impl;
 
 import de.hybris.platform.commerceservices.dataimport.AbstractDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
@@ -9,7 +9,7 @@ import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.util.ResponsiveUtils;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 
-import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
+import static de.hybris.platform.ybelsportinitialdata.initialdata.constants.InitialDataConstants.*;
 
 import java.io.InputStream;
 import java.util.List;
@@ -296,9 +296,12 @@ public class SampleDataImportService extends AbstractDataImportService
 						extensionName, contentCatalogName), false);
 
 		getSetupImpexService()
-				.importImpexFile(String.format("/%s/import/sampledata/contentCatalogs/%sContentCatalog/media-content.impex",
+				.importImpexFile(String.format("/%s/import/sampledata/contentCatalogs/%sContentCatalog/cms-pages.impex",
 						extensionName, contentCatalogName), false);
 
+		getSetupImpexService()
+				.importImpexFile(String.format("/%s/import/sampledata/contentCatalogs/%sContentCatalog/cms-components.impex",
+						extensionName, contentCatalogName), false);
 
 	}
 

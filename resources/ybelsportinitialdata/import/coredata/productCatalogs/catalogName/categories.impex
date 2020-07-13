@@ -18,6 +18,12 @@ $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCata
 
 $siteResource=jar:__ROOT_PACKAGE__.initialdata.constants.InitialDataConstants&/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog
 
-INSERT_UPDATE Category;code[unique = true];$catalogVersion;allowedPrincipals(uid)[default = 'customergroup'] ;
-                      ;__CATEGORY_PROMOTIONS_UID__    ;                ;                                                 ;
-                      ;__CATEGORY_CAMPAINS_UID__      ;                ;                                                 ;
+# Supercategories used by SOLR to index products
+# Changes need to match parameter set on bean belsportCategorySource, belsportCategorySource & belsportCategorySource
+# in belsportb2cstorecore-spring.xml otherwise solr index will not work
+INSERT_UPDATE Category[disable.interceptor.types = validate]; code[unique = true]; $catalogVersion; allowedPrincipals(uid)[default = 'customergroup'];
+                                                            ; __BRAND_NAME__Categories     ;                ;                                                  ;
+                                                            ; __BRAND_NAME__Collections    ;                ;                                                  ;
+                                                            ; __BRAND_NAME__GuideSize      ;                ;                                                  ;
+                                                            ; __BRAND_NAME__Promociones    ;                ;                                                 ;
+                                                            ; __BRAND_NAME__Campanas       ;                ;                                                 ;

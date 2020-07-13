@@ -7,7 +7,9 @@
 $contentCatalog = __CONTENT_CATALOG_UID__
 $contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 
+# DO NOT CHANGE THE REFERENCE $emailResource. IT DEPENDS ON EMAILS INSIDE BELSPORT CORE PROJECT!
 $emailResource = jar:cl.com.bls.b2c.core.core.setup.CoreSystemSetup&/belsportb2cstorecore/import/emails
+
 $emailImageResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/__EXTENSION_UID__/import/sampledata/contentCatalogs/__CONTENT_CATALOG_UID__/images/email
 
 # Language
@@ -15,44 +17,44 @@ $lang = es_CL
 
 # CMS components and Email velocity templates
 UPDATE RendererTemplate; code[unique = true]                           ; description[lang = $lang]                          ; templateScript[lang = $lang, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
-                       ; BannerComponent-template                      ; "CMSBannerComponent Template"                      ; $emailResource/email-bannerComponentTemplate.vm
-                       ; CMSImageComponent-template                    ; "CMSImageComponent Template"                       ; $emailResource/email-cmsImageComponentTemplate.vm
-                       ; CMSLinkComponent-template                     ; "CMSLinkComponent Template"                        ; $emailResource/email-cmsLinkComponentTemplate.vm
-                       ; CMSParagraphComponent-template                ; "CMSParagraphComponent Template"                   ; $emailResource/email-cmsParagraphComponentTemplate.vm
-                       ; SimpleBannerComponent-template                ; "CMSSimpleBannerComponent Template"                ; $emailResource/email-bannerComponentTemplate.vm
-                       ; Email_Customer_Registration_Body              ; "Customer Registration Email Body"                 ; $emailResource/email-customerRegistrationBody.vm
-                       ; Email_Customer_Registration_Subject           ; "Customer Registration Email Subject"              ; $emailResource/email-customerRegistrationSubject.vm
-                       ; Email_Delivery_Sent_Body                      ; "Delivery Sent Email Body"                         ; $emailResource/email-deliverySentBody.vm
-                       ; Email_Delivery_Sent_Subject                   ; "Delivery Sent Email Subject"                      ; $emailResource/email-deliverySentSubject.vm
-                       ; Email_Forgotten_Password_Body                 ; "Forgotten Password Email Body"                    ; $emailResource/email-forgottenPasswordBody.vm
-                       ; Email_Forgotten_Password_Subject              ; "Forgotten Password Email Subject"                 ; $emailResource/email-forgottenPasswordSubject.vm
-                       ; Email_NotPickedUpConsignment_Canceled_Body    ; "Not Picked Up Consignment Canceled Email Body"    ; $emailResource/email-notPickedUpConsignmentCanceledBody.vm
-                       ; Email_NotPickedUpConsignment_Canceled_Subject ; "Not Picked Up Consignment Canceled Email Subject" ; $emailResource/email-notPickedUpConsignmentCanceledSubject.vm
-                       ; Email_Order_Cancelled_Body                    ; "Order Cancelled Email Body"                       ; $emailResource/email-orderCancelledBody.vm
-                       ; Email_Order_Cancelled_Subject                 ; "Order Cancelled Email Subject"                    ; $emailResource/email-orderCancelledSubject.vm
-                       ; Email_Order_Collection_Reminder_Body          ; "Order Collection Reminder Body"                   ; $emailResource/email-orderCollectionReminderBody.vm
-                       ; Email_Order_Collection_Reminder_Subject       ; "Order Collection Reminder Subject"                ; $emailResource/email-orderCollectionReminderSubject.vm
-                       ; Email_Order_Confirmation_Body                 ; "Order Confirmation Email Body"                    ; $emailResource/email-orderConfirmationBody.vm
-                       ; Email_Order_Confirmation_Subject              ; "Order Confirmation Email Subject"                 ; $emailResource/email-orderConfirmationSubject.vm
-                       ; Email_Order_Move_To_CS_Body                   ; "Order Move To CS Body"                            ; $emailResource/email-orderMoveToCsBody.vm
-                       ; Email_Order_Move_To_CS_Subject                ; "Order Move To CS Subject"                         ; $emailResource/email-orderMoveToCsSubject.vm
-                       ; Email_Order_Partially_Canceled_Body           ; "Order Partially Canceled Email Body"              ; $emailResource/email-orderPartiallyCanceledBody.vm
-                       ; Email_Order_Partially_Canceled_Subject        ; "Order Partially Canceled Email Subject"           ; $emailResource/email-orderPartiallyCanceledSubject.vm
-                       ; Email_Order_Partially_Refunded_Body           ; "Order Partially Refunded Email Body"              ; $emailResource/email-orderPartiallyRefundedBody.vm
-                       ; Email_Order_Partially_Refunded_Subject        ; "Order Partially Refunded Email Subject"           ; $emailResource/email-orderPartiallyRefundedSubject.vm
-                       ; Email_Order_Refund_Body                       ; "Order Refund Email Body"                          ; $emailResource/email-orderRefundBody.vm
-                       ; Email_Order_Refund_Subject                    ; "Order Refund Email Subject"                       ; $emailResource/email-orderRefundSubject.vm
-                       ; Email_Ready_For_Pickup_Body                   ; "Ready For Pickup Email Body"                      ; $emailResource/email-readyForPickupBody.vm
-                       ; Email_Ready_For_Pickup_Subject                ; "Ready For Pickup Email Subject"                   ; $emailResource/email-readyForPickupSubject.vm
-                       ; Email_Prepare_For_Pickup_Body                 ; "Prepare For Pickup Email Body"                    ; $emailResource/email-prepareForPickupBody.vm
-                       ; Email_Prepare_For_Pickup_Subject              ; "Prepare For Pickup Email Subject"                 ; $emailResource/email-prepareForPickupSubject.vm
-                       ; Email_Consignment_In_Preparation_Body         ; "Consignment in preparation Email Body"            ; $emailResource/email-consignmentInPreparationBody.vm
-                       ; Email_Consignment_In_Preparation_Subject      ; "Order in Prepartion Email Subject"                ; $emailResource/email-consignmentInPreparationSubject.vm
-                       ; __STORE_UID__-BannerComponent-template              ; "__STORE_UID__ CMSBannerComponent Template"         ; $emailResource/email-bannerComponentTemplate.vm
-                       ; __STORE_UID__-CMSImageComponent-template            ; "__STORE_UID__ CMSImageComponent Template"          ; $emailResource/email-cmsImageComponentTemplate.vm
-                       ; __STORE_UID__-CMSLinkComponent-template             ; "__STORE_UID__ CMSLinkComponent Template"           ; $emailResource/email-cmsLinkComponentTemplate.vm
-                       ; __STORE_UID__-CMSParagraphComponent-template        ; "__STORE_UID__ CMSParagraphComponent Template"      ; $emailResource/email-cmsParagraphComponentTemplate.vm
-                       ; __STORE_UID__-SimpleBannerComponent-template        ; "__STORE_UID__ CMSSimpleBannerComponent Template"   ; $emailResource/email-bannerComponentTemplate.vm
+;BannerComponent-template                     ;"CMSBannerComponent Template"                       ;$emailResource/email-bannerComponentTemplate.vm
+;CMSImageComponent-template                   ;"CMSImageComponent Template"                        ;$emailResource/email-cmsImageComponentTemplate.vm
+;CMSLinkComponent-template                    ;"CMSLinkComponent Template"                         ;$emailResource/email-cmsLinkComponentTemplate.vm
+;CMSParagraphComponent-template               ;"CMSParagraphComponent Template"                    ;$emailResource/email-cmsParagraphComponentTemplate.vm
+;SimpleBannerComponent-template               ;"CMSSimpleBannerComponent Template"                 ;$emailResource/email-bannerComponentTemplate.vm
+;Email_Customer_Registration_Body             ;"Customer Registration Email Body"                  ;$emailResource/email-customerRegistrationBody.vm
+;Email_Customer_Registration_Subject          ;"Customer Registration Email Subject"               ;$emailResource/email-customerRegistrationSubject.vm
+;Email_Delivery_Sent_Body                     ;"Delivery Sent Email Body"                          ;$emailResource/email-deliverySentBody.vm
+;Email_Delivery_Sent_Subject                  ;"Delivery Sent Email Subject"                       ;$emailResource/email-deliverySentSubject.vm
+;Email_Forgotten_Password_Body                ;"Forgotten Password Email Body"                     ;$emailResource/email-forgottenPasswordBody.vm
+;Email_Forgotten_Password_Subject             ;"Forgotten Password Email Subject"                  ;$emailResource/email-forgottenPasswordSubject.vm
+;Email_NotPickedUpConsignment_Canceled_Body   ;"Not Picked Up Consignment Canceled Email Body"     ;$emailResource/email-notPickedUpConsignmentCanceledBody.vm
+;Email_NotPickedUpConsignment_Canceled_Subject;"Not Picked Up Consignment Canceled Email Subject"  ;$emailResource/email-notPickedUpConsignmentCanceledSubject.vm
+;Email_Order_Cancelled_Body                   ;"Order Cancelled Email Body"                        ;$emailResource/email-orderCancelledBody.vm
+;Email_Order_Cancelled_Subject                ;"Order Cancelled Email Subject"                     ;$emailResource/email-orderCancelledSubject.vm
+;Email_Order_Collection_Reminder_Body         ;"Order Collection Reminder Body"                    ;$emailResource/email-orderCollectionReminderBody.vm
+;Email_Order_Collection_Reminder_Subject      ;"Order Collection Reminder Subject"                 ;$emailResource/email-orderCollectionReminderSubject.vm
+;Email_Order_Confirmation_Body                ;"Order Confirmation Email Body"                     ;$emailResource/email-orderConfirmationBody.vm
+;Email_Order_Confirmation_Subject             ;"Order Confirmation Email Subject"                  ;$emailResource/email-orderConfirmationSubject.vm
+;Email_Order_Move_To_CS_Body                  ;"Order Move To CS Body"                             ;$emailResource/email-orderMoveToCsBody.vm
+;Email_Order_Move_To_CS_Subject               ;"Order Move To CS Subject"                          ;$emailResource/email-orderMoveToCsSubject.vm
+;Email_Order_Partially_Canceled_Body          ;"Order Partially Canceled Email Body"               ;$emailResource/email-orderPartiallyCanceledBody.vm
+;Email_Order_Partially_Canceled_Subject       ;"Order Partially Canceled Email Subject"            ;$emailResource/email-orderPartiallyCanceledSubject.vm
+;Email_Order_Partially_Refunded_Body          ;"Order Partially Refunded Email Body"               ;$emailResource/email-orderPartiallyRefundedBody.vm
+;Email_Order_Partially_Refunded_Subject       ;"Order Partially Refunded Email Subject"            ;$emailResource/email-orderPartiallyRefundedSubject.vm
+;Email_Order_Refund_Body                      ;"Order Refund Email Body"                           ;$emailResource/email-orderRefundBody.vm
+;Email_Order_Refund_Subject                   ;"Order Refund Email Subject"                        ;$emailResource/email-orderRefundSubject.vm
+;Email_Ready_For_Pickup_Body                  ;"Ready For Pickup Email Body"                       ;$emailResource/email-readyForPickupBody.vm
+;Email_Ready_For_Pickup_Subject               ;"Ready For Pickup Email Subject"                    ;$emailResource/email-readyForPickupSubject.vm
+;Email_Prepare_For_Pickup_Body                ;"Prepare For Pickup Email Body"                     ;$emailResource/email-prepareForPickupBody.vm
+;Email_Prepare_For_Pickup_Subject             ;"Prepare For Pickup Email Subject"                  ;$emailResource/email-prepareForPickupSubject.vm
+;BannerComponent-template                     ;"CMSBannerComponent Template"                       ;$emailResource/email-bannerComponentTemplate.vm
+;CMSImageComponent-template                   ;"CMSImageComponent Template"                        ;$emailResource/email-cmsImageComponentTemplate.vm
+;CMSLinkComponent-template                    ;"CMSLinkComponent Template"                         ;$emailResource/email-cmsLinkComponentTemplate.vm
+;CMSParagraphComponent-template               ;"CMSParagraphComponent Template"                    ;$emailResource/email-cmsParagraphComponentTemplate.vm
+;SimpleBannerComponent-template               ;"CMSSimpleBannerComponent Template"                 ;$emailResource/email-bannerComponentTemplate.vm
+;Email_Consignment_In_Preparation_Body        ;"Consignment in preparation Email Body"             ;$emailResource/email-consignmentInPreparationBody.vm
+;Email_Consignment_In_Preparation_Subject     ;"Order in Prepartion Email Subject"                 ;$emailResource/email-consignmentInPreparationSubject.vm
 
 # Email Pages
 UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]           ; fromEmail[lang = $lang]       ; fromName[lang = $lang]
@@ -74,10 +76,11 @@ INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@medi
                    ;;readyForPickupHeader.jpg;readyForPickupHeader.jpg;$emailImageResource/readyForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
                    ;;prepareForPickupHeader.jpg;prepareForPickupHeader.jpg;$emailImageResource/prepareForPickupHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
                    ;;deliverySentHeader.jpg;deliverySentHeader.jpg;$emailImageResource/deliverySentHeader.jpg;image/jpg;__CMS_STORE_PREFIX__;
+                   ;;consignmentInPreparationHeader.jpg;consignmentInPreparationHeader.jpg;$emailImageResource/consignmentInPreparationEmailBanner.jpg;image/jpg;__CMS_STORE_PREFIX__;
 
 INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];media(code,$contentCV)[lang=$lang]
-                                   ;;ReadyForPickupEmailHeaderBanner           ; readyForPickupHeader.jpg   ; "/"
-                                   ;;PrepareForPickupEmailHeaderBanner         ; prepareForPickupHeader.jpg ; "/"
-                                   ;;DeliverySentEmailHeaderBanner             ; deliverySentHeader.jpg     ; "/"
-                                   ;;ConsignmentInPreparationEmailHeaderBanner ; prepareForPickupHeader.jpg ; "/"
+;;ReadyForPickupEmailHeaderBanner           ; readyForPickupHeader.jpg; "/"
+;;PrepareForPickupEmailHeaderBanner         ; prepareForPickupHeader.jpg; "/"
+;;DeliverySentEmailHeaderBanner             ; deliverySentHeader.jpg; "/"
+;;ConsignmentInPreparationEmailHeaderBanner ; consignmentInPreparationHeader.jpg; "/"
 

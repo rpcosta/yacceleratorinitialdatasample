@@ -16,29 +16,21 @@ $siteResource = jar:__ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup&/_
 # Language
 $lang = es_CL
 
-
 # Media
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                 ; realfilename      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; folder(qualifier)[default = 'images']
-                   ;                          ; Banner_email                        ; Banner_email.jpg                             ; $siteResource/images/email/banner.jpg                               ; image/jpg  ; ;
-                   ;                          ; CustomerRegistrationEmail_banner    ; CustomerRegistrationEmail_banner.jpg         ; $siteResource/images/email/Customer_Registration_Email_Banner.jpg  ; image/jpg  ; ;
-                   ;                          ; ForgottenPasswordEmail_banner       ; ForgottenPasswordEmail_banner.jpg            ; $siteResource/images/email/Forgotten_Password_Email_Banner.jpg     ; image/jpg  ; ;
-                   ;                          ; OrderConfirmationEmailBanner        ; OrderConfirmationEmailBanner.jpg             ; $siteResource/images/email/OrderConfirmationEmailBanner.jpg         ; image/jpg  ; ;
-                   ;                          ; ConsignmentInPreparationEmailBanner ; ConsignmentInPreparationEmailBanner.jpg      ; $siteResource/images/email/ConsignmentInPreparationEmailBanner.jpg  ; image/jpg  ; ;
-
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true];realfilename;@media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default = 'image/jpeg'];altText;folder(qualifier)[default = 'images']
+;;banner_email;banner_mail___CMS_IMAGE__.jpg ;$siteResource/images/email/banner_mail___CMS_IMAGE__.jpg ;image/jpg;__SITE_ALIAS__;;
 
 # CMS Image Components
-UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]                           ; $picture[lang = $lang];
-                        ;                          ; BannerComponent                              ; Banner_email
-                        ;                          ; CustomerRegistrationEmailbannerComponent     ; CustomerRegistrationEmail_banner
-                        ;                          ; ForgottenPasswordEmailbannerComponent        ; ForgottenPasswordEmail_banner
-                        ;                          ; OrderConfirmationEmailBannerComponent        ; OrderConfirmationEmailBanner
-                        ;                          ; ConsignmentInPreparationBannerComponent      ; ConsignmentInPreparationEmailBanner
-
+UPDATE CMSImageComponent; $contentCV[unique = true];uid[unique = true];$picture[lang = $lang];
+;;BannerComponent                         ;banner_email
+;;CustomerRegistrationEmailbannerComponent;banner_email
+;;ForgottenPasswordEmailbannerComponent   ;banner_email
+;;OrderConfirmationEmailBannerComponent   ;banner_email
+;;ConsignmentInPreparationBannerComponent ;banner_email
 
 # CMS Image Components
 UPDATE CMSImageComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-
-#%import __ROOT_PACKAGE__.initialdata.setup.InitialDataSystemSetup
+#%import cl.com.bls.b2c.bls.initialdata.setup.InitialDataSystemSetup
 #%impex.enableCodeExecution(true)
 #%impex.enableExternalSyntaxParsing(true)
 #%impex.includeExternalData(InitialDataSystemSetup.class.getResourceAsStream("/__EXTENSION_UID__/import/sampledata/contentCatalogs/$contentCatalog/email-paragraphs.impex"), "utf-8", 0, 0);

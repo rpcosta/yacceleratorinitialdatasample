@@ -4,8 +4,10 @@
 #
 # Import the CMS content for the site emails
 #
+
+$version        = Staged
 $contentCatalog = __CONTENT_CATALOG_UID__
-$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=$version])[default=$contentCatalog:$version]
 
 $wideContent = CMSImageComponent, BannerComponent, SimpleBannerComponent, CMSLinkComponent, CMSParagraphComponent
 # Import modulegen config properties into impex macros
@@ -15,20 +17,20 @@ $emailPackageName = $config-emailContextPackageName
 
 # Email page Template
 INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                          ; name                                              ; active; frontendTemplateName                ; subject(code)                                 ; htmlTemplate(code)                         ; restrictedPageTypes(code)
-                               ;                          ; CustomerRegistrationEmailTemplate           ; Customer Registration Email Template              ; true  ; customerRegistrationEmail           ; Email_Customer_Registration_Subject           ; Email_Customer_Registration_Body           ; EmailPage
-                               ;                          ; ForgottenPasswordEmailTemplate              ; Forgotten Password Email Template                 ; true  ; forgottenPasswordEmail              ; Email_Forgotten_Password_Subject              ; Email_Forgotten_Password_Body              ; EmailPage
-                               ;                          ; OrderConfirmationEmailTemplate              ; Order Confirmation Email Template                 ; true  ; orderConfirmationEmail              ; Email_Order_Confirmation_Subject              ; Email_Order_Confirmation_Body              ; EmailPage
-                               ;                          ; DeliverySentEmailTemplate                   ; Delivery Sent Email Template                      ; true  ; deliverySentEmail                   ; Email_Delivery_Sent_Subject                   ; Email_Delivery_Sent_Body                   ; EmailPage
-                               ;                          ; ReadyForPickupEmailTemplate                 ; Ready For Pickup Email Template                   ; true  ; readyForPickupEmail                 ; Email_Ready_For_Pickup_Subject                ; Email_Ready_For_Pickup_Body                ; EmailPage
-                               ;                          ; OrderCancelledEmailTemplate                 ; Order Cancelled Email Template                    ; true  ; orderCancelledEmail                 ; Email_Order_Cancelled_Subject                 ; Email_Order_Cancelled_Body                 ; EmailPage
-                               ;                          ; OrderRefundEmailTemplate                    ; Order Refund Email Template                       ; true  ; orderRefundEmail                    ; Email_Order_Refund_Subject                    ; Email_Order_Refund_Body                    ; EmailPage
-                               ;                          ; OrderCollectionReminderEmailTemplate        ; Order Collection Reminder Email Template          ; true  ; orderCollectionReminderEmail        ; Email_Order_Collection_Reminder_Subject       ; Email_Order_Collection_Reminder_Body       ; EmailPage
-                               ;                          ; OrderMoveToCsEmailTemplate                  ; Order Moved To CS Email Template                  ; true  ; orderMoveToCsEmail                  ; Email_Order_Move_To_CS_Subject                ; Email_Order_Move_To_CS_Body                ; EmailPage
-                               ;                          ; OrderPartiallyCanceledEmailTemplate         ; Order Partially Canceled Email Template           ; true  ; orderPartiallyCanceledEmail         ; Email_Order_Partially_Canceled_Subject        ; Email_Order_Partially_Canceled_Body        ; EmailPage
-                               ;                          ; OrderPartiallyRefundedEmailTemplate         ; Order Partially Refunded Email Template           ; true  ; orderPartiallyRefundedEmail         ; Email_Order_Partially_Refunded_Subject        ; Email_Order_Partially_Refunded_Body        ; EmailPage
-                               ;                          ; NotPickedUpConsignmentCanceledEmailTemplate ; Not Picked Up Consignment Canceled Email Template ; true  ; notPickedUpConsignmentCanceledEmail ; Email_NotPickedUpConsignment_Canceled_Subject ; Email_NotPickedUpConsignment_Canceled_Body ; EmailPage
-                               ;                          ; PrepareForPickupEmailTemplate               ; Prepare For Pickup Email Template                 ; true  ; prepareForPickupEmail               ; Email_Prepare_For_Pickup_Subject              ; Email_Prepare_For_Pickup_Body              ; EmailPage
-                               ;                          ; ConsignmentInPreparationEmailTemplate       ; Consignment in preparation Email Template         ; true  ; ConsignmentInPreparationEmail       ; Email_Consignment_In_Preparation_Subject      ; Email_Consignment_In_Preparation_Body      ; EmailPage
+;;CustomerRegistrationEmailTemplate          ;Customer Registration Email Template             ;true;customerRegistrationEmail          ;Email_Customer_Registration_Subject          ;Email_Customer_Registration_Body          ;EmailPage
+;;ForgottenPasswordEmailTemplate             ;Forgotten Password Email Template                ;true;forgottenPasswordEmail             ;Email_Forgotten_Password_Subject             ;Email_Forgotten_Password_Body             ;EmailPage
+;;OrderConfirmationEmailTemplate             ;Order Confirmation Email Template                ;true;orderConfirmationEmail             ;Email_Order_Confirmation_Subject             ;Email_Order_Confirmation_Body             ;EmailPage
+;;DeliverySentEmailTemplate                  ;Delivery Sent Email Template                     ;true;deliverySentEmail                  ;Email_Delivery_Sent_Subject                  ;Email_Delivery_Sent_Body                  ;EmailPage
+;;ReadyForPickupEmailTemplate                ;Ready For Pickup Email Template                  ;true;readyForPickupEmail                ;Email_Ready_For_Pickup_Subject               ;Email_Ready_For_Pickup_Body               ;EmailPage
+;;OrderCancelledEmailTemplate                ;Order Cancelled Email Template                   ;true;orderCancelledEmail                ;Email_Order_Cancelled_Subject                ;Email_Order_Cancelled_Body                ;EmailPage
+;;OrderRefundEmailTemplate                   ;Order Refund Email Template                      ;true;orderRefundEmail                   ;Email_Order_Refund_Subject                   ;Email_Order_Refund_Body                   ;EmailPage
+;;OrderCollectionReminderEmailTemplate       ;Order Collection Reminder Email Template         ;true;orderCollectionReminderEmail       ;Email_Order_Collection_Reminder_Subject      ;Email_Order_Collection_Reminder_Body      ;EmailPage
+;;OrderMoveToCsEmailTemplate                 ;Order Moved To CS Email Template                 ;true;orderMoveToCsEmail                 ;Email_Order_Move_To_CS_Subject               ;Email_Order_Move_To_CS_Body               ;EmailPage
+;;OrderPartiallyCanceledEmailTemplate        ;Order Partially Canceled Email Template          ;true;orderPartiallyCanceledEmail        ;Email_Order_Partially_Canceled_Subject       ;Email_Order_Partially_Canceled_Body       ;EmailPage
+;;OrderPartiallyRefundedEmailTemplate        ;Order Partially Refunded Email Template          ;true;orderPartiallyRefundedEmail        ;Email_Order_Partially_Refunded_Subject       ;Email_Order_Partially_Refunded_Body       ;EmailPage
+;;NotPickedUpConsignmentCanceledEmailTemplate;Not Picked Up Consignment Canceled Email Template;true;notPickedUpConsignmentCanceledEmail;Email_NotPickedUpConsignment_Canceled_Subject;Email_NotPickedUpConsignment_Canceled_Body;EmailPage
+;;PrepareForPickupEmailTemplate              ;Prepare For Pickup Email Template                ;true;prepareForPickupEmail              ;Email_Prepare_For_Pickup_Subject             ;Email_Prepare_For_Pickup_Body             ;EmailPage
+;;ConsignmentInPreparationEmailTemplate      ;Consignment in preparation Email Template        ;true;ConsignmentInPreparationEmail      ;Email_Consignment_In_Preparation_Subject     ;Email_Consignment_In_Preparation_Body     ;EmailPage
 
 # Templates for CMS Cockpit Page Edit
 UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                          ; velocityTemplate[translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
@@ -249,47 +251,47 @@ INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]          
 
 # CMS components velocity templates
 INSERT_UPDATE RendererTemplate; code[unique = true]              ; contextClass; rendererType(code)[default = 'velocity']
-                              ; CMSImageComponent-template       ; java.util.Map
-                              ; BannerComponent-template         ; java.util.Map
-                              ; SimpleBannerComponent-template   ; java.util.Map
-                              ; CMSLinkComponent-template        ; java.util.Map
-                              ; CMSParagraphComponent-template   ; java.util.Map
-                              ; CMSImageComponent-template       ; java.util.Map
-                              ; BannerComponent-template         ; java.util.Map
-                              ; SimpleBannerComponent-template   ; java.util.Map
-                              ; CMSLinkComponent-template        ; java.util.Map
-                              ; CMSParagraphComponent-template   ; java.util.Map
+;CMSImageComponent-template            ;java.util.Map
+;BannerComponent-template              ;java.util.Map
+;SimpleBannerComponent-template        ;java.util.Map
+;CMSLinkComponent-template             ;java.util.Map
+;CMSParagraphComponent-template        ;java.util.Map
+;CMSImageComponent-template    ;java.util.Map
+;BannerComponent-template      ;java.util.Map
+;SimpleBannerComponent-template;java.util.Map
+;CMSLinkComponent-template     ;java.util.Map
+;CMSParagraphComponent-template;java.util.Map
 
 # Email velocity templates
 INSERT_UPDATE RendererTemplate; code[unique = true]                           ; contextClass; rendererType(code)[default = 'velocity']
-                              ; Email_Customer_Registration_Body              ; $emailPackageName.CustomerEmailContext
-                              ; Email_Forgotten_Password_Body                 ; $emailPackageName.ForgottenPasswordEmailContext
-                              ; Email_Order_Confirmation_Body                 ; $emailPackageName.OrderNotificationEmailContext
-                              ; Email_Delivery_Sent_Body                      ; $emailPackageName.DeliverySentEmailContext
-                              ; Email_Ready_For_Pickup_Body                   ; $emailPackageName.ReadyForPickupEmailContext
-                              ; Email_Order_Cancelled_Body                    ; $emailPackageName.OrderCancelledEmailContext
-                              ; Email_Order_Refund_Body                       ; $emailPackageName.OrderRefundEmailContext
-                              ; Email_Order_Collection_Reminder_Body          ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; Email_Order_Move_To_CS_Body                   ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; Email_Order_Partially_Canceled_Body           ; $emailPackageName.OrderPartiallyCanceledEmailContext
-                              ; Email_Order_Partially_Refunded_Body           ; $emailPackageName.OrderPartiallyRefundedEmailContext
-                              ; Email_NotPickedUpConsignment_Canceled_Body    ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
-                              ; Email_Prepare_For_Pickup_Body                 ; $emailPackageName.PrepareForPickupEmailContext
-                              ; Email_Prepare_For_Pickup_Subject              ; $emailPackageName.PrepareForPickupEmailContext
-                              ; Email_Customer_Registration_Subject           ; $emailPackageName.CustomerEmailContext
-                              ; Email_Forgotten_Password_Subject              ; $emailPackageName.ForgottenPasswordEmailContext
-                              ; Email_Order_Confirmation_Subject              ; $emailPackageName.OrderNotificationEmailContext
-                              ; Email_Delivery_Sent_Subject                   ; $emailPackageName.DeliverySentEmailContext
-                              ; Email_Ready_For_Pickup_Subject                ; $emailPackageName.ReadyForPickupEmailContext
-                              ; Email_Order_Cancelled_Subject                 ; $emailPackageName.OrderCancelledEmailContext
-                              ; Email_Order_Refund_Subject                    ; $emailPackageName.OrderRefundEmailContext
-                              ; Email_Order_Collection_Reminder_Subject       ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; Email_Order_Move_To_CS_Subject                ; $emailPackageName.ConsignmentCollectionReminderEmailContext
-                              ; Email_Order_Partially_Canceled_Subject        ; $emailPackageName.OrderPartiallyCanceledEmailContext
-                              ; Email_Order_Partially_Refunded_Subject        ; $emailPackageName.OrderPartiallyRefundedEmailContext
-                              ; Email_NotPickedUpConsignment_Canceled_Subject ; $emailPackageName.NotPickedUpConsignmentCanceledEmailContext
-                              ; Email_Consignment_In_Preparation_Subject      ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
-                              ; Email_Consignment_In_Preparation_Body         ; cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
+;Email_Customer_Registration_Body             ;$emailPackageName.CustomerEmailContext
+;Email_Forgotten_Password_Body                ;$emailPackageName.ForgottenPasswordEmailContext
+;Email_Order_Confirmation_Body                ;$emailPackageName.OrderNotificationEmailContext
+;Email_Delivery_Sent_Body                     ;$emailPackageName.DeliverySentEmailContext
+;Email_Ready_For_Pickup_Body                  ;$emailPackageName.ReadyForPickupEmailContext
+;Email_Order_Cancelled_Body                   ;$emailPackageName.OrderCancelledEmailContext
+;Email_Order_Refund_Body                      ;$emailPackageName.OrderRefundEmailContext
+;Email_Order_Collection_Reminder_Body         ;$emailPackageName.ConsignmentCollectionReminderEmailContext
+;Email_Order_Move_To_CS_Body                  ;$emailPackageName.ConsignmentCollectionReminderEmailContext
+;Email_Order_Partially_Canceled_Body          ;$emailPackageName.OrderPartiallyCanceledEmailContext
+;Email_Order_Partially_Refunded_Body          ;$emailPackageName.OrderPartiallyRefundedEmailContext
+;Email_NotPickedUpConsignment_Canceled_Body   ;$emailPackageName.NotPickedUpConsignmentCanceledEmailContext
+;Email_Prepare_For_Pickup_Body                ;$emailPackageName.PrepareForPickupEmailContext
+;Email_Prepare_For_Pickup_Subject             ;$emailPackageName.PrepareForPickupEmailContext
+;Email_Customer_Registration_Subject          ;$emailPackageName.CustomerEmailContext
+;Email_Forgotten_Password_Subject             ;$emailPackageName.ForgottenPasswordEmailContext
+;Email_Order_Confirmation_Subject             ;$emailPackageName.OrderNotificationEmailContext
+;Email_Delivery_Sent_Subject                  ;$emailPackageName.DeliverySentEmailContext
+;Email_Ready_For_Pickup_Subject               ;$emailPackageName.ReadyForPickupEmailContext
+;Email_Order_Cancelled_Subject                ;$emailPackageName.OrderCancelledEmailContext
+;Email_Order_Refund_Subject                   ;$emailPackageName.OrderRefundEmailContext
+;Email_Order_Collection_Reminder_Subject      ;$emailPackageName.ConsignmentCollectionReminderEmailContext
+;Email_Order_Move_To_CS_Subject               ;$emailPackageName.ConsignmentCollectionReminderEmailContext
+;Email_Order_Partially_Canceled_Subject       ;$emailPackageName.OrderPartiallyCanceledEmailContext
+;Email_Order_Partially_Refunded_Subject       ;$emailPackageName.OrderPartiallyRefundedEmailContext
+;Email_NotPickedUpConsignment_Canceled_Subject;$emailPackageName.NotPickedUpConsignmentCanceledEmailContext
+;Email_Consignment_In_Preparation_Subject     ;cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
+;Email_Consignment_In_Preparation_Body        ;cl.com.bls.b2c.core.facades.process.email.context.ConsignmentInPreparationEmailContext
 
 # Preview Image for use in the CMS Cockpit
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]    ; mime     ; realfilename               ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]
@@ -319,5 +321,5 @@ INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];nam
 UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid,$contentCV)
                   ;;ReadyForPickupEmailHeaderSlot;ReadyForPickupEmailHeaderBanner
                   ;;PrepareForPickupEmailHeaderSlot;PrepareForPickupEmailHeaderBanner
-                  ;;ConsignmentInPreparationEmailHeaderSlot;ConsignmentInPreparationEmailHeaderBanner
+                  ;;ConsignmentInPreparationEmailTopSlot;ConsignmentInPreparationEmailHeaderBanner
                   ;;DeliverySentEmailHeaderSlot;DeliverySentEmailHeaderBanner

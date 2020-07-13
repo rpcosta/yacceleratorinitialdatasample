@@ -258,6 +258,10 @@ INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=
  ;Section8B;;;narrow
  ;Section8C;;;narrow
  ;Section8D;;;narrow
+ ;Section9A;;;narrow
+ ;Section9B;;;narrow
+ ;Section9C;;;narrow
+ ;Section9D;;;narrow
  ;Footer;;;footer
  ;TopHeaderSlot;;;wide
  ;BottomHeaderSlot;;;wide

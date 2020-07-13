@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package  de.hybris.platform.ybelsportinitialdata.dataimport.impl;
+package  de.hybris.platform.ybelsportinitialdata.initialdata.dataimport.impl;
 
 import de.hybris.platform.commerceservices.dataimport.AbstractDataImportService;
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
@@ -9,7 +9,7 @@ import de.hybris.platform.commerceservices.setup.data.ImportData;
 import de.hybris.platform.commerceservices.util.ResponsiveUtils;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import de.hybris.platform.validation.services.ValidationService;
-import static de.hybris.platform.ybelsportinitialdata.constants.InitialDataConstants.*;
+import static de.hybris.platform.ybelsportinitialdata.initialdata.constants.InitialDataConstants.*;
 
 import java.io.InputStream;
 import java.util.List;
@@ -138,6 +138,9 @@ public class CoreDataImportService extends AbstractDataImportService
 
 		getSetupImpexService()
 				.importImpexFile(String.format("/%s/import/coredata/stores/%s/warehouses.impex", extensionName, storeName), true);
+
+		getSetupImpexService()
+				.importImpexFile(String.format("/%s/import/coredata/stores/%s/promotions.impex", extensionName, storeName), false);
 	}
 
 	@Override
